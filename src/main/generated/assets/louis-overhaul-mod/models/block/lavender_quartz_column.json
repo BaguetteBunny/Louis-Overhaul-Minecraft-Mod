@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "louis-overhaul-mod:block/lavender_quartz_pillar",
+    "side": "louis-overhaul-mod:block/lavender_quartz_pillar"
+  }
+}

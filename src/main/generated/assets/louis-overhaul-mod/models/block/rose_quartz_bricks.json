@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "louis-overhaul-mod:block/rose_quartz_bricks"
+  }
+}

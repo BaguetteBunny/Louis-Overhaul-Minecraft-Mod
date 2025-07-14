@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "key": {
+    "C": {
+      "item": "minecraft:copper_ingot"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "C C",
+    "CSC",
+    "C C"
+  ],
+  "result": {
+    "count": 18,
+    "id": "louis-overhaul-mod:copper_rail"
+  }
+}

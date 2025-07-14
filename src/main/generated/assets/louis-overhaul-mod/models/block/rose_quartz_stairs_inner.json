@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "louis-overhaul-mod:block/rose_quartz_bricks",
+    "side": "louis-overhaul-mod:block/rose_quartz_bricks",
+    "top": "louis-overhaul-mod:block/rose_quartz_bricks"
+  }
+}
