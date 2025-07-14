@@ -1,4 +1,4 @@
-// 1.21.1	2025-07-14T19:24:16.1890961	Louis' Overhaul Mod/Recipes
+// 1.21.1	2025-07-14T23:11:15.7063825	Louis' Overhaul Mod/Recipes
 c8a29381ee5e4188c44fa40927e90d8251b5e5ab data\louis-overhaul-mod\recipe\lavender_quartz_slab.json
 cf3eb99711288baaad357c07006fb7f23cae07e6 data\louis-overhaul-mod\advancement\recipes\building_blocks\rose_quartz_wall.json
 d66c004362bccbcc9ab51ff28a347609baf5c832 data\louis-overhaul-mod\recipe\lavender_quartz_column.json
@@ -11,6 +11,7 @@ deb870f37178a94bfca9a7b4a4ce1fe696a61314 data\louis-overhaul-mod\advancement\rec
 4e62814060cbd3fdeacbb1086eba258e75e74035 data\louis-overhaul-mod\recipe\rose_quartz_stairs.json
 3a617059bd76b7835f98d1831a5897ac19eace54 data\louis-overhaul-mod\advancement\recipes\building_blocks\rose_quartz_bricks.json
 cba88d5c3988bd25bd368a8253e2666da445dde1 data\louis-overhaul-mod\recipe\rose_quartz_wall.json
+10470c8f19e5e8b876fbc9563effd9171b0c0c67 data\louis-overhaul-mod\recipe\netherite_horse_armor_smithing.json
 bc907fe76e940be243b3db822b5864dd03d5aff2 data\louis-overhaul-mod\advancement\recipes\building_blocks\chiseled_lavender_quartz.json
 4883b54c0d6348acfd8c3f145ecc83a27092069e data\louis-overhaul-mod\recipe\lavender_quartz_bricks.json
 c53e519d2b368134faa059995ba340eff636de30 data\louis-overhaul-mod\advancement\recipes\building_blocks\lavender_quartz_pillar.json
@@ -27,5 +28,6 @@ d05cc51441f972cdf6da66dbe58959bae55aefa8 data\louis-overhaul-mod\recipe\rose_qua
 803fb4009e1ab021f179558037e6a429a9ba692e data\louis-overhaul-mod\recipe\rose_quartz_column.json
 11204d1086e50f45bce68db8474b43f27a4d7e0f data\louis-overhaul-mod\advancement\recipes\building_blocks\lavender_quartz_bricks.json
 cc86936d43ca726c9a5b90bf52da2a1ba958314b data\louis-overhaul-mod\advancement\recipes\building_blocks\lavender_quartz_slab.json
+c501aec9d9627df3fbcbe9e61822eaae4bd24c67 data\louis-overhaul-mod\advancement\recipes\combat\netherite_horse_armor_smithing.json
 2e599b05764853a59ce88d3e5e7d212947ef2278 data\louis-overhaul-mod\recipe\lavender_quartz_wall.json
 f04878393029c384170a60e9ad1a6191ddcc7b1f data\louis-overhaul-mod\advancement\recipes\building_blocks\lavender_quartz_stairs.json

@@ -39,6 +39,7 @@ public class ModModelProvider extends FabricModelProvider {
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
         itemModelGenerator.register(ModItems.BAT_FANG, Models.GENERATED);
         itemModelGenerator.register(ModItems.NETHERITE_HORSE_ARMOR, Models.GENERATED);
+        itemModelGenerator.register(ModItems.ENDERMITE_HEART, Models.GENERATED);
 
     }
 }

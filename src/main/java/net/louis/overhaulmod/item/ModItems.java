@@ -13,6 +13,7 @@ import net.minecraft.util.Identifier;
 public class ModItems {
 
     public static final Item BAT_FANG = registerItem("bat_fang", new Item(new Item.Settings()));
+    public static final Item ENDERMITE_HEART = registerItem("endermite_heart", new Item(new Item.Settings()));
     public static final Item NETHERITE_HORSE_ARMOR = registerItem("netherite_horse_armor",
             new AnimalArmorItem(ArmorMaterials.NETHERITE, AnimalArmorItem.Type.EQUESTRIAN, false, new Item.Settings().maxCount(1)));
 
@@ -25,6 +26,7 @@ public class ModItems {
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(entries -> {
             entries.add(BAT_FANG);
+            entries.add(ENDERMITE_HEART);
         });
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT).register(entries -> {
             entries.add(NETHERITE_HORSE_ARMOR);
