@@ -16,9 +16,9 @@ public class ModLootTableModifiers {
     private static final Identifier ENDERMITE_ID
             = Identifier.of("minecraft", "entities/endermite");
 
-    // Make bats drop bat fangs
     public static void modifyLootTables() {
         LootTableEvents.MODIFY.register((key, tableBuilder, source, registry) -> {
+            // Make bats drop bat fangs
             if(BAT_ID.equals(key.getValue())) {
                 LootPool.Builder poolBuilder = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
@@ -27,6 +27,7 @@ public class ModLootTableModifiers {
                         .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f)).build());
                 tableBuilder.pool(poolBuilder.build());
             }
+            // Make endermite drop heart
             if(ENDERMITE_ID.equals(key.getValue())) {
                 LootPool.Builder poolBuilder = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
