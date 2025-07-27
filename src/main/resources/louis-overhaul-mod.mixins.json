@@ -3,7 +3,8 @@
 	"package": "net.louis.overhaulmod.mixin",
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
-		"LivingEntityMixin"
+		"LivingEntityMixin",
+		"BundleContentsComponentMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
