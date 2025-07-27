@@ -4,7 +4,8 @@
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
 		"LivingEntityMixin",
-		"BundleContentsComponentMixin"
+		"BundleContentsComponentMixin",
+		"BrewingRecipeRegistryMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

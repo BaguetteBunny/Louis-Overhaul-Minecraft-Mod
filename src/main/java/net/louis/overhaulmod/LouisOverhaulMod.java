@@ -5,6 +5,8 @@ import net.fabricmc.api.ModInitializer;
 import net.louis.overhaulmod.block.ModBlocks;
 import net.louis.overhaulmod.item.ModItems;
 import net.louis.overhaulmod.utils.ModLootTableModifiers;
+import net.minecraft.item.Items;
+import net.minecraft.potion.Potions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
