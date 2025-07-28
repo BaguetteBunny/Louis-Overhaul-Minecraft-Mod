@@ -13,6 +13,7 @@ import net.minecraft.entity.passive.HorseColor;
 import net.minecraft.entity.passive.HorseEntity;
 import net.minecraft.entity.passive.HorseMarking;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.inventory.Inventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -26,6 +27,7 @@ import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 import java.util.Objects;
@@ -39,7 +41,7 @@ public class SaddledGoatHorn extends Item {
 
     @Override
     public ActionResult useOnEntity(ItemStack stack, PlayerEntity user, LivingEntity entity, Hand hand) {
-        if (user.getItemUseTimeLeft() > 0) {
+        if (user.getItemCooldownManager().isCoolingDown(stack.getItem())) {
             return ActionResult.FAIL;
         }
         user.getItemCooldownManager().set(this, 60);
@@ -100,8 +102,11 @@ public class SaddledGoatHorn extends Item {
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
         ItemStack stack = player.getStackInHand(hand);
+        if (player.getItemCooldownManager().isCoolingDown(stack.getItem())) {
+            return TypedActionResult.pass(stack);
+        }
         String uuidStr = stack.get(ModComponents.HORSE_UUID);
-        if (player.isSneaking() && !world.isClient && player instanceof ServerPlayerEntity serverPlayer && uuidStr != null && !uuidStr.isEmpty()) {
+        if (!world.isClient && player instanceof ServerPlayerEntity serverPlayer && uuidStr != null && !uuidStr.isEmpty()) {
             world.playSound(null, player.getBlockPos(), ModSounds.SADDLED_GOAT_HORN_USE, SoundCategory.PLAYERS);
 
             player.getItemCooldownManager().set(this, 60);
@@ -132,13 +137,16 @@ public class SaddledGoatHorn extends Item {
                 HorseMarking horseMarkingEnum = HorseMarking.byIndex(stack.get(ModComponents.HORSE_IDENTIFIER));
                 ((HorseAccessor) horse).callSetHorseVariant(horseColorEnum, horseMarkingEnum);
 
+                horse.setTame(true);
+
+                if (Boolean.TRUE.equals(stack.get(ModComponents.HORSE_SADDLED))) {
+                    ItemStack saddle = new ItemStack(Items.SADDLE);
+                    horse.saddle(saddle, SoundCategory.NEUTRAL);
+                }
+
                 ItemStack horseArmor = stack.get(ModComponents.HORSE_ARMOR);
                 if (horseArmor != null && !horseArmor.isEmpty() && horseArmor.getCount() > 0 && horseArmor.getItem() != Items.AIR) {
                     horse.getInventory().setStack(0, horseArmor);
-                }
-                if (Boolean.TRUE.equals(stack.get(ModComponents.HORSE_SADDLED))) {
-                    ItemStack saddle = new ItemStack(Items.SADDLE);
-                    horse.getInventory().setStack(1, saddle);
                 }
 
                 horse.setTame(true);
@@ -146,12 +154,8 @@ public class SaddledGoatHorn extends Item {
                 world.spawnEntity(horse);
                 stack.remove(ModComponents.HORSE_UUID);
             }
-            System.out.println("REACHED RETURN");
             return TypedActionResult.success(stack, world.isClient());
         } else {
-            if (!world.isClient) {
-                world.playSound(null, player.getBlockPos(), SoundEvents.ENTITY_GENERIC_EXTINGUISH_FIRE, SoundCategory.PLAYERS);
-            }
             return TypedActionResult.pass(stack);
         }
     }
