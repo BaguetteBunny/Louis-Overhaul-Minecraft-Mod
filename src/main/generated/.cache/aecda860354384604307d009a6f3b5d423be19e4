@@ -1,4 +1,4 @@
-// 1.21.1	2025-07-28T15:31:33.5138337	Louis' Overhaul Mod/Recipes
+// 1.21.1	2025-07-28T15:54:44.1838694	Louis' Overhaul Mod/Recipes
 c8a29381ee5e4188c44fa40927e90d8251b5e5ab data\louis-overhaul-mod\recipe\lavender_quartz_slab.json
 cf3eb99711288baaad357c07006fb7f23cae07e6 data\louis-overhaul-mod\advancement\recipes\building_blocks\rose_quartz_wall.json
 d66c004362bccbcc9ab51ff28a347609baf5c832 data\louis-overhaul-mod\recipe\lavender_quartz_column.json
@@ -8,13 +8,13 @@ d66c004362bccbcc9ab51ff28a347609baf5c832 data\louis-overhaul-mod\recipe\lavender
 b246a515f5fb9eeb9375ea0850038ace396b2ca5 data\louis-overhaul-mod\advancement\recipes\building_blocks\lavender_quartz_column.json
 41a8df2cc0139413f1fb401dd4400ea628bd8b61 data\louis-overhaul-mod\recipe\chiseled_rose_quartz.json
 deb870f37178a94bfca9a7b4a4ce1fe696a61314 data\louis-overhaul-mod\advancement\recipes\building_blocks\lavender_quartz_wall.json
-4fefcafe562303933cef699787770a730421520b data\louis-overhaul-mod\recipe\potion_pouch.json
+36b6150c7bdb7f9a3ce4c41c437f15ece7a99dfe data\louis-overhaul-mod\recipe\potion_pouch.json
 4e62814060cbd3fdeacbb1086eba258e75e74035 data\louis-overhaul-mod\recipe\rose_quartz_stairs.json
 3a617059bd76b7835f98d1831a5897ac19eace54 data\louis-overhaul-mod\advancement\recipes\building_blocks\rose_quartz_bricks.json
 cba88d5c3988bd25bd368a8253e2666da445dde1 data\louis-overhaul-mod\recipe\rose_quartz_wall.json
 10470c8f19e5e8b876fbc9563effd9171b0c0c67 data\louis-overhaul-mod\recipe\netherite_horse_armor_smithing.json
 bc907fe76e940be243b3db822b5864dd03d5aff2 data\louis-overhaul-mod\advancement\recipes\building_blocks\chiseled_lavender_quartz.json
-6cb6c3a64e98494a73f99c624bae9d457ad8c078 data\louis-overhaul-mod\advancement\recipes\misc\potion_pouch.json
+4bfa19c951c9e6f233c92716d1be8d7d7f9700ca data\louis-overhaul-mod\advancement\recipes\misc\potion_pouch.json
 4883b54c0d6348acfd8c3f145ecc83a27092069e data\louis-overhaul-mod\recipe\lavender_quartz_bricks.json
 bf4d6e057350f497f7010e8eaaf94b3851d603f4 data\louis-overhaul-mod\recipe\bundle.json
 372e6bcadc28590d0020754ef3ff78ac0a6fd3ba data\louis-overhaul-mod\advancement\recipes\misc\bundle.json

@@ -1,21 +1,21 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_rabbit_hide": {
+    "has_bat_fang": {
       "conditions": {
         "items": [
           {
-            "items": "minecraft:rabbit_hide"
+            "items": "louis-overhaul-mod:bat_fang"
           }
         ]
       },
       "trigger": "minecraft:inventory_changed"
     },
-    "has_string": {
+    "has_rabbit_hide": {
       "conditions": {
         "items": [
           {
-            "items": "minecraft:string"
+            "items": "minecraft:rabbit_hide"
           }
         ]
       },
@@ -32,7 +32,7 @@
     [
       "has_the_recipe",
       "has_rabbit_hide",
-      "has_string"
+      "has_bat_fang"
     ]
   ],
   "rewards": {
