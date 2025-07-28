@@ -4,6 +4,7 @@ import net.fabricmc.api.ModInitializer;
 
 import net.louis.overhaulmod.block.ModBlocks;
 import net.louis.overhaulmod.item.ModItems;
+import net.louis.overhaulmod.potion.ModPotions;
 import net.louis.overhaulmod.utils.ModLootTableModifiers;
 import net.minecraft.item.Items;
 import net.minecraft.potion.Potions;
@@ -16,6 +17,7 @@ public class LouisOverhaulMod implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+		ModPotions.registerPotions();
 		ModItems.registerModItems();
 		ModBlocks.registerModBlocks();
 		ModLootTableModifiers.modifyLootTables();
