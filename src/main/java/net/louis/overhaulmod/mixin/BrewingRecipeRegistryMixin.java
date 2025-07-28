@@ -50,9 +50,20 @@ public class BrewingRecipeRegistryMixin {
 
         // Mid Potion Effects
         builder.registerPotionRecipe(Potions.THICK, Items.BREEZE_ROD, Potions.WIND_CHARGED);
+        builder.registerPotionRecipe(Potions.WIND_CHARGED, Items.REDSTONE, ModPotions.LONG_WIND_CHARGED);
+        builder.registerPotionRecipe(Potions.WIND_CHARGED, Items.GLOWSTONE_DUST, ModPotions.STRONG_WIND_CHARGED);
+
         builder.registerPotionRecipe(Potions.THICK, Items.SLIME_BLOCK, Potions.OOZING);
+        builder.registerPotionRecipe(Potions.OOZING, Items.REDSTONE, ModPotions.LONG_OOZING);
+        builder.registerPotionRecipe(Potions.OOZING, Items.GLOWSTONE_DUST, ModPotions.STRONG_OOZING);
+
         builder.registerPotionRecipe(Potions.THICK, Items.STONE, Potions.INFESTED);
+        builder.registerPotionRecipe(Potions.INFESTED, Items.REDSTONE, ModPotions.LONG_INFESTED);
+        builder.registerPotionRecipe(Potions.INFESTED, Items.GLOWSTONE_DUST, ModPotions.STRONG_INFESTED);
+
         builder.registerPotionRecipe(Potions.THICK, Items.COBWEB, Potions.WEAVING);
+        builder.registerPotionRecipe(Potions.WEAVING, Items.REDSTONE, ModPotions.LONG_WEAVING);
+        builder.registerPotionRecipe(Potions.WEAVING, Items.GLOWSTONE_DUST, ModPotions.STRONG_WEAVING);
 
         // Positive Potion Effects
         builder.registerPotionRecipe(Potions.AWKWARD, Items.GLOW_LICHEN, Potions.NIGHT_VISION);
