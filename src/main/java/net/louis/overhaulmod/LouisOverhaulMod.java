@@ -4,6 +4,7 @@ import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.louis.overhaulmod.block.ModBlocks;
+import net.louis.overhaulmod.component.ModComponents;
 import net.louis.overhaulmod.effect.ModEffects;
 import net.louis.overhaulmod.item.ModItems;
 import net.louis.overhaulmod.potion.ModPotions;
@@ -19,6 +20,7 @@ public class LouisOverhaulMod implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		ServerTickEvents.END_SERVER_TICK.register(server -> {DelayedActionScheduler.tick();});
+		ModComponents.registerDataComponentTypes();
 		ModEffects.registerEffects();
 		ModPotions.registerPotions();
 		ModItems.registerModItems();

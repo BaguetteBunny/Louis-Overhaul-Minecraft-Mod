@@ -69,11 +69,6 @@ public class ModComponents {
             ComponentType.<Integer>builder().codec(Codec.INT).build()
     );
 
-    public static final ComponentType<String> HORSE_ARMOR_DYE = Registry.register(
-            Registries.DATA_COMPONENT_TYPE,
-            Identifier.of(LouisOverhaulMod.MOD_ID, "horse_armor_dye"),
-            ComponentType.<String>builder().codec(Codec.STRING).build()
-    );
 
     private static <T>ComponentType<T> register(String name, UnaryOperator<ComponentType.Builder<T>> builderOperator) {
         return Registry.register(Registries.DATA_COMPONENT_TYPE, Identifier.of(LouisOverhaulMod.MOD_ID, name),
