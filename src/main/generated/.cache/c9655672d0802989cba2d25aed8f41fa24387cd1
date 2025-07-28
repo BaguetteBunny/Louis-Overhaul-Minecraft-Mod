@@ -1,4 +1,4 @@
-// 1.21.1	2025-07-28T16:47:02.0445683	Louis' Overhaul Mod/Model Definitions
+// 1.21.1	2025-07-28T18:08:38.5922434	Louis' Overhaul Mod/Model Definitions
 eb4d7414b04770e4d72b4793eac663db5ead683c assets\louis-overhaul-mod\models\block\lavender_quartz_slab_top.json
 4da107a5591635ac60f0df35dca87046d0164219 assets\louis-overhaul-mod\models\block\copper_rail.json
 c3045c4f01b27dc88757ecd6236d9ac00fe12973 assets\louis-overhaul-mod\blockstates\lavender_quartz_slab.json
@@ -22,13 +22,13 @@ f482f53b720dc9bf6a472a2023e672106bc1d78c assets\louis-overhaul-mod\models\block\
 aeecf34ba4545d3159ad1ac88c0baf495a706251 assets\louis-overhaul-mod\models\item\copper_rail.json
 6253f69d594648e16a82fefb6e36c029aa07796b assets\louis-overhaul-mod\models\block\lavender_quartz_slab.json
 157a28d6c2f1d154840c5a974660ec78cdf6bc1f assets\louis-overhaul-mod\blockstates\rose_quartz_pillar.json
-eec6cc47887aedf28a605bcb62c9b8067c0cabe1 assets\louis-overhaul-mod\models\item\chiseled_lavender_quartz.json
 a8cd0c408944e7ef61ddc0c4f90b109adc630e3d assets\louis-overhaul-mod\models\block\copper_rail_raised_ne.json
+eec6cc47887aedf28a605bcb62c9b8067c0cabe1 assets\louis-overhaul-mod\models\item\chiseled_lavender_quartz.json
 2e5715d7a3d8143d348ce9d6c4180e5c3e35fbcb assets\louis-overhaul-mod\blockstates\lavender_quartz_pillar.json
 5f76aeab444078a4c5447109d1233624cbe0ef2c assets\louis-overhaul-mod\models\block\lavender_quartz_column.json
 9822bac80cd63a78055f77209a46803da8b6862d assets\louis-overhaul-mod\blockstates\rose_quartz_slab.json
-9497aba2682dd25063d6afaa8bc404e18e6e92f5 assets\louis-overhaul-mod\models\block\lavender_quartz_bricks.json
 25e7712b552ab6309a419a08f4159d598871f9ee assets\louis-overhaul-mod\models\item\potion_pouch.json
+9497aba2682dd25063d6afaa8bc404e18e6e92f5 assets\louis-overhaul-mod\models\block\lavender_quartz_bricks.json
 b1cb761d5d66fa2d1fd095a0edfc6a6569aed3ed assets\louis-overhaul-mod\models\block\rose_quartz_pillar_horizontal.json
 9de9eb3657513d855d79a4d68a4fc1a1df44620d assets\louis-overhaul-mod\models\block\rose_quartz_stairs_inner.json
 1ce885bd8fa3f37674ea18a275edc9f2e8c5e72b assets\louis-overhaul-mod\blockstates\lavender_quartz_bricks.json
