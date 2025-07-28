@@ -1,8 +1,8 @@
 {
   "saddled_goat_horn_use": {
-    "subtitle": "sounds.louis-overhaul-mod.saddled_goat_horn_use",
+    "subtitle": "sound.louis-overhaul-mod.saddled_goat_horn_use",
     "sounds": [
-      "louis-overhaul-mod.saddled_goat_horn_use"
+      "louis-overhaul-mod:saddled_goat_horn_use"
     ]
   }
 }
