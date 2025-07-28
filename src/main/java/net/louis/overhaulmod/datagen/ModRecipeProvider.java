@@ -28,15 +28,6 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         //offerBlasting(exporter, PINK_GARNET_SMELTABLES, RecipeCategory.MISC, ModItems.PINK_GARNET, 0.25f, 100, "pink_garnet");
 
         //offerReversibleCompactingRecipes(exporter, RecipeCategory.BUILDING_BLOCKS, ModItems.PINK_GARNET, RecipeCategory.DECORATIONS, ModBlocks.PINK_GARNET_BLOCK);
-        // POTIONS
-        FabricBrewingRecipeRegistryBuilder.BUILD.register(builder -> {
-            builder.registerPotionRecipe(
-                    Potions.AWKWARD,
-                    Items.RABBIT,
-                    Potions.LEAPING
-            );
-        });
-
 
         // REDSTONE
         ShapedRecipeJsonBuilder.create(RecipeCategory.REDSTONE, ModBlocks.COPPER_RAIL, 18)
@@ -60,12 +51,15 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(Items.STRING), conditionsFromItem(Items.STRING))
                 .offerTo(exporter);
 
-        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.POTION_POUCH, 1)
-                .input(Items.RABBIT_HIDE)
-                .input(Items.RABBIT_HIDE)
-                .input(Items.STRING)
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.POTION_POUCH, 1)
+                .pattern("SBS")
+                .pattern("H H")
+                .pattern("   ")
+                .input('H', Items.RABBIT_HIDE)
+                .input('S', Items.STRING)
+                .input('B', ModItems.BAT_FANG)
                 .criterion(hasItem(Items.RABBIT_HIDE), conditionsFromItem(Items.RABBIT_HIDE))
-                .criterion(hasItem(Items.STRING), conditionsFromItem(Items.STRING))
+                .criterion(hasItem(ModItems.BAT_FANG), conditionsFromItem(ModItems.BAT_FANG))
                 .offerTo(exporter);
 
         // BUILDING BLOCKS
