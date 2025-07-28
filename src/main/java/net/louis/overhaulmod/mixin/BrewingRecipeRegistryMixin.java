@@ -1,5 +1,7 @@
 package net.louis.overhaulmod.mixin;
 
+import net.louis.overhaulmod.item.ModItems;
+import net.louis.overhaulmod.potion.ModPotions;
 import net.minecraft.block.entity.BrewingStandBlockEntity;
 import net.minecraft.item.Items;
 import net.minecraft.potion.Potions;
@@ -31,7 +33,7 @@ public class BrewingRecipeRegistryMixin {
         builder.registerPotionRecipe(Potions.WATER, Items.NETHER_WART, Potions.AWKWARD);
 
         // Negative Potion Effects
-        builder.registerPotionRecipe(Potions.MUNDANE, Items.RABBIT, Potions.SLOWNESS);
+        builder.registerPotionRecipe(Potions.MUNDANE, Items.TURTLE_SCUTE, Potions.SLOWNESS);
         builder.registerPotionRecipe(Potions.SLOWNESS, Items.REDSTONE, Potions.LONG_SLOWNESS);
         builder.registerPotionRecipe(Potions.SLOWNESS, Items.GLOWSTONE_DUST, Potions.STRONG_SLOWNESS);
 
@@ -42,8 +44,9 @@ public class BrewingRecipeRegistryMixin {
         builder.registerPotionRecipe(Potions.POISON, Items.REDSTONE, Potions.LONG_POISON);
         builder.registerPotionRecipe(Potions.POISON, Items.GLOWSTONE_DUST, Potions.STRONG_POISON);
 
-        builder.registerPotionRecipe(Potions.MUNDANE, Items.INK_SAC, Potions.WEAKNESS);
+        builder.registerPotionRecipe(Potions.MUNDANE, Items.GLOW_LICHEN, Potions.WEAKNESS); // CHANGE TO STRAY DROP
         builder.registerPotionRecipe(Potions.WEAKNESS, Items.REDSTONE, Potions.LONG_WEAKNESS);
+        builder.registerPotionRecipe(Potions.WEAKNESS, Items.GLOWSTONE_DUST, ModPotions.STRONG_WEAKNESS);
 
         // Mid Potion Effects
         builder.registerPotionRecipe(Potions.THICK, Items.BREEZE_ROD, Potions.WIND_CHARGED);
@@ -52,10 +55,10 @@ public class BrewingRecipeRegistryMixin {
         builder.registerPotionRecipe(Potions.THICK, Items.COBWEB, Potions.WEAVING);
 
         // Positive Potion Effects
-        builder.registerPotionRecipe(Potions.AWKWARD, Items.GOLDEN_CARROT, Potions.NIGHT_VISION);
+        builder.registerPotionRecipe(Potions.AWKWARD, Items.GLOW_LICHEN, Potions.NIGHT_VISION);
         builder.registerPotionRecipe(Potions.NIGHT_VISION, Items.REDSTONE, Potions.LONG_NIGHT_VISION);
 
-        builder.registerPotionRecipe(Potions.AWKWARD, Items.GLOW_INK_SAC, Potions.INVISIBILITY);
+        builder.registerPotionRecipe(Potions.AWKWARD, Items.PHANTOM_MEMBRANE, Potions.INVISIBILITY);
         builder.registerPotionRecipe(Potions.INVISIBILITY, Items.REDSTONE, Potions.LONG_INVISIBILITY);
 
         builder.registerPotionRecipe(Potions.AWKWARD, Items.MAGMA_CREAM, Potions.FIRE_RESISTANCE);
@@ -87,7 +90,32 @@ public class BrewingRecipeRegistryMixin {
         builder.registerPotionRecipe(Potions.STRENGTH, Items.REDSTONE, Potions.LONG_STRENGTH);
         builder.registerPotionRecipe(Potions.STRENGTH, Items.GLOWSTONE_DUST, Potions.STRONG_STRENGTH);
 
-        builder.registerPotionRecipe(Potions.AWKWARD, Items.PHANTOM_MEMBRANE, Potions.SLOW_FALLING);
+        builder.registerPotionRecipe(Potions.AWKWARD, Items.RABBIT_FOOT, Potions.LUCK);
+        builder.registerPotionRecipe(Potions.LUCK, Items.REDSTONE, ModPotions.LONG_LUCK);
+        builder.registerPotionRecipe(Potions.LUCK, Items.GLOWSTONE_DUST, ModPotions.STRONG_LUCK);
+
+        // DEADBUSH -> BAD LUCK
+        // ADD VARIATIONS HERE
+
+        // INK SACK -> BLINDNESS
+        // ADD VARIATIONS HERE
+
+        // DECAYED FLESH -> HUNGER
+        // ADD VARIATIONS HERE
+
+        // WITHER ROSE -> WITHER
+        // ADD VARIATIONS HERE
+
+        // SHULKER SHELL -> LEVITATION
+        // ADD VARIATIONS HERE
+
+        // RAW COPPER -> NAUSEA
+        // ADD VARIATIONS HERE
+
+        // LLAMA SPIT -> HASTE
+        // ADD VARIATIONS HERE
+
+        builder.registerPotionRecipe(Potions.AWKWARD, ModItems.BAT_FANG, Potions.SLOW_FALLING);
         builder.registerPotionRecipe(Potions.SLOW_FALLING, Items.REDSTONE, Potions.LONG_SLOW_FALLING);
 
 
