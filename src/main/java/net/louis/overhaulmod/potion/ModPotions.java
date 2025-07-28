@@ -9,8 +9,6 @@ import net.minecraft.registry.Registry;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.Identifier;
 
-import static java.lang.Float.NaN;
-
 public class ModPotions {
     public static final int LONG_300 = 9600;
     public static final int STRONG_300 = 1800;

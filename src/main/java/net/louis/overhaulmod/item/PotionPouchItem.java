@@ -11,15 +11,12 @@ import net.minecraft.item.*;
 import net.minecraft.screen.slot.Slot;
 import net.minecraft.item.PotionItem;
 import net.minecraft.item.Items;
-import net.minecraft.potion.Potions;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
 import net.minecraft.util.ClickType;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
-
-import java.util.List;
 
 public class PotionPouchItem extends BundleItem {
     public PotionPouchItem(Item.Settings settings) {
