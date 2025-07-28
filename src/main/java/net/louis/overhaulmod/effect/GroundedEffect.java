@@ -14,7 +14,7 @@ public class GroundedEffect extends StatusEffect {
     @Override
     public boolean applyUpdateEffect(LivingEntity entity, int amplifier) {
         if (!entity.isOnGround()) {
-            entity.addVelocity(0, -1, 0);
+            entity.addVelocity(0, -0.1, 0);
         }
 
         return super.applyUpdateEffect(entity, amplifier);
