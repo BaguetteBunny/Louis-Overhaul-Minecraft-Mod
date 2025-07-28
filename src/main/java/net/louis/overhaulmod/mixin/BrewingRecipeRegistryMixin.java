@@ -53,6 +53,31 @@ public class BrewingRecipeRegistryMixin {
         builder.registerPotionRecipe(Potions.LONG_WEAKNESS, Items.REDSTONE_BLOCK, ModPotions.LONGEST_WEAKNESS);
         builder.registerPotionRecipe(ModPotions.STRONG_WEAKNESS, Items.GLOWSTONE, ModPotions.STRONGEST_WEAKNESS);
 
+        builder.registerPotionRecipe(Potions.MUNDANE, Items.DEAD_BUSH, ModPotions.UNLUCK);
+        builder.registerPotionRecipe(ModPotions.UNLUCK, Items.REDSTONE, ModPotions.LONG_UNLUCK);
+        builder.registerPotionRecipe(ModPotions.UNLUCK, Items.GLOWSTONE_DUST, ModPotions.STRONG_UNLUCK);
+        builder.registerPotionRecipe(ModPotions.LONG_UNLUCK, Items.REDSTONE_BLOCK, ModPotions.LONGEST_UNLUCK);
+        builder.registerPotionRecipe(ModPotions.STRONG_UNLUCK, Items.GLOWSTONE, ModPotions.STRONGEST_UNLUCK);
+
+        builder.registerPotionRecipe(Potions.MUNDANE, Items.ECHO_SHARD, ModPotions.DARKNESS);
+        builder.registerPotionRecipe(ModPotions.DARKNESS, Items.REDSTONE, ModPotions.LONG_DARKNESS);
+        builder.registerPotionRecipe(ModPotions.LONG_DARKNESS, Items.REDSTONE_BLOCK, ModPotions.LONGEST_DARKNESS);
+        
+        // LLAMA SPIT -> BLINDNESS
+        // ADD VARIATIONS HERE
+
+        // DECAYED FLESH -> HUNGER
+        // ADD VARIATIONS HERE
+
+        // WITHER ROSE -> WITHER
+        // ADD VARIATIONS HERE
+
+        // SHULKER SHELL -> LEVITATION
+        // ADD VARIATIONS HERE
+
+        // RAW COPPER -> NAUSEA
+        // ADD VARIATIONS HERE
+
         // Mid Potion Effects
         builder.registerPotionRecipe(Potions.THICK, Items.BREEZE_ROD, Potions.WIND_CHARGED);
         builder.registerPotionRecipe(Potions.WIND_CHARGED, Items.REDSTONE, ModPotions.LONG_WIND_CHARGED);
@@ -135,31 +160,17 @@ public class BrewingRecipeRegistryMixin {
         builder.registerPotionRecipe(ModPotions.LONG_LUCK, Items.REDSTONE_BLOCK, ModPotions.LONGEST_LUCK);
         builder.registerPotionRecipe(ModPotions.STRONG_LUCK, Items.GLOWSTONE, ModPotions.STRONGEST_LUCK);
 
-        // DEADBUSH -> BAD LUCK
-        // ADD VARIATIONS HERE
-
-        // INK SACK -> BLINDNESS
-        // ADD VARIATIONS HERE
-
-        // DECAYED FLESH -> HUNGER
-        // ADD VARIATIONS HERE
-
-        // WITHER ROSE -> WITHER
-        // ADD VARIATIONS HERE
-
-        // SHULKER SHELL -> LEVITATION
-        // ADD VARIATIONS HERE
-
-        // RAW COPPER -> NAUSEA
-        // ADD VARIATIONS HERE
-
-        // LLAMA SPIT -> HASTE
+        // ??? -> HASTE
         // ADD VARIATIONS HERE
 
         builder.registerPotionRecipe(Potions.AWKWARD, ModItems.BAT_FANG, Potions.SLOW_FALLING);
         builder.registerPotionRecipe(Potions.SLOW_FALLING, Items.REDSTONE, Potions.LONG_SLOW_FALLING);
         builder.registerPotionRecipe(Potions.LONG_SLOW_FALLING, Items.REDSTONE_BLOCK, ModPotions.LONGEST_SLOW_FALLING);
 
+        // NEW POTIONS
+        builder.registerPotionRecipe(Potions.AWKWARD, Items.CLAY, ModPotions.GROUNDED);
+        builder.registerPotionRecipe(ModPotions.GROUNDED, Items.REDSTONE, ModPotions.LONG_GROUNDED);
+        builder.registerPotionRecipe(ModPotions.LONG_GROUNDED, Items.REDSTONE_BLOCK, ModPotions.LONGEST_GROUNDED);
 
     }
 }

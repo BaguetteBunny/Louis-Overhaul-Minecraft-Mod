@@ -1,5 +1,8 @@
 {
   "effect.louis-overhaul-mod.grounded": "Grounded",
+  "item.minecraft.potion.effect.grounded": "Grounded Potion",
+  "item.minecraft.splash_potion.effect.grounded": "Grounded Splash Potion",
+  "item.minecraft.lingering_potion.effect.grounded": "Grounded Lingering Potion",
 
   "item.louis-overhaul-mod.bat_fang": "Bat Fang",
   "item.louis-overhaul-mod.endermite_heart": "Endermite Heart",
