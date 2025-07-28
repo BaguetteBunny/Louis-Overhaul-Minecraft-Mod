@@ -1,11 +1,15 @@
 {
+  "__comment1": "EFFECTS",
+  "effect.louis-overhaul-mod.grounded": "Grounded",
+
+  "__comment2": "ITEMS",
   "item.louis-overhaul-mod.bat_fang": "Bat Fang",
   "item.louis-overhaul-mod.endermite_heart": "Endermite Heart",
   "item.louis-overhaul-mod.netherite_horse_armor": "Netherite Horse Armor",
   "item.louis-overhaul-mod.potion_pouch": "Potion Pouch",
 
+  "__comment3": "BLOCKS",
   "block.louis-overhaul-mod.copper_rail": "Copper Rail",
-
 
   "block.louis-overhaul-mod.rose_quartz_bricks": "Rose Quartz Bricks",
   "block.louis-overhaul-mod.rose_quartz_pillar": "Rose Quartz Bricks Pillar",
@@ -21,5 +25,5 @@
   "block.louis-overhaul-mod.chiseled_lavender_quartz": "Chiseled Lavender Quartz Bricks",
   "block.louis-overhaul-mod.lavender_quartz_slab": "Lavender Quartz Bricks Slab",
   "block.louis-overhaul-mod.lavender_quartz_stairs": "Lavender Quartz Bricks Stairs",
-  "block.louis-overhaul-mod.lavender_quartz_wall": "Lavender Quartz Bricks Wall"
+  "block.louis-overhaul-mod.lavender_quartz_wall": "Lavender Quartz Bricks Wall",
 }

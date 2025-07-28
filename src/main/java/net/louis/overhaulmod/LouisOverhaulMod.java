@@ -3,6 +3,7 @@ package net.louis.overhaulmod;
 import net.fabricmc.api.ModInitializer;
 
 import net.louis.overhaulmod.block.ModBlocks;
+import net.louis.overhaulmod.effect.ModEffects;
 import net.louis.overhaulmod.item.ModItems;
 import net.louis.overhaulmod.potion.ModPotions;
 import net.louis.overhaulmod.utils.ModLootTableModifiers;
@@ -15,6 +16,7 @@ public class LouisOverhaulMod implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+		ModEffects.registerEffects();
 		ModPotions.registerPotions();
 		ModItems.registerModItems();
 		ModBlocks.registerModBlocks();
