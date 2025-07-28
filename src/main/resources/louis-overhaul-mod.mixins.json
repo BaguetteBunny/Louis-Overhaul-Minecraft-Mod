@@ -6,7 +6,8 @@
 		"LivingEntityMixin",
 		"BundleContentsComponentMixin",
 		"BrewingRecipeRegistryMixin",
-		"AbstractBlockMixin"
+		"AbstractBlockMixin",
+		"HorseAccessor"
 	],
 	"injectors": {
 		"defaultRequire": 1

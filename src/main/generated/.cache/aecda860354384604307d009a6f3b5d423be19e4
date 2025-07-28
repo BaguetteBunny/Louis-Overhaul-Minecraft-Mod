@@ -1,4 +1,4 @@
-// 1.21.1	2025-07-28T19:49:56.3612282	Louis' Overhaul Mod/Recipes
+// 1.21.1	2025-07-29T03:29:05.7068382	Louis' Overhaul Mod/Recipes
 c8a29381ee5e4188c44fa40927e90d8251b5e5ab data\louis-overhaul-mod\recipe\lavender_quartz_slab.json
 cf3eb99711288baaad357c07006fb7f23cae07e6 data\louis-overhaul-mod\advancement\recipes\building_blocks\rose_quartz_wall.json
 d66c004362bccbcc9ab51ff28a347609baf5c832 data\louis-overhaul-mod\recipe\lavender_quartz_column.json
@@ -14,11 +14,13 @@ deb870f37178a94bfca9a7b4a4ce1fe696a61314 data\louis-overhaul-mod\advancement\rec
 cba88d5c3988bd25bd368a8253e2666da445dde1 data\louis-overhaul-mod\recipe\rose_quartz_wall.json
 10470c8f19e5e8b876fbc9563effd9171b0c0c67 data\louis-overhaul-mod\recipe\netherite_horse_armor_smithing.json
 bc907fe76e940be243b3db822b5864dd03d5aff2 data\louis-overhaul-mod\advancement\recipes\building_blocks\chiseled_lavender_quartz.json
+f9ce7508ee2ffb7d195a7aa0c54554517d2251dc data\louis-overhaul-mod\recipe\saddled_goat_horn.json
 4bfa19c951c9e6f233c92716d1be8d7d7f9700ca data\louis-overhaul-mod\advancement\recipes\misc\potion_pouch.json
 4883b54c0d6348acfd8c3f145ecc83a27092069e data\louis-overhaul-mod\recipe\lavender_quartz_bricks.json
 bf4d6e057350f497f7010e8eaaf94b3851d603f4 data\louis-overhaul-mod\recipe\bundle.json
 372e6bcadc28590d0020754ef3ff78ac0a6fd3ba data\louis-overhaul-mod\advancement\recipes\misc\bundle.json
 c53e519d2b368134faa059995ba340eff636de30 data\louis-overhaul-mod\advancement\recipes\building_blocks\lavender_quartz_pillar.json
+dab33145c92d21b17dcbce1cadf95769344c09d5 data\louis-overhaul-mod\advancement\recipes\misc\saddled_goat_horn.json
 dfe2901b65400ed18d95290857a9c9f00d811474 data\louis-overhaul-mod\recipe\copper_rail.json
 76611d4da4127b4e59a420f44f2f66aaef60f6d5 data\louis-overhaul-mod\recipe\rose_quartz_bricks.json
 6662f40b90f9dd92c4be67536115ef217c1327d7 data\louis-overhaul-mod\advancement\recipes\building_blocks\rose_quartz_column.json

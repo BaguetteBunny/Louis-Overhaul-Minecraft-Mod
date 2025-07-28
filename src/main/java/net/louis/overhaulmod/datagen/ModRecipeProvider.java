@@ -49,6 +49,13 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(Items.STRING), conditionsFromItem(Items.STRING))
                 .offerTo(exporter);
 
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.SADDLED_GOAT_HORN, 1)
+                .input(Items.GOAT_HORN)
+                .input(Items.SADDLE)
+                .criterion(hasItem(Items.GOAT_HORN), conditionsFromItem(Items.GOAT_HORN))
+                .criterion(hasItem(Items.SADDLE), conditionsFromItem(Items.SADDLE))
+                .offerTo(exporter);
+
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.POTION_POUCH, 1)
                 .pattern("SBS")
                 .pattern("H H")

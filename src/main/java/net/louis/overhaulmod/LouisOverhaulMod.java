@@ -8,6 +8,7 @@ import net.louis.overhaulmod.component.ModComponents;
 import net.louis.overhaulmod.effect.ModEffects;
 import net.louis.overhaulmod.item.ModItems;
 import net.louis.overhaulmod.potion.ModPotions;
+import net.louis.overhaulmod.sound.ModSounds;
 import net.louis.overhaulmod.utils.DelayedActionScheduler;
 import net.louis.overhaulmod.utils.ModLootTableModifiers;
 import org.slf4j.Logger;
@@ -20,6 +21,7 @@ public class LouisOverhaulMod implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		ServerTickEvents.END_SERVER_TICK.register(server -> {DelayedActionScheduler.tick();});
+		ModSounds.registerSounds();
 		ModComponents.registerDataComponentTypes();
 		ModEffects.registerEffects();
 		ModPotions.registerPotions();

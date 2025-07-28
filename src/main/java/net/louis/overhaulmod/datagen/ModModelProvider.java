@@ -40,5 +40,6 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.NETHERITE_HORSE_ARMOR, Models.GENERATED);
         itemModelGenerator.register(ModItems.ENDERMITE_HEART, Models.GENERATED);
         itemModelGenerator.register(ModItems.POTION_POUCH, Models.GENERATED);
+        itemModelGenerator.register(ModItems.SADDLED_GOAT_HORN, Models.GENERATED);
     }
 }

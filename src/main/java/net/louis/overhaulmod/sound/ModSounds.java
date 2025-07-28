@@ -7,11 +7,11 @@ import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Identifier;
 
 public class ModSounds {
-    public static final SoundEvent SADDLED_GOAT_HORN_USE = registerSoundEvent("saddled_goat_horn_use");
+    public static final SoundEvent SADDLED_GOAT_HORN_USE = registerSound("saddled_goat_horn_use");
 
-    private static SoundEvent registerSoundEvent(String name) {
-        Identifier id = Identifier.of(LouisOverhaulMod.MOD_ID, name);
-        return Registry.register(Registries.SOUND_EVENT, id, SoundEvent.of(id));
+    private static SoundEvent registerSound(String id) {
+        Identifier identifier = Identifier.of(LouisOverhaulMod.MOD_ID, id);
+        return Registry.register(Registries.SOUND_EVENT, identifier, SoundEvent.of(identifier));
     }
 
     public static void registerSounds() {

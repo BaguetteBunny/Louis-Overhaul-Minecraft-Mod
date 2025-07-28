@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:goat_horn"
+    },
+    {
+      "item": "minecraft:saddle"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "louis-overhaul-mod:saddled_goat_horn"
+  }
+}

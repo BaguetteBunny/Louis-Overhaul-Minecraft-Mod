@@ -51,10 +51,10 @@ public class ModComponents {
             ComponentType.<String>builder().codec(Codec.STRING).build()
     );
 
-    public static final ComponentType<Integer> HORSE_ARMOR = Registry.register(
+    public static final ComponentType<ItemStack> HORSE_ARMOR = Registry.register(
             Registries.DATA_COMPONENT_TYPE,
             Identifier.of(LouisOverhaulMod.MOD_ID, "horse_armor"),
-            ComponentType.<Integer>builder().codec(Codec.INT).build()
+            ComponentType.<ItemStack>builder().codec(ItemStack.CODEC).build()
     );
 
     public static final ComponentType<Integer> HORSE_COLOR = Registry.register(
@@ -67,6 +67,12 @@ public class ModComponents {
             Registries.DATA_COMPONENT_TYPE,
             Identifier.of(LouisOverhaulMod.MOD_ID, "horse_identifier"),
             ComponentType.<Integer>builder().codec(Codec.INT).build()
+    );
+
+    public static final ComponentType<Boolean> HORSE_SADDLED = Registry.register(
+            Registries.DATA_COMPONENT_TYPE,
+            Identifier.of(LouisOverhaulMod.MOD_ID, "horse_saddled"),
+            ComponentType.<Boolean>builder().codec(Codec.BOOL).build()
     );
 
 
