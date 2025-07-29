@@ -3,6 +3,7 @@ package net.louis.overhaulmod.item;
 import net.louis.overhaulmod.component.ModComponents;
 import net.louis.overhaulmod.mixin.WolfAccessor;
 import net.minecraft.block.Blocks;
+import net.minecraft.client.item.ModelPredicateProviderRegistry;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LightningEntity;
 import net.minecraft.entity.passive.WolfEntity;
@@ -17,6 +18,7 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Formatting;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
@@ -27,6 +29,17 @@ import java.util.UUID;
 public class PetRecoveryCompass extends Item {
     public PetRecoveryCompass(Settings settings) {
         super(settings);
+    }
+
+    public static void registerModelPredicates() {
+        ModelPredicateProviderRegistry.register(
+                ModItems.PET_RECOVERY_COMPASS,
+                Identifier.of("full"),
+                (stack, world, entity, seed) -> {
+                    String uuid = stack.get(ModComponents.MOB_UUID);
+                    return (uuid != null && !uuid.isEmpty()) ? 1.0f : 0.0f;
+                }
+        );
     }
 
     @Override

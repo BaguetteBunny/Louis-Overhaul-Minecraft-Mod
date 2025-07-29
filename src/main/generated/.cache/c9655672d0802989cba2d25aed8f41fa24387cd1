@@ -1,4 +1,4 @@
-// 1.21.1	2025-07-30T04:13:53.3741544	Louis' Overhaul Mod/Model Definitions
+// 1.21.1	2025-07-30T05:03:16.0162214	Louis' Overhaul Mod/Model Definitions
 6f63ff1e128c211e3798e888c406cc466b85838e assets\louis-overhaul-mod\models\item\saddled_goat_horn.json
 eb4d7414b04770e4d72b4793eac663db5ead683c assets\louis-overhaul-mod\models\block\lavender_quartz_slab_top.json
 4da107a5591635ac60f0df35dca87046d0164219 assets\louis-overhaul-mod\models\block\copper_rail.json
@@ -9,8 +9,8 @@ a1561298b33c85776b0b8dd48bd50f8441b64d49 assets\louis-overhaul-mod\blockstates\r
 222501a196f9fba8f2d03c849854ae3ef56344f0 assets\louis-overhaul-mod\models\block\rose_quartz_slab.json
 a7c756da57aad7661b82c8a8c79430ee01f8bb73 assets\louis-overhaul-mod\models\block\lavender_quartz_wall_post.json
 dc030d717ecabccef8630c69f80a534ad9524bfc assets\louis-overhaul-mod\models\block\rose_quartz_column.json
-394d6b3018639106562ad3797ac5d240cd4d0715 assets\louis-overhaul-mod\models\block\rose_quartz_wall_inventory.json
 91ac5b178e9dd76f9a7e4f8e79f14f750f98f0f4 assets\louis-overhaul-mod\models\block\copper_rail_on_raised_ne.json
+394d6b3018639106562ad3797ac5d240cd4d0715 assets\louis-overhaul-mod\models\block\rose_quartz_wall_inventory.json
 cad9b94d1f83bf29c17a55b04977a13905f79413 assets\louis-overhaul-mod\models\item\rose_quartz_stairs.json
 e97fe07a5b23ba43f7f0256b807e5aad031bc0bb assets\louis-overhaul-mod\models\block\rose_quartz_wall_side.json
 67494916f0e6c88bce8f2798d6650ca55adc8c3a assets\louis-overhaul-mod\models\block\lavender_quartz_wall_inventory.json
@@ -34,7 +34,6 @@ b1cb761d5d66fa2d1fd095a0edfc6a6569aed3ed assets\louis-overhaul-mod\models\block\
 9de9eb3657513d855d79a4d68a4fc1a1df44620d assets\louis-overhaul-mod\models\block\rose_quartz_stairs_inner.json
 1ce885bd8fa3f37674ea18a275edc9f2e8c5e72b assets\louis-overhaul-mod\blockstates\lavender_quartz_bricks.json
 6adff0161411e29bd04a499445e60761ed82f846 assets\louis-overhaul-mod\blockstates\chiseled_lavender_quartz.json
-c5263e0e0e524fbb1f77bc14d4ff9651de16800c assets\louis-overhaul-mod\models\item\pet_recovery_compass.json
 b3ef3d6a9447241cfc082cc910603a6a500f4a09 assets\louis-overhaul-mod\models\item\rose_quartz_wall.json
 f94ada7e2746e91f89dd4b214fb5a18c493c9dd6 assets\louis-overhaul-mod\models\block\chiseled_rose_quartz.json
 35da7e233cdd74a8e87d5554956ba7cee4721b04 assets\louis-overhaul-mod\models\item\chiseled_rose_quartz.json
