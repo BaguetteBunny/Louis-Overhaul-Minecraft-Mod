@@ -32,7 +32,6 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .input('C', Items.COPPER_INGOT)
                 .input('S', Items.STICK)
                 .criterion(hasItem(Items.COPPER_INGOT), conditionsFromItem(Items.COPPER_INGOT))
-                .criterion(hasItem(Items.STICK), conditionsFromItem(Items.STICK))
                 .offerTo(exporter);
 
         // COMBAT
@@ -43,13 +42,17 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .input(Items.LEATHER)
                 .input(Items.STRING)
                 .criterion(hasItem(Items.LEATHER), conditionsFromItem(Items.LEATHER))
-                .criterion(hasItem(Items.STRING), conditionsFromItem(Items.STRING))
+                .offerTo(exporter);
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.PET_RECOVERY_COMPASS, 1)
+                .input(Items.TOTEM_OF_UNDYING)
+                .input(Items.RECOVERY_COMPASS)
+                .criterion(hasItem(Items.TOTEM_OF_UNDYING), conditionsFromItem(Items.TOTEM_OF_UNDYING))
                 .offerTo(exporter);
 
         ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.SADDLED_GOAT_HORN, 1)
                 .input(Items.GOAT_HORN)
                 .input(Items.SADDLE)
-                .criterion(hasItem(Items.GOAT_HORN), conditionsFromItem(Items.GOAT_HORN))
                 .criterion(hasItem(Items.SADDLE), conditionsFromItem(Items.SADDLE))
                 .offerTo(exporter);
 
@@ -61,7 +64,6 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .input('S', Items.STRING)
                 .input('B', ModItems.BAT_FANG)
                 .criterion(hasItem(Items.RABBIT_HIDE), conditionsFromItem(Items.RABBIT_HIDE))
-                .criterion(hasItem(ModItems.BAT_FANG), conditionsFromItem(ModItems.BAT_FANG))
                 .offerTo(exporter);
 
         // BUILDING BLOCKS
@@ -70,7 +72,6 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .pattern("AQ")
                 .input('A', Items.REDSTONE)
                 .input('Q', Items.QUARTZ)
-                .criterion(hasItem(Items.REDSTONE), conditionsFromItem(Items.REDSTONE))
                 .criterion(hasItem(Items.QUARTZ), conditionsFromItem(Items.QUARTZ))
                 .offerTo(exporter);
         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.ROSE_QUARTZ_PILLAR, 2)
