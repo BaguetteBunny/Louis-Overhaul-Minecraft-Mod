@@ -104,6 +104,8 @@ public class BrewingRecipeRegistryMixin {
         builder.registerPotionRecipe(ModPotions.STRONG_WEAVING, Items.GLOWSTONE, ModPotions.STRONGEST_WEAVING);
 
         // Positive Potion Effects
+        builder.registerPotionRecipe(Potions.AWKWARD, Items.TURTLE_HELMET, ModPotions.TRUE_TURTLE_MASTER);
+
         builder.registerPotionRecipe(Potions.AWKWARD, Items.GLOW_LICHEN, Potions.NIGHT_VISION);
         builder.registerPotionRecipe(Potions.NIGHT_VISION, Items.REDSTONE, Potions.LONG_NIGHT_VISION);
         builder.registerPotionRecipe(Potions.LONG_NIGHT_VISION, Items.REDSTONE_BLOCK, ModPotions.LONGEST_NIGHT_VISION);
@@ -121,12 +123,6 @@ public class BrewingRecipeRegistryMixin {
         builder.registerPotionRecipe(Potions.LEAPING, Items.GLOWSTONE_DUST, Potions.STRONG_LEAPING);
         builder.registerPotionRecipe(Potions.LONG_LEAPING, Items.REDSTONE_BLOCK, ModPotions.LONGEST_LEAPING);
         builder.registerPotionRecipe(Potions.STRONG_LEAPING, Items.GLOWSTONE, ModPotions.STRONGEST_LEAPING);
-
-        builder.registerPotionRecipe(Potions.AWKWARD, Items.TURTLE_HELMET, Potions.TURTLE_MASTER);
-        builder.registerPotionRecipe(Potions.TURTLE_MASTER, Items.REDSTONE, Potions.LONG_TURTLE_MASTER);
-        builder.registerPotionRecipe(Potions.TURTLE_MASTER, Items.GLOWSTONE_DUST, Potions.STRONG_TURTLE_MASTER);
-        builder.registerPotionRecipe(Potions.LONG_TURTLE_MASTER, Items.REDSTONE_BLOCK, ModPotions.LONGEST_TURTLE_MASTER);
-        builder.registerPotionRecipe(Potions.STRONG_TURTLE_MASTER, Items.GLOWSTONE, ModPotions.STRONGEST_TURTLE_MASTER);
 
         builder.registerPotionRecipe(Potions.AWKWARD, Items.SUGAR, Potions.SWIFTNESS);
         builder.registerPotionRecipe(Potions.SWIFTNESS, Items.REDSTONE, Potions.LONG_SWIFTNESS);

@@ -33,8 +33,7 @@ public class ModPotions {
     public static final int LONG_005 = 1500;
     public static final int LONGEST_005 = 200;
 
-    public static final int LONGEST_TURTLE = 1800;
-    public static final int STRONGEST_TURTLE = 200;
+    public static final int UNCONVENTIONAL = 400;
 
     // UNIQUELY LONG
     public static final RegistryEntry<Potion> LONGEST_NIGHT_VISION = registerPotion("longest_night_vision",
@@ -55,10 +54,10 @@ public class ModPotions {
 
     // UNIQUELY STRONG
     public static final RegistryEntry<Potion> STRONGEST_HEALING = registerPotion("strongest_healing",
-            new Potion("healing", new StatusEffectInstance(StatusEffects.INSTANT_HEALTH, LONGEST_300, 2)));
+            new Potion("healing", new StatusEffectInstance(StatusEffects.INSTANT_HEALTH, 0, 2)));
 
     public static final RegistryEntry<Potion> STRONGEST_HARMING = registerPotion("strongest_harming",
-            new Potion("harming", new StatusEffectInstance(StatusEffects.INSTANT_DAMAGE, LONGEST_300, 2)));
+            new Potion("harming", new StatusEffectInstance(StatusEffects.INSTANT_DAMAGE, 0, 2)));
 
 
     // HYBRIDS
@@ -92,24 +91,16 @@ public class ModPotions {
     public static final RegistryEntry<Potion> STRONGEST_STRENGTH = registerPotion("strongest_strength",
             new Potion("strength", new StatusEffectInstance(StatusEffects.STRENGTH, STRONGEST_300, 2)));
 
-    public static final RegistryEntry<Potion> LONGEST_TURTLE_MASTER = registerPotion("longest_w3turtle_master",
+    // HYBRID & ADDONS
+    public static final RegistryEntry<Potion> TRUE_TURTLE_MASTER = registerPotion("turtle_master",
             new Potion(
                     "turtle_master",
-                    new StatusEffectInstance(StatusEffects.SLOWNESS, LONGEST_TURTLE, 3),
-                    new StatusEffectInstance(StatusEffects.RESISTANCE, LONGEST_TURTLE, 2),
-                    new StatusEffectInstance(ModEffects.GROUNDED, STRONGEST_TURTLE, 0)
-            )
-    );
-    public static final RegistryEntry<Potion> STRONGEST_TURTLE_MASTER = registerPotion("strongest_turtle_master",
-            new Potion(
-                    "turtle_master",
-                    new StatusEffectInstance(StatusEffects.SLOWNESS, STRONGEST_TURTLE, 6),
-                    new StatusEffectInstance(StatusEffects.RESISTANCE, STRONGEST_TURTLE, 4),
-                    new StatusEffectInstance(ModEffects.GROUNDED, STRONGEST_TURTLE, 0)
+                    new StatusEffectInstance(StatusEffects.SLOWNESS, UNCONVENTIONAL, 4),
+                    new StatusEffectInstance(StatusEffects.RESISTANCE, UNCONVENTIONAL, 4),
+                    new StatusEffectInstance(ModEffects.GROUNDED, UNCONVENTIONAL, 0)
             )
     );
 
-    // HYBRID & ADDONS
     public static final RegistryEntry<Potion> STRONG_WEAKNESS = registerPotion("strong_weakness",
             new Potion("weakness", new StatusEffectInstance(StatusEffects.WEAKNESS, STRONG_130, 1)));
     public static final RegistryEntry<Potion> LONGEST_WEAKNESS = registerPotion("longest_weakness",
