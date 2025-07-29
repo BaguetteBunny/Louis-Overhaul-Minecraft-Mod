@@ -80,13 +80,16 @@ public class PetRecoveryCompass extends Item {
 
                             world.spawnEntity(wolf);
                             player.setStackInHand(context.getHand(), ItemStack.EMPTY);
-                            world.playSound(null, pos, SoundEvents.BLOCK_CONDUIT_ACTIVATE, SoundCategory.BLOCKS, 1f, 1f);
+                            world.playSound(null, pos, SoundEvents.ENTITY_ENDER_DRAGON_GROWL, SoundCategory.BLOCKS, 1f, 1f);
+                            world.playSound(null, pos, SoundEvents.ITEM_TOTEM_USE, SoundCategory.BLOCKS, 1f, 1f);
                         }
 
                         return ActionResult.SUCCESS;
                     }
                 } catch (IllegalArgumentException e) {
                 }
+            } else {
+                world.playSound(null, pos, SoundEvents.BLOCK_CONDUIT_DEACTIVATE, SoundCategory.BLOCKS, 1f, 1f);
             }
         }
 

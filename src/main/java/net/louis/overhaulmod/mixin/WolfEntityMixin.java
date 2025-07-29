@@ -37,6 +37,8 @@ public class WolfEntityMixin {
                     wolf.playSound(SoundEvents.ENTITY_PLAYER_LEVELUP, 2f, 2f);
                 }
                 cir.setReturnValue(ActionResult.SUCCESS);
+            } else {
+                wolf.playSound(SoundEvents.ENTITY_WANDERING_TRADER_NO, 2f, 2f);
             }
         }
     }
