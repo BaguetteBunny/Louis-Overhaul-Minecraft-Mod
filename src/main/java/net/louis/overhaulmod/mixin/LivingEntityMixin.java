@@ -1,12 +1,10 @@
 package net.louis.overhaulmod.mixin;
 
-import net.louis.overhaulmod.effect.GroundedEffect;
 import net.louis.overhaulmod.effect.ModEffects;
 import net.louis.overhaulmod.utils.TeleportUtils;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.mob.EndermiteEntity;
 import net.minecraft.server.network.ServerPlayerEntity;
 import org.spongepowered.asm.mixin.Mixin;

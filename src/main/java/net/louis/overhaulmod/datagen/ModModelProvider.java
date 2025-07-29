@@ -42,5 +42,6 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.DECAYING_FLESH, Models.GENERATED);
         itemModelGenerator.register(ModItems.POTION_POUCH, Models.GENERATED);
         itemModelGenerator.register(ModItems.SADDLED_GOAT_HORN, Models.GENERATED);
+        itemModelGenerator.register(ModItems.PET_RECOVERY_COMPASS, Models.GENERATED);
     }
 }

@@ -1,8 +1,6 @@
 package net.louis.overhaulmod;
 
 import net.fabricmc.api.ModInitializer;
-
-import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.louis.overhaulmod.block.ModBlocks;
 import net.louis.overhaulmod.component.ModComponents;
 import net.louis.overhaulmod.effect.ModEffects;

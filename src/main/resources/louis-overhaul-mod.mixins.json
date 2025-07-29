@@ -8,7 +8,9 @@
 		"BrewingRecipeRegistryMixin",
 		"AbstractBlockMixin",
 		"HorseAccessor",
-		"EnderPearlEntityMixin"
+		"EnderPearlEntityMixin",
+		"WolfAccessor",
+		"WolfEntityMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
