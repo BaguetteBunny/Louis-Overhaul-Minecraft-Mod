@@ -30,6 +30,7 @@ public class RecallClock extends Item {
         ItemStack stack = user.getStackInHand(hand);
         if (!world.isClient && user instanceof ServerPlayerEntity serverPlayer) {
             user.setStackInHand(hand, ItemStack.EMPTY);
+            user.fallDistance = 0.0f;
             BlockPos spawnPos = serverPlayer.getSpawnPointPosition();
 
             RegistryKey<World> spawnDim = serverPlayer.getSpawnPointDimension();
