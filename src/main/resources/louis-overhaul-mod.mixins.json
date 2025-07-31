@@ -10,7 +10,8 @@
 		"HorseAccessor",
 		"EnderPearlEntityMixin",
 		"WolfAccessor",
-		"WolfEntityMixin"
+		"WolfEntityMixin",
+		"ServerPlayerTickMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
