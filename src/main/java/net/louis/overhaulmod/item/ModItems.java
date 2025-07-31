@@ -32,6 +32,9 @@ public class ModItems {
     public static final Item PET_RECOVERY_COMPASS = registerItem("pet_recovery_compass",
             new PetRecoveryCompass(new Item.Settings().maxCount(1)));
 
+    public static final Item RECALL_CLOCK = registerItem("recall_clock",
+            new RecallClock(new Item.Settings().maxCount(1)));
+
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, Identifier.of(LouisOverhaulMod.MOD_ID, name), item);
     }
@@ -53,6 +56,7 @@ public class ModItems {
             entries.add(Items.BUNDLE);
             entries.add(SADDLED_GOAT_HORN);
             entries.add(PET_RECOVERY_COMPASS);
+            entries.add(RECALL_CLOCK);
         });
     }
 }

@@ -38,6 +38,16 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerNetheriteUpgradeRecipe(exporter, Items.DIAMOND_HORSE_ARMOR, RecipeCategory.COMBAT, ModItems.NETHERITE_HORSE_ARMOR);
 
         // MISC
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.RECALL_CLOCK, 1)
+                .pattern("PEP")
+                .pattern("PCP")
+                .pattern("PEP")
+                .input('C', Items.CLOCK)
+                .input('P', Items.POPPED_CHORUS_FRUIT)
+                .input('E', ModItems.ENDERMITE_HEART)
+                .criterion(hasItem(Items.CLOCK), conditionsFromItem(Items.CLOCK))
+                .offerTo(exporter);
+
         ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, Items.BUNDLE, 1)
                 .input(Items.LEATHER)
                 .input(Items.STRING)
