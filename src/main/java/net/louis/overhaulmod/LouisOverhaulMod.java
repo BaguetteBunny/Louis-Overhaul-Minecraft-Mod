@@ -4,6 +4,7 @@ import net.fabricmc.api.ModInitializer;
 import net.louis.overhaulmod.block.ModBlocks;
 import net.louis.overhaulmod.component.ModComponents;
 import net.louis.overhaulmod.effect.ModEffects;
+import net.louis.overhaulmod.events.ModUseEvents;
 import net.louis.overhaulmod.item.ModItems;
 import net.louis.overhaulmod.potion.ModPotions;
 import net.louis.overhaulmod.sound.ModSounds;
@@ -24,5 +25,7 @@ public class LouisOverhaulMod implements ModInitializer {
 		ModItems.registerModItems();
 		ModBlocks.registerModBlocks();
 		ModLootTableModifiers.modifyLootTables();
+
+		ModUseEvents.register();
 	}
 }
