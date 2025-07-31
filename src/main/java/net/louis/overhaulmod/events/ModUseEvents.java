@@ -4,6 +4,8 @@ import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.DoorBlock;
+import net.minecraft.block.enums.DoubleBlockHalf;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -13,6 +15,7 @@ import net.minecraft.state.property.Properties;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 
 import java.util.Map;
@@ -69,6 +72,15 @@ public class ModUseEvents {
                     Map.entry(Blocks.WEATHERED_CUT_COPPER, Blocks.OXIDIZED_CUT_COPPER)
             );
 
+            BlockState clickedState = world.getBlockState(pos);
+            Block clickedBlock = clickedState.getBlock();
+
+            if (oxidationMap.containsKey(clickedBlock)) {
+                if (clickedBlock instanceof DoorBlock && clickedState.get(DoorBlock.HALF) == DoubleBlockHalf.UPPER) {
+                    return ActionResult.PASS;
+                }
+            }
+
             if (oxidationMap.containsKey(block)) {
                 Block nextStage = oxidationMap.get(block);
                 BlockState newState = nextStage.getDefaultState();
@@ -78,7 +90,12 @@ public class ModUseEvents {
                 }
 
                 world.setBlockState(pos, newState);
-                world.playSound(null, pos, SoundEvents.BLOCK_ANVIL_USE, SoundCategory.BLOCKS, 1f, 2f);
+                if (Random.create().nextInt(20) == 0) {
+                    world.playSound(null, pos, SoundEvents.BLOCK_ANVIL_DESTROY, SoundCategory.BLOCKS, 1f, 2f);
+                    stack.decrement(1);
+                } else {
+                    world.playSound(null, pos, SoundEvents.BLOCK_ANVIL_USE, SoundCategory.BLOCKS, 1f, 2f);
+                }
 
                 return ActionResult.SUCCESS;
             }
