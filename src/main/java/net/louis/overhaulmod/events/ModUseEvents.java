@@ -6,13 +6,20 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.DoorBlock;
 import net.minecraft.block.enums.DoubleBlockHalf;
+import net.minecraft.client.particle.Particle;
+import net.minecraft.client.particle.ParticleFactory;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.particle.BlockStateParticleEffect;
+import net.minecraft.particle.ParticleType;
+import net.minecraft.particle.ParticleTypes;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
@@ -26,7 +33,7 @@ public class ModUseEvents {
         UseBlockCallback.EVENT.register(ModUseEvents::oxidizeCopperWithClock);
     }
 
-    private static ActionResult oxidizeCopperWithClock(PlayerEntity player, World world, net.minecraft.util.Hand hand, BlockHitResult hitResult) {
+    private static ActionResult oxidizeCopperWithClock(PlayerEntity player, World world, Hand hand, BlockHitResult hitResult) {
         ItemStack stack = player.getStackInHand(hand);
 
         if (!world.isClient && stack.getItem() == Items.CLOCK) {
@@ -94,8 +101,18 @@ public class ModUseEvents {
                     world.playSound(null, pos, SoundEvents.BLOCK_ANVIL_DESTROY, SoundCategory.BLOCKS, 1f, 2f);
                     stack.decrement(1);
                 } else {
-                    world.playSound(null, pos, SoundEvents.BLOCK_ANVIL_USE, SoundCategory.BLOCKS, 1f, 2f);
+                    world.playSound(null, pos, SoundEvents.BLOCK_ANVIL_PLACE, SoundCategory.BLOCKS, 1f, 2f);
                 }
+
+                ((ServerWorld) world).spawnParticles(
+                        ParticleTypes.WAX_OFF,
+                        pos.getX() + 0.5,
+                        pos.getY() + 0.5,
+                        pos.getZ() + 0.5,
+                        20,
+                        0.5, 0.5, 0.5,
+                        0.075
+                );
 
                 return ActionResult.SUCCESS;
             }
