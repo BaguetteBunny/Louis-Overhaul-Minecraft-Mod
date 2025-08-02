@@ -77,6 +77,16 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .offerTo(exporter);
 
         // BUILDING BLOCKS
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, Items.PLAYER_HEAD, 1)
+                .pattern("DDD")
+                .pattern("DHD")
+                .pattern("DDD")
+                .input('D', Items.DRIED_KELP)
+                .input('H', Items.HAY_BLOCK)
+                .criterion(hasItem(Items.DRIED_KELP), conditionsFromItem(Items.DRIED_KELP))
+                .offerTo(exporter);
+
+
         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.ROSE_QUARTZ_BRICKS, 4)
                 .pattern("QA")
                 .pattern("AQ")
