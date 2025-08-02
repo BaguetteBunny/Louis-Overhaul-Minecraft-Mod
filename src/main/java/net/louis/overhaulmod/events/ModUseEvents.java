@@ -1,36 +1,38 @@
 package net.louis.overhaulmod.events;
 
+import com.mojang.authlib.GameProfile;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.DoorBlock;
+import net.minecraft.block.*;
+import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.entity.SkullBlockEntity;
 import net.minecraft.block.enums.DoubleBlockHalf;
-import net.minecraft.client.particle.Particle;
-import net.minecraft.client.particle.ParticleFactory;
+import net.minecraft.component.DataComponentTypes;
+import net.minecraft.component.type.ProfileComponent;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import net.minecraft.particle.BlockStateParticleEffect;
-import net.minecraft.particle.ParticleType;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.property.Properties;
+import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
+import net.minecraft.util.Uuids;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 
 import java.util.Map;
+import java.util.Optional;
 
 public class ModUseEvents {
 
     public static void register() {
         UseBlockCallback.EVENT.register(ModUseEvents::oxidizeCopperWithClock);
+        UseBlockCallback.EVENT.register(ModUseEvents::retexturePlayerHead);
     }
 
     private static ActionResult oxidizeCopperWithClock(PlayerEntity player, World world, Hand hand, BlockHitResult hitResult) {
@@ -120,4 +122,71 @@ public class ModUseEvents {
 
         return ActionResult.PASS;
     }
-}
+
+    private static ActionResult retexturePlayerHead(PlayerEntity player, World world, Hand hand, BlockHitResult hitResult) {
+        if (world.isClient()) {
+            return ActionResult.PASS;
+        }
+
+        ItemStack heldItem = player.getStackInHand(hand);
+        BlockPos pos = hitResult.getBlockPos();
+        BlockState blockState = world.getBlockState(pos);
+
+        if (heldItem.isOf(Items.NAME_TAG) && isPlayerHead(blockState)) {
+            Text nameTagText = heldItem.get(DataComponentTypes.CUSTOM_NAME);
+
+            if (nameTagText != null) {
+                String playerName = nameTagText.getString();
+
+                BlockEntity blockEntity = world.getBlockEntity(pos);
+                if (blockEntity instanceof SkullBlockEntity skullEntity) {
+                    updateSkullTexture(skullEntity, playerName, world);
+
+                    if (!player.getAbilities().creativeMode) {heldItem.decrement(1);}
+                    player.sendMessage(Text.literal("Changed head texture to: " + playerName), true);
+                    return ActionResult.SUCCESS;
+                }
+            } else {
+                player.sendMessage(Text.literal("Name tag must have a custom name!"), true);
+                return ActionResult.FAIL;
+            }
+        }
+
+        return ActionResult.PASS;
+    }
+
+    private static boolean isPlayerHead(BlockState blockState) {
+        return blockState.isOf(Blocks.PLAYER_HEAD) || blockState.isOf(Blocks.PLAYER_WALL_HEAD);
+    }
+
+    private static void updateSkullTexture(SkullBlockEntity skullEntity, String playerName, World world) {
+        GameProfile profile = new GameProfile(Uuids.getOfflinePlayerUuid(playerName), playerName);
+
+        SkullBlockEntity.fetchProfileByName(playerName).thenAccept(optionalProfile -> {
+            world.getServer().execute(() -> {
+                ProfileComponent profileComponent;
+                if (optionalProfile.isPresent()) {
+                    GameProfile gameProfile = optionalProfile.get();
+                    profileComponent = new ProfileComponent(
+                            Optional.of(gameProfile.getName()),
+                            Optional.of(gameProfile.getId()),
+                            gameProfile.getProperties()
+                    );
+                } else {
+                    profileComponent = new ProfileComponent(
+                            Optional.of(profile.getName()),
+                            Optional.of(profile.getId()),
+                            profile.getProperties()
+                    );
+                }
+
+                skullEntity.setOwner(profileComponent);
+                skullEntity.markDirty();
+                world.updateListeners(skullEntity.getPos(), world.getBlockState(skullEntity.getPos()),
+                        world.getBlockState(skullEntity.getPos()), 3);
+            });
+        });
+    }
+
+    }
+
