@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "D": {
+      "item": "minecraft:dried_kelp"
+    },
+    "H": {
+      "item": "minecraft:hay_block"
+    }
+  },
+  "pattern": [
+    "DDD",
+    "DHD",
+    "DDD"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:player_head"
+  }
+}
