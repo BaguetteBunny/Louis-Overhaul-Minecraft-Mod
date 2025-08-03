@@ -106,7 +106,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .input('A', ModBlocks.ROSE_QUARTZ_SLAB)
                 .criterion(hasItem(ModBlocks.ROSE_QUARTZ_BRICKS), conditionsFromItem(ModBlocks.ROSE_QUARTZ_BRICKS))
                 .offerTo(exporter);
-        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.ROSE_QUARTZ_COLUMN, 1)
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.ROSE_QUARTZ_COLUMN, 2)
                 .pattern("A")
                 .pattern("A")
                 .input('A', ModBlocks.ROSE_QUARTZ_PILLAR)
@@ -146,7 +146,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .input('A', ModBlocks.LAVENDER_QUARTZ_BRICKS)
                 .criterion(hasItem(ModBlocks.LAVENDER_QUARTZ_BRICKS), conditionsFromItem(ModBlocks.LAVENDER_QUARTZ_BRICKS))
                 .offerTo(exporter);
-        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.LAVENDER_QUARTZ_COLUMN, 1)
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.LAVENDER_QUARTZ_COLUMN, 2)
                 .pattern("A")
                 .pattern("A")
                 .input('A', ModBlocks.LAVENDER_QUARTZ_PILLAR)
