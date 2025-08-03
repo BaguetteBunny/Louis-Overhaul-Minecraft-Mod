@@ -1,7 +1,7 @@
-// 1.21.1	2025-08-02T23:47:38.0946429	Louis' Overhaul Mod/Recipes
+// 1.21.1	2025-08-03T14:42:20.3127035	Louis' Overhaul Mod/Recipes
 c8a29381ee5e4188c44fa40927e90d8251b5e5ab data\louis-overhaul-mod\recipe\lavender_quartz_slab.json
 cf3eb99711288baaad357c07006fb7f23cae07e6 data\louis-overhaul-mod\advancement\recipes\building_blocks\rose_quartz_wall.json
-d66c004362bccbcc9ab51ff28a347609baf5c832 data\louis-overhaul-mod\recipe\lavender_quartz_column.json
+7b2307315f3bd1591fb05f828d9c7de65bbb3c95 data\louis-overhaul-mod\recipe\lavender_quartz_column.json
 9118588c7db4856736bf4629f767e1e18c6cc79c data\louis-overhaul-mod\recipe\lavender_quartz_stairs.json
 ca918666b585b3e93c1404b70ff9aebb53936f76 data\louis-overhaul-mod\advancement\recipes\misc\recall_clock.json
 6192c23604172371d1edd53dc2a653650d7f52d5 data\louis-overhaul-mod\recipe\chiseled_lavender_quartz.json
@@ -36,7 +36,7 @@ ae693080ec667408ea2849bbe4538aa213e7367c data\louis-overhaul-mod\advancement\rec
 61bec8cbec631e0bf1604c302f5d3dc0675f0e55 data\louis-overhaul-mod\advancement\recipes\redstone\copper_rail.json
 d05cc51441f972cdf6da66dbe58959bae55aefa8 data\louis-overhaul-mod\recipe\rose_quartz_pillar.json
 ee5aa5f542dbecc2364c3ea3b047df8174986ad1 data\louis-overhaul-mod\advancement\recipes\misc\pet_recovery_compass.json
-803fb4009e1ab021f179558037e6a429a9ba692e data\louis-overhaul-mod\recipe\rose_quartz_column.json
+d55b1bd1e9eeb11116221f36f0a4d4caff506d09 data\louis-overhaul-mod\recipe\rose_quartz_column.json
 11204d1086e50f45bce68db8474b43f27a4d7e0f data\louis-overhaul-mod\advancement\recipes\building_blocks\lavender_quartz_bricks.json
 cc86936d43ca726c9a5b90bf52da2a1ba958314b data\louis-overhaul-mod\advancement\recipes\building_blocks\lavender_quartz_slab.json
 c501aec9d9627df3fbcbe9e61822eaae4bd24c67 data\louis-overhaul-mod\advancement\recipes\combat\netherite_horse_armor_smithing.json
