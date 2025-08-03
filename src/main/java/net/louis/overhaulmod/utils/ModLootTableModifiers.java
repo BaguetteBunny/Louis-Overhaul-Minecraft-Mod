@@ -59,6 +59,9 @@ public class ModLootTableModifiers {
             = Identifier.of("minecraft", "entities/stray");
     private static final Identifier WARDEN_ID
             = Identifier.of("minecraft", "entities/warden");
+    private static final Identifier DROWNED_ID
+            = Identifier.of("minecraft", "entities/drowned");
+
 
     public static void replaceLootTables() {
         LootTableEvents.REPLACE.register((key, lootManager, source, registry) -> {
@@ -85,7 +88,7 @@ public class ModLootTableModifiers {
                         .pool(LootPool.builder()
                                 .rolls(ConstantLootNumberProvider.create(1))
                                 .conditionally(RandomChanceLootCondition.builder(1f))
-                                .with(ItemEntry.builder(ModItems.DECAYING_FLESH))
+                                .with(ItemEntry.builder(ModItems.SANDY_FLESH))
                                 .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(0.0f, 2.0f)).build())
                                 .apply(EnchantedCountIncreaseLootFunction.builder(registry, UniformLootNumberProvider.create(1.0f, 1.0f)).build()))
 
