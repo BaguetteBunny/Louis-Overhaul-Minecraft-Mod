@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "F": {
+      "item": "louis-overhaul-mod:sandy_flesh"
+    },
+    "S": {
+      "item": "minecraft:sand"
+    }
+  },
+  "pattern": [
+    "FS",
+    "SF"
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:suspicious_sand"
+  }
+}
