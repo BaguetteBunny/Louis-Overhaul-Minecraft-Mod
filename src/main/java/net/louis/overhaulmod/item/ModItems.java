@@ -19,6 +19,8 @@ public class ModItems {
             new Item(new Item.Settings()));
     public static final Item DECAYING_FLESH = registerItem("decaying_flesh",
             new Item(new Item.Settings()));
+    public static final Item SANDY_FLESH = registerItem("sandy_flesh",
+            new Item(new Item.Settings()));
     public static final Item NETHERITE_HORSE_ARMOR = registerItem("netherite_horse_armor",
             new AnimalArmorItem(ArmorMaterials.NETHERITE, AnimalArmorItem.Type.EQUESTRIAN, false, new Item.Settings().maxCount(1)));
 
@@ -45,6 +47,7 @@ public class ModItems {
             entries.add(BAT_FANG);
             entries.add(ENDERMITE_HEART);
             entries.add(DECAYING_FLESH);
+            entries.add(SANDY_FLESH);
             entries.add(CHILLED_BONE);
         });
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT).register(entries -> {

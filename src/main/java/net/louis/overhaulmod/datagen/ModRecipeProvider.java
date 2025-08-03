@@ -22,7 +22,7 @@ public class ModRecipeProvider extends FabricRecipeProvider {
     public void generate(RecipeExporter exporter) {
 
         // SMELTING
-        offerSmelting(exporter, ModItems.DECAYING_FLESH, RecipeCategory.MISC, Items.GREEN_DYE, 0.25f, 200);
+        //offerSmelting(exporter, ModItems.DECAYING_FLESH, RecipeCategory.MISC, Items.GREEN_DYE, 0.25f, 200);
 
         // REDSTONE
         ShapedRecipeJsonBuilder.create(RecipeCategory.REDSTONE, ModBlocks.COPPER_RAIL, 18)
