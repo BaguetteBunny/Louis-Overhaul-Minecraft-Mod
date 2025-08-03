@@ -5,6 +5,9 @@ import net.louis.overhaulmod.LouisOverhaulMod;
 import net.louis.overhaulmod.sound.ModSounds;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.BundleContentsComponent;
+import net.minecraft.component.type.FoodComponent;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -18,9 +21,19 @@ public class ModItems {
     public static final Item ENDERMITE_HEART = registerItem("endermite_heart",
             new Item(new Item.Settings()));
     public static final Item DECAYING_FLESH = registerItem("decaying_flesh",
-            new Item(new Item.Settings()));
+            new Item(new Item.Settings().food(new FoodComponent.Builder()
+                    .nutrition(4)
+                    .saturationModifier(0.1f)
+                    .statusEffect(new StatusEffectInstance(StatusEffects.HUNGER, 900, 0), 1f)
+                    .build()))
+    );
     public static final Item SANDY_FLESH = registerItem("sandy_flesh",
-            new Item(new Item.Settings()));
+            new Item(new Item.Settings().food(new FoodComponent.Builder()
+                    .nutrition(4)
+                    .saturationModifier(0.1f)
+                    .statusEffect(new StatusEffectInstance(StatusEffects.HUNGER, 900, 0), 1f)
+                    .build()))
+    );
     public static final Item NETHERITE_HORSE_ARMOR = registerItem("netherite_horse_armor",
             new AnimalArmorItem(ArmorMaterials.NETHERITE, AnimalArmorItem.Type.EQUESTRIAN, false, new Item.Settings().maxCount(1)));
 
