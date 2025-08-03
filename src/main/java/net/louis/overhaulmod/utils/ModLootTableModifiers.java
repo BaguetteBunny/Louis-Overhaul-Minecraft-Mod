@@ -71,9 +71,11 @@ public class ModLootTableModifiers {
             if (WARDEN_ID.equals(key.getValue())) {
                 LootPool.Builder customPool = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
+                        .conditionally(KilledByPlayerLootCondition.builder())
                         .conditionally(RandomChanceLootCondition.builder(1f)) // 100% Drop Rate
                         .with(ItemEntry.builder(Items.REINFORCED_DEEPSLATE))
-                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(3.0f, 8.0f)).build());
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(3.0f, 8.0f)).build())
+                        .apply(EnchantedCountIncreaseLootFunction.builder(registry, UniformLootNumberProvider.create(1.0f, 2.0f)).build());
                 return LootTable.builder().pool(customPool).build();
             }
 
@@ -144,11 +146,6 @@ public class ModLootTableModifiers {
                                 .apply(EnchantedCountIncreaseLootFunction.builder(registry, UniformLootNumberProvider.create(1.0f, 1.0f)).build()));
                 return table.build();
             }
-
-
-
-
-
             return null;
         });
     }
@@ -159,18 +156,22 @@ public class ModLootTableModifiers {
             if(BAT_ID.equals(key.getValue())) {
                 LootPool.Builder poolBuilder = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
+                        .conditionally(KilledByPlayerLootCondition.builder())
                         .conditionally(RandomChanceLootCondition.builder(0.50f)) // 50% Drop Rate
                         .with(ItemEntry.builder(ModItems.BAT_FANG))
-                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f)).build());
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f)).build())
+                        .apply(EnchantedCountIncreaseLootFunction.builder(registry, UniformLootNumberProvider.create(1.0f, 1.0f)).build());
                 tableBuilder.pool(poolBuilder.build());
             }
             // Make endermite drop heart
             if(ENDERMITE_ID.equals(key.getValue())) {
                 LootPool.Builder poolBuilder = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
+                        .conditionally(KilledByPlayerLootCondition.builder())
                         .conditionally(RandomChanceLootCondition.builder(0.50f)) // 50% Drop Rate
                         .with(ItemEntry.builder(ModItems.ENDERMITE_HEART))
-                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)).build());
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)).build())
+                        .apply(EnchantedCountIncreaseLootFunction.builder(registry, UniformLootNumberProvider.create(1.0f, 1.0f)).build());
                 tableBuilder.pool(poolBuilder.build());
             }
 
