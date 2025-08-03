@@ -18,8 +18,8 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 
-public class PotionPouchItem extends BundleItem {
-    public PotionPouchItem(Item.Settings settings) {
+public class PotionPouch extends BundleItem {
+    public PotionPouch(Item.Settings settings) {
         super(settings);
     }
 

@@ -13,18 +13,15 @@ import net.minecraft.util.Identifier;
 public class ModItems {
     public static final Item BAT_FANG = registerItem("bat_fang",
             new Item(new Item.Settings()));
-
     public static final Item ENDERMITE_HEART = registerItem("endermite_heart",
             new Item(new Item.Settings()));
-
     public static final Item DECAYING_FLESH = registerItem("decaying_flesh",
             new Item(new Item.Settings()));
-
     public static final Item NETHERITE_HORSE_ARMOR = registerItem("netherite_horse_armor",
             new AnimalArmorItem(ArmorMaterials.NETHERITE, AnimalArmorItem.Type.EQUESTRIAN, false, new Item.Settings().maxCount(1)));
 
     public static final Item POTION_POUCH = registerItem("potion_pouch",
-            new PotionPouchItem(new Item.Settings().maxCount(1).component(DataComponentTypes.BUNDLE_CONTENTS, BundleContentsComponent.DEFAULT)));
+            new PotionPouch(new Item.Settings().maxCount(1).component(DataComponentTypes.BUNDLE_CONTENTS, BundleContentsComponent.DEFAULT)));
 
     public static final Item SADDLED_GOAT_HORN = registerItem("saddled_goat_horn",
             new SaddledGoatHorn(new Item.Settings().maxCount(1)));
