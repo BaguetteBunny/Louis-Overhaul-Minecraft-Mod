@@ -12,6 +12,7 @@ import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentLevelBasedValue;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.enchantment.effect.EnchantmentEffectEntry;
+import net.minecraft.entity.mob.DrownedEntity;
 import net.minecraft.item.Items;
 import net.minecraft.loot.LootPool;
 import net.minecraft.loot.LootTable;
@@ -84,7 +85,7 @@ public class ModLootTableModifiers {
 
             if (HUSK_ID.equals(key.getValue())) {
                 LootTable.Builder table = LootTable.builder()
-                        // Decaying Flesh
+                        // Sandy Flesh
                         .pool(LootPool.builder()
                                 .rolls(ConstantLootNumberProvider.create(1))
                                 .conditionally(RandomChanceLootCondition.builder(1f))
@@ -118,6 +119,37 @@ public class ModLootTableModifiers {
                                 .with(ItemEntry.builder(Items.CACTUS))
                                 .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)).build())
                                 .apply(EnchantedCountIncreaseLootFunction.builder(registry, UniformLootNumberProvider.create(1.0f, 1.0f)).build()));
+                return table.build();
+            }
+
+            if (DROWNED_ID.equals(key.getValue())) {
+                LootTable.Builder table = LootTable.builder()
+                        // Decaying Flesh
+                        .pool(LootPool.builder()
+                                .rolls(ConstantLootNumberProvider.create(1))
+                                .conditionally(RandomChanceLootCondition.builder(1f))
+                                .with(ItemEntry.builder(ModItems.DECAYING_FLESH))
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(0.0f, 2.0f)).build())
+                                .apply(EnchantedCountIncreaseLootFunction.builder(registry, UniformLootNumberProvider.create(1.0f, 1.0f)).build()))
+
+                        // Copper Ingot
+                        .pool(LootPool.builder()
+                                .rolls(ConstantLootNumberProvider.create(1))
+                                .conditionally(KilledByPlayerLootCondition.builder())
+                                .conditionally(RandomChanceWithEnchantedBonusLootCondition.builder(registry, 0.008333f,0.003333f))
+                                .with(ItemEntry.builder(Items.COPPER_INGOT))
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)).build())
+                                .apply(EnchantedCountIncreaseLootFunction.builder(registry, UniformLootNumberProvider.create(1.0f, 1.0f)).build()))
+
+                        // Nautilus Shell
+                        .pool(LootPool.builder()
+                                .rolls(ConstantLootNumberProvider.create(1))
+                                .conditionally(KilledByPlayerLootCondition.builder())
+                                .conditionally(RandomChanceWithEnchantedBonusLootCondition.builder(registry, 0.008333f,0.003333f))
+                                .with(ItemEntry.builder(Items.NAUTILUS_SHELL))
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)).build())
+                                .apply(EnchantedCountIncreaseLootFunction.builder(registry, UniformLootNumberProvider.create(1.0f, 1.0f)).build()))
+
                 return table.build();
             }
 
