@@ -148,7 +148,7 @@ public class ModLootTableModifiers {
                                 .conditionally(RandomChanceWithEnchantedBonusLootCondition.builder(registry, 0.008333f,0.003333f))
                                 .with(ItemEntry.builder(Items.NAUTILUS_SHELL))
                                 .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)).build())
-                                .apply(EnchantedCountIncreaseLootFunction.builder(registry, UniformLootNumberProvider.create(1.0f, 1.0f)).build()))
+                                .apply(EnchantedCountIncreaseLootFunction.builder(registry, UniformLootNumberProvider.create(1.0f, 1.0f)).build()));
 
                 return table.build();
             }
