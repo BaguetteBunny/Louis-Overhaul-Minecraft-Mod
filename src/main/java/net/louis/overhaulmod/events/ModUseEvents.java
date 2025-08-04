@@ -2,13 +2,16 @@ package net.louis.overhaulmod.events;
 
 import com.mojang.authlib.GameProfile;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
+import net.fabricmc.fabric.api.event.player.UseItemCallback;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.SkullBlockEntity;
 import net.minecraft.block.enums.DoubleBlockHalf;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.ProfileComponent;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.projectile.LlamaSpitEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.particle.ParticleTypes;
@@ -19,9 +22,12 @@ import net.minecraft.state.property.Properties;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
+import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.Uuids;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Box;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 
@@ -33,6 +39,7 @@ public class ModUseEvents {
     public static void register() {
         UseBlockCallback.EVENT.register(ModUseEvents::oxidizeCopperWithClock);
         UseBlockCallback.EVENT.register(ModUseEvents::retexturePlayerHead);
+        UseItemCallback.EVENT.register(ModUseEvents::getLlamaSpitBottle);
     }
 
     private static ActionResult oxidizeCopperWithClock(PlayerEntity player, World world, Hand hand, BlockHitResult hitResult) {
@@ -153,6 +160,49 @@ public class ModUseEvents {
         }
 
         return ActionResult.PASS;
+    }
+
+    private static TypedActionResult<ItemStack> getLlamaSpitBottle(PlayerEntity player, World world, Hand hand) {
+        if (world.isClient) return TypedActionResult.pass(player.getStackInHand(hand));
+
+        ItemStack stack = player.getStackInHand(hand);
+
+        if (stack.isOf(Items.GLASS_BOTTLE)) {
+            double reach = 5.0D;
+            Vec3d start = player.getCameraPosVec(1.0F);
+            Vec3d look = player.getRotationVec(1.0F);
+            Vec3d end = start.add(look.multiply(reach));
+            Box box = player.getBoundingBox().stretch(look.multiply(reach)).expand(1.0D);
+            LlamaSpitEntity targetSpit = null;
+            double closestDistance = reach * reach;
+
+            for (Entity entity : world.getOtherEntities(player, box)) {
+                if (!(entity instanceof LlamaSpitEntity spit)) continue;
+                Box entityBox = spit.getBoundingBox().expand(0.3D);
+                Optional<Vec3d> optional = entityBox.raycast(start, end);
+                if (optional.isPresent()) {
+                    double distance = start.squaredDistanceTo(optional.get());
+                    if (distance < closestDistance) {
+                        closestDistance = distance;
+                        targetSpit = spit;
+                    }
+                }
+            }
+
+            if (targetSpit != null) {
+                if (!player.getAbilities().creativeMode) stack.decrement(1);
+                ItemStack result = new ItemStack(Items.DRAGON_BREATH);
+                if (!player.getInventory().insertStack(result)) {
+                    player.dropItem(result, false);
+                }
+                world.playSound(null, targetSpit.getBlockPos(), SoundEvents.ITEM_BOTTLE_FILL_DRAGONBREATH,
+                        SoundCategory.PLAYERS, 1.0F, 1.0F);
+                targetSpit.discard();
+                return TypedActionResult.success(stack, world.isClient());
+            }
+        }
+        return TypedActionResult.pass(player.getStackInHand(hand));
+
     }
 
     private static boolean isPlayerHead(BlockState blockState) {
