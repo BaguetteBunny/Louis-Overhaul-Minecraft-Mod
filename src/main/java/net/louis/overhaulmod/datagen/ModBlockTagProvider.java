@@ -33,7 +33,16 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.LAVENDER_QUARTZ_COLUMN)
                 .add(ModBlocks.LAVENDER_QUARTZ_SLAB)
                 .add(ModBlocks.LAVENDER_QUARTZ_STAIRS)
-                .add(ModBlocks.LAVENDER_QUARTZ_WALL);
+                .add(ModBlocks.LAVENDER_QUARTZ_WALL)
+
+                .add(ModBlocks.CRACKED_QUARTZ_BRICKS)
+                .add(ModBlocks.CRACKED_PRISMARINE_BRICKS)
+                .add(ModBlocks.CRACKED_TUFF_BRICKS)
+                .add(ModBlocks.CRACKED_RED_NETHER_BRICKS)
+                .add(ModBlocks.CRACKED_BRICKS)
+                .add(ModBlocks.CRACKED_MUD_BRICKS)
+                .add(ModBlocks.CRACKED_END_STONE_BRICKS)
+                .add(ModBlocks.CRACKED_MOSSY_STONE_BRICKS);
 
         getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL)
                 .add(ModBlocks.ROSE_QUARTZ_BRICKS)

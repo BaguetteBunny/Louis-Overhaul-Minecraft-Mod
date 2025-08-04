@@ -25,25 +25,17 @@ public class ModRecipeProvider extends FabricRecipeProvider {
     public void generate(RecipeExporter exporter) {
 
         // SMELTING
-        offerSmelting(
-                exporter,
-                List.of(ModItems.SANDY_FLESH),
-                RecipeCategory.BUILDING_BLOCKS,
-                Items.SAND,
-                0.1f,
-                300,
-                "flesh_to_sand"
-        );
+        offerSmelting(exporter,List.of(ModItems.SANDY_FLESH), RecipeCategory.BUILDING_BLOCKS, Items.SAND, 0.1f, 300, "flesh_to_sand");
+        offerSmelting(exporter, List.of(ModItems.DECAYING_FLESH), RecipeCategory.BUILDING_BLOCKS, Items.SEAGRASS, 0.1f, 300, "flesh_to_seagrass");
 
-        offerSmelting(
-                exporter,
-                List.of(ModItems.DECAYING_FLESH),
-                RecipeCategory.BUILDING_BLOCKS,
-                Items.SEAGRASS,
-                0.1f,
-                300,
-                "flesh_to_seagrass"
-        );
+        offerSmelting(exporter, List.of(Items.BRICKS), RecipeCategory.BUILDING_BLOCKS, ModBlocks.CRACKED_BRICKS, 0.1f, 300, "cracked");
+        offerSmelting(exporter, List.of(Items.END_STONE_BRICKS), RecipeCategory.BUILDING_BLOCKS, ModBlocks.CRACKED_END_STONE_BRICKS, 0.1f, 300, "cracked");
+        offerSmelting(exporter, List.of(Items.RED_NETHER_BRICKS), RecipeCategory.BUILDING_BLOCKS, ModBlocks.CRACKED_RED_NETHER_BRICKS, 0.1f, 300, "cracked");
+        offerSmelting(exporter, List.of(Items.TUFF_BRICKS), RecipeCategory.BUILDING_BLOCKS, ModBlocks.CRACKED_TUFF_BRICKS, 0.1f, 300, "cracked");
+        offerSmelting(exporter, List.of(Items.MUD_BRICKS), RecipeCategory.BUILDING_BLOCKS, ModBlocks.CRACKED_MUD_BRICKS, 0.1f, 300, "cracked");
+        offerSmelting(exporter, List.of(Items.PRISMARINE_BRICKS), RecipeCategory.BUILDING_BLOCKS, ModBlocks.CRACKED_PRISMARINE_BRICKS, 0.1f, 300, "cracked");
+        offerSmelting(exporter, List.of(Items.MOSSY_STONE_BRICKS), RecipeCategory.BUILDING_BLOCKS, ModBlocks.CRACKED_MOSSY_STONE_BRICKS, 0.1f, 300, "cracked");
+        offerSmelting(exporter, List.of(Items.QUARTZ_BRICKS), RecipeCategory.BUILDING_BLOCKS, ModBlocks.CRACKED_QUARTZ_BRICKS, 0.1f, 300, "cracked");
 
         // REDSTONE
         ShapedRecipeJsonBuilder.create(RecipeCategory.REDSTONE, ModBlocks.COPPER_RAIL, 18)

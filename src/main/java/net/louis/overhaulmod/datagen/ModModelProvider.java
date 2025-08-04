@@ -32,6 +32,16 @@ public class ModModelProvider extends FabricModelProvider {
         lavenderQuartzPool.stairs(ModBlocks.LAVENDER_QUARTZ_STAIRS);
         lavenderQuartzPool.slab(ModBlocks.LAVENDER_QUARTZ_SLAB);
         lavenderQuartzPool.wall(ModBlocks.LAVENDER_QUARTZ_WALL);
+
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CRACKED_END_STONE_BRICKS);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CRACKED_BRICKS);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CRACKED_RED_NETHER_BRICKS);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CRACKED_MUD_BRICKS);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CRACKED_MOSSY_STONE_BRICKS);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CRACKED_TUFF_BRICKS);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CRACKED_PRISMARINE_BRICKS);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CRACKED_QUARTZ_BRICKS);
+
     }
 
     @Override

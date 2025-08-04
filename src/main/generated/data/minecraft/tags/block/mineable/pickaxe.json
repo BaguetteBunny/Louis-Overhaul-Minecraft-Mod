@@ -14,6 +14,14 @@
     "louis-overhaul-mod:lavender_quartz_column",
     "louis-overhaul-mod:lavender_quartz_slab",
     "louis-overhaul-mod:lavender_quartz_stairs",
-    "louis-overhaul-mod:lavender_quartz_wall"
+    "louis-overhaul-mod:lavender_quartz_wall",
+    "louis-overhaul-mod:cracked_quartz_bricks",
+    "louis-overhaul-mod:cracked_prismarine_bricks",
+    "louis-overhaul-mod:cracked_tuff_bricks",
+    "louis-overhaul-mod:cracked_red_nether_bricks",
+    "louis-overhaul-mod:cracked_bricks",
+    "louis-overhaul-mod:cracked_mud_bricks",
+    "louis-overhaul-mod:cracked_end_stone_bricks",
+    "louis-overhaul-mod:cracked_mossy_stone_bricks"
   ]
 }

@@ -1,16 +1,24 @@
-// 1.21.1	2025-08-04T12:01:54.7241253	Louis' Overhaul Mod/Block Loot Tables
+// 1.21.1	2025-08-04T16:06:39.2688138	Louis' Overhaul Mod/Block Loot Tables
+b9d378b6f415f870914da8eb88fc06ea2947083d data\louis-overhaul-mod\loot_table\blocks\cracked_mud_bricks.json
+7d681d1e097822d6640fe72a2ae28cfc38393e23 data\louis-overhaul-mod\loot_table\blocks\cracked_quartz_bricks.json
 ea21a02ad7306ee0d7c12bf9d0ed8352e78f709c data\louis-overhaul-mod\loot_table\blocks\rose_quartz_wall.json
 ed2011e19786ae239c43722009d68704f3c427f8 data\louis-overhaul-mod\loot_table\blocks\lavender_quartz_column.json
+b762b7161838381c717a2226912639d1ef73afe8 data\louis-overhaul-mod\loot_table\blocks\cracked_end_stone_bricks.json
+15952485d14f47c5e6bb8623def955cce3d5ae4f data\louis-overhaul-mod\loot_table\blocks\cracked_mossy_stone_bricks.json
 046cddd3516a8b18190edd1fc828620e04ba6921 data\louis-overhaul-mod\loot_table\blocks\lavender_quartz_slab.json
 2c5d3a438c9a1ae97b69d05dff9e43dcc145c890 data\louis-overhaul-mod\loot_table\blocks\rose_quartz_slab.json
+98d8f33bb0c9d4825b2041cf0c3ceda1381bc7a8 data\louis-overhaul-mod\loot_table\blocks\cracked_red_nether_bricks.json
 e6c90e6b073d8f8c84b7c869c860016d0d9cdde6 data\louis-overhaul-mod\loot_table\blocks\rose_quartz_bricks.json
 103d9124d8b591eeddf83b190d7177377bd94046 data\louis-overhaul-mod\loot_table\blocks\rose_quartz_pillar.json
 de6b18f30785df02080b8b0d2092d2322dd15007 data\louis-overhaul-mod\loot_table\blocks\rose_quartz_stairs.json
+95c234e30e5fd2bf0fc1758a32aa889ef7307769 data\louis-overhaul-mod\loot_table\blocks\cracked_bricks.json
 5234a4f7a50ee21fc9356c2526b31487ba1c41c1 data\louis-overhaul-mod\loot_table\blocks\lavender_quartz_wall.json
 ded73cbf77326a65a292003346c61ed483df08c2 data\louis-overhaul-mod\loot_table\blocks\chiseled_rose_quartz.json
+87351541a1da44039bd175450afe79ee39ea8fac data\louis-overhaul-mod\loot_table\blocks\cracked_tuff_bricks.json
 f97c57ba3aaa937d154ea02ed08922c61580fe9f data\louis-overhaul-mod\loot_table\blocks\lavender_quartz_bricks.json
 2ff6ccc895aa67a22ee6140f93b26e74a076fc03 data\louis-overhaul-mod\loot_table\blocks\lavender_quartz_pillar.json
 afecc4f4e057ffb6845f0cb8ed1a2aed5e914551 data\louis-overhaul-mod\loot_table\blocks\lavender_quartz_stairs.json
-7d61554b1988e7bab010450f0fa58d9c2b6ce129 data\louis-overhaul-mod\loot_table\blocks\copper_rail.json
+f91dfc2ff1d0be168a53d57edc3591a7da058e32 data\louis-overhaul-mod\loot_table\blocks\cracked_prismarine_bricks.json
 507367d04547e389c7eba8070c0b5102233022cf data\louis-overhaul-mod\loot_table\blocks\chiseled_lavender_quartz.json
+7d61554b1988e7bab010450f0fa58d9c2b6ce129 data\louis-overhaul-mod\loot_table\blocks\copper_rail.json
 5c74250d1decf556c7a78f6cdb0985a46015bb8f data\louis-overhaul-mod\loot_table\blocks\rose_quartz_column.json

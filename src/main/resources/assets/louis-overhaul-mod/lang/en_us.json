@@ -50,7 +50,14 @@
   "block.louis-overhaul-mod.lavender_quartz_stairs": "Lavender Quartz Bricks Stairs",
   "block.louis-overhaul-mod.lavender_quartz_wall": "Lavender Quartz Bricks Wall",
 
-  "block.louis-overhaul-mod.enderman_head": "Enderman Head",
+  "block.louis-overhaul-mod.cracked_bricks": "Cracked Bricks",
+  "block.louis-overhaul-mod.cracked_tuff_bricks": "Cracked Tuff Bricks",
+  "block.louis-overhaul-mod.cracked_end_stone_bricks": "Cracked End Stone Bricks",
+  "block.louis-overhaul-mod.cracked_prismarine_bricks": "Cracked Prismarine Bricks",
+  "block.louis-overhaul-mod.cracked_red_nether_bricks": "Cracked Red Nether Bricks",
+  "block.louis-overhaul-mod.cracked_quartz_bricks": "Cracked Quartz Bricks",
+  "block.louis-overhaul-mod.cracked_mossy_stone_bricks": "Cracked Mossy Stone Bricks",
+  "block.louis-overhaul-mod.cracked_mud_bricks": "Cracked Mud Bricks",
 
   "sound.louis-overhaul-mod.saddled_goat_horn_use": "Saddled Goat Horn Use"
 }

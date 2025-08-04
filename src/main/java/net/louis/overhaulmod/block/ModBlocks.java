@@ -20,6 +20,7 @@ public class ModBlocks {
                     .noCollision()
             ));
 
+    // ROSE QUARTZ FAMILY
     public static final Block ROSE_QUARTZ_BRICKS = registerBlock("rose_quartz_bricks",
             new Block(AbstractBlock.Settings.copy(Blocks.QUARTZ_BLOCK).mapColor(MapColor.PINK)));
     public static final Block ROSE_QUARTZ_PILLAR = registerBlock("rose_quartz_pillar",
@@ -35,6 +36,7 @@ public class ModBlocks {
     public static final Block ROSE_QUARTZ_WALL = registerBlock("rose_quartz_wall",
             new WallBlock(AbstractBlock.Settings.copy(Blocks.END_STONE_BRICK_WALL).mapColor(MapColor.PINK)));
 
+    // LAVENDER QUARTZ FAMILY
     public static final Block LAVENDER_QUARTZ_BRICKS = registerBlock("lavender_quartz_bricks",
             new Block(AbstractBlock.Settings.copy(Blocks.QUARTZ_BLOCK).mapColor(MapColor.PALE_PURPLE)));
     public static final Block LAVENDER_QUARTZ_PILLAR = registerBlock("lavender_quartz_pillar",
@@ -49,6 +51,24 @@ public class ModBlocks {
             new StairsBlock(ModBlocks.LAVENDER_QUARTZ_BRICKS.getDefaultState(), AbstractBlock.Settings.copy(Blocks.QUARTZ_STAIRS).mapColor(MapColor.PALE_PURPLE)));
     public static final Block LAVENDER_QUARTZ_WALL = registerBlock("lavender_quartz_wall",
             new WallBlock(AbstractBlock.Settings.copy(Blocks.END_STONE_BRICK_WALL).mapColor(MapColor.PALE_PURPLE)));
+
+    // CRACKED BRICKS FAMILY
+    public static final Block CRACKED_BRICKS = registerBlock("cracked_bricks",
+            new Block(AbstractBlock.Settings.copy(Blocks.BRICKS)));
+    public static final Block CRACKED_END_STONE_BRICKS = registerBlock("cracked_end_stone_bricks",
+            new Block(AbstractBlock.Settings.copy(Blocks.END_STONE_BRICKS)));
+    public static final Block CRACKED_MOSSY_STONE_BRICKS = registerBlock("cracked_mossy_stone_bricks",
+            new Block(AbstractBlock.Settings.copy(Blocks.MOSSY_STONE_BRICKS)));
+    public static final Block CRACKED_MUD_BRICKS = registerBlock("cracked_mud_bricks",
+            new Block(AbstractBlock.Settings.copy(Blocks.MUD_BRICKS)));
+    public static final Block CRACKED_PRISMARINE_BRICKS = registerBlock("cracked_prismarine_bricks",
+            new Block(AbstractBlock.Settings.copy(Blocks.PRISMARINE_BRICKS)));
+    public static final Block CRACKED_QUARTZ_BRICKS = registerBlock("cracked_quartz_bricks",
+            new Block(AbstractBlock.Settings.copy(Blocks.QUARTZ_BRICKS)));
+    public static final Block CRACKED_RED_NETHER_BRICKS = registerBlock("cracked_red_nether_bricks",
+            new Block(AbstractBlock.Settings.copy(Blocks.RED_NETHER_BRICKS)));
+    public static final Block CRACKED_TUFF_BRICKS = registerBlock("cracked_tuff_bricks",
+            new Block(AbstractBlock.Settings.copy(Blocks.TUFF_BRICKS)));
 
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);
@@ -71,7 +91,7 @@ public class ModBlocks {
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(entries -> {
             entries.add(ModBlocks.ROSE_QUARTZ_BRICKS);
             entries.add(ModBlocks.ROSE_QUARTZ_PILLAR);
-            entries.add(ModBlocks.LAVENDER_QUARTZ_COLUMN);
+            entries.add(ModBlocks.ROSE_QUARTZ_COLUMN);
             entries.add(ModBlocks.CHISELED_ROSE_QUARTZ);
             entries.add(ModBlocks.ROSE_QUARTZ_SLAB);
             entries.add(ModBlocks.ROSE_QUARTZ_STAIRS);
@@ -84,6 +104,15 @@ public class ModBlocks {
             entries.add(ModBlocks.LAVENDER_QUARTZ_SLAB);
             entries.add(ModBlocks.LAVENDER_QUARTZ_STAIRS);
             entries.add(ModBlocks.LAVENDER_QUARTZ_WALL);
+
+            entries.add(ModBlocks.CRACKED_BRICKS);
+            entries.add(ModBlocks.CRACKED_QUARTZ_BRICKS);
+            entries.add(ModBlocks.CRACKED_RED_NETHER_BRICKS);
+            entries.add(ModBlocks.CRACKED_TUFF_BRICKS);
+            entries.add(ModBlocks.CRACKED_MUD_BRICKS);
+            entries.add(ModBlocks.CRACKED_END_STONE_BRICKS);
+            entries.add(ModBlocks.CRACKED_PRISMARINE_BRICKS);
+            entries.add(ModBlocks.CRACKED_MOSSY_STONE_BRICKS);
         });
 
     }
