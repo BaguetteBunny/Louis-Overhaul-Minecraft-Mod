@@ -3,6 +3,7 @@ package net.louis.overhaulmod.events;
 import com.mojang.authlib.GameProfile;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 import net.fabricmc.fabric.api.event.player.UseItemCallback;
+import net.louis.overhaulmod.item.ModItems;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.SkullBlockEntity;
@@ -191,7 +192,7 @@ public class ModUseEvents {
 
             if (targetSpit != null) {
                 if (!player.getAbilities().creativeMode) stack.decrement(1);
-                ItemStack result = new ItemStack(Items.DRAGON_BREATH);
+                ItemStack result = new ItemStack(ModItems.LLAMAS_SPIT);
                 if (!player.getInventory().insertStack(result)) {
                     player.dropItem(result, false);
                 }

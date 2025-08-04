@@ -49,6 +49,9 @@ public class ModItems {
     public static final Item RECALL_CLOCK = registerItem("recall_clock",
             new RecallClock(new Item.Settings().maxCount(1)));
 
+    public static final Item LLAMAS_SPIT = registerItem("llamas_spit",
+            new Item(new Item.Settings()));
+
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, Identifier.of(LouisOverhaulMod.MOD_ID, name), item);
     }
@@ -62,6 +65,7 @@ public class ModItems {
             entries.add(DECAYING_FLESH);
             entries.add(SANDY_FLESH);
             entries.add(CHILLED_BONE);
+            entries.add(LLAMAS_SPIT);
         });
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT).register(entries -> {
             entries.add(NETHERITE_HORSE_ARMOR);
