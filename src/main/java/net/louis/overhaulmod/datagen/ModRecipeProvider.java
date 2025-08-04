@@ -12,6 +12,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.RegistryWrapper;
+
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 public class ModRecipeProvider extends FabricRecipeProvider {
@@ -23,7 +25,25 @@ public class ModRecipeProvider extends FabricRecipeProvider {
     public void generate(RecipeExporter exporter) {
 
         // SMELTING
-        //offerSmelting(exporter, ModItems.DECAYING_FLESH, RecipeCategory.MISC, Items.GREEN_DYE, 0.25f, 200);
+        offerSmelting(
+                exporter,
+                List.of(ModItems.SANDY_FLESH),
+                RecipeCategory.BUILDING_BLOCKS,
+                Items.SAND,
+                0.1f,
+                300,
+                "flesh_to_sand"
+        );
+
+        offerSmelting(
+                exporter,
+                List.of(ModItems.DECAYING_FLESH),
+                RecipeCategory.BUILDING_BLOCKS,
+                Items.SEAGRASS,
+                0.1f,
+                300,
+                "flesh_to_seagrass"
+        );
 
         // REDSTONE
         ShapedRecipeJsonBuilder.create(RecipeCategory.REDSTONE, ModBlocks.COPPER_RAIL, 18)
@@ -193,8 +213,5 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .input('A', ModBlocks.LAVENDER_QUARTZ_BRICKS)
                 .criterion(hasItem(ModBlocks.LAVENDER_QUARTZ_BRICKS), conditionsFromItem(ModBlocks.LAVENDER_QUARTZ_BRICKS))
                 .offerTo(exporter);
-    }
-
-    private void offerSmelting(RecipeExporter exporter, Item rottenFlesh, RecipeCategory recipeCategory, Item decayingFlesh, float v, int i) {
     }
 }
