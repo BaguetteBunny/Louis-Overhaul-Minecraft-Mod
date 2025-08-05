@@ -69,8 +69,6 @@ public class ModLootTableModifiers {
             RegistryKey<Enchantment> lootingKey = Enchantments.LOOTING;
             RegistryWrapper<Enchantment> enchantmentRegistry = registry.getWrapperOrThrow(RegistryKeys.ENCHANTMENT);
             RegistryEntry<Enchantment> lootingEntry = enchantmentRegistry.getOrThrow(lootingKey);
-            Enchantment lootingEnchant = lootingEntry.value();
-            System.out.println(lootingEnchant);
 
             if (WARDEN_ID.equals(key.getValue())) {
                 LootPool.Builder customPool = LootPool.builder()
