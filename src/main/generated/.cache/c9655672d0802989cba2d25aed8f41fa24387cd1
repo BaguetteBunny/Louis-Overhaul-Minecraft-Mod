@@ -1,4 +1,4 @@
-// 1.21.1	2025-08-04T16:48:49.4582302	Louis' Overhaul Mod/Model Definitions
+// 1.21.1	2025-08-05T19:04:04.4566337	Louis' Overhaul Mod/Model Definitions
 eb4d7414b04770e4d72b4793eac663db5ead683c assets\louis-overhaul-mod\models\block\lavender_quartz_slab_top.json
 4da107a5591635ac60f0df35dca87046d0164219 assets\louis-overhaul-mod\models\block\copper_rail.json
 9836f24d4b3bc665b7c7ab18ef8664ea0948b8cd assets\louis-overhaul-mod\models\item\lavender_quartz_pillar.json
@@ -27,6 +27,7 @@ e766e162c52c041547b70008370da1f1b47b2422 assets\louis-overhaul-mod\blockstates\c
 27345ecd85bda2b66d89be9b0790f151534efbe2 assets\louis-overhaul-mod\blockstates\cracked_red_nether_bricks.json
 ea12177fa9ecac6133a9f305c978ef673c671134 assets\louis-overhaul-mod\models\block\rose_quartz_wall_post.json
 4996f22b5334d218348aed549811cf856bf68cd6 assets\louis-overhaul-mod\models\item\rose_quartz_column.json
+41117d514d463e9f81f955a2e8c3c9f87f661296 assets\louis-overhaul-mod\models\item\vegetable_stew.json
 bdf6f2bb91b5d956ee4c5c9a81605ae2edebcd29 assets\louis-overhaul-mod\models\block\chiseled_lavender_quartz.json
 43bb891d64bbd90b150c5d8cd77335c8af2ea58e assets\louis-overhaul-mod\models\block\cracked_quartz_bricks.json
 f55d706a81c188156a8a6ca95a8b86a0725b84c5 assets\louis-overhaul-mod\models\item\decaying_flesh.json
@@ -40,8 +41,8 @@ b708c3e5809a3a7cc6e4fcfd84e29bf90520b592 assets\louis-overhaul-mod\blockstates\r
 7d943ec34500231625bdccd304b7d97deb7cee15 assets\louis-overhaul-mod\models\block\cracked_mossy_stone_bricks.json
 b20df3c1d89e8667525e230851e6e5f895720dcf assets\louis-overhaul-mod\models\item\cracked_red_nether_bricks.json
 84230e391952d8fff8ae618d96f63f085e60549d assets\louis-overhaul-mod\models\item\sandy_flesh.json
-c3045c4f01b27dc88757ecd6236d9ac00fe12973 assets\louis-overhaul-mod\blockstates\lavender_quartz_slab.json
 a1561298b33c85776b0b8dd48bd50f8441b64d49 assets\louis-overhaul-mod\blockstates\rose_quartz_stairs.json
+c3045c4f01b27dc88757ecd6236d9ac00fe12973 assets\louis-overhaul-mod\blockstates\lavender_quartz_slab.json
 91a208c14608f73141edc9c16b52169bbeedf753 assets\louis-overhaul-mod\models\item\cracked_end_stone_bricks.json
 05928c76f65e23ba6621cc877f7d11e7c95674fd assets\louis-overhaul-mod\blockstates\lavender_quartz_stairs.json
 e7d7d77d45827d86c76afdf236340fc41ec6ef01 assets\louis-overhaul-mod\models\block\cracked_end_stone_bricks.json
@@ -58,6 +59,7 @@ ae660e267b5a5c975b19bbbe292c3262e4b10c9a assets\louis-overhaul-mod\blockstates\c
 639eb5ff6fdff14532e7599a50d315c077b7f81a assets\louis-overhaul-mod\blockstates\lavender_quartz_wall.json
 8da1c887e04eb04a8956aeaecbdfd6ba9bcd062b assets\louis-overhaul-mod\blockstates\rose_quartz_bricks.json
 aeecf34ba4545d3159ad1ac88c0baf495a706251 assets\louis-overhaul-mod\models\item\copper_rail.json
+1b6ccf051e7d90affce940b13b61c5cf82fd92fd assets\louis-overhaul-mod\models\item\rotten_stew.json
 eec6cc47887aedf28a605bcb62c9b8067c0cabe1 assets\louis-overhaul-mod\models\item\chiseled_lavender_quartz.json
 a8cd0c408944e7ef61ddc0c4f90b109adc630e3d assets\louis-overhaul-mod\models\block\copper_rail_raised_ne.json
 5f76aeab444078a4c5447109d1233624cbe0ef2c assets\louis-overhaul-mod\models\block\lavender_quartz_column.json
@@ -83,14 +85,15 @@ dc6d0214caf685f733c52d2abaa1af054abffd13 assets\louis-overhaul-mod\models\block\
 369a352cc457fb4872409f1d7bc9aee3fd052cc6 assets\louis-overhaul-mod\models\item\cracked_tuff_bricks.json
 7b7f80431280161b6c1e72d659e0a3750441a1f5 assets\louis-overhaul-mod\models\item\chilled_bone.json
 ee471e2f2df07c592e73d0053f3f50d12911afca assets\louis-overhaul-mod\models\item\rose_quartz_bricks.json
+eb2292513f20bb811c16969d68e076d31bbdae4a assets\louis-overhaul-mod\models\item\fish_stew.json
 697444fe1a2e53f16a640394f21642aa4d503bdb assets\louis-overhaul-mod\models\item\endermite_heart.json
 fea7f33e6269f5199480063c25897980042ab4b0 assets\louis-overhaul-mod\models\block\cracked_tuff_bricks.json
 ff04d22d0a7285b20f9286a89584bbfe1791bff4 assets\louis-overhaul-mod\models\item\lavender_quartz_stairs.json
 8350b8626208b2b5a42084d569dc16afb319e714 assets\louis-overhaul-mod\models\block\rose_quartz_stairs_outer.json
 3e890582a9b4642bba1669797088537a9eb07fed assets\louis-overhaul-mod\blockstates\cracked_end_stone_bricks.json
 46e1f392ac5383d93ebd864f8da67e207c8fc43d assets\louis-overhaul-mod\models\block\lavender_quartz_pillar_horizontal.json
-79d93dd3daf4776a7abeb018f6562c139ed23cbd assets\louis-overhaul-mod\models\block\lavender_quartz_stairs_outer.json
 1e2599873cdd8fba251a8a91472586843eb35df9 assets\louis-overhaul-mod\models\item\llamas_spit.json
+79d93dd3daf4776a7abeb018f6562c139ed23cbd assets\louis-overhaul-mod\models\block\lavender_quartz_stairs_outer.json
 bc1779c678ef38674c57d9b2101dd4f8949a25b8 assets\louis-overhaul-mod\models\block\lavender_quartz_stairs.json
 a6d86031a8efc8b9bb33c5182336d4ead0201d8f assets\louis-overhaul-mod\models\item\cracked_mossy_stone_bricks.json
 b2fde5e27bcbbb4c9b9cfdc8319b37882e49f147 assets\louis-overhaul-mod\models\block\lavender_quartz_wall_side.json

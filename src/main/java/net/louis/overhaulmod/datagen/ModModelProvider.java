@@ -56,6 +56,9 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.SADDLED_GOAT_HORN, Models.GENERATED);
         itemModelGenerator.register(ModItems.RECALL_CLOCK, Models.GENERATED);
         itemModelGenerator.register(ModItems.LLAMAS_SPIT, Models.GENERATED);
+        itemModelGenerator.register(ModItems.VEGETABLE_STEW, Models.GENERATED);
+        itemModelGenerator.register(ModItems.FISH_STEW, Models.GENERATED);
+        itemModelGenerator.register(ModItems.ROTTEN_STEW, Models.GENERATED);
         // Pet Recovery Compass Generated Manually
     }
 }

@@ -1,4 +1,4 @@
-// 1.21.1	2025-08-04T16:48:49.4549318	Louis' Overhaul Mod/Recipes
+// 1.21.1	2025-08-05T19:04:04.4546321	Louis' Overhaul Mod/Recipes
 cf3eb99711288baaad357c07006fb7f23cae07e6 data\louis-overhaul-mod\advancement\recipes\building_blocks\rose_quartz_wall.json
 762e802e5776a5ef4b79a5a9b4e8d16cd8bbd43a data\louis-overhaul-mod\advancement\recipes\building_blocks\cracked_mossy_stone_bricks_from_smelting_mossy_stone_bricks.json
 7b2307315f3bd1591fb05f828d9c7de65bbb3c95 data\louis-overhaul-mod\recipe\lavender_quartz_column.json
@@ -10,6 +10,7 @@ ca918666b585b3e93c1404b70ff9aebb53936f76 data\louis-overhaul-mod\advancement\rec
 b246a515f5fb9eeb9375ea0850038ace396b2ca5 data\louis-overhaul-mod\advancement\recipes\building_blocks\lavender_quartz_column.json
 41a8df2cc0139413f1fb401dd4400ea628bd8b61 data\louis-overhaul-mod\recipe\chiseled_rose_quartz.json
 deb870f37178a94bfca9a7b4a4ce1fe696a61314 data\louis-overhaul-mod\advancement\recipes\building_blocks\lavender_quartz_wall.json
+46c35465629af2c58d7b971738d5818d0929b225 data\louis-overhaul-mod\recipe\fish_stew.json
 d574a1f1b4d41249e0571ad66797f3759e57e12d data\louis-overhaul-mod\recipe\sand_from_smelting_sandy_flesh.json
 cba88d5c3988bd25bd368a8253e2666da445dde1 data\louis-overhaul-mod\recipe\rose_quartz_wall.json
 10470c8f19e5e8b876fbc9563effd9171b0c0c67 data\louis-overhaul-mod\recipe\netherite_horse_armor_smithing.json
@@ -17,6 +18,7 @@ bc907fe76e940be243b3db822b5864dd03d5aff2 data\louis-overhaul-mod\advancement\rec
 50fb25132d090511fd83ee98937ef9196d238b68 data\louis-overhaul-mod\recipe\cracked_end_stone_bricks_from_smelting_end_stone_bricks.json
 4883b54c0d6348acfd8c3f145ecc83a27092069e data\louis-overhaul-mod\recipe\lavender_quartz_bricks.json
 e9731f5ba4afe29060c6807f6d01f04685f86da3 data\louis-overhaul-mod\advancement\recipes\building_blocks\cracked_prismarine_bricks_from_smelting_prismarine_bricks.json
+4dc354d4cc618ca7c0c4344d97f0ebd5ebc59728 data\louis-overhaul-mod\advancement\recipes\food\fish_stew.json
 bf4d6e057350f497f7010e8eaaf94b3851d603f4 data\louis-overhaul-mod\recipe\bundle.json
 e4b356d6a80734fc54e9b77a417786bd2efe4178 data\louis-overhaul-mod\advancement\recipes\misc\bundle.json
 c61c3155d74e508604bf9977bde21a2d2ca8c023 data\louis-overhaul-mod\advancement\recipes\building_blocks\cracked_bricks_from_smelting_bricks.json
@@ -27,11 +29,13 @@ aef0eafa60e86a8a8d2daa3bff8f6d1be97c460e data\louis-overhaul-mod\advancement\rec
 ac896f26dfea60d89eaec9fa3c04a4adbe53c39e data\louis-overhaul-mod\recipe\recall_clock.json
 1742fc7ae017302421d466a11cfb74fe979ffa5a data\louis-overhaul-mod\recipe\player_head.json
 1679327ddf7022b05e655606e37a0c980bd1f05b data\louis-overhaul-mod\advancement\recipes\building_blocks\sand_from_smelting_sandy_flesh.json
+491ed2be5b6583510126732ccf27587c99781485 data\louis-overhaul-mod\advancement\recipes\food\rotten_stew.json
 cb20ed1b8ec9e2682088733900909102ef148de2 data\louis-overhaul-mod\recipe\pet_recovery_compass.json
 e3b61940f36ccfc9278772c3d36d3f8e71f5fe91 data\louis-overhaul-mod\advancement\recipes\building_blocks\rose_quartz_stairs.json
 f3e552f7e87abb8c8c1dc7ac93bebabccccecdce data\louis-overhaul-mod\advancement\recipes\building_blocks\cracked_mud_bricks_from_smelting_mud_bricks.json
 ae693080ec667408ea2849bbe4538aa213e7367c data\louis-overhaul-mod\advancement\recipes\building_blocks\rose_quartz_slab.json
 61bec8cbec631e0bf1604c302f5d3dc0675f0e55 data\louis-overhaul-mod\advancement\recipes\redstone\copper_rail.json
+c71dfdd52a84bdafc11b34d446b04623c26452d6 data\louis-overhaul-mod\recipe\vegetable_stew.json
 ee5aa5f542dbecc2364c3ea3b047df8174986ad1 data\louis-overhaul-mod\advancement\recipes\misc\pet_recovery_compass.json
 d55b1bd1e9eeb11116221f36f0a4d4caff506d09 data\louis-overhaul-mod\recipe\rose_quartz_column.json
 cc86936d43ca726c9a5b90bf52da2a1ba958314b data\louis-overhaul-mod\advancement\recipes\building_blocks\lavender_quartz_slab.json
@@ -57,8 +61,10 @@ dfe2901b65400ed18d95290857a9c9f00d811474 data\louis-overhaul-mod\recipe\copper_r
 5a6e9a33ed5fabae3ce6a1a08f0e7b05e4e5db52 data\louis-overhaul-mod\recipe\rose_quartz_slab.json
 f61094ef3ecb23896d18246a2f44d62855298e22 data\louis-overhaul-mod\advancement\recipes\building_blocks\cracked_quartz_bricks_from_smelting_quartz_bricks.json
 7c3000ff732c2bfad63d99b7a106d6b130a861aa data\louis-overhaul-mod\recipe\lavender_quartz_pillar.json
+4e07a2b74b1c3f43b5aa544f344d2dab4d92237d data\louis-overhaul-mod\advancement\recipes\food\vegetable_stew.json
 1c208897a45d10c22cae5cc73dbc250da2312e35 data\louis-overhaul-mod\recipe\cracked_bricks_from_smelting_bricks.json
 1361fcef0f0d4792b75a754c7ecd6c539dbf309a data\louis-overhaul-mod\recipe\cracked_prismarine_bricks_from_smelting_prismarine_bricks.json
+d34a18653f521e9b0fc607d62a73619c66dc25ec data\louis-overhaul-mod\recipe\rotten_stew.json
 4d93841fe04491e175462b1ebe997a38b928adb0 data\louis-overhaul-mod\recipe\seagrass_from_smelting_decaying_flesh.json
 35c1093dac0598d4d995d4e3ddfb0057db211c8a data\louis-overhaul-mod\advancement\recipes\building_blocks\suspicious_sand.json
 d05cc51441f972cdf6da66dbe58959bae55aefa8 data\louis-overhaul-mod\recipe\rose_quartz_pillar.json

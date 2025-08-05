@@ -37,6 +37,32 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerSmelting(exporter, List.of(Items.MOSSY_STONE_BRICKS), RecipeCategory.BUILDING_BLOCKS, ModBlocks.CRACKED_MOSSY_STONE_BRICKS, 0.1f, 300, "cracked");
         offerSmelting(exporter, List.of(Items.QUARTZ_BRICKS), RecipeCategory.BUILDING_BLOCKS, ModBlocks.CRACKED_QUARTZ_BRICKS, 0.1f, 300, "cracked");
 
+        // FOOD & DRINKS
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.FISH_STEW, 1)
+                .input(Items.BOWL)
+                .input(Items.DRIED_KELP)
+                .input(Items.COOKED_SALMON)
+                .input(Items.COOKED_COD)
+                .input(Items.BAKED_POTATO)
+                .criterion(hasItem(Items.BOWL), conditionsFromItem(Items.BOWL))
+                .offerTo(exporter);
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.VEGETABLE_STEW, 1)
+                .input(Items.BOWL)
+                .input(Items.POTATO)
+                .input(Items.CARROT)
+                .input(Items.BEETROOT)
+                .criterion(hasItem(Items.BOWL), conditionsFromItem(Items.BOWL))
+                .offerTo(exporter);
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.ROTTEN_STEW, 1)
+                .input(Items.BOWL)
+                .input(Items.ROTTEN_FLESH)
+                .input(ModItems.DECAYING_FLESH)
+                .input(ModItems.SANDY_FLESH)
+                .criterion(hasItem(Items.BOWL), conditionsFromItem(Items.BOWL))
+                .offerTo(exporter);
+
         // REDSTONE
         ShapedRecipeJsonBuilder.create(RecipeCategory.REDSTONE, ModBlocks.COPPER_RAIL, 18)
                 .pattern("C C")

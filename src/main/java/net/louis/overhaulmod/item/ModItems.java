@@ -2,7 +2,6 @@ package net.louis.overhaulmod.item;
 
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.louis.overhaulmod.LouisOverhaulMod;
-import net.louis.overhaulmod.sound.ModSounds;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.BundleContentsComponent;
 import net.minecraft.component.type.FoodComponent;
@@ -32,6 +31,30 @@ public class ModItems {
                     .nutrition(4)
                     .saturationModifier(0.1f)
                     .statusEffect(new StatusEffectInstance(StatusEffects.HUNGER, 900, 0), 1f)
+                    .build()))
+    );
+    public static final Item FISH_STEW = registerItem("fish_stew",
+            new Item(new Item.Settings().maxCount(16).food(new FoodComponent.Builder()
+                    .nutrition(8)
+                    .saturationModifier(6.5f)
+                    .snack()
+                    .statusEffect(new StatusEffectInstance(StatusEffects.WATER_BREATHING, 9000, 0), .75f)
+                    .build()))
+    );
+    public static final Item VEGETABLE_STEW = registerItem("vegetable_stew",
+            new Item(new Item.Settings().maxCount(16).food(new FoodComponent.Builder()
+                    .nutrition(6)
+                    .saturationModifier(8f)
+                    .snack()
+                    .build()))
+    );
+    public static final Item ROTTEN_STEW = registerItem("rotten_stew",
+            new Item(new Item.Settings().maxCount(16).food(new FoodComponent.Builder()
+                    .nutrition(5)
+                    .saturationModifier(.1f)
+                    .statusEffect(new StatusEffectInstance(StatusEffects.HUNGER, 900, 0), .6f)
+                    .statusEffect(new StatusEffectInstance(StatusEffects.NAUSEA, 900, 0), .6f)
+                    .snack()
                     .build()))
     );
     public static final Item NETHERITE_HORSE_ARMOR = registerItem("netherite_horse_armor",
@@ -70,7 +93,11 @@ public class ModItems {
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT).register(entries -> {
             entries.add(NETHERITE_HORSE_ARMOR);
         });
-
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.FOOD_AND_DRINK).register(entries -> {
+            entries.add(FISH_STEW);
+            entries.add(ROTTEN_STEW);
+            entries.add(VEGETABLE_STEW);
+        });
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS).register(entries -> {
             entries.add(POTION_POUCH);
             entries.add(Items.BUNDLE);

@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:bowl"
+    },
+    {
+      "item": "minecraft:rotten_flesh"
+    },
+    {
+      "item": "louis-overhaul-mod:decaying_flesh"
+    },
+    {
+      "item": "louis-overhaul-mod:sandy_flesh"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "louis-overhaul-mod:rotten_stew"
+  }
+}
