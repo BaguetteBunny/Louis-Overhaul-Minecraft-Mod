@@ -14,6 +14,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.passive.CowEntity;
 import net.minecraft.entity.passive.MooshroomEntity;
+import net.minecraft.entity.passive.RabbitEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.LlamaSpitEntity;
 import net.minecraft.item.ItemStack;
@@ -48,6 +49,7 @@ public class ModUseEvents {
 
     public static void registerStew() {
         UseItemCallback.EVENT.register(ModUseEvents::useMushroomStew);
+        UseItemCallback.EVENT.register(ModUseEvents::useRabbitStew);
     }
 
     private static ActionResult oxidizeCopperWithClock(PlayerEntity player, World world, Hand hand, BlockHitResult hitResult) {
@@ -275,6 +277,77 @@ public class ModUseEvents {
                 }
                 else {
                     world.playSound(null, targetCow.getBlockPos(), SoundEvents.ENTITY_GENERIC_EXTINGUISH_FIRE,
+                            SoundCategory.PLAYERS, 1.0F, 2.0F);
+                    ((ServerWorld) world).spawnParticles(
+                            ParticleTypes.SMOKE,
+                            x + 0,
+                            y + 1,
+                            z + 0,
+                            10,
+                            0.5, 0.5, 0.5,
+                            0.05
+                    );
+                }
+            }
+        }
+        return TypedActionResult.pass(player.getStackInHand(hand));
+
+    }
+
+    private static TypedActionResult<ItemStack> useRabbitStew(PlayerEntity player, World world, Hand hand) {
+        if (world.isClient) return TypedActionResult.pass(player.getStackInHand(hand));
+
+        ItemStack stack = player.getStackInHand(hand);
+
+        if (stack.isOf(Items.RABBIT_STEW)) {
+            double reach = 3.0D;
+            Vec3d start = player.getCameraPosVec(1.0F);
+            Vec3d look = player.getRotationVec(1.0F);
+            Vec3d end = start.add(look.multiply(reach));
+            Box box = player.getBoundingBox().stretch(look.multiply(reach)).expand(1.0D);
+            RabbitEntity targetRabbit = null;
+            double closestDistance = reach * reach;
+
+            for (Entity entity : world.getOtherEntities(player, box)) {
+                if (!(entity instanceof RabbitEntity rabbit)) continue;
+                if (rabbit.getVariant() == RabbitEntity.RabbitType.EVIL) continue;
+                Box entityBox = rabbit.getBoundingBox().expand(0.3D);
+                Optional<Vec3d> optional = entityBox.raycast(start, end);
+                if (optional.isPresent()) {
+                    double distance = start.squaredDistanceTo(optional.get());
+                    if (distance < closestDistance) {
+                        closestDistance = distance;
+                        targetRabbit = rabbit;
+                    }
+                }
+            }
+
+            if (targetRabbit != null) {
+                int randomNum = (int)(Math.random() * 2);
+                double x = targetRabbit.getX();
+                double y = targetRabbit.getY();
+                double z = targetRabbit.getZ();
+                if (!player.getAbilities().creativeMode) stack.decrement(1);
+
+                if (randomNum == 1) {
+                    world.playSound(null, targetRabbit.getBlockPos(), SoundEvents.ENTITY_LIGHTNING_BOLT_IMPACT,
+                            SoundCategory.PLAYERS, 1.0F, 2.0F);
+
+                    targetRabbit.setVariant(RabbitEntity.RabbitType.EVIL);
+
+                    ((ServerWorld) world).spawnParticles(
+                            ParticleTypes.ANGRY_VILLAGER,
+                            x + 0,
+                            y + 1,
+                            z + 0,
+                            10,
+                            0.5, 0.5, 0.5,
+                            0.2
+                    );
+                    return TypedActionResult.success(stack, world.isClient());
+                }
+                else {
+                    world.playSound(null, targetRabbit.getBlockPos(), SoundEvents.ENTITY_GENERIC_EXTINGUISH_FIRE,
                             SoundCategory.PLAYERS, 1.0F, 2.0F);
                     ((ServerWorld) world).spawnParticles(
                             ParticleTypes.SMOKE,
