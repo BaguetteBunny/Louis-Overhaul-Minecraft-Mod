@@ -11,6 +11,10 @@ import net.minecraft.block.enums.DoubleBlockHalf;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.ProfileComponent;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.passive.CowEntity;
+import net.minecraft.entity.passive.MooshroomEntity;
+import net.minecraft.entity.passive.WolfEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.LlamaSpitEntity;
 import net.minecraft.item.ItemStack;
@@ -37,10 +41,14 @@ import java.util.Optional;
 
 public class ModUseEvents {
 
-    public static void register() {
+    public static void registerMain() {
         UseBlockCallback.EVENT.register(ModUseEvents::oxidizeCopperWithClock);
         UseBlockCallback.EVENT.register(ModUseEvents::retexturePlayerHead);
         UseItemCallback.EVENT.register(ModUseEvents::getLlamaSpitBottle);
+    }
+
+    public static void registerStew() {
+        UseItemCallback.EVENT.register(ModUseEvents::useMushroomStew);
     }
 
     private static ActionResult oxidizeCopperWithClock(PlayerEntity player, World world, Hand hand, BlockHitResult hitResult) {
@@ -179,7 +187,7 @@ public class ModUseEvents {
 
             for (Entity entity : world.getOtherEntities(player, box)) {
                 if (!(entity instanceof LlamaSpitEntity spit)) continue;
-                Box entityBox = spit.getBoundingBox().expand(0.3D);
+                Box entityBox = spit.getBoundingBox().expand(0.5D);
                 Optional<Vec3d> optional = entityBox.raycast(start, end);
                 if (optional.isPresent()) {
                     double distance = start.squaredDistanceTo(optional.get());
@@ -199,6 +207,59 @@ public class ModUseEvents {
                 world.playSound(null, targetSpit.getBlockPos(), SoundEvents.ITEM_BOTTLE_FILL_DRAGONBREATH,
                         SoundCategory.PLAYERS, 1.0F, 1.0F);
                 targetSpit.discard();
+                return TypedActionResult.success(stack, world.isClient());
+            }
+        }
+        return TypedActionResult.pass(player.getStackInHand(hand));
+
+    }
+
+    private static TypedActionResult<ItemStack> useMushroomStew(PlayerEntity player, World world, Hand hand) {
+        if (world.isClient) return TypedActionResult.pass(player.getStackInHand(hand));
+
+        ItemStack stack = player.getStackInHand(hand);
+
+        if (stack.isOf(Items.MUSHROOM_STEW)) {
+            double reach = 3.0D;
+            Vec3d start = player.getCameraPosVec(1.0F);
+            Vec3d look = player.getRotationVec(1.0F);
+            Vec3d end = start.add(look.multiply(reach));
+            Box box = player.getBoundingBox().stretch(look.multiply(reach)).expand(1.0D);
+            CowEntity targetCow = null;
+            double closestDistance = reach * reach;
+
+            for (Entity entity : world.getOtherEntities(player, box)) {
+                if (!(entity instanceof CowEntity cow)) continue;
+                Box entityBox = cow.getBoundingBox().expand(0.3D);
+                Optional<Vec3d> optional = entityBox.raycast(start, end);
+                if (optional.isPresent()) {
+                    double distance = start.squaredDistanceTo(optional.get());
+                    if (distance < closestDistance) {
+                        closestDistance = distance;
+                        targetCow = cow;
+                    }
+                }
+            }
+
+            if (targetCow != null) {
+
+                if (!player.getAbilities().creativeMode) stack.decrement(1);
+                world.playSound(null, targetCow.getBlockPos(), SoundEvents.ENTITY_LIGHTNING_BOLT_IMPACT,
+                        SoundCategory.PLAYERS, 1.0F, 2.0F);
+
+                double x = targetCow.getX();
+                double y = targetCow.getY();
+                double z = targetCow.getZ();
+                float pitch = targetCow.getPitch();
+                float yaw = targetCow.getYaw();
+                boolean isBaby = targetCow.isBaby();
+                targetCow.discard();
+
+                MooshroomEntity mooshroom = EntityType.MOOSHROOM.create(world);
+                mooshroom.refreshPositionAndAngles(x, y, z, yaw, pitch);
+                mooshroom.setBaby(isBaby);
+                world.spawnEntity(mooshroom);
+
                 return TypedActionResult.success(stack, world.isClient());
             }
         }
