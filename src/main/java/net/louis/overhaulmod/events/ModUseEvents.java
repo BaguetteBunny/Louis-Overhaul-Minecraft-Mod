@@ -2,7 +2,9 @@ package net.louis.overhaulmod.events;
 
 import com.mojang.authlib.GameProfile;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
+import net.fabricmc.fabric.api.event.player.UseEntityCallback;
 import net.fabricmc.fabric.api.event.player.UseItemCallback;
+import net.louis.overhaulmod.effect.ModEffects;
 import net.louis.overhaulmod.item.ModItems;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
@@ -12,14 +14,19 @@ import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.ProfileComponent;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.passive.CowEntity;
-import net.minecraft.entity.passive.MooshroomEntity;
-import net.minecraft.entity.passive.RabbitEntity;
+import net.minecraft.entity.SpawnReason;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.entity.mob.ZombieEntity;
+import net.minecraft.entity.mob.ZombieVillagerEntity;
+import net.minecraft.entity.passive.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.LlamaSpitEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.nbt.NbtOps;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
@@ -30,11 +37,16 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.Uuids;
 import net.minecraft.util.hit.BlockHitResult;
+import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.random.Random;
+import net.minecraft.village.VillagerType;
+import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldEvents;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Map;
 import java.util.Optional;
@@ -50,6 +62,8 @@ public class ModUseEvents {
     public static void registerStew() {
         UseItemCallback.EVENT.register(ModUseEvents::useMushroomStew);
         UseItemCallback.EVENT.register(ModUseEvents::useRabbitStew);
+        UseItemCallback.EVENT.register(ModUseEvents::useFishStew);
+        UseEntityCallback.EVENT.register(ModUseEvents::useRottenStew);
     }
 
     private static ActionResult oxidizeCopperWithClock(PlayerEntity player, World world, Hand hand, BlockHitResult hitResult) {
@@ -362,7 +376,135 @@ public class ModUseEvents {
             }
         }
         return TypedActionResult.pass(player.getStackInHand(hand));
+    }
 
+    private static TypedActionResult<ItemStack> useFishStew(PlayerEntity player, World world, Hand hand) {
+        if (world.isClient) return TypedActionResult.pass(player.getStackInHand(hand));
+
+        ItemStack stack = player.getStackInHand(hand);
+
+        if (stack.isOf(ModItems.FISH_STEW)) {
+            double reach = 3.0D;
+            Vec3d start = player.getCameraPosVec(1.0F);
+            Vec3d look = player.getRotationVec(1.0F);
+            Vec3d end = start.add(look.multiply(reach));
+            Box box = player.getBoundingBox().stretch(look.multiply(reach)).expand(1.0D);
+            DolphinEntity targetDolphin = null;
+            double closestDistance = reach * reach;
+
+            for (Entity entity : world.getOtherEntities(player, box)) {
+                if (!(entity instanceof DolphinEntity dolphin)) continue;
+                Box entityBox = dolphin.getBoundingBox().expand(0.3D);
+                Optional<Vec3d> optional = entityBox.raycast(start, end);
+                if (optional.isPresent()) {
+                    double distance = start.squaredDistanceTo(optional.get());
+                    if (distance < closestDistance) {
+                        closestDistance = distance;
+                        targetDolphin = dolphin;
+                    }
+                }
+            }
+
+            if (targetDolphin != null) {
+                int randomNum = (int)(Math.random() * 3);
+                double x = targetDolphin.getX();
+                double y = targetDolphin.getY();
+                double z = targetDolphin.getZ();
+                if (!player.getAbilities().creativeMode) stack.decrement(1);
+
+                if (randomNum == 1) {
+                    world.playSound(null, targetDolphin.getBlockPos(), SoundEvents.ENTITY_DOLPHIN_PLAY,
+                            SoundCategory.PLAYERS, 1.0F, 0.5F);
+                    world.playSound(null, targetDolphin.getBlockPos(), SoundEvents.ENTITY_DOLPHIN_SPLASH,
+                            SoundCategory.PLAYERS, 0.5F, 0.5F);
+
+                    ((ServerWorld) world).spawnParticles(
+                            ParticleTypes.DOLPHIN,
+                            x + 0,
+                            y + 0.5,
+                            z + 0,
+                            20,
+                            0.5, 0.5, 0.5,
+                            0.2
+                    );
+                    player.addStatusEffect(new StatusEffectInstance(StatusEffects.DOLPHINS_GRACE, 36000, 0));
+                    return TypedActionResult.success(stack, world.isClient());
+                }
+                else {
+                    world.playSound(null, targetDolphin.getBlockPos(), SoundEvents.ENTITY_GENERIC_EXTINGUISH_FIRE,
+                            SoundCategory.PLAYERS, 1.0F, 2.0F);
+                    ((ServerWorld) world).spawnParticles(
+                            ParticleTypes.SMOKE,
+                            x + 0,
+                            y + 1,
+                            z + 0,
+                            10,
+                            0.5, 0.5, 0.5,
+                            0.05
+                    );
+                }
+            }
+        }
+        return TypedActionResult.pass(player.getStackInHand(hand));
+    }
+
+    private static ActionResult useRottenStew(PlayerEntity player, World world, Hand hand, Entity entity, @Nullable EntityHitResult entityHitResult) {
+        if (world.isClient) return ActionResult.PASS;
+
+        ItemStack stack = player.getStackInHand(hand);
+
+        if (stack.isOf(ModItems.ROTTEN_STEW) && entity instanceof VillagerEntity targetVillager) {
+            int randomNum = (int) (Math.random() * 2);
+            double x = targetVillager.getX();
+            double y = targetVillager.getY();
+            double z = targetVillager.getZ();
+            if (!player.getAbilities().creativeMode) stack.decrement(1);
+
+            if (randomNum == 1) {
+                world.playSound(null, targetVillager.getBlockPos(), SoundEvents.ENTITY_ZOMBIE_VILLAGER_CONVERTED,
+                        SoundCategory.PLAYERS, 1.0F, 0.5F);
+                world.playSound(null, targetVillager.getBlockPos(), SoundEvents.ENTITY_VILLAGER_NO,
+                        SoundCategory.PLAYERS, 0.5F, 0.5F);
+
+                ((ServerWorld) world).spawnParticles(
+                        ParticleTypes.ANGRY_VILLAGER,
+                        x + 0,
+                        y + 0.5,
+                        z + 0,
+                        10,
+                        0.5, 0.5, 0.5,
+                        0.2
+                );
+                ZombieVillagerEntity zombieVillagerEntity = targetVillager.convertTo(EntityType.ZOMBIE_VILLAGER, false);
+                if (zombieVillagerEntity != null) {
+                    ServerWorldAccess access = (ServerWorldAccess) world;
+
+                    zombieVillagerEntity.initialize(
+                            access, world.getLocalDifficulty(zombieVillagerEntity.getBlockPos()), SpawnReason.CONVERSION, new ZombieEntity.ZombieData(false, true));
+                    zombieVillagerEntity.setVillagerData(targetVillager.getVillagerData());
+                    zombieVillagerEntity.setGossipData(targetVillager.getGossip().serialize(NbtOps.INSTANCE));
+                    zombieVillagerEntity.setOfferData(targetVillager.getOffers().copy());
+                    zombieVillagerEntity.setXp(targetVillager.getExperience());
+                    zombieVillagerEntity.refreshPositionAndAngles(x, y, z, targetVillager.getYaw(), targetVillager.getPitch());
+
+                    targetVillager.discard();
+
+                    return ActionResult.SUCCESS;
+                } else {
+                    world.playSound(null, targetVillager.getBlockPos(), SoundEvents.ENTITY_GENERIC_EXTINGUISH_FIRE,
+                                SoundCategory.PLAYERS, 1.0F, 2.0F);
+                    ((ServerWorld) world).spawnParticles(
+                            ParticleTypes.SMOKE,
+                            x + 0,
+                            y + 1,
+                            z + 0,
+                            10,
+                            0.5, 0.5, 0.5,
+                            0.05
+                    );
+                }
+            }
+        } return ActionResult.PASS;
     }
 
     private static boolean isPlayerHead(BlockState blockState) {
@@ -397,6 +539,5 @@ public class ModUseEvents {
             });
         });
     }
-
-    }
+}
 
