@@ -14,7 +14,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.passive.CowEntity;
 import net.minecraft.entity.passive.MooshroomEntity;
-import net.minecraft.entity.passive.WolfEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.LlamaSpitEntity;
 import net.minecraft.item.ItemStack;
@@ -229,7 +228,7 @@ public class ModUseEvents {
             double closestDistance = reach * reach;
 
             for (Entity entity : world.getOtherEntities(player, box)) {
-                if (!(entity instanceof CowEntity cow)) continue;
+                if (!(entity instanceof CowEntity cow) || entity instanceof MooshroomEntity) continue;
                 Box entityBox = cow.getBoundingBox().expand(0.3D);
                 Optional<Vec3d> optional = entityBox.raycast(start, end);
                 if (optional.isPresent()) {
@@ -242,25 +241,51 @@ public class ModUseEvents {
             }
 
             if (targetCow != null) {
-
-                if (!player.getAbilities().creativeMode) stack.decrement(1);
-                world.playSound(null, targetCow.getBlockPos(), SoundEvents.ENTITY_LIGHTNING_BOLT_IMPACT,
-                        SoundCategory.PLAYERS, 1.0F, 2.0F);
-
+                int randomNum = (int)(Math.random() * 11);
                 double x = targetCow.getX();
                 double y = targetCow.getY();
                 double z = targetCow.getZ();
-                float pitch = targetCow.getPitch();
-                float yaw = targetCow.getYaw();
-                boolean isBaby = targetCow.isBaby();
-                targetCow.discard();
+                if (!player.getAbilities().creativeMode) stack.decrement(1);
 
-                MooshroomEntity mooshroom = EntityType.MOOSHROOM.create(world);
-                mooshroom.refreshPositionAndAngles(x, y, z, yaw, pitch);
-                mooshroom.setBaby(isBaby);
-                world.spawnEntity(mooshroom);
+                if (randomNum == 1) {
+                    world.playSound(null, targetCow.getBlockPos(), SoundEvents.ENTITY_LIGHTNING_BOLT_IMPACT,
+                            SoundCategory.PLAYERS, 1.0F, 2.0F);
 
-                return TypedActionResult.success(stack, world.isClient());
+                    float pitch = targetCow.getPitch();
+                    float yaw = targetCow.getYaw();
+                    boolean isBaby = targetCow.isBaby();
+                    targetCow.discard();
+
+                    ((ServerWorld) world).spawnParticles(
+                            ParticleTypes.HEART,
+                            x + 0,
+                            y + 1,
+                            z + 0,
+                            10,
+                            0.5, 0.5, 0.5,
+                            0.2
+                    );
+
+                    MooshroomEntity mooshroom = EntityType.MOOSHROOM.create(world);
+                    mooshroom.refreshPositionAndAngles(x, y, z, yaw, pitch);
+                    mooshroom.setBaby(isBaby);
+                    world.spawnEntity(mooshroom);
+
+                    return TypedActionResult.success(stack, world.isClient());
+                }
+                else {
+                    world.playSound(null, targetCow.getBlockPos(), SoundEvents.ENTITY_GENERIC_EXTINGUISH_FIRE,
+                            SoundCategory.PLAYERS, 1.0F, 2.0F);
+                    ((ServerWorld) world).spawnParticles(
+                            ParticleTypes.SMOKE,
+                            x + 0,
+                            y + 1,
+                            z + 0,
+                            10,
+                            0.5, 0.5, 0.5,
+                            0.05
+                    );
+                }
             }
         }
         return TypedActionResult.pass(player.getStackInHand(hand));
