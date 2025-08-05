@@ -27,6 +27,7 @@ public class LouisOverhaulMod implements ModInitializer {
 		ModLootTableModifiers.modifyLootTables();
 		ModLootTableModifiers.replaceLootTables();
 
-		ModUseEvents.register();
+		ModUseEvents.registerMain();
+		ModUseEvents.registerStew();
 	}
 }
