@@ -6,10 +6,6 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.random.Random;
 
-import java.util.AbstractList;
-import java.util.ArrayList;
-import java.util.LinkedList;
-
 public class TeleportUtils {
     public static void chorusTeleport(ServerPlayerEntity player) {
         ServerWorld world = player.getServerWorld();
