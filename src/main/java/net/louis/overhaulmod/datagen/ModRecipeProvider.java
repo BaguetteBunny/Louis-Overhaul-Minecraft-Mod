@@ -58,7 +58,10 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.ROTTEN_STEW, 1)
                 .input(Items.BOWL)
                 .input(Items.ROTTEN_FLESH)
+                .input(Items.ROTTEN_FLESH)
                 .input(ModItems.DECAYING_FLESH)
+                .input(ModItems.DECAYING_FLESH)
+                .input(ModItems.SANDY_FLESH)
                 .input(ModItems.SANDY_FLESH)
                 .criterion(hasItem(Items.BOWL), conditionsFromItem(Items.BOWL))
                 .offerTo(exporter);
