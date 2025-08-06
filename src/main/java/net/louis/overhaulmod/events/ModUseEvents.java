@@ -454,7 +454,7 @@ public class ModUseEvents {
         ItemStack stack = player.getStackInHand(hand);
 
         if (stack.isOf(ModItems.ROTTEN_STEW) && entity instanceof VillagerEntity targetVillager) {
-            int randomNum = (int) (Math.random() * 2);
+            int randomNum = (int) (Math.random() * 5);
             double x = targetVillager.getX();
             double y = targetVillager.getY();
             double z = targetVillager.getZ();
