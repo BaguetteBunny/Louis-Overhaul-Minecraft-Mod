@@ -233,5 +233,136 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .input('A', ModBlocks.LAVENDER_QUARTZ_BRICKS)
                 .criterion(hasItem(ModBlocks.LAVENDER_QUARTZ_BRICKS), conditionsFromItem(ModBlocks.LAVENDER_QUARTZ_BRICKS))
                 .offerTo(exporter);
+
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.QUARTZ_BRICKS_SLAB, 6)
+                .pattern("AAA")
+                .input('A', Blocks.QUARTZ_BRICKS)
+                .criterion(hasItem(Blocks.QUARTZ_BRICKS), conditionsFromItem(Blocks.QUARTZ_BRICKS))
+                .offerTo(exporter);
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.QUARTZ_BRICKS_STAIRS, 4)
+                .pattern("A  ")
+                .pattern("AA ")
+                .pattern("AAA")
+                .input('A', Blocks.QUARTZ_BRICKS)
+                .criterion(hasItem(Blocks.QUARTZ_BRICKS), conditionsFromItem(Blocks.QUARTZ_BRICKS))
+                .offerTo(exporter);
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.QUARTZ_BRICKS_WALL, 6)
+                .pattern("AAA")
+                .pattern("AAA")
+                .input('A', Blocks.QUARTZ_BRICKS)
+                .criterion(hasItem(Blocks.QUARTZ_BRICKS), conditionsFromItem(Blocks.QUARTZ_BRICKS))
+                .offerTo(exporter);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CALCITE_SLAB, 6)
+                .pattern("AAA")
+                .input('A', Blocks.CALCITE)
+                .criterion(hasItem(Blocks.CALCITE), conditionsFromItem(Blocks.CALCITE))
+                .offerTo(exporter);
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CALCITE_STAIRS, 4)
+                .pattern("A  ")
+                .pattern("AA ")
+                .pattern("AAA")
+                .input('A', Blocks.CALCITE)
+                .criterion(hasItem(Blocks.CALCITE), conditionsFromItem(Blocks.CALCITE))
+                .offerTo(exporter);
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CALCITE_WALL, 6)
+                .pattern("AAA")
+                .pattern("AAA")
+                .input('A', Blocks.CALCITE)
+                .criterion(hasItem(Blocks.CALCITE), conditionsFromItem(Blocks.CALCITE))
+                .offerTo(exporter);
+
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.PURPUR_WALL, 6)
+                .pattern("AAA")
+                .pattern("AAA")
+                .input('A', Blocks.PURPUR_BLOCK)
+                .criterion(hasItem(Blocks.PURPUR_BLOCK), conditionsFromItem(Blocks.PURPUR_BLOCK))
+                .offerTo(exporter);
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.QUARTZ_WALL, 6)
+                .pattern("AAA")
+                .pattern("AAA")
+                .input('A', Blocks.QUARTZ_BLOCK)
+                .criterion(hasItem(Blocks.QUARTZ_BLOCK), conditionsFromItem(Blocks.QUARTZ_BLOCK))
+                .offerTo(exporter);
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SMOOTH_QUARTZ_WALL, 6)
+                .pattern("AAA")
+                .pattern("AAA")
+                .input('A', Blocks.SMOOTH_QUARTZ)
+                .criterion(hasItem(Blocks.SMOOTH_QUARTZ), conditionsFromItem(Blocks.SMOOTH_QUARTZ))
+                .offerTo(exporter);
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_ANDESITE_WALL, 6)
+                .pattern("AAA")
+                .pattern("AAA")
+                .input('A', Blocks.POLISHED_ANDESITE)
+                .criterion(hasItem(Blocks.POLISHED_ANDESITE), conditionsFromItem(Blocks.POLISHED_ANDESITE))
+                .offerTo(exporter);
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_GRANITE_WALL, 6)
+                .pattern("AAA")
+                .pattern("AAA")
+                .input('A', Blocks.POLISHED_GRANITE)
+                .criterion(hasItem(Blocks.POLISHED_GRANITE), conditionsFromItem(Blocks.POLISHED_GRANITE))
+                .offerTo(exporter);
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.POLISHED_DIORITE_WALL, 6)
+                .pattern("AAA")
+                .pattern("AAA")
+                .input('A', Blocks.POLISHED_DIORITE)
+                .criterion(hasItem(Blocks.POLISHED_DIORITE), conditionsFromItem(Blocks.POLISHED_DIORITE))
+                .offerTo(exporter);
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CUT_RED_SANDSTONE_WALL, 6)
+                .pattern("AAA")
+                .pattern("AAA")
+                .input('A', Blocks.CUT_RED_SANDSTONE)
+                .criterion(hasItem(Blocks.CUT_RED_SANDSTONE), conditionsFromItem(Blocks.CUT_RED_SANDSTONE))
+                .offerTo(exporter);
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SMOOTH_RED_SANDSTONE_WALL, 6)
+                .pattern("AAA")
+                .pattern("AAA")
+                .input('A', Blocks.SMOOTH_SANDSTONE)
+                .criterion(hasItem(Blocks.SMOOTH_SANDSTONE), conditionsFromItem(Blocks.SMOOTH_SANDSTONE))
+                .offerTo(exporter);
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CUT_SANDSTONE_WALL, 6)
+                .pattern("AAA")
+                .pattern("AAA")
+                .input('A', Blocks.CUT_SANDSTONE)
+                .criterion(hasItem(Blocks.CUT_SANDSTONE), conditionsFromItem(Blocks.CUT_SANDSTONE))
+                .offerTo(exporter);
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SMOOTH_SANDSTONE_WALL, 6)
+                .pattern("AAA")
+                .pattern("AAA")
+                .input('A', Blocks.SMOOTH_SANDSTONE)
+                .criterion(hasItem(Blocks.SMOOTH_SANDSTONE), conditionsFromItem(Blocks.SMOOTH_SANDSTONE))
+                .offerTo(exporter);
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.PRISMARINE_BRICKS_WALL, 6)
+                .pattern("AAA")
+                .pattern("AAA")
+                .input('A', Blocks.PRISMARINE_BRICKS)
+                .criterion(hasItem(Blocks.PRISMARINE_BRICKS), conditionsFromItem(Blocks.PRISMARINE_BRICKS))
+                .offerTo(exporter);
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.PRISMARINE_WALL, 6)
+                .pattern("AAA")
+                .pattern("AAA")
+                .input('A', Blocks.PRISMARINE)
+                .criterion(hasItem(Blocks.PRISMARINE), conditionsFromItem(Blocks.PRISMARINE))
+                .offerTo(exporter);
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.DARK_PRISMARINE_WALL, 6)
+                .pattern("AAA")
+                .pattern("AAA")
+                .input('A', Blocks.DARK_PRISMARINE)
+                .criterion(hasItem(Blocks.DARK_PRISMARINE), conditionsFromItem(Blocks.DARK_PRISMARINE))
+                .offerTo(exporter);
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.STONE_WALL, 6)
+                .pattern("AAA")
+                .pattern("AAA")
+                .input('A', Blocks.STONE)
+                .criterion(hasItem(Blocks.STONE), conditionsFromItem(Blocks.STONE))
+                .offerTo(exporter);
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SMOOTH_STONE_WALL, 6)
+                .pattern("AAA")
+                .pattern("AAA")
+                .input('A', Blocks.SMOOTH_STONE)
+                .criterion(hasItem(Blocks.SMOOTH_STONE), conditionsFromItem(Blocks.SMOOTH_STONE))
+                .offerTo(exporter);
     }
 }

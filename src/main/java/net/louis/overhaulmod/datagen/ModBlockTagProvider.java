@@ -42,7 +42,31 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.CRACKED_BRICKS)
                 .add(ModBlocks.CRACKED_MUD_BRICKS)
                 .add(ModBlocks.CRACKED_END_STONE_BRICKS)
-                .add(ModBlocks.CRACKED_MOSSY_STONE_BRICKS);
+                .add(ModBlocks.CRACKED_MOSSY_STONE_BRICKS)
+
+                .add(ModBlocks.QUARTZ_BRICKS_SLAB)
+                .add(ModBlocks.QUARTZ_BRICKS_STAIRS)
+                .add(ModBlocks.QUARTZ_BRICKS_WALL)
+
+                .add(ModBlocks.CALCITE_SLAB)
+                .add(ModBlocks.CALCITE_STAIRS)
+                .add(ModBlocks.CALCITE_WALL)
+
+                .add(ModBlocks.PURPUR_WALL)
+                .add(ModBlocks.QUARTZ_WALL)
+                .add(ModBlocks.SMOOTH_QUARTZ_WALL)
+                .add(ModBlocks.POLISHED_ANDESITE_WALL)
+                .add(ModBlocks.POLISHED_GRANITE_WALL)
+                .add(ModBlocks.POLISHED_DIORITE_WALL)
+                .add(ModBlocks.CUT_RED_SANDSTONE_WALL)
+                .add(ModBlocks.SMOOTH_RED_SANDSTONE_WALL)
+                .add(ModBlocks.CUT_SANDSTONE_WALL)
+                .add(ModBlocks.SMOOTH_SANDSTONE_WALL)
+                .add(ModBlocks.PRISMARINE_BRICKS_WALL)
+                .add(ModBlocks.PRISMARINE_WALL)
+                .add(ModBlocks.DARK_PRISMARINE_WALL)
+                .add(ModBlocks.STONE_WALL)
+                .add(ModBlocks.SMOOTH_STONE_WALL);
 
         getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL)
                 .add(ModBlocks.ROSE_QUARTZ_BRICKS)
@@ -66,6 +90,26 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
         getOrCreateTagBuilder(BlockTags.WALLS)
                 .add(ModBlocks.ROSE_QUARTZ_WALL)
-                .add(ModBlocks.LAVENDER_QUARTZ_WALL);
+                .add(ModBlocks.LAVENDER_QUARTZ_WALL)
+
+                .add(ModBlocks.QUARTZ_BRICKS_WALL)
+                .add(ModBlocks.CALCITE_WALL)
+
+                .add(ModBlocks.PURPUR_WALL)
+                .add(ModBlocks.QUARTZ_WALL)
+                .add(ModBlocks.SMOOTH_QUARTZ_WALL)
+                .add(ModBlocks.POLISHED_ANDESITE_WALL)
+                .add(ModBlocks.POLISHED_GRANITE_WALL)
+                .add(ModBlocks.POLISHED_DIORITE_WALL)
+                .add(ModBlocks.CUT_RED_SANDSTONE_WALL)
+                .add(ModBlocks.SMOOTH_RED_SANDSTONE_WALL)
+                .add(ModBlocks.CUT_SANDSTONE_WALL)
+                .add(ModBlocks.SMOOTH_SANDSTONE_WALL)
+                .add(ModBlocks.PRISMARINE_BRICKS_WALL)
+                .add(ModBlocks.PRISMARINE_WALL)
+                .add(ModBlocks.DARK_PRISMARINE_WALL)
+                .add(ModBlocks.STONE_WALL)
+                .add(ModBlocks.SMOOTH_STONE_WALL);
+
     }
 }

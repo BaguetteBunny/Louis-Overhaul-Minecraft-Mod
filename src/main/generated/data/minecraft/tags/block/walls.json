@@ -1,6 +1,23 @@
 {
   "values": [
     "louis-overhaul-mod:rose_quartz_wall",
-    "louis-overhaul-mod:lavender_quartz_wall"
+    "louis-overhaul-mod:lavender_quartz_wall",
+    "louis-overhaul-mod:quartz_bricks_wall",
+    "louis-overhaul-mod:calcite_wall",
+    "louis-overhaul-mod:purpur_wall",
+    "louis-overhaul-mod:quartz_wall",
+    "louis-overhaul-mod:smooth_quartz_wall",
+    "louis-overhaul-mod:polished_andesite_wall",
+    "louis-overhaul-mod:polished_granite_wall",
+    "louis-overhaul-mod:polished_diorite_wall",
+    "louis-overhaul-mod:cut_red_sandstone_wall",
+    "louis-overhaul-mod:smooth_red_sandstone_wall",
+    "louis-overhaul-mod:cut_sandstone_wall",
+    "louis-overhaul-mod:smooth_sandstone_wall",
+    "louis-overhaul-mod:prismarine_bricks_wall",
+    "louis-overhaul-mod:prismarine_wall",
+    "louis-overhaul-mod:dark_prismarine_wall",
+    "louis-overhaul-mod:stone_wall",
+    "louis-overhaul-mod:smooth_stone_wall"
   ]
 }

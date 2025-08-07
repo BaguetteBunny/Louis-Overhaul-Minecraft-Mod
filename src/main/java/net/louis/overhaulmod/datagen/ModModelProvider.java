@@ -4,9 +4,8 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.louis.overhaulmod.block.ModBlocks;
 import net.louis.overhaulmod.item.ModItems;
-import net.minecraft.data.client.BlockStateModelGenerator;
-import net.minecraft.data.client.ItemModelGenerator;
-import net.minecraft.data.client.Models;
+import net.minecraft.block.Blocks;
+import net.minecraft.data.client.*;
 
 
 public class ModModelProvider extends FabricModelProvider {
@@ -26,12 +25,48 @@ public class ModModelProvider extends FabricModelProvider {
         roseQuartzPool.slab(ModBlocks.ROSE_QUARTZ_SLAB);
         roseQuartzPool.wall(ModBlocks.ROSE_QUARTZ_WALL);
 
-        BlockStateModelGenerator.BlockTexturePool lavenderQuartzPool = blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.LAVENDER_QUARTZ_BRICKS);
+        BlockStateModelGenerator.BlockTexturePool lavenderQuartz = blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.LAVENDER_QUARTZ_BRICKS);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CHISELED_LAVENDER_QUARTZ);
         blockStateModelGenerator.registerLog(ModBlocks.LAVENDER_QUARTZ_PILLAR).log(ModBlocks.LAVENDER_QUARTZ_PILLAR).wood(ModBlocks.LAVENDER_QUARTZ_COLUMN);
-        lavenderQuartzPool.stairs(ModBlocks.LAVENDER_QUARTZ_STAIRS);
-        lavenderQuartzPool.slab(ModBlocks.LAVENDER_QUARTZ_SLAB);
-        lavenderQuartzPool.wall(ModBlocks.LAVENDER_QUARTZ_WALL);
+        lavenderQuartz.stairs(ModBlocks.LAVENDER_QUARTZ_STAIRS);
+        lavenderQuartz.slab(ModBlocks.LAVENDER_QUARTZ_SLAB);
+        lavenderQuartz.wall(ModBlocks.LAVENDER_QUARTZ_WALL);
+
+        BlockStateModelGenerator.BlockTexturePool quartzBricksPool = blockStateModelGenerator.registerCubeAllModelTexturePool(Blocks.QUARTZ_BRICKS);
+        quartzBricksPool.stairs(ModBlocks.QUARTZ_BRICKS_STAIRS);
+        quartzBricksPool.slab(ModBlocks.QUARTZ_BRICKS_SLAB);
+        quartzBricksPool.wall(ModBlocks.QUARTZ_BRICKS_WALL);
+
+        BlockStateModelGenerator.BlockTexturePool calcitePool = blockStateModelGenerator.registerCubeAllModelTexturePool(Blocks.CALCITE);
+        calcitePool.stairs(ModBlocks.CALCITE_STAIRS);
+        calcitePool.slab(ModBlocks.CALCITE_SLAB);
+        calcitePool.wall(ModBlocks.CALCITE_WALL);
+
+        BlockStateModelGenerator.BlockTexturePool purpurPool = blockStateModelGenerator.registerCubeAllModelTexturePool(Blocks.PURPUR_BLOCK);
+        purpurPool.wall(ModBlocks.PURPUR_WALL);
+        BlockStateModelGenerator.BlockTexturePool smoothQuartzPool = blockStateModelGenerator.registerCubeAllModelTexturePool(Blocks.SMOOTH_QUARTZ);
+        smoothQuartzPool.wall(ModBlocks.SMOOTH_QUARTZ_WALL);
+        BlockStateModelGenerator.BlockTexturePool polishedAndesitePool = blockStateModelGenerator.registerCubeAllModelTexturePool(Blocks.POLISHED_ANDESITE);
+        polishedAndesitePool.wall(ModBlocks.POLISHED_ANDESITE_WALL);
+        BlockStateModelGenerator.BlockTexturePool polishedGranitePool = blockStateModelGenerator.registerCubeAllModelTexturePool(Blocks.POLISHED_GRANITE);
+        polishedGranitePool.wall(ModBlocks.POLISHED_GRANITE_WALL);
+        BlockStateModelGenerator.BlockTexturePool polishedDioritePool = blockStateModelGenerator.registerCubeAllModelTexturePool(Blocks.POLISHED_DIORITE);
+        polishedDioritePool.wall(ModBlocks.POLISHED_DIORITE_WALL);
+        BlockStateModelGenerator.BlockTexturePool smoothRedSandstonePool = blockStateModelGenerator.registerCubeAllModelTexturePool(Blocks.SMOOTH_RED_SANDSTONE);
+        smoothRedSandstonePool.wall(ModBlocks.SMOOTH_RED_SANDSTONE_WALL);
+        BlockStateModelGenerator.BlockTexturePool smoothSandstonePool = blockStateModelGenerator.registerCubeAllModelTexturePool(Blocks.SMOOTH_SANDSTONE);
+        smoothSandstonePool.wall(ModBlocks.SMOOTH_SANDSTONE_WALL);
+        BlockStateModelGenerator.BlockTexturePool prismarineBricksPool = blockStateModelGenerator.registerCubeAllModelTexturePool(Blocks.PRISMARINE_BRICKS);
+        prismarineBricksPool.wall(ModBlocks.PRISMARINE_BRICKS_WALL);
+        BlockStateModelGenerator.BlockTexturePool prismarinePool = blockStateModelGenerator.registerCubeAllModelTexturePool(Blocks.PRISMARINE);
+        prismarinePool.wall(ModBlocks.PRISMARINE_WALL);
+        BlockStateModelGenerator.BlockTexturePool darkPrismarinePool = blockStateModelGenerator.registerCubeAllModelTexturePool(Blocks.DARK_PRISMARINE);
+        darkPrismarinePool.wall(ModBlocks.DARK_PRISMARINE_WALL);
+        BlockStateModelGenerator.BlockTexturePool smoothStonePool = blockStateModelGenerator.registerCubeAllModelTexturePool(Blocks.SMOOTH_STONE);
+        smoothStonePool.wall(ModBlocks.SMOOTH_STONE_WALL);
+        BlockStateModelGenerator.BlockTexturePool stonePool = blockStateModelGenerator.registerCubeAllModelTexturePool(Blocks.STONE);
+        stonePool.wall(ModBlocks.STONE_WALL);
+        // Manually load models for Quartz, Cut Sandstone & Cut Red Sandstone
 
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CRACKED_END_STONE_BRICKS);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CRACKED_BRICKS);

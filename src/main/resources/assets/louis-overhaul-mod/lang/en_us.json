@@ -66,5 +66,29 @@
   "block.louis-overhaul-mod.cracked_mossy_stone_bricks": "Cracked Mossy Stone Bricks",
   "block.louis-overhaul-mod.cracked_mud_bricks": "Cracked Mud Bricks",
 
+  "block.louis-overhaul-mod.quartz_bricks_slab": "Quartz Bricks Slab",
+  "block.louis-overhaul-mod.quartz_bricks_stairs": "Quartz Bricks Stairs",
+  "block.louis-overhaul-mod.quartz_bricks_wall": "Quartz Bricks Wall",
+
+  "block.louis-overhaul-mod.calcite_slab": "Calcite Slab",
+  "block.louis-overhaul-mod.calcite_stairs": "Calcite Stairs",
+  "block.louis-overhaul-mod.calcite_wall": "Calcite Wall",
+
+  "block.louis-overhaul-mod.purpur_wall": "Purpur Wall",
+  "block.louis-overhaul-mod.quartz_wall": "Quartz Wall",
+  "block.louis-overhaul-mod.smooth_quartz_wall": "Smooth Quartz Wall",
+  "block.louis-overhaul-mod.polished_andesite_wall": "Polished Andesite Wall",
+  "block.louis-overhaul-mod.polished_granite_wall": "Polished Granite Wall",
+  "block.louis-overhaul-mod.polished_diorite_wall": "Polished Diorite Wall",
+  "block.louis-overhaul-mod.cut_red_sandstone_wall": "Cut Red Sandstone Wall",
+  "block.louis-overhaul-mod.smooth_red_sandstone_wall": "Smooth Red Sandstone Wall",
+  "block.louis-overhaul-mod.cut_sandstone_wall": "Cut Sandstone Wall",
+  "block.louis-overhaul-mod.smooth_sandstone_wall": "Smooth Sandstone Wall",
+  "block.louis-overhaul-mod.prismarine_bricks_wall": "Prismarine Bricks Wall",
+  "block.louis-overhaul-mod.prismarine_wall": "Prismarine Wall",
+  "block.louis-overhaul-mod.dark_prismarine_wall": "Dark Prismarine Wall",
+  "block.louis-overhaul-mod.stone_wall": "Stone Wall",
+  "block.louis-overhaul-mod.smooth_stone_wall": "Smooth Stone Wall",
+
   "sound.louis-overhaul-mod.saddled_goat_horn_use": "Saddled Goat Horn Use"
 }

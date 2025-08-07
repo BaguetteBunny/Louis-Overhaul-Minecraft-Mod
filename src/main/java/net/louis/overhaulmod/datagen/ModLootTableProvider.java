@@ -51,6 +51,30 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.CRACKED_RED_NETHER_BRICKS);
         addDrop(ModBlocks.CRACKED_END_STONE_BRICKS);
         addDrop(ModBlocks.CRACKED_MUD_BRICKS);
+
+        addDrop(ModBlocks.QUARTZ_BRICKS_SLAB);
+        addDrop(ModBlocks.QUARTZ_BRICKS_STAIRS);
+        addDrop(ModBlocks.QUARTZ_BRICKS_WALL);
+
+        addDrop(ModBlocks.CALCITE_SLAB);
+        addDrop(ModBlocks.CALCITE_STAIRS);
+        addDrop(ModBlocks.CALCITE_WALL);
+
+        addDrop(ModBlocks.PURPUR_WALL);
+        addDrop(ModBlocks.QUARTZ_WALL);
+        addDrop(ModBlocks.SMOOTH_QUARTZ_WALL);
+        addDrop(ModBlocks.POLISHED_ANDESITE_WALL);
+        addDrop(ModBlocks.POLISHED_GRANITE_WALL);
+        addDrop(ModBlocks.POLISHED_DIORITE_WALL);
+        addDrop(ModBlocks.CUT_RED_SANDSTONE_WALL);
+        addDrop(ModBlocks.SMOOTH_RED_SANDSTONE_WALL);
+        addDrop(ModBlocks.CUT_SANDSTONE_WALL);
+        addDrop(ModBlocks.SMOOTH_SANDSTONE_WALL);
+        addDrop(ModBlocks.PRISMARINE_BRICKS_WALL);
+        addDrop(ModBlocks.PRISMARINE_WALL);
+        addDrop(ModBlocks.DARK_PRISMARINE_WALL);
+        addDrop(ModBlocks.SMOOTH_STONE_WALL);
+        addDrop(ModBlocks.STONE_WALL);
     }
 
     public LootTable.Builder multipleOreDrops(Block drop, Item item, float minDrops, float maxDrops) {
