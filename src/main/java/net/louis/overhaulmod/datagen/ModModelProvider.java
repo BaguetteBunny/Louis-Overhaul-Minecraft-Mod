@@ -64,9 +64,15 @@ public class ModModelProvider extends FabricModelProvider {
         darkPrismarinePool.wall(ModBlocks.DARK_PRISMARINE_WALL);
         BlockStateModelGenerator.BlockTexturePool smoothStonePool = blockStateModelGenerator.registerCubeAllModelTexturePool(Blocks.SMOOTH_STONE);
         smoothStonePool.wall(ModBlocks.SMOOTH_STONE_WALL);
+        smoothStonePool.stairs(ModBlocks.SMOOTH_STONE_STAIRS);
         BlockStateModelGenerator.BlockTexturePool stonePool = blockStateModelGenerator.registerCubeAllModelTexturePool(Blocks.STONE);
         stonePool.wall(ModBlocks.STONE_WALL);
-        // Manually load models for Quartz, Cut Sandstone & Cut Red Sandstone
+        BlockStateModelGenerator.BlockTexturePool cutRedSandstone = blockStateModelGenerator.registerCubeAllModelTexturePool(Blocks.CUT_RED_SANDSTONE);
+        cutRedSandstone.stairs(ModBlocks.CUT_RED_SANDSTONE_STAIRS);
+        BlockStateModelGenerator.BlockTexturePool cutSandstone = blockStateModelGenerator.registerCubeAllModelTexturePool(Blocks.CUT_SANDSTONE);
+        cutSandstone.stairs(ModBlocks.CUT_SANDSTONE_STAIRS);
+
+        // Manually load Wall models for Quartz, Cut Sandstone & Cut Red Sandstone
 
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CRACKED_END_STONE_BRICKS);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CRACKED_BRICKS);

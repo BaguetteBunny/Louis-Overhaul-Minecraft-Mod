@@ -92,7 +92,6 @@ public class ModBlocks {
     public static final Block SMOOTH_STONE_STAIRS = registerBlock("smooth_stone_stairs",
             new StairsBlock(Blocks.SMOOTH_STONE.getDefaultState(), AbstractBlock.Settings.copy(Blocks.SMOOTH_STONE).mapColor(MapColor.STONE_GRAY)));
 
-
     // LAVENDER QUARTZ FAMILY
     public static final Block LAVENDER_QUARTZ_BRICKS = registerBlock("lavender_quartz_bricks",
             new Block(AbstractBlock.Settings.copy(Blocks.QUARTZ_BLOCK).mapColor(MapColor.PALE_PURPLE)));
@@ -178,6 +177,10 @@ public class ModBlocks {
             entries.add(ModBlocks.CALCITE_SLAB);
             entries.add(ModBlocks.CALCITE_STAIRS);
             entries.add(ModBlocks.CALCITE_WALL);
+
+            entries.add(ModBlocks.SMOOTH_STONE_STAIRS);
+            entries.add(ModBlocks.CUT_RED_SANDSTONE_STAIRS);
+            entries.add(ModBlocks.CUT_SANDSTONE_STAIRS);
 
             entries.add(ModBlocks.PURPUR_WALL);
             entries.add(ModBlocks.QUARTZ_WALL);

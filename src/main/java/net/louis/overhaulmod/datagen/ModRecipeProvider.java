@@ -316,6 +316,13 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .input('A', Blocks.CUT_RED_SANDSTONE)
                 .criterion(hasItem(Blocks.CUT_RED_SANDSTONE), conditionsFromItem(Blocks.CUT_RED_SANDSTONE))
                 .offerTo(exporter);
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CUT_RED_SANDSTONE_STAIRS, 4)
+                .pattern("A  ")
+                .pattern("AA ")
+                .pattern("AAA")
+                .input('A', Blocks.CUT_RED_SANDSTONE)
+                .criterion(hasItem(Blocks.CUT_RED_SANDSTONE), conditionsFromItem(Blocks.CUT_RED_SANDSTONE))
+                .offerTo(exporter);
         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SMOOTH_RED_SANDSTONE_WALL, 6)
                 .pattern("AAA")
                 .pattern("AAA")
@@ -324,6 +331,13 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .offerTo(exporter);
         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CUT_SANDSTONE_WALL, 6)
                 .pattern("AAA")
+                .pattern("AAA")
+                .input('A', Blocks.CUT_SANDSTONE)
+                .criterion(hasItem(Blocks.CUT_SANDSTONE), conditionsFromItem(Blocks.CUT_SANDSTONE))
+                .offerTo(exporter);
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CUT_SANDSTONE_STAIRS, 4)
+                .pattern("A  ")
+                .pattern("AA ")
                 .pattern("AAA")
                 .input('A', Blocks.CUT_SANDSTONE)
                 .criterion(hasItem(Blocks.CUT_SANDSTONE), conditionsFromItem(Blocks.CUT_SANDSTONE))
@@ -360,6 +374,13 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .offerTo(exporter);
         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SMOOTH_STONE_WALL, 6)
                 .pattern("AAA")
+                .pattern("AAA")
+                .input('A', Blocks.SMOOTH_STONE)
+                .criterion(hasItem(Blocks.SMOOTH_STONE), conditionsFromItem(Blocks.SMOOTH_STONE))
+                .offerTo(exporter);
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.SMOOTH_STONE_STAIRS, 4)
+                .pattern("A  ")
+                .pattern("AA ")
                 .pattern("AAA")
                 .input('A', Blocks.SMOOTH_STONE)
                 .criterion(hasItem(Blocks.SMOOTH_STONE), conditionsFromItem(Blocks.SMOOTH_STONE))

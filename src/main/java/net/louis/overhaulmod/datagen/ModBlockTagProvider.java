@@ -52,6 +52,10 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.CALCITE_STAIRS)
                 .add(ModBlocks.CALCITE_WALL)
 
+                .add(ModBlocks.SMOOTH_STONE_STAIRS)
+                .add(ModBlocks.CUT_RED_SANDSTONE_STAIRS)
+                .add(ModBlocks.CUT_SANDSTONE_STAIRS)
+
                 .add(ModBlocks.PURPUR_WALL)
                 .add(ModBlocks.QUARTZ_WALL)
                 .add(ModBlocks.SMOOTH_QUARTZ_WALL)

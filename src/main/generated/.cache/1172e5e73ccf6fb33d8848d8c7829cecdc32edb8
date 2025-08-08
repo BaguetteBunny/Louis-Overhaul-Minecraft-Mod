@@ -1,4 +1,4 @@
-// 1.21.1	2025-08-07T11:21:17.8548005	Louis' Overhaul Mod/Block Loot Tables
+// 1.21.1	2025-08-08T13:54:45.8560264	Louis' Overhaul Mod/Block Loot Tables
 b9d378b6f415f870914da8eb88fc06ea2947083d data\louis-overhaul-mod\loot_table\blocks\cracked_mud_bricks.json
 3002956f9c54ddc00b5c76cc6d997b0ea382b28e data\louis-overhaul-mod\loot_table\blocks\calcite_slab.json
 8c1121027498673e9b08968ab21c661d9dea00f7 data\louis-overhaul-mod\loot_table\blocks\smooth_red_sandstone_wall.json
@@ -8,6 +8,8 @@ b762b7161838381c717a2226912639d1ef73afe8 data\louis-overhaul-mod\loot_table\bloc
 15952485d14f47c5e6bb8623def955cce3d5ae4f data\louis-overhaul-mod\loot_table\blocks\cracked_mossy_stone_bricks.json
 046cddd3516a8b18190edd1fc828620e04ba6921 data\louis-overhaul-mod\loot_table\blocks\lavender_quartz_slab.json
 2113558a1fd8a465dd70e6b54eb22b0f040c325b data\louis-overhaul-mod\loot_table\blocks\cut_sandstone_wall.json
+d8742f840218f3eb34cd9999fb1aff2d69c98c07 data\louis-overhaul-mod\loot_table\blocks\cut_red_sandstone_stairs.json
+7545aad9e28638aa0e4642fe217e314ba989f263 data\louis-overhaul-mod\loot_table\blocks\cut_sandstone_stairs.json
 96efa7e6aae736db4613b7afe2d25c9376ef0e89 data\louis-overhaul-mod\loot_table\blocks\polished_andesite_wall.json
 103d9124d8b591eeddf83b190d7177377bd94046 data\louis-overhaul-mod\loot_table\blocks\rose_quartz_pillar.json
 95c234e30e5fd2bf0fc1758a32aa889ef7307769 data\louis-overhaul-mod\loot_table\blocks\cracked_bricks.json
@@ -33,6 +35,7 @@ e6c90e6b073d8f8c84b7c869c860016d0d9cdde6 data\louis-overhaul-mod\loot_table\bloc
 98d8f33bb0c9d4825b2041cf0c3ceda1381bc7a8 data\louis-overhaul-mod\loot_table\blocks\cracked_red_nether_bricks.json
 a91cfec97bfdb72d27cee8420c2d7084d50a473b data\louis-overhaul-mod\loot_table\blocks\dark_prismarine_wall.json
 de6b18f30785df02080b8b0d2092d2322dd15007 data\louis-overhaul-mod\loot_table\blocks\rose_quartz_stairs.json
+76a55f14039252383dca6f7077c1293fe47d9b11 data\louis-overhaul-mod\loot_table\blocks\smooth_stone_stairs.json
 6384998197d459a3abf570a936839e590b0287d0 data\louis-overhaul-mod\loot_table\blocks\quartz_bricks_wall.json
 01db83e8a7013910779381315b4d8ac668d76c24 data\louis-overhaul-mod\loot_table\blocks\quartz_bricks_stairs.json
 87351541a1da44039bd175450afe79ee39ea8fac data\louis-overhaul-mod\loot_table\blocks\cracked_tuff_bricks.json

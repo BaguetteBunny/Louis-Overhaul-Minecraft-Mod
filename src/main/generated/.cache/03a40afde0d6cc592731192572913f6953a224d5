@@ -1,5 +1,5 @@
-// 1.21.1	2025-08-07T11:21:17.8548005	Louis' Overhaul Mod/Tags for minecraft:block
-549ce6ffca1400f1b78793bcd4db11e98fdf34ad data\minecraft\tags\block\mineable\pickaxe.json
+// 1.21.1	2025-08-08T13:54:45.8560264	Louis' Overhaul Mod/Tags for minecraft:block
 80b0dae6ba4e6c10261638ebb69b0d61926617fa data\minecraft\tags\block\rails.json
+de8e50ea941681b3b6468798846fc561605d7741 data\minecraft\tags\block\mineable\pickaxe.json
 03a53e33359573e5912201d9ae4895ad3d399590 data\minecraft\tags\block\needs_stone_tool.json
 328d6f0e0ccf621bf72b7df4e32a475c1912cd44 data\minecraft\tags\block\walls.json
