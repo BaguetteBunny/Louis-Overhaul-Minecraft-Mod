@@ -53,6 +53,7 @@ public class ModUseEvents {
         UseBlockCallback.EVENT.register(ModUseEvents::oxidizeCopperWithClock);
         UseBlockCallback.EVENT.register(ModUseEvents::retexturePlayerHead);
         UseItemCallback.EVENT.register(ModUseEvents::getLlamaSpitBottle);
+        UseBlockCallback.EVENT.register(ModUseEvents::useChilledBonemeal);
     }
 
     public static void registerStew() {
@@ -179,6 +180,145 @@ public class ModUseEvents {
             }
         }
 
+        return ActionResult.PASS;
+    }
+
+    private static ActionResult useChilledBonemeal(PlayerEntity player, World world, Hand hand, BlockHitResult hitResult) {
+        ItemStack heldItem = player.getStackInHand(hand);
+        if (world.isClient() || !heldItem.isOf(ModItems.CHILLED_BONE_MEAL)) {
+            return ActionResult.PASS;
+        }
+
+        BlockPos pos = hitResult.getBlockPos();
+        BlockState blockState = world.getBlockState(pos);
+        Block targetBlock = blockState.getBlock();
+
+        double x = pos.getX() + 0.5;
+        double y = pos.getY() + 0.5;
+        double z = pos.getZ() + 0.5;
+
+        // Case 1: CACTUS
+        if (blockState.contains(CactusBlock.AGE)) {
+            BlockPos checkUpwardPos = pos;
+            for (int i = 0; i < 2; i++) {
+                checkUpwardPos = checkUpwardPos.up();
+
+                if (world.isAir(checkUpwardPos)) {
+                    if (world.getBlockState(pos.down()).contains(CactusBlock.AGE)) {
+                        break;
+                    }
+                    world.setBlockState(checkUpwardPos, targetBlock.getDefaultState());
+                    world.setBlockState(checkUpwardPos, blockState.with(CactusBlock.AGE, 0), Block.NOTIFY_LISTENERS);
+                    world.playSound(null, pos, SoundEvents.ITEM_BONE_MEAL_USE,
+                            SoundCategory.PLAYERS, 1.0F, 0.5F);
+                    ((ServerWorld) world).spawnParticles(
+                            ParticleTypes.HAPPY_VILLAGER,
+                            x,
+                            y,
+                            z,
+                            10,
+                            0.5, 0.5, 0.5,
+                            0.2
+                    );
+                    return ActionResult.SUCCESS;
+                }
+            }
+        }
+
+        // Case 2: SUGAR CANE
+        if (blockState.contains(SugarCaneBlock.AGE)) {
+            BlockPos checkUpwardPos = pos;
+            for (int i = 0; i < 2; i++) {
+                checkUpwardPos = checkUpwardPos.up();
+
+                if (world.isAir(checkUpwardPos)) {
+                    if (world.getBlockState(pos.down()).contains(SugarCaneBlock.AGE)) {
+                        break;
+                    }
+                    world.setBlockState(checkUpwardPos, targetBlock.getDefaultState());
+                    world.setBlockState(checkUpwardPos, blockState.with(SugarCaneBlock.AGE, 0), Block.NOTIFY_LISTENERS);
+                    world.playSound(null, pos, SoundEvents.ITEM_BONE_MEAL_USE,
+                            SoundCategory.PLAYERS, 1.0F, 0.5F);
+                    ((ServerWorld) world).spawnParticles(
+                            ParticleTypes.HAPPY_VILLAGER,
+                            x,
+                            y,
+                            z,
+                            10,
+                            0.5, 0.5, 0.5,
+                            0.2
+                    );
+                    return ActionResult.SUCCESS;
+                }
+            }
+        }
+
+        // Case 3: NETHER WART
+        if (blockState.contains(NetherWartBlock.AGE)) {
+            int age = blockState.get(NetherWartBlock.AGE);
+            if (age < 3) {
+                world.setBlockState(pos, blockState.with(NetherWartBlock.AGE, age + 1), Block.NOTIFY_LISTENERS);
+                world.playSound(null, pos, SoundEvents.ITEM_BONE_MEAL_USE,
+                        SoundCategory.PLAYERS, 1.0F, 0.5F);
+                ((ServerWorld) world).spawnParticles(
+                        ParticleTypes.HAPPY_VILLAGER,
+                        x,
+                        y,
+                        z,
+                        10,
+                        0.5, 0.5, 0.5,
+                        0.2
+                );
+                return ActionResult.SUCCESS;
+            }
+        }
+
+        // Case 4: CHORUS PLANT
+        Random random = Random.create();
+        if (targetBlock instanceof ChorusFlowerBlock) {
+            int age = blockState.get(ChorusFlowerBlock.AGE);
+            if (age < 5) {
+                ChorusFlowerBlock.generate(world, pos, random, 20);
+                world.playSound(null, pos, SoundEvents.ITEM_BONE_MEAL_USE,
+                        SoundCategory.PLAYERS, 1.0F, 0.5F);
+                ((ServerWorld) world).spawnParticles(
+                        ParticleTypes.HAPPY_VILLAGER,
+                        x,
+                        y,
+                        z,
+                        10,
+                        0.5, 0.5, 0.5,
+                        0.2
+                );
+                return ActionResult.SUCCESS;
+            }
+        }
+
+        // Case 5: VINES
+        if (targetBlock instanceof VineBlock) {
+            BlockPos checkDownPos = pos;
+            for (int j = 0; j < 9; j++) {
+                checkDownPos = checkDownPos.down();
+                if (world.isAir(checkDownPos)) {
+                    world.setBlockState(checkDownPos, blockState, Block.NOTIFY_ALL);
+                    world.playSound(null, pos, SoundEvents.ITEM_BONE_MEAL_USE,
+                            SoundCategory.PLAYERS, 1.0F, 0.5F);
+                    ((ServerWorld) world).spawnParticles(
+                            ParticleTypes.HAPPY_VILLAGER,
+                            x,
+                            y,
+                            z,
+                            10,
+                            0.5, 0.5, 0.5,
+                            0.2
+                    );
+                    return ActionResult.SUCCESS;
+                }
+                else if (!world.getBlockState(pos).isOf(Blocks.VINE)) {
+                    break;
+                }
+            }
+        }
         return ActionResult.PASS;
     }
 
