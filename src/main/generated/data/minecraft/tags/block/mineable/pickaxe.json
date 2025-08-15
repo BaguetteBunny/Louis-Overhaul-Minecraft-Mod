@@ -46,6 +46,15 @@
     "louis-overhaul-mod:prismarine_wall",
     "louis-overhaul-mod:dark_prismarine_wall",
     "louis-overhaul-mod:stone_wall",
-    "louis-overhaul-mod:smooth_stone_wall"
+    "louis-overhaul-mod:smooth_stone_wall",
+    "louis-overhaul-mod:chiseled_dark_prismarine",
+    "louis-overhaul-mod:chiseled_purpur",
+    "louis-overhaul-mod:chiseled_deepslate_bricks",
+    "louis-overhaul-mod:chiseled_end_stone_bricks",
+    "louis-overhaul-mod:chiseled_mud_bricks",
+    "louis-overhaul-mod:chiseled_red_nether_bricks",
+    "louis-overhaul-mod:chiseled_mossy_stone_bricks",
+    "louis-overhaul-mod:chiseled_prismarine",
+    "louis-overhaul-mod:chiseled_prismarine_bricks"
   ]
 }

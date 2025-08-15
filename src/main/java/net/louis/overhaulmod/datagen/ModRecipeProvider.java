@@ -385,5 +385,61 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .input('A', Blocks.SMOOTH_STONE)
                 .criterion(hasItem(Blocks.SMOOTH_STONE), conditionsFromItem(Blocks.SMOOTH_STONE))
                 .offerTo(exporter);
+
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_DARK_PRISMARINE, 1)
+                .pattern("A")
+                .pattern("A")
+                .input('A', Blocks.DARK_PRISMARINE_SLAB)
+                .criterion(hasItem(Blocks.DARK_PRISMARINE), conditionsFromItem(Blocks.DARK_PRISMARINE))
+                .offerTo(exporter);
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_DEEPSLATE_BRICKS, 1)
+                .pattern("A")
+                .pattern("A")
+                .input('A', Blocks.DEEPSLATE_BRICK_SLAB)
+                .criterion(hasItem(Blocks.DEEPSLATE_BRICKS), conditionsFromItem(Blocks.DEEPSLATE_BRICKS))
+                .offerTo(exporter);
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_PRISMARINE, 1)
+                .pattern("A")
+                .pattern("A")
+                .input('A', Blocks.PRISMARINE_SLAB)
+                .criterion(hasItem(Blocks.PRISMARINE), conditionsFromItem(Blocks.PRISMARINE))
+                .offerTo(exporter);
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_MUD_BRICKS, 1)
+                .pattern("A")
+                .pattern("A")
+                .input('A', Blocks.MUD_BRICK_SLAB)
+                .criterion(hasItem(Blocks.MUD_BRICKS), conditionsFromItem(Blocks.MUD_BRICKS))
+                .offerTo(exporter);
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_PURPUR, 1)
+                .pattern("A")
+                .pattern("A")
+                .input('A', Blocks.PURPUR_SLAB)
+                .criterion(hasItem(Blocks.PURPUR_BLOCK), conditionsFromItem(Blocks.PURPUR_BLOCK))
+                .offerTo(exporter);
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_END_STONE_BRICKS, 1)
+                .pattern("A")
+                .pattern("A")
+                .input('A', Blocks.END_STONE_BRICK_SLAB)
+                .criterion(hasItem(Blocks.END_STONE_BRICKS), conditionsFromItem(Blocks.END_STONE_BRICKS))
+                .offerTo(exporter);
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_PRISMARINE_BRICKS, 1)
+                .pattern("A")
+                .pattern("A")
+                .input('A', Blocks.PRISMARINE_BRICK_SLAB)
+                .criterion(hasItem(Blocks.PRISMARINE_BRICKS), conditionsFromItem(Blocks.PRISMARINE_BRICKS))
+                .offerTo(exporter);
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_RED_NETHER_BRICKS, 1)
+                .pattern("A")
+                .pattern("A")
+                .input('A', Blocks.RED_NETHER_BRICK_SLAB)
+                .criterion(hasItem(Blocks.RED_NETHER_BRICKS), conditionsFromItem(Blocks.RED_NETHER_BRICKS))
+                .offerTo(exporter);
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_MOSSY_STONE_BRICKS, 1)
+                .pattern("A")
+                .pattern("A")
+                .input('A', Blocks.MOSSY_STONE_BRICK_SLAB)
+                .criterion(hasItem(Blocks.MOSSY_STONE_BRICKS), conditionsFromItem(Blocks.MOSSY_STONE_BRICKS))
+                .offerTo(exporter);
     }
 }

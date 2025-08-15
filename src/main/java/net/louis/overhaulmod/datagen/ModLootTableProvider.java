@@ -79,6 +79,16 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.DARK_PRISMARINE_WALL);
         addDrop(ModBlocks.SMOOTH_STONE_WALL);
         addDrop(ModBlocks.STONE_WALL);
+
+        addDrop(ModBlocks.CHISELED_DARK_PRISMARINE);
+        addDrop(ModBlocks.CHISELED_PURPUR);
+        addDrop(ModBlocks.CHISELED_DEEPSLATE_BRICKS);
+        addDrop(ModBlocks.CHISELED_END_STONE_BRICKS);
+        addDrop(ModBlocks.CHISELED_MUD_BRICKS);
+        addDrop(ModBlocks.CHISELED_RED_NETHER_BRICKS);
+        addDrop(ModBlocks.CHISELED_MOSSY_STONE_BRICKS);
+        addDrop(ModBlocks.CHISELED_PRISMARINE);
+        addDrop(ModBlocks.CHISELED_PRISMARINE_BRICKS);
     }
 
     public LootTable.Builder multipleOreDrops(Block drop, Item item, float minDrops, float maxDrops) {

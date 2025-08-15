@@ -126,6 +126,26 @@ public class ModBlocks {
     public static final Block CRACKED_TUFF_BRICKS = registerBlock("cracked_tuff_bricks",
             new Block(AbstractBlock.Settings.copy(Blocks.TUFF_BRICKS)));
 
+    // CHISELED BRICKS FAMILY
+    public static final Block CHISELED_DARK_PRISMARINE = registerBlock("chiseled_dark_prismarine",
+            new Block(AbstractBlock.Settings.copy(Blocks.DARK_PRISMARINE)));
+    public static final Block CHISELED_DEEPSLATE_BRICKS = registerBlock("chiseled_deepslate_bricks",
+            new Block(AbstractBlock.Settings.copy(Blocks.DEEPSLATE_BRICKS)));
+    public static final Block CHISELED_END_STONE_BRICKS = registerBlock("chiseled_end_stone_bricks",
+            new Block(AbstractBlock.Settings.copy(Blocks.END_STONE_BRICKS)));
+    public static final Block CHISELED_MOSSY_STONE_BRICKS = registerBlock("chiseled_mossy_stone_bricks",
+            new Block(AbstractBlock.Settings.copy(Blocks.MOSSY_STONE_BRICKS)));
+    public static final Block CHISELED_MUD_BRICKS = registerBlock("chiseled_mud_bricks",
+            new Block(AbstractBlock.Settings.copy(Blocks.MUD_BRICKS)));
+    public static final Block CHISELED_PRISMARINE = registerBlock("chiseled_prismarine",
+            new Block(AbstractBlock.Settings.copy(Blocks.PRISMARINE)));
+    public static final Block CHISELED_PRISMARINE_BRICKS = registerBlock("chiseled_prismarine_bricks",
+            new Block(AbstractBlock.Settings.copy(Blocks.PRISMARINE_BRICKS)));
+    public static final Block CHISELED_PURPUR = registerBlock("chiseled_purpur",
+            new Block(AbstractBlock.Settings.copy(Blocks.PURPUR_BLOCK)));
+    public static final Block CHISELED_RED_NETHER_BRICKS = registerBlock("chiseled_red_nether_bricks",
+            new Block(AbstractBlock.Settings.copy(Blocks.RED_NETHER_BRICKS)));
+
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);
         return Registry.register(Registries.BLOCK, Identifier.of(LouisOverhaulMod.MOD_ID, name), block);
@@ -197,6 +217,16 @@ public class ModBlocks {
             entries.add(ModBlocks.DARK_PRISMARINE_WALL);
             entries.add(ModBlocks.SMOOTH_STONE_WALL);
             entries.add(ModBlocks.STONE_WALL);
+
+            entries.add(ModBlocks.CHISELED_DARK_PRISMARINE);
+            entries.add(ModBlocks.CHISELED_PURPUR);
+            entries.add(ModBlocks.CHISELED_DEEPSLATE_BRICKS);
+            entries.add(ModBlocks.CHISELED_END_STONE_BRICKS);
+            entries.add(ModBlocks.CHISELED_MUD_BRICKS);
+            entries.add(ModBlocks.CHISELED_RED_NETHER_BRICKS);
+            entries.add(ModBlocks.CHISELED_MOSSY_STONE_BRICKS);
+            entries.add(ModBlocks.CHISELED_PRISMARINE);
+            entries.add(ModBlocks.CHISELED_PRISMARINE_BRICKS);
         });
 
     }
