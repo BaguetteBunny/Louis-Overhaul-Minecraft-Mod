@@ -1,4 +1,4 @@
-// 1.21.1	2025-08-15T16:48:51.2792394	Louis' Overhaul Mod/Recipes
+// 1.21.1	2025-08-15T17:44:19.0302855	Louis' Overhaul Mod/Recipes
 7077338f906e5820e1314c2cf83fd870e37109b8 data\louis-overhaul-mod\advancement\recipes\building_blocks\smooth_quartz_wall.json
 c8d326678d9b436be48d33f2b13e259c7dc3c7ab data\louis-overhaul-mod\recipe\cut_sandstone_wall.json
 8ff9ef8b9312eb5f6b1108ed337cede56fbe87aa data\louis-overhaul-mod\recipe\cut_sandstone_stairs.json
@@ -15,6 +15,7 @@ c78d05a2907273db364396d15a2e747ec9d3e2eb data\louis-overhaul-mod\recipe\calcite_
 5bb07fb1c26a0e645f8289cebc9cc8a52ecbd585 data\louis-overhaul-mod\advancement\recipes\building_blocks\purpur_wall.json
 41a8df2cc0139413f1fb401dd4400ea628bd8b61 data\louis-overhaul-mod\recipe\chiseled_rose_quartz.json
 deb870f37178a94bfca9a7b4a4ce1fe696a61314 data\louis-overhaul-mod\advancement\recipes\building_blocks\lavender_quartz_wall.json
+a7303b73dfb5ed3ab0aaecf347608ac3e3702066 data\louis-overhaul-mod\advancement\recipes\misc\chilled_bone_meal.json
 74c4f09d1f6701b7fe1f9d5cdb98e7557c703d96 data\louis-overhaul-mod\advancement\recipes\building_blocks\smooth_sandstone_wall.json
 bc907fe76e940be243b3db822b5864dd03d5aff2 data\louis-overhaul-mod\advancement\recipes\building_blocks\chiseled_lavender_quartz.json
 e9731f5ba4afe29060c6807f6d01f04685f86da3 data\louis-overhaul-mod\advancement\recipes\building_blocks\cracked_prismarine_bricks_from_smelting_prismarine_bricks.json
@@ -59,6 +60,7 @@ c53e519d2b368134faa059995ba340eff636de30 data\louis-overhaul-mod\advancement\rec
 cbdbb24656f84054b5bc5e09da7c7d6a76dc5825 data\louis-overhaul-mod\advancement\recipes\misc\saddled_goat_horn.json
 dfe2901b65400ed18d95290857a9c9f00d811474 data\louis-overhaul-mod\recipe\copper_rail.json
 5a6e9a33ed5fabae3ce6a1a08f0e7b05e4e5db52 data\louis-overhaul-mod\recipe\rose_quartz_slab.json
+73f8d4337a666b580d030fb8083dd64491957da8 data\louis-overhaul-mod\recipe\chilled_bone_meal.json
 f61094ef3ecb23896d18246a2f44d62855298e22 data\louis-overhaul-mod\advancement\recipes\building_blocks\cracked_quartz_bricks_from_smelting_quartz_bricks.json
 51b1199f0166ccbc561f23f8de3731d692e8f296 data\louis-overhaul-mod\advancement\recipes\building_blocks\polished_granite_wall.json
 2dad58f01c3f1c522535583b6a15e75467b4b390 data\louis-overhaul-mod\advancement\recipes\building_blocks\quartz_bricks_slab.json

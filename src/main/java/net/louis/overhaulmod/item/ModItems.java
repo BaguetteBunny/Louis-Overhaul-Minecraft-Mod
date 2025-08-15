@@ -15,6 +15,8 @@ import net.minecraft.util.Identifier;
 public class ModItems {
     public static final Item CHILLED_BONE = registerItem("chilled_bone",
             new Item(new Item.Settings()));
+    public static final Item CHILLED_BONE_MEAL = registerItem("chilled_bone_meal",
+            new Item(new Item.Settings()));
     public static final Item BAT_FANG = registerItem("bat_fang",
             new Item(new Item.Settings()));
     public static final Item ENDERMITE_HEART = registerItem("endermite_heart",
@@ -89,6 +91,7 @@ public class ModItems {
             entries.add(SANDY_FLESH);
             entries.add(CHILLED_BONE);
             entries.add(LLAMAS_SPIT);
+            entries.add(CHILLED_BONE_MEAL);
         });
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT).register(entries -> {
             entries.add(NETHERITE_HORSE_ARMOR);
