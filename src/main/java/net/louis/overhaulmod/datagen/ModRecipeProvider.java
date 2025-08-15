@@ -447,5 +447,13 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .input('A', Blocks.MOSSY_STONE_BRICK_SLAB)
                 .criterion(hasItem(Blocks.MOSSY_STONE_BRICKS), conditionsFromItem(Blocks.MOSSY_STONE_BRICKS))
                 .offerTo(exporter);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.RED_NETHER_BRICK_FENCE, 6)
+                .pattern("ABA")
+                .pattern("ABA")
+                .input('A', Blocks.RED_NETHER_BRICKS)
+                .input('B', Items.NETHER_BRICKS)
+                .criterion(hasItem(Blocks.RED_NETHER_BRICKS), conditionsFromItem(Blocks.RED_NETHER_BRICKS))
+                .offerTo(exporter);
     }
 }

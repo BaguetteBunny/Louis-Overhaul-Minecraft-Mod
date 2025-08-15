@@ -80,7 +80,9 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.CHISELED_RED_NETHER_BRICKS)
                 .add(ModBlocks.CHISELED_MOSSY_STONE_BRICKS)
                 .add(ModBlocks.CHISELED_PRISMARINE)
-                .add(ModBlocks.CHISELED_PRISMARINE_BRICKS);
+                .add(ModBlocks.CHISELED_PRISMARINE_BRICKS)
+
+                .add(ModBlocks.RED_NETHER_BRICK_FENCE);
 
         getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL)
                 .add(ModBlocks.ROSE_QUARTZ_BRICKS)
@@ -124,5 +126,8 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.DARK_PRISMARINE_WALL)
                 .add(ModBlocks.STONE_WALL)
                 .add(ModBlocks.SMOOTH_STONE_WALL);
+
+        getOrCreateTagBuilder(BlockTags.FENCES)
+                .add(ModBlocks.RED_NETHER_BRICK_FENCE);
     }
 }

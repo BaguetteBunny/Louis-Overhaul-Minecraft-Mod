@@ -146,6 +146,9 @@ public class ModBlocks {
     public static final Block CHISELED_RED_NETHER_BRICKS = registerBlock("chiseled_red_nether_bricks",
             new Block(AbstractBlock.Settings.copy(Blocks.RED_NETHER_BRICKS)));
 
+    public static final Block RED_NETHER_BRICK_FENCE = registerBlock("red_nether_brick_fence",
+            new FenceBlock(AbstractBlock.Settings.copy(Blocks.RED_NETHER_BRICKS)));
+
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);
         return Registry.register(Registries.BLOCK, Identifier.of(LouisOverhaulMod.MOD_ID, name), block);
@@ -227,6 +230,8 @@ public class ModBlocks {
             entries.add(ModBlocks.CHISELED_MOSSY_STONE_BRICKS);
             entries.add(ModBlocks.CHISELED_PRISMARINE);
             entries.add(ModBlocks.CHISELED_PRISMARINE_BRICKS);
+
+            entries.add(ModBlocks.RED_NETHER_BRICK_FENCE);
         });
 
     }

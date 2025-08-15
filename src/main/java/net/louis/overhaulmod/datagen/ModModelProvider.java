@@ -72,6 +72,9 @@ public class ModModelProvider extends FabricModelProvider {
         BlockStateModelGenerator.BlockTexturePool cutSandstone = blockStateModelGenerator.registerCubeAllModelTexturePool(Blocks.CUT_SANDSTONE);
         cutSandstone.stairs(ModBlocks.CUT_SANDSTONE_STAIRS);
 
+        BlockStateModelGenerator.BlockTexturePool redNetherBricks = blockStateModelGenerator.registerCubeAllModelTexturePool(Blocks.RED_NETHER_BRICKS);
+        redNetherBricks.fence(ModBlocks.RED_NETHER_BRICK_FENCE);
+
         // Manually load Wall models for Quartz, Cut Sandstone & Cut Red Sandstone
 
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CRACKED_END_STONE_BRICKS);

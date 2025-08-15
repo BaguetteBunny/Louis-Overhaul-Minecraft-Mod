@@ -1,4 +1,4 @@
-// 1.21.1	2025-08-15T17:44:19.0302855	Louis' Overhaul Mod/Recipes
+// 1.21.1	2025-08-15T20:04:51.0099784	Louis' Overhaul Mod/Recipes
 7077338f906e5820e1314c2cf83fd870e37109b8 data\louis-overhaul-mod\advancement\recipes\building_blocks\smooth_quartz_wall.json
 c8d326678d9b436be48d33f2b13e259c7dc3c7ab data\louis-overhaul-mod\recipe\cut_sandstone_wall.json
 8ff9ef8b9312eb5f6b1108ed337cede56fbe87aa data\louis-overhaul-mod\recipe\cut_sandstone_stairs.json
@@ -38,6 +38,7 @@ c037e6632105bc055b20b1322daafb77c388a9a0 data\louis-overhaul-mod\recipe\cut_red_
 4883ed1fc868422001807bf08001a08758128b4a data\louis-overhaul-mod\advancement\recipes\building_blocks\cut_sandstone_wall.json
 c7b60a229522ff26c8de0ca543658913b70847f8 data\louis-overhaul-mod\recipe\purpur_wall.json
 8a31dd92dabbd7fdcef3e4f1e981143e898a448c data\louis-overhaul-mod\advancement\recipes\building_blocks\dark_prismarine_wall.json
+509b7644b94ea7d539b600de07fc08232f59d9f8 data\louis-overhaul-mod\recipe\red_nether_brick_fence.json
 f04878393029c384170a60e9ad1a6191ddcc7b1f data\louis-overhaul-mod\advancement\recipes\building_blocks\lavender_quartz_stairs.json
 c8a29381ee5e4188c44fa40927e90d8251b5e5ab data\louis-overhaul-mod\recipe\lavender_quartz_slab.json
 382e71fe0b41be4868ab89599acc879d49afb937 data\louis-overhaul-mod\recipe\cracked_mossy_stone_bricks_from_smelting_mossy_stone_bricks.json
@@ -127,6 +128,7 @@ eaa7fb17efae6698c8d79680d27ec6dfde11301c data\louis-overhaul-mod\recipe\polished
 1e142afc2c95bcf4527f08dd57211628d5d9f37b data\louis-overhaul-mod\recipe\chiseled_purpur.json
 6662f40b90f9dd92c4be67536115ef217c1327d7 data\louis-overhaul-mod\advancement\recipes\building_blocks\rose_quartz_column.json
 7c3000ff732c2bfad63d99b7a106d6b130a861aa data\louis-overhaul-mod\recipe\lavender_quartz_pillar.json
+84ae2c4ae01e850ab1c196ea4eee3b3eaf352724 data\louis-overhaul-mod\advancement\recipes\building_blocks\red_nether_brick_fence.json
 4e07a2b74b1c3f43b5aa544f344d2dab4d92237d data\louis-overhaul-mod\advancement\recipes\food\vegetable_stew.json
 1c208897a45d10c22cae5cc73dbc250da2312e35 data\louis-overhaul-mod\recipe\cracked_bricks_from_smelting_bricks.json
 bdb4ffe587812f86a4352085951864fda634d5f4 data\louis-overhaul-mod\advancement\recipes\building_blocks\calcite_stairs.json
