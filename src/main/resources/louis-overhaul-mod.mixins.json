@@ -11,6 +11,9 @@
 		"EnderPearlEntityMixin",
 		"WolfAccessor",
 		"WolfEntityMixin",
+		"CatAccessor",
+		"CatEntityMixin",
+		"ParrotEntityMixin",
 		"ServerPlayerTickMixin"
 	],
 	"injectors": {

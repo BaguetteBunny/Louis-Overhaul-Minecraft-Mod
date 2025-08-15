@@ -3,11 +3,17 @@ package net.louis.overhaulmod.component;
 import com.mojang.serialization.Codec;
 import net.louis.overhaulmod.LouisOverhaulMod;
 import net.minecraft.component.ComponentType;
+import net.minecraft.entity.passive.CatVariant;
+import net.minecraft.entity.passive.ParrotEntity;
 import net.minecraft.entity.passive.WolfVariant;
 import net.minecraft.item.ItemStack;
+import net.minecraft.network.codec.PacketCodecs;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.entry.RegistryElementCodec;
 import net.minecraft.registry.entry.RegistryEntry;
+import net.minecraft.registry.tag.CatVariantTags;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 
@@ -91,6 +97,28 @@ public class ModComponents {
             Registries.DATA_COMPONENT_TYPE,
             Identifier.of(LouisOverhaulMod.MOD_ID, "wolf_variant"),
             ComponentType.<RegistryEntry<WolfVariant>>builder().codec(WolfVariant.ENTRY_CODEC).build()
+    );
+
+    public static final ComponentType<RegistryEntry<CatVariant>> CAT_VARIANT = Registry.register(
+            Registries.DATA_COMPONENT_TYPE,
+            Identifier.of(LouisOverhaulMod.MOD_ID, "cat_variant"),
+            ComponentType.<RegistryEntry<CatVariant>>builder()
+                    .codec(Registries.CAT_VARIANT.getEntryCodec())
+                    .packetCodec(CatVariant.PACKET_CODEC)
+                    .build()
+    );
+
+
+    public static final ComponentType<ParrotEntity.Variant> PARROT_VARIANT = Registry.register(
+            Registries.DATA_COMPONENT_TYPE,
+            Identifier.of(LouisOverhaulMod.MOD_ID, "parrot_variant"),
+            ComponentType.<ParrotEntity.Variant>builder().codec(ParrotEntity.Variant.CODEC).build()
+    );
+
+    public static final ComponentType<String> PET_TYPE = Registry.register(
+            Registries.DATA_COMPONENT_TYPE,
+            Identifier.of(LouisOverhaulMod.MOD_ID, "pet_type"),
+            ComponentType.<String>builder().codec(Codec.STRING).build()
     );
 
 
