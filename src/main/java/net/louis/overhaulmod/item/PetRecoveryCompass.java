@@ -7,6 +7,8 @@ import net.minecraft.block.Blocks;
 import net.minecraft.client.item.ModelPredicateProviderRegistry;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LightningEntity;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.passive.CatEntity;
 import net.minecraft.entity.passive.ParrotEntity;
 import net.minecraft.entity.passive.WolfEntity;
@@ -103,6 +105,7 @@ public class PetRecoveryCompass extends Item {
 
                                 pet.refreshPositionAndAngles(x, y, z, -player.getYaw(), 90.0f);
                                 world.spawnEntity(pet);
+                                pet.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 5, 5, false, false));
 
                             } else if (Objects.equals(petType, "Parrot")) {
                                 ParrotEntity pet = EntityType.PARROT.create(world);
@@ -121,6 +124,7 @@ public class PetRecoveryCompass extends Item {
 
                                 pet.refreshPositionAndAngles(x, y, z, -player.getYaw(), 90.0f);
                                 world.spawnEntity(pet);
+                                pet.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 5, 5, false, false));
 
                             } else {
                                 WolfEntity pet = EntityType.WOLF.create(world);
@@ -142,6 +146,7 @@ public class PetRecoveryCompass extends Item {
 
                                 pet.refreshPositionAndAngles(x, y, z, -player.getYaw(), 90.0f);
                                 world.spawnEntity(pet);
+                                pet.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 5, 5, false, false));
                             }
 
                             player.setStackInHand(context.getHand(), ItemStack.EMPTY);
