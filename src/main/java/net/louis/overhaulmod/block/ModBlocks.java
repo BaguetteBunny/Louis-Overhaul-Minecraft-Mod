@@ -145,6 +145,10 @@ public class ModBlocks {
             new Block(AbstractBlock.Settings.copy(Blocks.PURPUR_BLOCK)));
     public static final Block CHISELED_RED_NETHER_BRICKS = registerBlock("chiseled_red_nether_bricks",
             new Block(AbstractBlock.Settings.copy(Blocks.RED_NETHER_BRICKS)));
+    public static final Block CHISELED_BRICKS = registerBlock("chiseled_bricks",
+            new Block(AbstractBlock.Settings.copy(Blocks.BRICKS)));
+    public static final Block CHISELED_QUARTZ_BRICKS = registerBlock("chiseled_quartz_bricks",
+            new Block(AbstractBlock.Settings.copy(Blocks.CHISELED_QUARTZ_BLOCK)));
 
     public static final Block RED_NETHER_BRICK_FENCE = registerBlock("red_nether_brick_fence",
             new FenceBlock(AbstractBlock.Settings.copy(Blocks.RED_NETHER_BRICKS)));
@@ -230,6 +234,8 @@ public class ModBlocks {
             entries.add(ModBlocks.CHISELED_MOSSY_STONE_BRICKS);
             entries.add(ModBlocks.CHISELED_PRISMARINE);
             entries.add(ModBlocks.CHISELED_PRISMARINE_BRICKS);
+            entries.add(ModBlocks.CHISELED_BRICKS);
+            entries.add(ModBlocks.CHISELED_QUARTZ_BRICKS);
 
             entries.add(ModBlocks.RED_NETHER_BRICK_FENCE);
         });

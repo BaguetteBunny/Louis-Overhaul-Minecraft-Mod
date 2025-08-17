@@ -95,6 +95,8 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CHISELED_PRISMARINE);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CHISELED_PRISMARINE_BRICKS);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CHISELED_MOSSY_STONE_BRICKS);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CHISELED_BRICKS);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CHISELED_QUARTZ_BRICKS);
     }
 
     @Override

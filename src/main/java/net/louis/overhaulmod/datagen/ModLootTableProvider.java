@@ -89,6 +89,8 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.CHISELED_MOSSY_STONE_BRICKS);
         addDrop(ModBlocks.CHISELED_PRISMARINE);
         addDrop(ModBlocks.CHISELED_PRISMARINE_BRICKS);
+        addDrop(ModBlocks.CHISELED_BRICKS);
+        addDrop(ModBlocks.CHISELED_QUARTZ_BRICKS);
 
         addDrop(ModBlocks.RED_NETHER_BRICK_FENCE);
     }

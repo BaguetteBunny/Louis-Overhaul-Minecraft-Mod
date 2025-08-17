@@ -81,6 +81,8 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.CHISELED_MOSSY_STONE_BRICKS)
                 .add(ModBlocks.CHISELED_PRISMARINE)
                 .add(ModBlocks.CHISELED_PRISMARINE_BRICKS)
+                .add(ModBlocks.CHISELED_BRICKS)
+                .add(ModBlocks.CHISELED_QUARTZ_BRICKS)
 
                 .add(ModBlocks.RED_NETHER_BRICK_FENCE);
 
