@@ -81,18 +81,18 @@
   "block.louis-overhaul-mod.polished_andesite_wall": "Polished Andesite Wall",
   "block.louis-overhaul-mod.polished_granite_wall": "Polished Granite Wall",
   "block.louis-overhaul-mod.polished_diorite_wall": "Polished Diorite Wall",
-  "block.louis-overhaul-mod.cut_red_sandstone_wall": "Cut Red Sandstone Wall",
-  "block.louis-overhaul-mod.cut_red_sandstone_stairs": "Cut Sandstone Stairs",
+  "block.louis-overhaul-mod.cut_red_sandstone_wall": "Polished Red Sandstone Wall",
+  "block.louis-overhaul-mod.cut_red_sandstone_stairs": "Polished Sandstone Stairs",
   "block.louis-overhaul-mod.smooth_red_sandstone_wall": "Smooth Red Sandstone Wall",
-  "block.louis-overhaul-mod.cut_sandstone_wall": "Cut Sandstone Wall",
-  "block.louis-overhaul-mod.cut_sandstone_stairs": "Cut Sandstone Stairs",
+  "block.louis-overhaul-mod.cut_sandstone_wall": "Polished Sandstone Wall",
+  "block.louis-overhaul-mod.cut_sandstone_stairs": "Polished Sandstone Stairs",
   "block.louis-overhaul-mod.smooth_sandstone_wall": "Smooth Sandstone Wall",
   "block.louis-overhaul-mod.prismarine_bricks_wall": "Prismarine Bricks Wall",
   "block.louis-overhaul-mod.prismarine_wall": "Prismarine Wall",
   "block.louis-overhaul-mod.dark_prismarine_wall": "Dark Prismarine Wall",
   "block.louis-overhaul-mod.stone_wall": "Stone Wall",
-  "block.louis-overhaul-mod.smooth_stone_wall": "Smooth Stone Wall",
-  "block.louis-overhaul-mod.smooth_stone_stairs": "Smooth Stone Stairs",
+  "block.louis-overhaul-mod.smooth_stone_wall": "Polished Stone Wall",
+  "block.louis-overhaul-mod.smooth_stone_stairs": "Polished Stone Stairs",
 
   "block.louis-overhaul-mod.chiseled_dark_prismarine": "Chiseled Dark Prismarine",
   "block.louis-overhaul-mod.chiseled_deepslate_bricks": "Chiseled Deepslate Bricks",
@@ -105,6 +105,14 @@
   "block.louis-overhaul-mod.chiseled_red_nether_bricks": "Chiseled Red Nether Bricks",
   "block.louis-overhaul-mod.chiseled_bricks": "Chiseled Bricks",
   "block.louis-overhaul-mod.chiseled_quartz_bricks": "Chiseled Quartz Bricks",
+
+  "block.minecraft.smooth_stone": "Polished Stone",
+  "block.minecraft.smooth_stone_slab": "Polished Stone Slab",
+  "block.minecraft.cut_sandstone": "Polished Sandstone",
+  "block.minecraft.cut_sandstone_slab": "Polished Sandstone Slab",
+  "block.minecraft.cut_red_sandstone": "Polished Red Sandstone",
+  "block.minecraft.cut_red_sandstone_slab": "Polished Red Sandstone Slab",
+
 
   "sound.louis-overhaul-mod.saddled_goat_horn_use": "Saddled Goat Horn Use"
 }
