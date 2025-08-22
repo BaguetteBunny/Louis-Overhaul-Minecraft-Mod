@@ -3,6 +3,8 @@ package net.louis.overhaulmod.datagen;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.louis.overhaulmod.block.ModBlocks;
+import net.louis.overhaulmod.utils.ModTags;
+import net.minecraft.block.Blocks;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BlockTags;
 
@@ -16,6 +18,11 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
     @Override
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
         // .add(ModBlocks.)
+        getOrCreateTagBuilder(ModTags.Blocks.NEEDS_AMETHYST_TOOL)
+                .add(Blocks.REINFORCED_DEEPSLATE)
+                .add(Blocks.COBWEB)
+                .addTag(BlockTags.NEEDS_STONE_TOOL);
+
         getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
                 .add(ModBlocks.COPPER_RAIL)
 
@@ -85,23 +92,6 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.CHISELED_QUARTZ_BRICKS)
 
                 .add(ModBlocks.RED_NETHER_BRICK_FENCE);
-
-        getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL)
-                .add(ModBlocks.ROSE_QUARTZ_BRICKS)
-                .add(ModBlocks.CHISELED_ROSE_QUARTZ)
-                .add(ModBlocks.ROSE_QUARTZ_PILLAR)
-                .add(ModBlocks.ROSE_QUARTZ_COLUMN)
-                .add(ModBlocks.ROSE_QUARTZ_SLAB)
-                .add(ModBlocks.ROSE_QUARTZ_STAIRS)
-                .add(ModBlocks.ROSE_QUARTZ_WALL)
-
-                .add(ModBlocks.LAVENDER_QUARTZ_BRICKS)
-                .add(ModBlocks.CHISELED_LAVENDER_QUARTZ)
-                .add(ModBlocks.LAVENDER_QUARTZ_PILLAR)
-                .add(ModBlocks.LAVENDER_QUARTZ_COLUMN)
-                .add(ModBlocks.LAVENDER_QUARTZ_SLAB)
-                .add(ModBlocks.LAVENDER_QUARTZ_STAIRS)
-                .add(ModBlocks.LAVENDER_QUARTZ_WALL);
 
         getOrCreateTagBuilder(BlockTags.RAILS)
                 .add(ModBlocks.COPPER_RAIL);
