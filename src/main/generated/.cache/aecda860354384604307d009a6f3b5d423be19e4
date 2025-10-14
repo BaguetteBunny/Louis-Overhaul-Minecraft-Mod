@@ -1,4 +1,4 @@
-// 1.21.1	2025-08-17T19:53:59.6349508	Louis' Overhaul Mod/Recipes
+// 1.21.1	2025-10-14T20:48:25.1436293	Louis' Overhaul Mod/Recipes
 7077338f906e5820e1314c2cf83fd870e37109b8 data\louis-overhaul-mod\advancement\recipes\building_blocks\smooth_quartz_wall.json
 8ff9ef8b9312eb5f6b1108ed337cede56fbe87aa data\louis-overhaul-mod\recipe\cut_sandstone_stairs.json
 ca918666b585b3e93c1404b70ff9aebb53936f76 data\louis-overhaul-mod\advancement\recipes\misc\recall_clock.json
@@ -114,10 +114,12 @@ d66daa7ee3dfa216257ac07b31dc5f72cabc0968 data\louis-overhaul-mod\recipe\dark_pri
 1361fcef0f0d4792b75a754c7ecd6c539dbf309a data\louis-overhaul-mod\recipe\cracked_prismarine_bricks_from_smelting_prismarine_bricks.json
 8cde005b173255f7443006453be4d529a92c6913 data\louis-overhaul-mod\recipe\rotten_stew.json
 12a909511705b5024138eb3ac6e6961711a48cf6 data\louis-overhaul-mod\advancement\recipes\building_blocks\chiseled_mossy_stone_bricks.json
+aff5cc3263cfc51e618658c08777d7b71bdfde64 data\louis-overhaul-mod\advancement\recipes\tools\amethyst_dagger.json
 0b6613afd19f820bcaff07b68e44177f393018d4 data\louis-overhaul-mod\advancement\recipes\building_blocks\quartz_bricks_stairs_from_quartz_bricks_stonecutting.json
 6515bcf9d34ef9746729948214732de7e0cbd5de data\louis-overhaul-mod\advancement\recipes\building_blocks\cracked_tuff_bricks_from_smelting_tuff_bricks.json
 6edae27f78360967bfaca4e964e98e0391fc2474 data\louis-overhaul-mod\advancement\recipes\building_blocks\prismarine_wall_from_prismarine_stonecutting.json
 c8d326678d9b436be48d33f2b13e259c7dc3c7ab data\louis-overhaul-mod\recipe\cut_sandstone_wall.json
+24c413e305dc8af55595738f9529967356759e60 data\louis-overhaul-mod\recipe\amethyst_dagger.json
 cf3eb99711288baaad357c07006fb7f23cae07e6 data\louis-overhaul-mod\advancement\recipes\building_blocks\rose_quartz_wall.json
 762e802e5776a5ef4b79a5a9b4e8d16cd8bbd43a data\louis-overhaul-mod\advancement\recipes\building_blocks\cracked_mossy_stone_bricks_from_smelting_mossy_stone_bricks.json
 7b2307315f3bd1591fb05f828d9c7de65bbb3c95 data\louis-overhaul-mod\recipe\lavender_quartz_column.json

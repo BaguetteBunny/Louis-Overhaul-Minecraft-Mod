@@ -22,5 +22,8 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(Items.IRON_HORSE_ARMOR)
                 .add(Items.GOLDEN_HORSE_ARMOR)
                 .add(Items.LEATHER_HORSE_ARMOR);
+
+        getOrCreateTagBuilder(ItemTags.PICKAXES)
+                .add(ModItems.AMETHYST_DAGGER);
     }
 }

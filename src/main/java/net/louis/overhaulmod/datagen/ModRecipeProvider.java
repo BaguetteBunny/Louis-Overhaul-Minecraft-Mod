@@ -128,6 +128,15 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         // COMBAT
         offerNetheriteUpgradeRecipe(exporter, Items.DIAMOND_HORSE_ARMOR, RecipeCategory.COMBAT, ModItems.NETHERITE_HORSE_ARMOR);
 
+        // TOOLS
+        ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, ModItems.AMETHYST_DAGGER, 1)
+                .pattern(" A")
+                .pattern("S ")
+                .input('S', Items.STICK)
+                .input('A', Items.AMETHYST_SHARD)
+                .criterion(hasItem(Items.AMETHYST_SHARD), conditionsFromItem(Items.AMETHYST_SHARD))
+                .offerTo(exporter);
+
         // INGREDIENT
         ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.CHILLED_BONE_MEAL, 3)
                 .input(ModItems.CHILLED_BONE)

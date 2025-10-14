@@ -77,6 +77,9 @@ public class ModItems {
     public static final Item LLAMAS_SPIT = registerItem("llamas_spit",
             new Item(new Item.Settings()));
 
+    public static final Item AMETHYST_DAGGER = registerItem("amethyst_dagger",
+            new AmethystDagger(new Item.Settings()));
+
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, Identifier.of(LouisOverhaulMod.MOD_ID, name), item);
     }
@@ -102,6 +105,7 @@ public class ModItems {
             entries.add(VEGETABLE_STEW);
         });
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS).register(entries -> {
+            entries.add(AMETHYST_DAGGER);
             entries.add(POTION_POUCH);
             entries.add(Items.BUNDLE);
             entries.add(SADDLED_GOAT_HORN);

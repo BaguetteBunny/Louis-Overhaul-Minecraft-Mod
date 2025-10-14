@@ -19,8 +19,6 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
         // .add(ModBlocks.)
         getOrCreateTagBuilder(ModTags.Blocks.NEEDS_AMETHYST_TOOL)
-                .add(Blocks.REINFORCED_DEEPSLATE)
-                .add(Blocks.COBWEB)
                 .addTag(BlockTags.NEEDS_STONE_TOOL);
 
         getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
@@ -92,6 +90,8 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.CHISELED_QUARTZ_BRICKS)
 
                 .add(ModBlocks.RED_NETHER_BRICK_FENCE);
+
+        getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL);
 
         getOrCreateTagBuilder(BlockTags.RAILS)
                 .add(ModBlocks.COPPER_RAIL);

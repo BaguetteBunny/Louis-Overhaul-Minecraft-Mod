@@ -115,6 +115,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.FISH_STEW, Models.GENERATED);
         itemModelGenerator.register(ModItems.ROTTEN_STEW, Models.GENERATED);
         itemModelGenerator.register(ModItems.CHILLED_BONE_MEAL, Models.GENERATED);
+        itemModelGenerator.register(ModItems.AMETHYST_DAGGER, Models.HANDHELD);
         // Pet Recovery Compass Generated Manually
     }
 }
