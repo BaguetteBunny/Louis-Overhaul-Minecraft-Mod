@@ -183,6 +183,15 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .offerTo(exporter);
 
         // BUILDING BLOCKS
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, Blocks.CRYING_OBSIDIAN, 8)
+                .pattern("OOO")
+                .pattern("OGO")
+                .pattern("OOO")
+                .input('O', Items.OBSIDIAN)
+                .input('G', Items.GHAST_TEAR)
+                .criterion(hasItem(Items.GHAST_TEAR), conditionsFromItem(Items.GHAST_TEAR))
+                .offerTo(exporter);
+
         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, Blocks.SUSPICIOUS_SAND, 1)
                 .pattern("FS")
                 .pattern("SF")
