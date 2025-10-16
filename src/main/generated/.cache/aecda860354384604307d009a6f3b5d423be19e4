@@ -1,4 +1,4 @@
-// 1.21.1	2025-10-17T02:04:43.2360781	Louis' Overhaul Mod/Recipes
+// 1.21.1	2025-10-17T02:24:36.2671723	Louis' Overhaul Mod/Recipes
 7077338f906e5820e1314c2cf83fd870e37109b8 data\louis-overhaul-mod\advancement\recipes\building_blocks\smooth_quartz_wall.json
 8ff9ef8b9312eb5f6b1108ed337cede56fbe87aa data\louis-overhaul-mod\recipe\cut_sandstone_stairs.json
 ca918666b585b3e93c1404b70ff9aebb53936f76 data\louis-overhaul-mod\advancement\recipes\misc\recall_clock.json
@@ -226,8 +226,8 @@ cad604d834a4d2cd91a80ecd595753fecff43ba7 data\louis-overhaul-mod\advancement\rec
 1e142afc2c95bcf4527f08dd57211628d5d9f37b data\louis-overhaul-mod\recipe\chiseled_purpur.json
 6662f40b90f9dd92c4be67536115ef217c1327d7 data\louis-overhaul-mod\advancement\recipes\building_blocks\rose_quartz_column.json
 d6305bee4bab6d8b69b26154a82faecdf774b33b data\louis-overhaul-mod\advancement\recipes\building_blocks\chiseled_red_nether_bricks_from_red_nether_bricks_stonecutting.json
-fa05a9c88cdb5d949c28480b1fe4b6773cf4a2ff data\louis-overhaul-mod\recipe\chiseled_prismarine.json
 c1a6ddaffd11acdb3a90a9fb72c1ff8ba8e0970d data\louis-overhaul-mod\recipe\chiseled_deepslate_bricks.json
+fa05a9c88cdb5d949c28480b1fe4b6773cf4a2ff data\louis-overhaul-mod\recipe\chiseled_prismarine.json
 6345f359908d02030dd9c8804fb80ec03a9c92ed data\louis-overhaul-mod\advancement\recipes\building_blocks\prismarine_wall.json
 4d722fa53541baea6740e831d84a07f657bf4ef9 data\louis-overhaul-mod\advancement\recipes\building_blocks\calcite_slab.json
 ff1860f849fbd5a811abb7e19597e9890ad77307 data\louis-overhaul-mod\recipe\smooth_sandstone_wall_from_smooth_sandstone_stonecutting.json
