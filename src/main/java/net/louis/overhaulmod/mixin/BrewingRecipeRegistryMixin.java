@@ -47,7 +47,7 @@ public class BrewingRecipeRegistryMixin {
         builder.registerPotionRecipe(Potions.LONG_POISON, Items.REDSTONE_BLOCK, ModPotions.LONGEST_POISON);
         builder.registerPotionRecipe(Potions.STRONG_POISON, Items.GLOWSTONE, ModPotions.STRONGEST_POISON);
 
-        builder.registerPotionRecipe(Potions.MUNDANE, Items.GLOW_LICHEN, Potions.WEAKNESS); // CHANGE TO STRAY DROP
+        builder.registerPotionRecipe(Potions.MUNDANE, ModItems.CHILLED_BONE, Potions.WEAKNESS);
         builder.registerPotionRecipe(Potions.WEAKNESS, Items.REDSTONE, Potions.LONG_WEAKNESS);
         builder.registerPotionRecipe(Potions.WEAKNESS, Items.GLOWSTONE_DUST, ModPotions.STRONG_WEAKNESS);
         builder.registerPotionRecipe(Potions.LONG_WEAKNESS, Items.REDSTONE_BLOCK, ModPotions.LONGEST_WEAKNESS);
@@ -66,7 +66,10 @@ public class BrewingRecipeRegistryMixin {
         // LLAMA SPIT -> BLINDNESS
         // ADD VARIATIONS HERE
 
-        // DECAYED FLESH -> HUNGER
+        // ROTTEN FLESH -> HUNGER
+        // ADD VARIATIONS HERE
+
+        // DECAYED FLESH -> REVERSE WATER BREATHING
         // ADD VARIATIONS HERE
 
         // WITHER ROSE -> WITHER
@@ -75,7 +78,7 @@ public class BrewingRecipeRegistryMixin {
         // SHULKER SHELL -> LEVITATION
         // ADD VARIATIONS HERE
 
-        // RAW COPPER -> NAUSEA
+        // COPPER BLOCK -> NAUSEA
         // ADD VARIATIONS HERE
 
         // Mid Potion Effects
