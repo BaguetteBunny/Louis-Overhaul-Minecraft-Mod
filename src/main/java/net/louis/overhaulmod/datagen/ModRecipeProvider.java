@@ -182,6 +182,26 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(Items.RABBIT_HIDE), conditionsFromItem(Items.RABBIT_HIDE))
                 .offerTo(exporter);
 
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, Items.DRAGON_BREATH, 2)
+                .pattern("DAD")
+                .pattern("DED")
+                .pattern("DDD")
+                .input('D', Items.DIAMOND)
+                .input('A', Items.DRAGON_BREATH)
+                .input('E', Items.END_STONE_BRICKS)
+                .criterion(hasItem(Items.DRAGON_BREATH), conditionsFromItem(Items.DRAGON_BREATH))
+                .offerTo(exporter);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.LLAMAS_SPIT, 2)
+                .pattern("DAD")
+                .pattern("DED")
+                .pattern("DDD")
+                .input('D', Items.DIAMOND)
+                .input('A', ModItems.LLAMAS_SPIT)
+                .input('E', Items.HAY_BLOCK)
+                .criterion(hasItem(ModItems.LLAMAS_SPIT), conditionsFromItem(ModItems.LLAMAS_SPIT))
+                .offerTo(exporter);
+
         // BUILDING BLOCKS
         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, Blocks.CRYING_OBSIDIAN, 8)
                 .pattern("OOO")
