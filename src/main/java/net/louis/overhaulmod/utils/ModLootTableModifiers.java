@@ -49,8 +49,8 @@ public class ModLootTableModifiers {
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(KilledByPlayerLootCondition.builder())
                         .conditionally(RandomChanceLootCondition.builder(1f)) // 100% Drop Rate
-                        .with(ItemEntry.builder(Items.REINFORCED_DEEPSLATE))
-                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(3.0f, 8.0f)).build())
+                        .with(ItemEntry.builder(Items.ECHO_SHARD))
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(32.0f, 48.0f)).build())
                         .apply(EnchantedCountIncreaseLootFunction.builder(registry, UniformLootNumberProvider.create(1.0f, 2.0f)).build());
                 return LootTable.builder().pool(customPool).build();
             }
