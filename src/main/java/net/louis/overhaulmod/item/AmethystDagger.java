@@ -70,7 +70,7 @@ public class AmethystDagger extends PickaxeItem {
         ItemStack daggerStack = user.getStackInHand(hand);
         ItemStack offHand = user.getOffHandStack();
 
-        if (hand == Hand.MAIN_HAND && !offHand.isEmpty()) {
+        if (hand == Hand.MAIN_HAND && !offHand.isEmpty() && world.isClient) {
             Block offhandBlock = Block.getBlockFromItem(offHand.getItem());
 
             if (STRIPPABLES.containsKey(offhandBlock)) {
@@ -90,7 +90,7 @@ public class AmethystDagger extends PickaxeItem {
                 user.getInventory().offerOrDrop(new ItemStack(newBlock, 8));
                 world.playSound(null, user.getX(), user.getY(), user.getZ(),
                         SoundEvents.BLOCK_GLASS_BREAK, SoundCategory.BLOCKS, 1.0F, 2.0F);
-                daggerStack.damage(2, user, EquipmentSlot.MAINHAND);
+                daggerStack.damage(4, user, EquipmentSlot.MAINHAND);
 
                 return TypedActionResult.success(daggerStack, world.isClient());
             }
@@ -117,6 +117,21 @@ public class AmethystDagger extends PickaxeItem {
                 user.getInventory().offerOrDrop(new ItemStack(Items.OBSIDIAN, 1));
                 world.playSound(null, user.getX(), user.getY(), user.getZ(),
                         SoundEvents.BLOCK_CANDLE_EXTINGUISH, SoundCategory.BLOCKS, 1.0F, 2.0F);
+                daggerStack.damage(1, user, EquipmentSlot.MAINHAND);
+
+                return TypedActionResult.success(daggerStack, world.isClient());
+            }
+
+            if (offhandBlock.equals(Blocks.AMETHYST_BLOCK)) {
+                offHand.decrement(1);
+                if (world.random.nextFloat() < 0.05) {
+                    user.getInventory().offerOrDrop(new ItemStack(Blocks.BUDDING_AMETHYST, 1));
+                    world.playSound(null, user.getX(), user.getY(), user.getZ(),
+                            SoundEvents.BLOCK_AMETHYST_BLOCK_CHIME, SoundCategory.BLOCKS, 2.0F, 0.5F);
+                } else {
+                    world.playSound(null, user.getX(), user.getY(), user.getZ(),
+                            SoundEvents.BLOCK_AMETHYST_BLOCK_CHIME, SoundCategory.BLOCKS, 2.0F, 2.0F);
+                }
                 daggerStack.damage(1, user, EquipmentSlot.MAINHAND);
 
                 return TypedActionResult.success(daggerStack, world.isClient());
