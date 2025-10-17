@@ -9,6 +9,7 @@ import net.louis.overhaulmod.item.ModItems;
 import net.louis.overhaulmod.potion.ModPotions;
 import net.louis.overhaulmod.sound.ModSounds;
 import net.louis.overhaulmod.utils.ModLootTableModifiers;
+import net.louis.overhaulmod.utils.StackableStews;
 import net.minecraft.component.type.FoodComponent;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
@@ -23,6 +24,8 @@ public class LouisOverhaulMod implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+		StackableStews.registerStewStacking();
+
 		ModSounds.registerSounds();
 		ModComponents.registerDataComponentTypes();
 		ModEffects.registerEffects();
@@ -34,28 +37,5 @@ public class LouisOverhaulMod implements ModInitializer {
 
 		ModUseEvents.registerMain();
 		ModUseEvents.registerStew();
-
-		// Override Minecraft Components
-		Registry.register(Registries.ITEM, Identifier.of("minecraft", "mushroom_stew"),
-				new Item(new Item.Settings().maxCount(16).food(new FoodComponent.Builder()
-						.nutrition(6)
-						.saturationModifier(0.6f)
-						.snack()
-						.build()))
-		);
-		Registry.register(Registries.ITEM, Identifier.of("minecraft", "beetroot_soup"),
-				new Item(new Item.Settings().maxCount(16).food(new FoodComponent.Builder()
-						.nutrition(6)
-						.saturationModifier(0.6f)
-						.snack()
-						.build()))
-		);
-		Registry.register(Registries.ITEM, Identifier.of("minecraft", "rabbit_stew"),
-				new Item(new Item.Settings().maxCount(16).food(new FoodComponent.Builder()
-						.nutrition(10)
-						.saturationModifier(0.6f)
-						.snack()
-						.build()))
-		);
 	}
 }
