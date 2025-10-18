@@ -43,6 +43,15 @@ public class ArmorStandMixin {
             ItemStack stack = new ItemStack(Items.PHANTOM_MEMBRANE);
             ItemEntity itemEntity = new ItemEntity(world, stand.getX(), stand.getY() + 0.5, stand.getZ(), stack);
             world.spawnEntity(itemEntity);
+
+            ItemStack selfStack = new ItemStack(Items.ARMOR_STAND);
+            ItemEntity selfItemEntity = new ItemEntity(world, stand.getX(), stand.getY() + 0.5, stand.getZ(), selfStack);
+            world.spawnEntity(selfItemEntity);
+        }
+        if (stand.isGlowing()) {
+            ItemStack stack = new ItemStack(Items.GLOW_INK_SAC);
+            ItemEntity itemEntity = new ItemEntity(world, stand.getX(), stand.getY() + 0.5, stand.getZ(), stack);
+            world.spawnEntity(itemEntity);
         }
     }
 }
