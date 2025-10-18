@@ -4,6 +4,7 @@ import com.mojang.authlib.GameProfile;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 import net.fabricmc.fabric.api.event.player.UseEntityCallback;
 import net.fabricmc.fabric.api.event.player.UseItemCallback;
+import net.louis.overhaulmod.entity.projectile.thrown.BrickEntity;
 import net.louis.overhaulmod.item.ModItems;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
@@ -21,6 +22,7 @@ import net.minecraft.entity.mob.ZombieVillagerEntity;
 import net.minecraft.entity.passive.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.LlamaSpitEntity;
+import net.minecraft.entity.projectile.ProjectileEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtOps;
@@ -36,12 +38,11 @@ import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.Uuids;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.EntityHitResult;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Box;
-import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.math.*;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Map;
@@ -61,6 +62,10 @@ public class ModUseEvents {
         UseItemCallback.EVENT.register(ModUseEvents::useRabbitStew);
         UseItemCallback.EVENT.register(ModUseEvents::useFishStew);
         UseEntityCallback.EVENT.register(ModUseEvents::useRottenStew);
+    }
+
+    public static void registerProjectileItems() {
+        UseItemCallback.EVENT.register(ModUseEvents::useBrick);
     }
 
     private static ActionResult oxidizeCopperWithClock(PlayerEntity player, World world, Hand hand, BlockHitResult hitResult) {
@@ -514,7 +519,7 @@ public class ModUseEvents {
         return TypedActionResult.pass(player.getStackInHand(hand));
     }
 
-    private static TypedActionResult<ItemStack> useFishStew(PlayerEntity player, World world, Hand hand) {
+    private static TypedActionResult<ItemStack> useFishStew(PlayerEntity player, @NotNull World world, Hand hand) {
         if (world.isClient) return TypedActionResult.pass(player.getStackInHand(hand));
 
         ItemStack stack = player.getStackInHand(hand);
@@ -641,6 +646,34 @@ public class ModUseEvents {
                 }
             }
         } return ActionResult.PASS;
+    }
+
+    private static TypedActionResult<ItemStack> useBrick(PlayerEntity player, World world, Hand hand) {
+        ItemStack stack = player.getStackInHand(hand);
+
+        if (!stack.isOf(Items.BRICK) || player.getItemCooldownManager().isCoolingDown(Items.BRICK)) {
+            return TypedActionResult.pass(player.getStackInHand(hand));
+        }
+
+        world.playSound(
+                null,
+                player.getX(),
+                player.getY(),
+                player.getZ(),
+                SoundEvents.ENTITY_SNOWBALL_THROW,
+                SoundCategory.NEUTRAL,
+                0.75F,
+                (world.getRandom().nextFloat() * 0.2F + 0.5F)
+        );
+        BrickEntity brickEntity = new BrickEntity(world, player);
+        brickEntity.setItem(stack);
+        brickEntity.setVelocity(player, player.getPitch(), player.getYaw(), 10.0F, 1.0F, 1.0F);
+        world.spawnEntity(brickEntity);
+
+        stack.decrementUnlessCreative(1, player);
+        player.getItemCooldownManager().set(Items.BRICK, 20);
+
+        return TypedActionResult.success(stack, world.isClient());
     }
 
     private static boolean isPlayerHead(BlockState blockState) {
