@@ -1,5 +1,8 @@
 package net.louis.overhaulmod.entity.projectile.thrown;
 
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityStatuses;
 import net.minecraft.entity.EntityType;
@@ -11,9 +14,15 @@ import net.minecraft.item.Items;
 import net.minecraft.particle.ItemStackParticleEffect;
 import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
+import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.hit.HitResult;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+
+import java.util.Set;
 
 public class BrickEntity extends ThrownItemEntity {
     public BrickEntity(EntityType<? extends BrickEntity> entityType, World world) {
@@ -27,6 +36,44 @@ public class BrickEntity extends ThrownItemEntity {
     public BrickEntity(World world, double x, double y, double z) {
         super(EntityType.SNOWBALL, x, y, z, world);
     }
+
+    private static final Set<Block> BREAKABLE_GLASS_BLOCKS = Set.of(
+            Blocks.GLASS,
+            Blocks.WHITE_STAINED_GLASS,
+            Blocks.ORANGE_STAINED_GLASS,
+            Blocks.MAGENTA_STAINED_GLASS,
+            Blocks.LIGHT_BLUE_STAINED_GLASS,
+            Blocks.YELLOW_STAINED_GLASS,
+            Blocks.LIME_STAINED_GLASS,
+            Blocks.PINK_STAINED_GLASS,
+            Blocks.GRAY_STAINED_GLASS,
+            Blocks.LIGHT_GRAY_STAINED_GLASS,
+            Blocks.CYAN_STAINED_GLASS,
+            Blocks.PURPLE_STAINED_GLASS,
+            Blocks.BLUE_STAINED_GLASS,
+            Blocks.BROWN_STAINED_GLASS,
+            Blocks.GREEN_STAINED_GLASS,
+            Blocks.RED_STAINED_GLASS,
+            Blocks.BLACK_STAINED_GLASS,
+
+            Blocks.GLASS_PANE,
+            Blocks.WHITE_STAINED_GLASS_PANE,
+            Blocks.ORANGE_STAINED_GLASS_PANE,
+            Blocks.MAGENTA_STAINED_GLASS_PANE,
+            Blocks.LIGHT_BLUE_STAINED_GLASS_PANE,
+            Blocks.YELLOW_STAINED_GLASS_PANE,
+            Blocks.LIME_STAINED_GLASS_PANE,
+            Blocks.PINK_STAINED_GLASS_PANE,
+            Blocks.GRAY_STAINED_GLASS_PANE,
+            Blocks.LIGHT_GRAY_STAINED_GLASS_PANE,
+            Blocks.CYAN_STAINED_GLASS_PANE,
+            Blocks.PURPLE_STAINED_GLASS_PANE,
+            Blocks.BLUE_STAINED_GLASS_PANE,
+            Blocks.BROWN_STAINED_GLASS_PANE,
+            Blocks.GREEN_STAINED_GLASS_PANE,
+            Blocks.RED_STAINED_GLASS_PANE,
+            Blocks.BLACK_STAINED_GLASS_PANE
+    );
 
     @Override
     protected Item getDefaultItem() {
@@ -62,9 +109,22 @@ public class BrickEntity extends ThrownItemEntity {
     @Override
     protected void onCollision(HitResult hitResult) {
         super.onCollision(hitResult);
-        if (!this.getWorld().isClient) {
-            this.getWorld().sendEntityStatus(this, EntityStatuses.PLAY_DEATH_SOUND_OR_ADD_PROJECTILE_HIT_PARTICLES);
+        World world = this.getWorld();
+
+        if (!world.isClient && hitResult.getType() == HitResult.Type.BLOCK) {
+            BlockHitResult blockHitResult = (BlockHitResult) hitResult;
+            BlockPos pos = blockHitResult.getBlockPos();
+            BlockState state = world.getBlockState(pos);
+
+            if (BREAKABLE_GLASS_BLOCKS.contains(state.getBlock())) {
+                world.breakBlock(pos, true, this);
+                world.playSound(null, pos, SoundEvents.BLOCK_GLASS_BREAK, SoundCategory.BLOCKS, 3.0F, 1.0F);
+            }
+
+            world.sendEntityStatus(this, EntityStatuses.PLAY_DEATH_SOUND_OR_ADD_PROJECTILE_HIT_PARTICLES);
             this.discard();
         }
     }
 }
+
+
