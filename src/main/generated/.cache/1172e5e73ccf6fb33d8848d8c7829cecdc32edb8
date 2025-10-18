@@ -1,4 +1,4 @@
-// 1.21.1	2025-10-18T16:20:32.2904484	Louis' Overhaul Mod/Block Loot Tables
+// 1.21.1	2025-10-18T18:36:58.8904386	Louis' Overhaul Mod/Block Loot Tables
 b9d378b6f415f870914da8eb88fc06ea2947083d data\louis-overhaul-mod\loot_table\blocks\cracked_mud_bricks.json
 ea21a02ad7306ee0d7c12bf9d0ed8352e78f709c data\louis-overhaul-mod\loot_table\blocks\rose_quartz_wall.json
 372e8322cc771fe709b53e56d70ad8f8407b9cb8 data\louis-overhaul-mod\loot_table\blocks\chiseled_prismarine_bricks.json
@@ -38,6 +38,7 @@ ded73cbf77326a65a292003346c61ed483df08c2 data\louis-overhaul-mod\loot_table\bloc
 67010b34beaf56d414204013877bf487148da5d0 data\louis-overhaul-mod\loot_table\blocks\chiseled_dark_prismarine.json
 e339a2534d1f2a252e576af8bd09ea45d9e2b3d1 data\louis-overhaul-mod\loot_table\blocks\chiseled_bricks.json
 507367d04547e389c7eba8070c0b5102233022cf data\louis-overhaul-mod\loot_table\blocks\chiseled_lavender_quartz.json
+30dd63dd50da134496f916e4e96305559fff8b86 data\louis-overhaul-mod\loot_table\blocks\glow_lantern.json
 66d7394a99e0171d61edc538ab2c57a80df1037b data\louis-overhaul-mod\loot_table\blocks\prismarine_wall.json
 5c74250d1decf556c7a78f6cdb0985a46015bb8f data\louis-overhaul-mod\loot_table\blocks\rose_quartz_column.json
 cdabec0d585a88a9ef760eff54d099d7650bb025 data\louis-overhaul-mod\loot_table\blocks\calcite_stairs.json

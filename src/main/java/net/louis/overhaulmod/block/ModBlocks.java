@@ -20,6 +20,9 @@ public class ModBlocks {
                     .noCollision()
             ));
 
+    public static final Block GLOW_LANTERN = registerBlock("glow_lantern",
+            new LanternBlock(AbstractBlock.Settings.copy(Blocks.SOUL_LANTERN)));
+
     // ROSE QUARTZ FAMILY
     public static final Block ROSE_QUARTZ_BRICKS = registerBlock("rose_quartz_bricks",
             new Block(AbstractBlock.Settings.copy(Blocks.QUARTZ_BLOCK).mapColor(MapColor.PINK)));
@@ -172,6 +175,8 @@ public class ModBlocks {
             entries.add(ModBlocks.COPPER_RAIL);
         });
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(entries -> {
+            entries.add(ModBlocks.GLOW_LANTERN);
+
             entries.add(ModBlocks.ROSE_QUARTZ_BRICKS);
             entries.add(ModBlocks.ROSE_QUARTZ_PILLAR);
             entries.add(ModBlocks.ROSE_QUARTZ_COLUMN);

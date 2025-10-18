@@ -24,6 +24,8 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
                 .add(ModBlocks.COPPER_RAIL)
 
+                .add(ModBlocks.GLOW_LANTERN)
+
                 .add(ModBlocks.ROSE_QUARTZ_BRICKS)
                 .add(ModBlocks.CHISELED_ROSE_QUARTZ)
                 .add(ModBlocks.ROSE_QUARTZ_PILLAR)
@@ -121,5 +123,8 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
         getOrCreateTagBuilder(BlockTags.FENCES)
                 .add(ModBlocks.RED_NETHER_BRICK_FENCE);
+
+        getOrCreateTagBuilder(BlockTags.HOGLIN_REPELLENTS)
+                .add(ModBlocks.GLOW_LANTERN);
     }
 }

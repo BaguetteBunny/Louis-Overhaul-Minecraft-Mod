@@ -203,6 +203,15 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .offerTo(exporter);
 
         // BUILDING BLOCKS
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.GLOW_LANTERN, 1)
+                .pattern("III")
+                .pattern("IGI")
+                .pattern("III")
+                .input('I', Items.IRON_NUGGET)
+                .input('G', Items.GLOW_INK_SAC)
+                .criterion(hasItem(Items.GLOW_INK_SAC), conditionsFromItem(Items.GLOW_INK_SAC))
+                .offerTo(exporter);
+
         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, Blocks.CRYING_OBSIDIAN, 8)
                 .pattern("OOO")
                 .pattern("OGO")

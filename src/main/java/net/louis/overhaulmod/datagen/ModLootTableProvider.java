@@ -27,6 +27,8 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
     public void generate() {
         addDrop(ModBlocks.COPPER_RAIL);
 
+        addDrop(ModBlocks.GLOW_LANTERN);
+
         addDrop(ModBlocks.ROSE_QUARTZ_BRICKS);
         addDrop(ModBlocks.ROSE_QUARTZ_PILLAR);
         addDrop(ModBlocks.ROSE_QUARTZ_COLUMN);

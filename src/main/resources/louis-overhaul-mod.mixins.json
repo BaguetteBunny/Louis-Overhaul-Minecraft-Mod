@@ -14,7 +14,8 @@
 		"CatAccessor",
 		"CatEntityMixin",
 		"ParrotEntityMixin",
-		"ServerPlayerTickMixin"
+		"ServerPlayerTickMixin",
+		"ArmorStandEntityAccessor"
 	],
 	"injectors": {
 		"defaultRequire": 1

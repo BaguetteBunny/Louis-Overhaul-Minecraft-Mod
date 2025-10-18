@@ -18,6 +18,8 @@ public class ModModelProvider extends FabricModelProvider {
         //  blockStateModelGenerator.registerSimpleCubeAll(ModBlocks);
         blockStateModelGenerator.registerStraightRail(ModBlocks.COPPER_RAIL);
 
+        blockStateModelGenerator.registerLantern(ModBlocks.GLOW_LANTERN);
+
         BlockStateModelGenerator.BlockTexturePool roseQuartzPool = blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.ROSE_QUARTZ_BRICKS);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CHISELED_ROSE_QUARTZ);
         blockStateModelGenerator.registerLog(ModBlocks.ROSE_QUARTZ_PILLAR).log(ModBlocks.ROSE_QUARTZ_PILLAR).wood(ModBlocks.ROSE_QUARTZ_COLUMN);

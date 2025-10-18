@@ -11,6 +11,7 @@ public class LouisOverhaulModClient implements ClientModInitializer {
     public void onInitializeClient() {
         // Add Block Transparency
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.COPPER_RAIL, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.GLOW_LANTERN, RenderLayer.getCutout());
 
         // Add Predicate Texture Transform
         PetRecoveryCompass.registerModelPredicates();

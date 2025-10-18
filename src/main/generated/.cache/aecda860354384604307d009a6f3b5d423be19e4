@@ -1,4 +1,4 @@
-// 1.21.1	2025-10-18T16:20:32.2812854	Louis' Overhaul Mod/Recipes
+// 1.21.1	2025-10-18T18:36:58.878424	Louis' Overhaul Mod/Recipes
 7077338f906e5820e1314c2cf83fd870e37109b8 data\louis-overhaul-mod\advancement\recipes\building_blocks\smooth_quartz_wall.json
 8ff9ef8b9312eb5f6b1108ed337cede56fbe87aa data\louis-overhaul-mod\recipe\cut_sandstone_stairs.json
 ca918666b585b3e93c1404b70ff9aebb53936f76 data\louis-overhaul-mod\advancement\recipes\misc\recall_clock.json
@@ -89,6 +89,7 @@ c5d078df1dcc161ff91d1d1562a7978659c06b99 data\louis-overhaul-mod\advancement\rec
 ee5aa5f542dbecc2364c3ea3b047df8174986ad1 data\louis-overhaul-mod\advancement\recipes\misc\pet_recovery_compass.json
 c4b4d6b1ecd5ad5bfe58d2a8ce171a6df2fbc484 data\louis-overhaul-mod\recipe\rose_quartz_slab_from_rose_quartz_bricks_stonecutting.json
 d55b1bd1e9eeb11116221f36f0a4d4caff506d09 data\louis-overhaul-mod\recipe\rose_quartz_column.json
+b5d2c1b9ef69106378894dca40fce57c930664bb data\louis-overhaul-mod\recipe\glow_lantern.json
 52c8db9ef784413082f47fdf8a3c1e301252cd79 data\louis-overhaul-mod\advancement\recipes\building_blocks\cut_sandstone_wall_from_cut_sandstone_stonecutting.json
 6ac881f5646e4469a2cdcd3bf5eb1de7d2af85a1 data\louis-overhaul-mod\recipe\prismarine_bricks_wall.json
 05b1c2f0a3fdd13c9b565b7150b5b1365381f7e6 data\louis-overhaul-mod\recipe\rose_quartz_stairs_from_rose_quartz_bricks_stonecutting.json
@@ -174,6 +175,7 @@ c53e519d2b368134faa059995ba340eff636de30 data\louis-overhaul-mod\advancement\rec
 cbdbb24656f84054b5bc5e09da7c7d6a76dc5825 data\louis-overhaul-mod\advancement\recipes\misc\saddled_goat_horn.json
 dfe2901b65400ed18d95290857a9c9f00d811474 data\louis-overhaul-mod\recipe\copper_rail.json
 5a6e9a33ed5fabae3ce6a1a08f0e7b05e4e5db52 data\louis-overhaul-mod\recipe\rose_quartz_slab.json
+2f94aa7a5d8a722111264bc89b2dc97baf314c5c data\louis-overhaul-mod\advancement\recipes\building_blocks\glow_lantern.json
 51b1199f0166ccbc561f23f8de3731d692e8f296 data\louis-overhaul-mod\advancement\recipes\building_blocks\polished_granite_wall.json
 2dad58f01c3f1c522535583b6a15e75467b4b390 data\louis-overhaul-mod\advancement\recipes\building_blocks\quartz_bricks_slab.json
 199940c61869068655240826301c0245f386e4cb data\louis-overhaul-mod\recipe\calcite_wall.json
