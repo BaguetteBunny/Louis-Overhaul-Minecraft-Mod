@@ -1,22 +1,39 @@
 package net.louis.overhaulmod.mixin;
 
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.decoration.ArmorStandEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.registry.tag.DamageTypeTags;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.world.explosion.Explosion;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(ArmorStandEntity.class)
 public class ArmorStandMixin {
+    ArmorStandEntity stand = (ArmorStandEntity) (Object) this;
+
+
+    @Inject(method = "damage", at = @At("HEAD"), cancellable = true)
+    private void onArmorStandDamage(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
+        if (!stand.isRemoved()
+                && stand.getWorld() instanceof ServerWorld serverWorld
+                && !source.isIn(DamageTypeTags.BYPASSES_INVULNERABILITY)
+                && stand.isInvisible()) {
+            ((ArmorStandEntityAccessor) stand).callonBreak(serverWorld, source);
+            stand.remove(Entity.RemovalReason.KILLED);
+        }
+    }
 
     @Inject(method = "onBreak", at = @At("TAIL"))
     private void onArmorStandBreak(ServerWorld world, DamageSource source, CallbackInfo ci) {
-        ArmorStandEntity stand = (ArmorStandEntity) (Object) this;
         if (stand.shouldShowArms()) {
             ItemStack stack = new ItemStack(Items.STICK);
             ItemEntity itemEntity = new ItemEntity(world, stand.getX(), stand.getY() + 0.5, stand.getZ(), stack);
@@ -26,7 +43,6 @@ public class ArmorStandMixin {
             ItemStack stack = new ItemStack(Items.PHANTOM_MEMBRANE);
             ItemEntity itemEntity = new ItemEntity(world, stand.getX(), stand.getY() + 0.5, stand.getZ(), stack);
             world.spawnEntity(itemEntity);
-
         }
     }
 }
