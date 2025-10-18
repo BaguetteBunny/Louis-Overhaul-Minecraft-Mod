@@ -74,6 +74,7 @@ public class ModUseEvents {
 
     public static void registerMisc() {
         UseEntityCallback.EVENT.register(ModUseEvents::changeArmorStandVariant);
+        UseEntityCallback.EVENT.register(ModUseEvents::changeItemFrameVariant);
     }
 
     private static ActionResult oxidizeCopperWithClock(PlayerEntity player, World world, Hand hand, BlockHitResult hitResult) {
