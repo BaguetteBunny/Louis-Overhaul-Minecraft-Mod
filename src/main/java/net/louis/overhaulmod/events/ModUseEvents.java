@@ -7,15 +7,16 @@ import net.fabricmc.fabric.api.event.player.UseItemCallback;
 import net.louis.overhaulmod.entity.projectile.thrown.BrickEntity;
 import net.louis.overhaulmod.entity.projectile.thrown.NetherBrickEntity;
 import net.louis.overhaulmod.item.ModItems;
+import net.louis.overhaulmod.mixin.ArmorStandEntityAccessor;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.SkullBlockEntity;
 import net.minecraft.block.enums.DoubleBlockHalf;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.ProfileComponent;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.SpawnReason;
+import net.minecraft.entity.*;
+import net.minecraft.entity.decoration.ArmorStandEntity;
+import net.minecraft.entity.decoration.ItemFrameEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.mob.ZombieEntity;
@@ -23,9 +24,10 @@ import net.minecraft.entity.mob.ZombieVillagerEntity;
 import net.minecraft.entity.passive.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.LlamaSpitEntity;
-import net.minecraft.entity.projectile.ProjectileEntity;
+import net.minecraft.item.AxeItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtOps;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
@@ -68,6 +70,10 @@ public class ModUseEvents {
     public static void registerProjectileItems() {
         UseItemCallback.EVENT.register(ModUseEvents::useBrick);
         UseItemCallback.EVENT.register(ModUseEvents::useNetherBrick);
+    }
+
+    public static void registerMisc() {
+        UseEntityCallback.EVENT.register(ModUseEvents::changeArmorStandVariant);
     }
 
     private static ActionResult oxidizeCopperWithClock(PlayerEntity player, World world, Hand hand, BlockHitResult hitResult) {
@@ -704,6 +710,51 @@ public class ModUseEvents {
         player.getItemCooldownManager().set(Items.NETHER_BRICK, 20);
 
         return TypedActionResult.success(stack, world.isClient());
+    }
+
+    private static ActionResult changeArmorStandVariant(PlayerEntity player, World world, Hand hand, Entity entity, @Nullable EntityHitResult entityHitResult) {
+        ItemStack stack = player.getMainHandStack();
+        if (world.isClient() || !player.isSneaking() || !(entity instanceof ArmorStandEntity stand)) {
+            return ActionResult.PASS;
+        }
+
+        if (stack.isOf(Items.STICK) && !stand.shouldShowArms()) {
+            stand.setShowArms(true);
+            stack.decrementUnlessCreative(1, player);
+        } else if (stack.isOf(Items.SMOOTH_STONE_SLAB) && stand.shouldHideBasePlate()) {
+            stand.setHideBasePlate(false);
+            stack.decrementUnlessCreative(1, player);
+        } else if (stack.getItem() instanceof AxeItem && !stand.isSmall()) {
+            ((ArmorStandEntityAccessor) stand).callSetSmall(true);
+            stack.damage(1, player, EquipmentSlot.MAINHAND);
+        } else if (stack.isOf(Items.AIR) && !stand.shouldHideBasePlate()) {
+            stand.setHideBasePlate(true);
+            ItemEntity itemEntity = new ItemEntity(world, stand.getX(), stand.getY(), stand.getZ(), new ItemStack(Items.SMOOTH_STONE_SLAB));
+            world.spawnEntity(itemEntity);
+        } else if (stack.isOf(Items.PHANTOM_MEMBRANE) && !stand.isInvisible()) {
+            stand.setInvisible(false);
+            stack.decrementUnlessCreative(1, player);
+        }
+
+        world.playSound(null, stand.getBlockPos(), SoundEvents.UI_BUTTON_CLICK.value(), SoundCategory.BLOCKS, 1.0F, 1.0F);
+
+        return ActionResult.SUCCESS;
+    }
+
+    private static ActionResult changeItemFrameVariant(PlayerEntity player, World world, Hand hand, Entity entity, @Nullable EntityHitResult entityHitResult) {
+        ItemStack stack = player.getMainHandStack();
+        if (world.isClient() || !player.isSneaking() || !(entity instanceof ItemFrameEntity frame)) {
+            return ActionResult.PASS;
+        }
+
+        if (stack.isOf(Items.PHANTOM_MEMBRANE) && !frame.isInvisible()) {
+            frame.setInvisible(true);
+            stack.damage(1, player, EquipmentSlot.MAINHAND);
+        }
+
+        world.playSound(null, frame.getBlockPos(), SoundEvents.BLOCK_ENCHANTMENT_TABLE_USE, SoundCategory.BLOCKS, 1.0F, 1.0F);
+
+        return ActionResult.SUCCESS;
     }
 
     private static boolean isPlayerHead(BlockState blockState) {
