@@ -4,10 +4,12 @@ import com.mojang.authlib.GameProfile;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 import net.fabricmc.fabric.api.event.player.UseEntityCallback;
 import net.fabricmc.fabric.api.event.player.UseItemCallback;
+import net.louis.overhaulmod.block.ModBlocks;
 import net.louis.overhaulmod.entity.projectile.thrown.BrickEntity;
 import net.louis.overhaulmod.entity.projectile.thrown.NetherBrickEntity;
 import net.louis.overhaulmod.item.ModItems;
 import net.louis.overhaulmod.mixin.ArmorStandEntityAccessor;
+import net.louis.overhaulmod.utils.GlowManager;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.SkullBlockEntity;
@@ -24,9 +26,7 @@ import net.minecraft.entity.mob.ZombieVillagerEntity;
 import net.minecraft.entity.passive.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.LlamaSpitEntity;
-import net.minecraft.item.AxeItem;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
+import net.minecraft.item.*;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtOps;
 import net.minecraft.particle.ParticleTypes;
@@ -48,6 +48,7 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -74,7 +75,7 @@ public class ModUseEvents {
 
     public static void registerMisc() {
         UseEntityCallback.EVENT.register(ModUseEvents::changeArmorStandVariant);
-        UseEntityCallback.EVENT.register(ModUseEvents::changeItemFrameVariant);
+        UseItemCallback.EVENT.register(ModUseEvents::useGlowLantern);
     }
 
     private static ActionResult oxidizeCopperWithClock(PlayerEntity player, World world, Hand hand, BlockHitResult hitResult) {
@@ -743,20 +744,38 @@ public class ModUseEvents {
         return ActionResult.SUCCESS;
     }
 
-    private static ActionResult changeItemFrameVariant(PlayerEntity player, World world, Hand hand, Entity entity, @Nullable EntityHitResult entityHitResult) {
-        ItemStack stack = player.getMainHandStack();
-        if (world.isClient() || !player.isSneaking() || !(entity instanceof ItemFrameEntity frame)) {
-            return ActionResult.PASS;
+    private static TypedActionResult<ItemStack> useGlowLantern(PlayerEntity player, World world, Hand hand) {
+        ItemStack stack = player.getStackInHand(hand);
+        Item item = stack.getItem();
+        if (world.isClient() || !(item instanceof BlockItem blockItem)) {
+            return TypedActionResult.pass(player.getStackInHand(hand));
+        }
+        if (blockItem.getBlock() != ModBlocks.GLOW_LANTERN || player.getItemCooldownManager().isCoolingDown(blockItem.asItem())) {
+            return TypedActionResult.pass(player.getStackInHand(hand));
         }
 
-        if (stack.isOf(Items.PHANTOM_MEMBRANE) && !frame.isInvisible()) {
-            frame.setInvisible(true);
-            stack.damage(1, player, EquipmentSlot.MAINHAND);
+        player.getItemCooldownManager().set(stack.getItem(), 100);
+
+        List<Entity> nearby = world.getOtherEntities(
+                player,
+                player.getBoundingBox().expand(10),
+                Entity::isInvisible
+        );
+
+        for (Entity e : nearby) {
+            if (e instanceof LivingEntity living) {
+                living.setGlowing(true);
+                GlowManager.addGlowingEntity(living, 60);
+            }
         }
 
-        world.playSound(null, frame.getBlockPos(), SoundEvents.BLOCK_ENCHANTMENT_TABLE_USE, SoundCategory.BLOCKS, 1.0F, 1.0F);
+        world.playSound(
+                null, player.getX(), player.getY(), player.getZ(),
+                SoundEvents.BLOCK_AMETHYST_BLOCK_HIT, SoundCategory.PLAYERS,
+                1.0F, 1.0F
+        );
 
-        return ActionResult.SUCCESS;
+        return TypedActionResult.success(stack, world.isClient());
     }
 
     private static boolean isPlayerHead(BlockState blockState) {

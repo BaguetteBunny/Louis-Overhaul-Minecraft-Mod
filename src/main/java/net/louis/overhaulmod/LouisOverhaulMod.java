@@ -1,6 +1,7 @@
 package net.louis.overhaulmod;
 
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.louis.overhaulmod.block.ModBlocks;
 import net.louis.overhaulmod.component.ModComponents;
 import net.louis.overhaulmod.effect.ModEffects;
@@ -8,6 +9,7 @@ import net.louis.overhaulmod.events.ModUseEvents;
 import net.louis.overhaulmod.item.ModItems;
 import net.louis.overhaulmod.potion.ModPotions;
 import net.louis.overhaulmod.sound.ModSounds;
+import net.louis.overhaulmod.utils.GlowManager;
 import net.louis.overhaulmod.utils.ModLootTableModifiers;
 import net.louis.overhaulmod.utils.StackableStews;
 import net.minecraft.component.type.FoodComponent;
@@ -39,5 +41,12 @@ public class LouisOverhaulMod implements ModInitializer {
 		ModUseEvents.registerStew();
 		ModUseEvents.registerProjectileItems();
 		ModUseEvents.registerMisc();
+		tickGlow();
+	}
+
+	private void tickGlow() {
+		ServerTickEvents.END_SERVER_TICK.register(server -> {
+			GlowManager.tick();
+		});
 	}
 }
