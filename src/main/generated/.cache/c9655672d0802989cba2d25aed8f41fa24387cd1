@@ -1,4 +1,4 @@
-// 1.21.1	2025-10-18T19:13:55.5527181	Louis' Overhaul Mod/Model Definitions
+// 1.21.1	2025-10-18T19:17:08.3663782	Louis' Overhaul Mod/Model Definitions
 833ad2a34c939f823f9b1b99e2ebc3fc16a40912 assets\minecraft\models\block\polished_andesite.json
 b899b425435adcc00266a710f23ef6641eb18887 assets\louis-overhaul-mod\models\block\polished_diorite_wall_post.json
 1519a7670a4d4dc84774d0224d558017282c148f assets\louis-overhaul-mod\models\block\stone_wall_side.json
@@ -13,8 +13,8 @@ a7c756da57aad7661b82c8a8c79430ee01f8bb73 assets\louis-overhaul-mod\models\block\
 f6ef3b53bb199cd9cb5791dccbee83a86d09a86b assets\louis-overhaul-mod\models\block\chiseled_dark_prismarine.json
 25dd57a4637d7348c44ae03890f003a4ba8b195f assets\minecraft\blockstates\prismarine.json
 64c6e5bf086a199d6c7c74e045ef0bd20c884a86 assets\louis-overhaul-mod\models\item\cracked_mud_bricks.json
-d313609153aa95deeccd9f073c38180a2dfa2aad assets\louis-overhaul-mod\blockstates\red_nether_brick_fence.json
 6771a05eb81fe2f3da6c6ba62a2735e1be1478c7 assets\minecraft\models\block\cut_red_sandstone.json
+d313609153aa95deeccd9f073c38180a2dfa2aad assets\louis-overhaul-mod\blockstates\red_nether_brick_fence.json
 7531fe3dcc488f687c0d7924d8dfe15f989babda assets\louis-overhaul-mod\models\item\chiseled_prismarine.json
 3f2d85755b5064be07876e4aca08d4aa6bbff05a assets\louis-overhaul-mod\models\item\recall_clock.json
 83f7a3bd67a676bb34e4061602efeb975e815a91 assets\louis-overhaul-mod\models\block\copper_rail_on.json
@@ -221,8 +221,8 @@ c3045c4f01b27dc88757ecd6236d9ac00fe12973 assets\louis-overhaul-mod\blockstates\l
 91a208c14608f73141edc9c16b52169bbeedf753 assets\louis-overhaul-mod\models\item\cracked_end_stone_bricks.json
 3aa36b2846c3bc1b6d2207d911d14d5185dd3b8d assets\louis-overhaul-mod\models\block\chiseled_red_nether_bricks.json
 f3c308beab6298f51e361a664cc6591b84fa4f61 assets\louis-overhaul-mod\models\item\cracked_prismarine_bricks.json
-2bbb1ee6b4ac274b2732796c6613c434aecfee4c assets\louis-overhaul-mod\blockstates\prismarine_wall.json
 f75d60911047ee0b590835494d649f7dafe88d32 assets\louis-overhaul-mod\blockstates\dark_prismarine_wall.json
+2bbb1ee6b4ac274b2732796c6613c434aecfee4c assets\louis-overhaul-mod\blockstates\prismarine_wall.json
 87f088da91bd1c8909ffad23602bf17264a431fa assets\louis-overhaul-mod\models\item\polished_diorite_wall.json
 09d3cbac1dd174d6ebb6070913c842e370f51583 assets\louis-overhaul-mod\models\item\calcite_wall.json
 4051fd8ba3d1b5f652470c5290eb0f8dc797ad03 assets\louis-overhaul-mod\models\block\quartz_bricks_wall_inventory.json
@@ -283,8 +283,8 @@ d94c8b5640e259df44f6b59995d9e23bd1239b6b assets\louis-overhaul-mod\models\block\
 299964069cc541b7ca4ed05aef40a50437abccec assets\louis-overhaul-mod\models\block\rose_quartz_wall_side_tall.json
 4a011445789c023203a24a8d2ee3dfa9c0674061 assets\louis-overhaul-mod\models\item\cut_sandstone_stairs.json
 03b208177ea83e3b544e36ce45da466f6bb74670 assets\louis-overhaul-mod\models\item\prismarine_bricks_wall.json
-ee471e2f2df07c592e73d0053f3f50d12911afca assets\louis-overhaul-mod\models\item\rose_quartz_bricks.json
 7b7f80431280161b6c1e72d659e0a3750441a1f5 assets\louis-overhaul-mod\models\item\chilled_bone.json
+ee471e2f2df07c592e73d0053f3f50d12911afca assets\louis-overhaul-mod\models\item\rose_quartz_bricks.json
 0adce56b50662fe95a9fae44ae5b28e18f621d36 assets\louis-overhaul-mod\blockstates\polished_andesite_wall.json
 3814ebb35e591bc46d65f5caf07210e6a196cee1 assets\louis-overhaul-mod\models\block\quartz_bricks_slab_top.json
 fea7f33e6269f5199480063c25897980042ab4b0 assets\louis-overhaul-mod\models\block\cracked_tuff_bricks.json

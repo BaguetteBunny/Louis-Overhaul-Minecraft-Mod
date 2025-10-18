@@ -733,12 +733,13 @@ public class ModUseEvents {
             ItemEntity itemEntity = new ItemEntity(world, stand.getX(), stand.getY(), stand.getZ(), new ItemStack(Items.SMOOTH_STONE_SLAB));
             world.spawnEntity(itemEntity);
         } else if (stack.isOf(Items.PHANTOM_MEMBRANE) && !stand.isInvisible()) {
-            stand.setInvisible(false);
+            stand.setInvisible(true);
             stack.decrementUnlessCreative(1, player);
+        } else {
+            return ActionResult.PASS;
         }
 
         world.playSound(null, stand.getBlockPos(), SoundEvents.UI_BUTTON_CLICK.value(), SoundCategory.BLOCKS, 1.0F, 1.0F);
-
         return ActionResult.SUCCESS;
     }
 
