@@ -75,7 +75,7 @@ public class ModUseEvents {
 
     public static void registerMisc() {
         UseEntityCallback.EVENT.register(ModUseEvents::changeArmorStandVariant);
-        UseItemCallback.EVENT.register(ModUseEvents::useGlowLantern);
+        UseItemCallback.EVENT.register(ModUseEvents::useGlowInk);
     }
 
     private static ActionResult oxidizeCopperWithClock(PlayerEntity player, World world, Hand hand, BlockHitResult hitResult) {
@@ -736,6 +736,9 @@ public class ModUseEvents {
         } else if (stack.isOf(Items.PHANTOM_MEMBRANE) && !stand.isInvisible()) {
             stand.setInvisible(true);
             stack.decrementUnlessCreative(1, player);
+        } else if (stack.isOf(Items.GLOW_INK_SAC) && !stand.isGlowing()) {
+            stand.setGlowing(true);
+            stack.decrementUnlessCreative(1, player);
         } else {
             return ActionResult.PASS;
         }
@@ -744,17 +747,15 @@ public class ModUseEvents {
         return ActionResult.SUCCESS;
     }
 
-    private static TypedActionResult<ItemStack> useGlowLantern(PlayerEntity player, World world, Hand hand) {
+    private static TypedActionResult<ItemStack> useGlowInk(PlayerEntity player, World world, Hand hand) {
         ItemStack stack = player.getStackInHand(hand);
         Item item = stack.getItem();
-        if (world.isClient() || !(item instanceof BlockItem blockItem)) {
-            return TypedActionResult.pass(player.getStackInHand(hand));
-        }
-        if (blockItem.getBlock() != ModBlocks.GLOW_LANTERN || player.getItemCooldownManager().isCoolingDown(blockItem.asItem())) {
+        if (world.isClient() || item != Items.GLOW_INK_SAC || player.getItemCooldownManager().isCoolingDown(item)) {
             return TypedActionResult.pass(player.getStackInHand(hand));
         }
 
-        player.getItemCooldownManager().set(stack.getItem(), 100);
+        stack.decrementUnlessCreative(1, player);
+        player.getItemCooldownManager().set(stack.getItem(), 200);
 
         List<Entity> nearby = world.getOtherEntities(
                 player,
@@ -764,7 +765,7 @@ public class ModUseEvents {
         for (Entity e : nearby) {
             if (e instanceof LivingEntity living) {
                 living.setGlowing(true);
-                GlowManager.addGlowingEntity(living, 60);
+                GlowManager.addGlowingEntity(living, 80);
             }
         }
 
