@@ -758,8 +758,7 @@ public class ModUseEvents {
 
         List<Entity> nearby = world.getOtherEntities(
                 player,
-                player.getBoundingBox().expand(10),
-                Entity::isInvisible
+                player.getBoundingBox().expand(12)
         );
 
         for (Entity e : nearby) {
