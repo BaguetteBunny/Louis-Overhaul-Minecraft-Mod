@@ -113,7 +113,6 @@ public class NetherBrickEntity extends ThrownItemEntity {
 
     @Override
     protected void onCollision(HitResult hitResult) {
-        super.onCollision(hitResult);
         World world = this.getWorld();
 
         if (!world.isClient && hitResult.getType() == HitResult.Type.BLOCK) {
@@ -124,10 +123,12 @@ public class NetherBrickEntity extends ThrownItemEntity {
             if (BREAKABLE_GLASS_BLOCKS.contains(state.getBlock())) {
                 world.breakBlock(pos, false, this);
                 world.playSound(null, pos, SoundEvents.BLOCK_GLASS_BREAK, SoundCategory.BLOCKS, 3.0F, 1.0F);
+                return;
             }
-
-            world.sendEntityStatus(this, EntityStatuses.PLAY_DEATH_SOUND_OR_ADD_PROJECTILE_HIT_PARTICLES);
-            this.discard();
         }
+
+        super.onCollision(hitResult);
+        this.getWorld().sendEntityStatus(this, EntityStatuses.PLAY_DEATH_SOUND_OR_ADD_PROJECTILE_HIT_PARTICLES);
+        this.discard();
     }
 }
