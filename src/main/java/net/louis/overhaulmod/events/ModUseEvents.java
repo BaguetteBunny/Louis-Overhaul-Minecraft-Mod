@@ -763,7 +763,7 @@ public class ModUseEvents {
         );
 
         for (Entity e : nearby) {
-            if (e instanceof LivingEntity living) {
+            if (e instanceof LivingEntity living && !living.isGlowing()) {
                 living.setGlowing(true);
                 GlowManager.addGlowingEntity(living, 80);
             }
