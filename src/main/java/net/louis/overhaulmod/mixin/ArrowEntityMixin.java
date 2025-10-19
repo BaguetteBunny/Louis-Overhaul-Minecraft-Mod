@@ -16,9 +16,9 @@ import java.util.List;
 
 @Mixin(ArrowEntity.class)
 public abstract class ArrowEntityMixin {
-
     /**
-     * Overwrites the vanilla onHit method to apply both direct and AoE effects.
+     * @author Louis Billaut
+     * @reason Tipped arrows drop AoE Cloud
      */
     @Overwrite
     public void onHit(LivingEntity target) {
