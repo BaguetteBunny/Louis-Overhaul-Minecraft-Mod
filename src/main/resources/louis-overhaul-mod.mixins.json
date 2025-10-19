@@ -17,7 +17,9 @@
 		"ServerPlayerTickMixin",
 		"ArmorStandEntityAccessor",
 		"ArmorStandMixin",
-		"ItemFrameMixin"
+		"ItemFrameMixin",
+		"ArrowEntityMixin",
+		"ArrowEntityAccessor"
 	],
 	"injectors": {
 		"defaultRequire": 1
