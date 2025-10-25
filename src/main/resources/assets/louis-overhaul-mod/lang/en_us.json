@@ -31,10 +31,10 @@
   "item.minecraft.lingering_potion.effect.nausea": "Lingering Potion of Nausea",
   "item.minecraft.tipped_arrow.effect.nausea": "Arrow of Nausea",
 
-  "item.minecraft.potion.effect.wither": "Potion of Wither",
-  "item.minecraft.splash_potion.effect.wither": "Splash Potion of Wither",
-  "item.minecraft.lingering_potion.effect.wither": "Lingering Potion of Wither",
-  "item.minecraft.tipped_arrow.effect.wither": "Arrow of Wither",
+  "item.minecraft.potion.effect.wither": "Potion of Decay",
+  "item.minecraft.splash_potion.effect.wither": "Splash Potion of Decay",
+  "item.minecraft.lingering_potion.effect.wither": "Lingering Potion of Decay",
+  "item.minecraft.tipped_arrow.effect.wither": "Arrow of Decay",
 
   "item.minecraft.potion.effect.levitation": "Potion of Levitation",
   "item.minecraft.splash_potion.effect.levitation": "Splash Potion of Levitation",

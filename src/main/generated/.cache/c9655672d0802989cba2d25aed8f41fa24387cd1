@@ -1,4 +1,4 @@
-// 1.21.1	2025-10-26T01:19:46.1176588	Louis' Overhaul Mod/Model Definitions
+// 1.21.1	2025-10-26T01:38:12.9602717	Louis' Overhaul Mod/Model Definitions
 833ad2a34c939f823f9b1b99e2ebc3fc16a40912 assets\minecraft\models\block\polished_andesite.json
 b899b425435adcc00266a710f23ef6641eb18887 assets\louis-overhaul-mod\models\block\polished_diorite_wall_post.json
 1519a7670a4d4dc84774d0224d558017282c148f assets\louis-overhaul-mod\models\block\stone_wall_side.json
@@ -132,8 +132,8 @@ d914311237fc22ffd159c536ebffa650708bb7f5 assets\minecraft\blockstates\polished_g
 1e2599873cdd8fba251a8a91472586843eb35df9 assets\louis-overhaul-mod\models\item\llamas_spit.json
 b2fde5e27bcbbb4c9b9cfdc8319b37882e49f147 assets\louis-overhaul-mod\models\block\lavender_quartz_wall_side.json
 f04904c57e10b76ad921f0255d30abfb4dde493a assets\louis-overhaul-mod\models\item\rose_quartz_pillar.json
-48b6db413ab1f22f6b4c844c12c0af557d48fbb0 assets\louis-overhaul-mod\models\item\chiseled_prismarine_bricks.json
 5b51676a61fd3e34f4acc1d294c9601617164130 assets\louis-overhaul-mod\models\item\chiseled_purpur.json
+48b6db413ab1f22f6b4c844c12c0af557d48fbb0 assets\louis-overhaul-mod\models\item\chiseled_prismarine_bricks.json
 211cf2e5bcebe673c0f64ae3d84903697d633e85 assets\louis-overhaul-mod\blockstates\smooth_sandstone_wall.json
 16e6192019ed46f494a845f91fe8333ea5a3073f assets\louis-overhaul-mod\models\block\stone_wall_side_tall.json
 f8e91d5e0afa759bc836889b33a375c35cb1f4ec assets\louis-overhaul-mod\models\block\lavender_quartz_wall_side_tall.json
