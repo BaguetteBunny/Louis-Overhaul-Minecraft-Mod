@@ -25,7 +25,7 @@ public class DwarfismEffect extends StatusEffect {
             scale.addPersistentModifier(
                     new EntityAttributeModifier(
                             MODIFIER_ID,
-                            -0.5 * (amplifier + 1),
+                            -0.25 * (amplifier + 1),
                             EntityAttributeModifier.Operation.ADD_VALUE
                     )
             );
