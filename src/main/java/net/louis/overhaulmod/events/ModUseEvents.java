@@ -10,9 +10,11 @@ import net.louis.overhaulmod.entity.projectile.thrown.BrickEntity;
 import net.louis.overhaulmod.entity.projectile.thrown.NetherBrickEntity;
 import net.louis.overhaulmod.item.ModItems;
 import net.louis.overhaulmod.mixin.ArmorStandEntityAccessor;
+import net.louis.overhaulmod.mixin.BrushableBlockEntityAccessor;
 import net.louis.overhaulmod.utils.GlowManager;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.entity.BrushableBlockEntity;
 import net.minecraft.block.entity.SkullBlockEntity;
 import net.minecraft.block.enums.DoubleBlockHalf;
 import net.minecraft.component.DataComponentTypes;
@@ -31,9 +33,14 @@ import net.minecraft.entity.passive.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.LlamaSpitEntity;
 import net.minecraft.item.*;
+import net.minecraft.loot.LootPool;
+import net.minecraft.loot.LootTable;
+import net.minecraft.loot.entry.ItemEntry;
+import net.minecraft.loot.provider.number.ConstantLootNumberProvider;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtOps;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.registry.*;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
@@ -57,10 +64,16 @@ import java.util.Optional;
 public class ModUseEvents {
 
     public static void registerMain() {
+        UseBlockCallback.EVENT.register(ModUseEvents::useOnSuspiciousBlock);
         UseBlockCallback.EVENT.register(ModUseEvents::oxidizeCopperWithClock);
         UseBlockCallback.EVENT.register(ModUseEvents::retexturePlayerHead);
-        UseItemCallback.EVENT.register(ModUseEvents::getLlamaSpitBottle);
         UseBlockCallback.EVENT.register(ModUseEvents::useChilledBonemeal);
+
+        UseItemCallback.EVENT.register(ModUseEvents::getLlamaSpitBottle);
+        UseItemCallback.EVENT.register(ModUseEvents::useGlowInk);
+
+        UseEntityCallback.EVENT.register(ModUseEvents::changeArmorStandVariant);
+        UseEntityCallback.EVENT.register(ModUseEvents::dyeShulkers);
     }
 
     public static void registerStew() {
@@ -73,12 +86,6 @@ public class ModUseEvents {
     public static void registerProjectileItems() {
         UseItemCallback.EVENT.register(ModUseEvents::useBrick);
         UseItemCallback.EVENT.register(ModUseEvents::useNetherBrick);
-    }
-
-    public static void registerMisc() {
-        UseEntityCallback.EVENT.register(ModUseEvents::changeArmorStandVariant);
-        UseItemCallback.EVENT.register(ModUseEvents::useGlowInk);
-        UseEntityCallback.EVENT.register(ModUseEvents::dyeShulkers);
     }
 
     private static ActionResult oxidizeCopperWithClock(PlayerEntity player, World world, Hand hand, BlockHitResult hitResult) {
@@ -751,7 +758,7 @@ public class ModUseEvents {
         if (world.isClient || !(stack.getItem() instanceof DyeItem dyeItem)) return ActionResult.PASS;
 
         if (entity instanceof ShulkerEntity shulker) {
-            if (!player.getAbilities().creativeMode) stack.decrement(1);
+            stack.decrementUnlessCreative(1, player);
             shulker.setVariant(Optional.ofNullable(dyeItem.getColor()));
 
             player.swingHand(hand, true);
@@ -760,6 +767,27 @@ public class ModUseEvents {
 
         return ActionResult.PASS;
     }
+
+    private static ActionResult useOnSuspiciousBlock(PlayerEntity player, World world, Hand hand, BlockHitResult hitResult) {
+        ItemStack stack = player.getStackInHand(hand);
+        if (world.isClient || !player.isSneaking() || stack.isEmpty()) return ActionResult.PASS;
+
+        BlockPos pos = hitResult.getBlockPos();
+        BlockEntity blockEntity = world.getBlockEntity(pos);
+
+        if (blockEntity instanceof BrushableBlockEntity && ((BrushableBlockEntity) blockEntity).getItem().isEmpty()) {
+            ((BrushableBlockEntityAccessor) blockEntity).setItem(stack.copy());
+            stack.decrement(stack.getCount());
+
+            world.playSound(null, pos, SoundEvents.ENTITY_ITEM_FRAME_PLACE,
+                    SoundCategory.PLAYERS, 2.0F, 0.5F);
+
+            player.swingHand(hand, true);
+            return ActionResult.SUCCESS;
+        }
+        return ActionResult.PASS;
+    }
+
 
     private static boolean isPlayerHead(BlockState blockState) {
         return blockState.isOf(Blocks.PLAYER_HEAD) || blockState.isOf(Blocks.PLAYER_WALL_HEAD);
