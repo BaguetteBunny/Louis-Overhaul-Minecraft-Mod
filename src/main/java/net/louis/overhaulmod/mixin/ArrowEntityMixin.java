@@ -17,7 +17,7 @@ import java.util.List;
 @Mixin(ArrowEntity.class)
 public abstract class ArrowEntityMixin {
     /**
-     * @author Louis Billaut
+     * @author BaguetteBunny @ LouisOverhaulMod
      * @reason Tipped arrows drop AoE Cloud
      */
     @Overwrite
