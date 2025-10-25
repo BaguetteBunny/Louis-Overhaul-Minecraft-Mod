@@ -30,8 +30,8 @@ public class ModPotions {
     public static final int STRONGEST_130 = 200;
 
     public static final int NORMAL_005 = 100;
-    public static final int LONG_005 = 1500;
-    public static final int LONGEST_005 = 200;
+    public static final int LONG_005 = 200;
+    public static final int LONGEST_005 = 400;
 
     public static final int UNCONVENTIONAL = 400;
 
