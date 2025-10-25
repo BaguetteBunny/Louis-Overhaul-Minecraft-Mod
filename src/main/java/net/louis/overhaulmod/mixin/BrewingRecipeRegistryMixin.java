@@ -182,6 +182,18 @@ public class BrewingRecipeRegistryMixin {
         builder.registerPotionRecipe(ModPotions.GROUNDED, Items.REDSTONE, ModPotions.LONG_GROUNDED);
         builder.registerPotionRecipe(ModPotions.LONG_GROUNDED, Items.REDSTONE_BLOCK, ModPotions.LONGEST_GROUNDED);
 
+        builder.registerPotionRecipe(Potions.AWKWARD, ModItems.LLAMAS_SPIT, ModPotions.DWARFISM);
+        builder.registerPotionRecipe(ModPotions.DWARFISM, Items.REDSTONE, ModPotions.LONG_DWARFISM);
+        builder.registerPotionRecipe(ModPotions.DWARFISM, Items.GLOWSTONE_DUST, ModPotions.STRONG_DWARFISM);
+        builder.registerPotionRecipe(ModPotions.LONG_DWARFISM, Items.REDSTONE_BLOCK, ModPotions.LONGEST_DWARFISM);
+        builder.registerPotionRecipe(ModPotions.STRONG_DWARFISM, Items.GLOWSTONE, ModPotions.STRONGEST_DWARFISM);
+
+        builder.registerPotionRecipe(Potions.MUNDANE, ModItems.LLAMAS_SPIT, ModPotions.GIGANTISM);
+        builder.registerPotionRecipe(ModPotions.GIGANTISM, Items.REDSTONE, ModPotions.LONG_GIGANTISM);
+        builder.registerPotionRecipe(ModPotions.GIGANTISM, Items.GLOWSTONE_DUST, ModPotions.STRONG_GIGANTISM);
+        builder.registerPotionRecipe(ModPotions.LONG_GIGANTISM, Items.REDSTONE_BLOCK, ModPotions.LONGEST_GIGANTISM);
+        builder.registerPotionRecipe(ModPotions.STRONG_GIGANTISM, Items.GLOWSTONE, ModPotions.STRONGEST_GIGANTISM);
+
     }
 }
 

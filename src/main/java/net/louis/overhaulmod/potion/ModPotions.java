@@ -244,6 +244,29 @@ public class ModPotions {
     public static final RegistryEntry<Potion> STRONGEST_WITHER = registerPotion("strongest_wither",
             new Potion("wither", new StatusEffectInstance(StatusEffects.WITHER, STRONGEST_045, 2)));
 
+    public static final RegistryEntry<Potion> GIGANTISM = registerPotion("gigantism",
+            new Potion("gigantism", new StatusEffectInstance(ModEffects.GIGANTISM, NORMAL_045, 0)));
+    public static final RegistryEntry<Potion> LONG_GIGANTISM = registerPotion("long_gigantism",
+            new Potion("gigantism", new StatusEffectInstance(ModEffects.GIGANTISM, LONG_045, 0)));
+    public static final RegistryEntry<Potion> STRONG_GIGANTISM = registerPotion("strong_gigantism",
+            new Potion("gigantism", new StatusEffectInstance(ModEffects.GIGANTISM, STRONG_045, 1)));
+    public static final RegistryEntry<Potion> LONGEST_GIGANTISM = registerPotion("longest_gigantism",
+            new Potion("gigantism", new StatusEffectInstance(ModEffects.GIGANTISM, LONGEST_045, 0)));
+    public static final RegistryEntry<Potion> STRONGEST_GIGANTISM = registerPotion("strongest_gigantism",
+            new Potion("gigantism", new StatusEffectInstance(ModEffects.GIGANTISM, STRONGEST_045, 2)));
+
+    public static final RegistryEntry<Potion> DWARFISM = registerPotion("dwarfism",
+            new Potion("dwarfism", new StatusEffectInstance(ModEffects.DWARFISM, NORMAL_045, 0)));
+    public static final RegistryEntry<Potion> LONG_DWARFISM = registerPotion("long_dwarfism",
+            new Potion("dwarfism", new StatusEffectInstance(ModEffects.DWARFISM, LONG_045, 0)));
+    public static final RegistryEntry<Potion> STRONG_DWARFISM = registerPotion("strong_dwarfism",
+            new Potion("dwarfism", new StatusEffectInstance(ModEffects.DWARFISM, STRONG_045, 1)));
+    public static final RegistryEntry<Potion> LONGEST_DWARFISM = registerPotion("longest_dwarfism",
+            new Potion("dwarfism", new StatusEffectInstance(ModEffects.DWARFISM, LONGEST_045, 0)));
+    public static final RegistryEntry<Potion> STRONGEST_DWARFISM = registerPotion("strongest_dwarfism",
+            new Potion("dwarfism", new StatusEffectInstance(ModEffects.DWARFISM, STRONGEST_045, 2)));
+
+
     private static RegistryEntry<Potion> registerPotion(String name, Potion potion) {
         return Registry.registerReference(Registries.POTION, Identifier.of(LouisOverhaulMod.MOD_ID, name), potion);
     }

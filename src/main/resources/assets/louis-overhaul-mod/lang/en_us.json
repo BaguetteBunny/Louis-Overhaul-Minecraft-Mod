@@ -11,6 +11,18 @@
   "item.minecraft.lingering_potion.effect.grounded": "Lingering Potion of Grounded",
   "item.minecraft.tipped_arrow.effect.grounded": "Arrow of Grounded",
 
+  "effect.louis-overhaul-mod.gigantism": "Gigantism",
+  "item.minecraft.potion.effect.gigantism": "Potion of Gigantism",
+  "item.minecraft.splash_potion.effect.gigantism": "Splash Potion of Gigantism",
+  "item.minecraft.lingering_potion.effect.gigantism": "Lingering Potion of Gigantism",
+  "item.minecraft.tipped_arrow.effect.gigantism": "Arrow of Gigantism",
+
+  "effect.louis-overhaul-mod.dwarfism": "Dwarfism",
+  "item.minecraft.potion.effect.dwarfism": "Potion of Dwarfism",
+  "item.minecraft.splash_potion.effect.dwarfism": "Splash Potion of Dwarfism",
+  "item.minecraft.lingering_potion.effect.dwarfism": "Lingering Potion of Dwarfism",
+  "item.minecraft.tipped_arrow.effect.dwarfism": "Arrow of Dwarfism",
+
   "item.minecraft.potion.effect.blindness": "Potion of Blindness",
   "item.minecraft.splash_potion.effect.blindness": "Splash Potion of Blindness",
   "item.minecraft.lingering_potion.effect.blindness": "Lingering Potion of Blindness",

@@ -17,6 +17,11 @@ public class ModEffects {
                             Identifier.of(LouisOverhaulMod.MOD_ID, "grounded"), -0.25f,
                             EntityAttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
 
+    public static final RegistryEntry<StatusEffect> GIGANTISM = registerStatusEffect("gigantism",
+            new GigantismEffect(StatusEffectCategory.HARMFUL, 0xCF368D));
+    public static final RegistryEntry<StatusEffect> DWARFISM = registerStatusEffect("dwarfism",
+            new DwarfismEffect(StatusEffectCategory.BENEFICIAL, 0x36CFC5));
+
 
     private static RegistryEntry<StatusEffect> registerStatusEffect(String name, StatusEffect statusEffect) {
         return Registry.registerReference(Registries.STATUS_EFFECT, Identifier.of(LouisOverhaulMod.MOD_ID, name), statusEffect);
