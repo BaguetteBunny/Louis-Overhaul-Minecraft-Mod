@@ -59,7 +59,7 @@ public class BrewingRecipeRegistryMixin {
         builder.registerPotionRecipe(ModPotions.LONG_UNLUCK, Items.REDSTONE_BLOCK, ModPotions.LONGEST_UNLUCK);
         builder.registerPotionRecipe(ModPotions.STRONG_UNLUCK, Items.GLOWSTONE, ModPotions.STRONGEST_UNLUCK);
 
-        builder.registerPotionRecipe(Potions.MUNDANE, Items.ECHO_SHARD, ModPotions.DARKNESS);
+        builder.registerPotionRecipe(Potions.MUNDANE, Items.DISC_FRAGMENT_5, ModPotions.DARKNESS);
         builder.registerPotionRecipe(ModPotions.DARKNESS, Items.REDSTONE, ModPotions.LONG_DARKNESS);
         builder.registerPotionRecipe(ModPotions.LONG_DARKNESS, Items.REDSTONE_BLOCK, ModPotions.LONGEST_DARKNESS);
         
@@ -78,7 +78,7 @@ public class BrewingRecipeRegistryMixin {
         // SHULKER SHELL -> LEVITATION
         // ADD VARIATIONS HERE
 
-        // COPPER BLOCK -> NAUSEA
+        // OXIDIZED COPPER BLOCK -> NAUSEA
         // ADD VARIATIONS HERE
 
         // Mid Potion Effects
@@ -167,7 +167,7 @@ public class BrewingRecipeRegistryMixin {
         builder.registerPotionRecipe(Potions.LONG_SLOW_FALLING, Items.REDSTONE_BLOCK, ModPotions.LONGEST_SLOW_FALLING);
 
         // NEW POTIONS
-        builder.registerPotionRecipe(Potions.AWKWARD, Items.CLAY, ModPotions.GROUNDED);
+        builder.registerPotionRecipe(Potions.AWKWARD, Items.HANGING_ROOTS, ModPotions.GROUNDED);
         builder.registerPotionRecipe(ModPotions.GROUNDED, Items.REDSTONE, ModPotions.LONG_GROUNDED);
         builder.registerPotionRecipe(ModPotions.LONG_GROUNDED, Items.REDSTONE_BLOCK, ModPotions.LONGEST_GROUNDED);
 

@@ -11,29 +11,46 @@ import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.Identifier;
 
 public class ModPotions {
-    public static final int NORMAL_300 = 3600;
-    public static final int LONG_300 = 9600;
-    public static final int STRONG_300 = 1800;
-    public static final int LONGEST_300 = 36000;
-    public static final int STRONGEST_300 = 1500;
+    // ---------------------------------------------------------------------
+    public static final int NORMAL_300 = 3600;              // 3MIN
+    public static final int LONG_300 = 12000;               // 10MIN
+    public static final int LONGEST_300 = LONG_300*3;       // 30MIN
 
-    public static final int NORMAL_045 = 900;
-    public static final int LONG_045 = 1800;
-    public static final int STRONG_045 = 440;
-    public static final int LONGEST_045 = 6000;
-    public static final int STRONGEST_045 = 220;
+    public static final int STRONG_300 = NORMAL_300/2;      // 1.5MIN
+    public static final int STRONGEST_300 = STRONG_300/2;   // 45s
+    // ---------------------------------------------------------------------
 
-    public static final int NORMAL_130 = 1800;
-    public static final int LONG_130 = 4800;
-    public static final int STRONG_130 = 400;
-    public static final int LONGEST_130 = 12000;
-    public static final int STRONGEST_130 = 200;
 
-    public static final int NORMAL_005 = 100;
-    public static final int LONG_005 = 200;
-    public static final int LONGEST_005 = 400;
+    // ---------------------------------------------------------------------
+    public static final int NORMAL_130 = 1800;              // 1.5MIN
+    public static final int LONG_130 = NORMAL_130*2;        // 3MIN
+    public static final int LONGEST_130 = 12000;            // 10MIN
 
+    public static final int STRONG_130 = NORMAL_300/2;      // 45s
+    public static final int STRONGEST_130 = 400;            // 20s
+    // ---------------------------------------------------------------------
+
+
+    // ---------------------------------------------------------------------
+    public static final int NORMAL_045 = 900;               // 45s
+    public static final int LONG_045 = NORMAL_045*2;        // 1.5MIN
+    public static final int LONGEST_045 = LONG_045*2;       // 3MIN
+
+    public static final int STRONG_045 = 400;               // 20s
+    public static final int STRONGEST_045 = 200;            // 10s
+    // ---------------------------------------------------------------------
+
+
+    // ---------------------------------------------------------------------
+    public static final int NORMAL_010 = 100;               // 10s
+    public static final int LONG_010 = NORMAL_010*2;        // 20s
+    public static final int LONGEST_010 = LONG_010*3;       // 45s
+    // ---------------------------------------------------------------------
+
+
+    // ---------------------------------------------------------------------
     public static final int UNCONVENTIONAL = 400;
+    // ---------------------------------------------------------------------
 
     // UNIQUELY LONG
     public static final RegistryEntry<Potion> LONGEST_NIGHT_VISION = registerPotion("longest_night_vision",
@@ -173,18 +190,29 @@ public class ModPotions {
             new Potion("unluck", new StatusEffectInstance(StatusEffects.UNLUCK, STRONGEST_130, 2)));
 
     public static final RegistryEntry<Potion> BLINDNESS = registerPotion("blindness",
-            new Potion("blindness", new StatusEffectInstance(StatusEffects.BLINDNESS, NORMAL_005, 0)));
+            new Potion("blindness", new StatusEffectInstance(StatusEffects.BLINDNESS, NORMAL_010, 0)));
     public static final RegistryEntry<Potion> LONG_BLINDNESS = registerPotion("long_blindness",
-            new Potion("blindness", new StatusEffectInstance(StatusEffects.BLINDNESS, LONG_005, 0)));
+            new Potion("blindness", new StatusEffectInstance(StatusEffects.BLINDNESS, LONG_010, 0)));
     public static final RegistryEntry<Potion> LONGEST_BLINDNESS = registerPotion("longest_blindness",
-            new Potion("blindness", new StatusEffectInstance(StatusEffects.BLINDNESS, LONGEST_005, 0)));
+            new Potion("blindness", new StatusEffectInstance(StatusEffects.BLINDNESS, LONGEST_010, 0)));
 
     public static final RegistryEntry<Potion> DARKNESS = registerPotion("darkness",
-            new Potion("darkness", new StatusEffectInstance(StatusEffects.DARKNESS, NORMAL_005, 0)));
+            new Potion("darkness", new StatusEffectInstance(StatusEffects.DARKNESS, NORMAL_010, 0)));
     public static final RegistryEntry<Potion> LONG_DARKNESS = registerPotion("long_darkness",
-            new Potion("darkness", new StatusEffectInstance(StatusEffects.DARKNESS, LONG_005, 0)));
+            new Potion("darkness", new StatusEffectInstance(StatusEffects.DARKNESS, LONG_010, 0)));
     public static final RegistryEntry<Potion> LONGEST_DARKNESS = registerPotion("longest_darkness",
-            new Potion("darkness", new StatusEffectInstance(StatusEffects.DARKNESS, LONGEST_005, 0)));
+            new Potion("darkness", new StatusEffectInstance(StatusEffects.DARKNESS, LONGEST_010, 0)));
+
+    public static final RegistryEntry<Potion> NAUSEA = registerPotion("nausea",
+            new Potion("nausea", new StatusEffectInstance(StatusEffects.NAUSEA, NORMAL_130, 0)));
+    public static final RegistryEntry<Potion> LONG_NAUSEA = registerPotion("long_nausea",
+            new Potion("nausea", new StatusEffectInstance(StatusEffects.NAUSEA, LONG_130, 0)));
+    public static final RegistryEntry<Potion> STRONG_NAUSEA = registerPotion("strong_nausea",
+            new Potion("nausea", new StatusEffectInstance(StatusEffects.NAUSEA, STRONG_130, 1)));
+    public static final RegistryEntry<Potion> LONGEST_NAUSEA = registerPotion("longest_nausea",
+            new Potion("nausea", new StatusEffectInstance(StatusEffects.NAUSEA, LONGEST_130, 0)));
+    public static final RegistryEntry<Potion> STRONGEST_NAUSEA = registerPotion("strongest_nausea",
+            new Potion("nausea", new StatusEffectInstance(StatusEffects.NAUSEA, STRONGEST_130, 2)));
 
     private static RegistryEntry<Potion> registerPotion(String name, Potion potion) {
         return Registry.registerReference(Registries.POTION, Identifier.of(LouisOverhaulMod.MOD_ID, name), potion);
