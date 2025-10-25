@@ -3,23 +3,25 @@
 	"package": "net.louis.overhaulmod.mixin",
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
+		"HorseAccessor",
+		"CatAccessor",
+		"ArmorStandEntityAccessor",
+		"ArrowEntityAccessor",
+
 		"LivingEntityMixin",
 		"BundleContentsComponentMixin",
 		"BrewingRecipeRegistryMixin",
 		"AbstractBlockMixin",
 		"HorseAccessor",
 		"EnderPearlEntityMixin",
-		"WolfAccessor",
 		"WolfEntityMixin",
-		"CatAccessor",
 		"CatEntityMixin",
 		"ParrotEntityMixin",
 		"ServerPlayerTickMixin",
-		"ArmorStandEntityAccessor",
 		"ArmorStandMixin",
 		"ItemFrameMixin",
 		"ArrowEntityMixin",
-		"ArrowEntityAccessor"
+		"ItemMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

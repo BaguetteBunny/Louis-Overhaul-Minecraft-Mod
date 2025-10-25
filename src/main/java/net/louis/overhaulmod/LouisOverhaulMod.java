@@ -11,12 +11,6 @@ import net.louis.overhaulmod.potion.ModPotions;
 import net.louis.overhaulmod.sound.ModSounds;
 import net.louis.overhaulmod.utils.GlowManager;
 import net.louis.overhaulmod.utils.ModLootTableModifiers;
-import net.louis.overhaulmod.utils.StackableStews;
-import net.minecraft.component.type.FoodComponent;
-import net.minecraft.item.Item;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
-import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -26,8 +20,6 @@ public class LouisOverhaulMod implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-		StackableStews.registerStewStacking();
-
 		ModSounds.registerSounds();
 		ModComponents.registerDataComponentTypes();
 		ModEffects.registerEffects();
