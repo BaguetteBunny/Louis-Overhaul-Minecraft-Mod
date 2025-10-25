@@ -25,18 +25,17 @@ import net.minecraft.util.Identifier;
 
 public class ModLootTableModifiers {
     private static final Identifier BAT_ID
-            = Identifier.of("minecraft", "entities/bat");
+            = Identifier.ofVanilla("entities/bat");
     private static final Identifier ENDERMITE_ID
-            = Identifier.of("minecraft", "entities/endermite");
+            = Identifier.ofVanilla("entities/endermite");
     private static final Identifier HUSK_ID
-            = Identifier.of("minecraft", "entities/husk");
+            = Identifier.ofVanilla("entities/husk");
     private static final Identifier STRAY_ID
-            = Identifier.of("minecraft", "entities/stray");
+            = Identifier.ofVanilla("entities/stray");
     private static final Identifier WARDEN_ID
-            = Identifier.of("minecraft", "entities/warden");
+            = Identifier.ofVanilla("entities/warden");
     private static final Identifier DROWNED_ID
-            = Identifier.of("minecraft", "entities/drowned");
-
+            = Identifier.ofVanilla("entities/drowned");
 
     public static void replaceLootTables() {
         LootTableEvents.REPLACE.register((key, lootManager, source, registry) -> {
@@ -179,7 +178,6 @@ public class ModLootTableModifiers {
                         .apply(EnchantedCountIncreaseLootFunction.builder(registry, UniformLootNumberProvider.create(1.0f, 1.0f)).build());
                 tableBuilder.pool(poolBuilder.build());
             }
-
         });
     }
 }
