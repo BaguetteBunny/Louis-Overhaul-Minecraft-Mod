@@ -387,7 +387,7 @@ public class ModUseEvents {
         ItemStack stack = player.getStackInHand(hand);
         if (world.isClient || !stack.isOf(Items.MUSHROOM_STEW)) return ActionResult.PASS;
 
-        if (entity instanceof CowEntity targetCow) {
+        if (entity instanceof CowEntity targetCow && !(targetCow instanceof MooshroomEntity)) {
             double x = targetCow.getX();
             double y = targetCow.getY();
             double z = targetCow.getZ();
@@ -430,7 +430,8 @@ public class ModUseEvents {
                         0.05
                 );
             }
-            return ActionResult.CONSUME;
+            player.swingHand(hand, true);
+            return ActionResult.SUCCESS;
         }
         return ActionResult.PASS;
     }
@@ -474,7 +475,8 @@ public class ModUseEvents {
                         0.05
                 );
             }
-            return ActionResult.CONSUME;
+            player.swingHand(hand, true);
+            return ActionResult.SUCCESS;
         }
         return ActionResult.PASS;
     }
@@ -519,7 +521,8 @@ public class ModUseEvents {
                         0.05
                 );
             }
-            return ActionResult.CONSUME;
+            player.swingHand(hand, true);
+            return ActionResult.SUCCESS;
         }
         return ActionResult.PASS;
     }
@@ -563,7 +566,8 @@ public class ModUseEvents {
                         0.05
                 );
             }
-            return ActionResult.CONSUME;
+            player.swingHand(hand, true);
+            return ActionResult.SUCCESS;
         }
 
         if (entity instanceof VillagerEntity targetVillager) {
@@ -614,7 +618,8 @@ public class ModUseEvents {
                             0.05
                     );
                 }
-                return ActionResult.CONSUME;
+                player.swingHand(hand, true);
+                return ActionResult.SUCCESS;
             }
         }
         return ActionResult.PASS;
@@ -737,6 +742,7 @@ public class ModUseEvents {
                 1.0F, 1.0F
         );
 
+        player.swingHand(hand, true);
         return TypedActionResult.success(stack, world.isClient());
     }
 
