@@ -4,6 +4,7 @@ import com.mojang.authlib.GameProfile;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 import net.fabricmc.fabric.api.event.player.UseEntityCallback;
 import net.fabricmc.fabric.api.event.player.UseItemCallback;
+import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags;
 import net.louis.overhaulmod.block.ModBlocks;
 import net.louis.overhaulmod.entity.projectile.thrown.BrickEntity;
 import net.louis.overhaulmod.entity.projectile.thrown.NetherBrickEntity;
@@ -23,6 +24,7 @@ import net.minecraft.entity.decoration.ItemFrameEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.mob.GiantEntity;
+import net.minecraft.entity.mob.ShulkerEntity;
 import net.minecraft.entity.mob.ZombieEntity;
 import net.minecraft.entity.mob.ZombieVillagerEntity;
 import net.minecraft.entity.passive.*;
@@ -37,10 +39,7 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.property.Properties;
 import net.minecraft.text.Text;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.Hand;
-import net.minecraft.util.TypedActionResult;
-import net.minecraft.util.Uuids;
+import net.minecraft.util.*;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.hit.HitResult;
@@ -79,6 +78,7 @@ public class ModUseEvents {
     public static void registerMisc() {
         UseEntityCallback.EVENT.register(ModUseEvents::changeArmorStandVariant);
         UseItemCallback.EVENT.register(ModUseEvents::useGlowInk);
+        UseEntityCallback.EVENT.register(ModUseEvents::dyeShulkers);
     }
 
     private static ActionResult oxidizeCopperWithClock(PlayerEntity player, World world, Hand hand, BlockHitResult hitResult) {
@@ -738,6 +738,21 @@ public class ModUseEvents {
         );
 
         return TypedActionResult.success(stack, world.isClient());
+    }
+
+    private static ActionResult dyeShulkers(PlayerEntity player, World world, Hand hand, Entity entity, @Nullable EntityHitResult entityHitResult) {
+        ItemStack stack = player.getStackInHand(hand);
+        if (world.isClient || !(stack.getItem() instanceof DyeItem dyeItem)) return ActionResult.PASS;
+
+        if (entity instanceof ShulkerEntity shulker) {
+            if (!player.getAbilities().creativeMode) stack.decrement(1);
+            shulker.setVariant(Optional.ofNullable(dyeItem.getColor()));
+
+            player.swingHand(hand, true);
+            return ActionResult.SUCCESS;
+        }
+
+        return ActionResult.PASS;
     }
 
     private static boolean isPlayerHead(BlockState blockState) {
