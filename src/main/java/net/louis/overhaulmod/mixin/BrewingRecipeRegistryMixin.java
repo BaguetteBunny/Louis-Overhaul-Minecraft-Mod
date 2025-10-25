@@ -62,24 +62,35 @@ public class BrewingRecipeRegistryMixin {
         builder.registerPotionRecipe(Potions.MUNDANE, Items.DISC_FRAGMENT_5, ModPotions.DARKNESS);
         builder.registerPotionRecipe(ModPotions.DARKNESS, Items.REDSTONE, ModPotions.LONG_DARKNESS);
         builder.registerPotionRecipe(ModPotions.LONG_DARKNESS, Items.REDSTONE_BLOCK, ModPotions.LONGEST_DARKNESS);
-        
-        // LLAMA SPIT -> BLINDNESS
-        // ADD VARIATIONS HERE
 
-        // ROTTEN FLESH -> HUNGER
-        // ADD VARIATIONS HERE
+        builder.registerPotionRecipe(Potions.MUNDANE, Items.INK_SAC, ModPotions.BLINDNESS);
+        builder.registerPotionRecipe(ModPotions.BLINDNESS, Items.REDSTONE, ModPotions.LONG_BLINDNESS);
+        builder.registerPotionRecipe(ModPotions.LONG_BLINDNESS, Items.REDSTONE_BLOCK, ModPotions.LONGEST_BLINDNESS);
+
+        builder.registerPotionRecipe(Potions.MUNDANE, Items.ROTTEN_FLESH, ModPotions.HUNGER);
+        builder.registerPotionRecipe(ModPotions.HUNGER, Items.REDSTONE, ModPotions.LONG_HUNGER);
+        builder.registerPotionRecipe(ModPotions.HUNGER, Items.GLOWSTONE_DUST, ModPotions.STRONG_HUNGER);
+        builder.registerPotionRecipe(ModPotions.LONG_HUNGER, Items.REDSTONE_BLOCK, ModPotions.LONGEST_HUNGER);
+        builder.registerPotionRecipe(ModPotions.STRONG_HUNGER, Items.GLOWSTONE, ModPotions.STRONGEST_HUNGER);
 
         // DECAYED FLESH -> REVERSE WATER BREATHING
         // ADD VARIATIONS HERE
 
-        // WITHER ROSE -> WITHER
-        // ADD VARIATIONS HERE
+        builder.registerPotionRecipe(Potions.MUNDANE, Items.WITHER_ROSE, ModPotions.WITHER);
+        builder.registerPotionRecipe(ModPotions.WITHER, Items.REDSTONE, ModPotions.LONG_WITHER);
+        builder.registerPotionRecipe(ModPotions.WITHER, Items.GLOWSTONE_DUST, ModPotions.STRONG_WITHER);
+        builder.registerPotionRecipe(ModPotions.LONG_WITHER, Items.REDSTONE_BLOCK, ModPotions.LONGEST_WITHER);
+        builder.registerPotionRecipe(ModPotions.STRONG_WITHER, Items.GLOWSTONE, ModPotions.STRONGEST_WITHER);
 
-        // SHULKER SHELL -> LEVITATION
-        // ADD VARIATIONS HERE
+        builder.registerPotionRecipe(Potions.MUNDANE, Items.SHULKER_SHELL, ModPotions.LEVITATION);
+        builder.registerPotionRecipe(ModPotions.LEVITATION, Items.REDSTONE, ModPotions.LONG_LEVITATION);
+        builder.registerPotionRecipe(ModPotions.LEVITATION, Items.GLOWSTONE_DUST, ModPotions.STRONG_LEVITATION);
+        builder.registerPotionRecipe(ModPotions.LONG_LEVITATION, Items.REDSTONE_BLOCK, ModPotions.LONGEST_LEVITATION);
+        builder.registerPotionRecipe(ModPotions.STRONG_LEVITATION, Items.GLOWSTONE, ModPotions.STRONGEST_LEVITATION);
 
-        // OXIDIZED COPPER BLOCK -> NAUSEA
-        // ADD VARIATIONS HERE
+        builder.registerPotionRecipe(Potions.MUNDANE, Items.OXIDIZED_COPPER, ModPotions.NAUSEA);
+        builder.registerPotionRecipe(ModPotions.NAUSEA, Items.REDSTONE, ModPotions.LONG_NAUSEA);
+        builder.registerPotionRecipe(ModPotions.LONG_NAUSEA, Items.REDSTONE_BLOCK, ModPotions.LONGEST_NAUSEA);
 
         // Mid Potion Effects
         builder.registerPotionRecipe(Potions.THICK, Items.BREEZE_ROD, Potions.WIND_CHARGED);

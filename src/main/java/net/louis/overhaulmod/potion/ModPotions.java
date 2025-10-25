@@ -42,9 +42,10 @@ public class ModPotions {
 
 
     // ---------------------------------------------------------------------
+    // DEPRECATED
     public static final int NORMAL_010 = 100;               // 10s
-    public static final int LONG_010 = NORMAL_010*2;        // 20s
-    public static final int LONGEST_010 = LONG_010*3;       // 45s
+    public static final int LONG_010 = 200;                 // 20s
+    public static final int LONGEST_010 = 900;              // 45s
     // ---------------------------------------------------------------------
 
 
@@ -109,9 +110,9 @@ public class ModPotions {
             new Potion("strength", new StatusEffectInstance(StatusEffects.STRENGTH, STRONGEST_300, 2)));
 
     // HYBRID & ADDONS
-    public static final RegistryEntry<Potion> TRUE_TURTLE_MASTER = registerPotion("turtle_master",
+    public static final RegistryEntry<Potion> TRUE_TURTLE_MASTER = registerPotion("true_turtle_master",
             new Potion(
-                    "turtle_master",
+                    "true_turtle_master",
                     new StatusEffectInstance(StatusEffects.SLOWNESS, UNCONVENTIONAL, 4),
                     new StatusEffectInstance(StatusEffects.RESISTANCE, UNCONVENTIONAL, 4),
                     new StatusEffectInstance(ModEffects.GROUNDED, UNCONVENTIONAL, 0)
@@ -190,29 +191,58 @@ public class ModPotions {
             new Potion("unluck", new StatusEffectInstance(StatusEffects.UNLUCK, STRONGEST_130, 2)));
 
     public static final RegistryEntry<Potion> BLINDNESS = registerPotion("blindness",
-            new Potion("blindness", new StatusEffectInstance(StatusEffects.BLINDNESS, NORMAL_010, 0)));
+            new Potion("blindness", new StatusEffectInstance(StatusEffects.BLINDNESS, NORMAL_045, 0)));
     public static final RegistryEntry<Potion> LONG_BLINDNESS = registerPotion("long_blindness",
-            new Potion("blindness", new StatusEffectInstance(StatusEffects.BLINDNESS, LONG_010, 0)));
+            new Potion("blindness", new StatusEffectInstance(StatusEffects.BLINDNESS, LONG_045, 0)));
     public static final RegistryEntry<Potion> LONGEST_BLINDNESS = registerPotion("longest_blindness",
-            new Potion("blindness", new StatusEffectInstance(StatusEffects.BLINDNESS, LONGEST_010, 0)));
+            new Potion("blindness", new StatusEffectInstance(StatusEffects.BLINDNESS, LONGEST_045, 0)));
 
     public static final RegistryEntry<Potion> DARKNESS = registerPotion("darkness",
-            new Potion("darkness", new StatusEffectInstance(StatusEffects.DARKNESS, NORMAL_010, 0)));
+            new Potion("darkness", new StatusEffectInstance(StatusEffects.DARKNESS, NORMAL_045, 0)));
     public static final RegistryEntry<Potion> LONG_DARKNESS = registerPotion("long_darkness",
-            new Potion("darkness", new StatusEffectInstance(StatusEffects.DARKNESS, LONG_010, 0)));
+            new Potion("darkness", new StatusEffectInstance(StatusEffects.DARKNESS, LONG_045, 0)));
     public static final RegistryEntry<Potion> LONGEST_DARKNESS = registerPotion("longest_darkness",
-            new Potion("darkness", new StatusEffectInstance(StatusEffects.DARKNESS, LONGEST_010, 0)));
+            new Potion("darkness", new StatusEffectInstance(StatusEffects.DARKNESS, LONGEST_045, 0)));
 
     public static final RegistryEntry<Potion> NAUSEA = registerPotion("nausea",
-            new Potion("nausea", new StatusEffectInstance(StatusEffects.NAUSEA, NORMAL_130, 0)));
+            new Potion("nausea", new StatusEffectInstance(StatusEffects.NAUSEA, NORMAL_045, 0)));
     public static final RegistryEntry<Potion> LONG_NAUSEA = registerPotion("long_nausea",
-            new Potion("nausea", new StatusEffectInstance(StatusEffects.NAUSEA, LONG_130, 0)));
-    public static final RegistryEntry<Potion> STRONG_NAUSEA = registerPotion("strong_nausea",
-            new Potion("nausea", new StatusEffectInstance(StatusEffects.NAUSEA, STRONG_130, 1)));
+            new Potion("nausea", new StatusEffectInstance(StatusEffects.NAUSEA, LONG_045, 0)));
     public static final RegistryEntry<Potion> LONGEST_NAUSEA = registerPotion("longest_nausea",
-            new Potion("nausea", new StatusEffectInstance(StatusEffects.NAUSEA, LONGEST_130, 0)));
-    public static final RegistryEntry<Potion> STRONGEST_NAUSEA = registerPotion("strongest_nausea",
-            new Potion("nausea", new StatusEffectInstance(StatusEffects.NAUSEA, STRONGEST_130, 2)));
+            new Potion("nausea", new StatusEffectInstance(StatusEffects.NAUSEA, LONGEST_045, 0)));
+
+    public static final RegistryEntry<Potion> LEVITATION = registerPotion("levitation",
+            new Potion("levitation", new StatusEffectInstance(StatusEffects.LEVITATION, NORMAL_045, 0)));
+    public static final RegistryEntry<Potion> LONG_LEVITATION = registerPotion("long_levitation",
+            new Potion("levitation", new StatusEffectInstance(StatusEffects.LEVITATION, LONG_045, 0)));
+    public static final RegistryEntry<Potion> STRONG_LEVITATION = registerPotion("strong_levitation",
+            new Potion("levitation", new StatusEffectInstance(StatusEffects.LEVITATION, STRONG_045, 1)));
+    public static final RegistryEntry<Potion> LONGEST_LEVITATION = registerPotion("longest_levitation",
+            new Potion("levitation", new StatusEffectInstance(StatusEffects.LEVITATION, LONGEST_045, 0)));
+    public static final RegistryEntry<Potion> STRONGEST_LEVITATION = registerPotion("strongest_levitation",
+            new Potion("levitation", new StatusEffectInstance(StatusEffects.LEVITATION, STRONGEST_045, 2)));
+
+    public static final RegistryEntry<Potion> HUNGER = registerPotion("hunger",
+            new Potion("hunger", new StatusEffectInstance(StatusEffects.HUNGER, NORMAL_045, 0)));
+    public static final RegistryEntry<Potion> LONG_HUNGER = registerPotion("long_hunger",
+            new Potion("hunger", new StatusEffectInstance(StatusEffects.HUNGER, LONG_045, 0)));
+    public static final RegistryEntry<Potion> STRONG_HUNGER = registerPotion("strong_hunger",
+            new Potion("hunger", new StatusEffectInstance(StatusEffects.HUNGER, STRONG_045, 1)));
+    public static final RegistryEntry<Potion> LONGEST_HUNGER = registerPotion("longest_hunger",
+            new Potion("hunger", new StatusEffectInstance(StatusEffects.HUNGER, LONGEST_045, 0)));
+    public static final RegistryEntry<Potion> STRONGEST_HUNGER = registerPotion("strongest_hunger",
+            new Potion("hunger", new StatusEffectInstance(StatusEffects.HUNGER, STRONGEST_045, 2)));
+
+    public static final RegistryEntry<Potion> WITHER = registerPotion("wither",
+            new Potion("wither", new StatusEffectInstance(StatusEffects.WITHER, NORMAL_045, 0)));
+    public static final RegistryEntry<Potion> LONG_WITHER = registerPotion("long_wither",
+            new Potion("wither", new StatusEffectInstance(StatusEffects.WITHER, LONG_045, 0)));
+    public static final RegistryEntry<Potion> STRONG_WITHER = registerPotion("strong_wither",
+            new Potion("wither", new StatusEffectInstance(StatusEffects.WITHER, STRONG_045, 1)));
+    public static final RegistryEntry<Potion> LONGEST_WITHER = registerPotion("longest_wither",
+            new Potion("wither", new StatusEffectInstance(StatusEffects.WITHER, LONGEST_045, 0)));
+    public static final RegistryEntry<Potion> STRONGEST_WITHER = registerPotion("strongest_wither",
+            new Potion("wither", new StatusEffectInstance(StatusEffects.WITHER, STRONGEST_045, 2)));
 
     private static RegistryEntry<Potion> registerPotion(String name, Potion potion) {
         return Registry.registerReference(Registries.POTION, Identifier.of(LouisOverhaulMod.MOD_ID, name), potion);
