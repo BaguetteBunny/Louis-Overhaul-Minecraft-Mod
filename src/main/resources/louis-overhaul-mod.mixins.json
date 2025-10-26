@@ -8,7 +8,6 @@
 		"ArmorStandEntityAccessor",
 		"ArrowEntityAccessor",
 		"BrushableBlockEntityAccessor",
-		"FarmlandBlockMixin",
 
 		"LivingEntityMixin",
 		"BundleContentsComponentMixin",
@@ -23,7 +22,9 @@
 		"ArmorStandMixin",
 		"ItemFrameMixin",
 		"ArrowEntityMixin",
-		"ItemMixin"
+		"ItemMixin",
+		"FarmlandBlockMixin",
+		"CauldronBehaviorMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
