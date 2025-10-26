@@ -1,9 +1,11 @@
 package net.louis.overhaulmod.events;
 
 import com.mojang.authlib.GameProfile;
+import net.fabricmc.fabric.api.event.player.AttackEntityCallback;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 import net.fabricmc.fabric.api.event.player.UseEntityCallback;
 import net.fabricmc.fabric.api.event.player.UseItemCallback;
+import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityType;
 import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags;
 import net.louis.overhaulmod.block.ModBlocks;
 import net.louis.overhaulmod.entity.projectile.thrown.BrickEntity;
@@ -74,6 +76,8 @@ public class ModUseEvents {
 
         UseEntityCallback.EVENT.register(ModUseEvents::changeArmorStandVariant);
         UseEntityCallback.EVENT.register(ModUseEvents::dyeShulkers);
+
+        AttackEntityCallback.EVENT.register(ModUseEvents::featherDamageFreeKB);
     }
 
     public static void registerStew() {
@@ -788,6 +792,17 @@ public class ModUseEvents {
         return ActionResult.PASS;
     }
 
+    private static ActionResult featherDamageFreeKB(PlayerEntity player, World world, Hand hand, Entity entity, @Nullable EntityHitResult hitResult) {
+        ItemStack stack = player.getStackInHand(hand);
+        if (stack.isOf(Items.FEATHER) && !world.isClient && entity instanceof LivingEntity) {
+            if (entity.timeUntilRegen <= 0) return ActionResult.FAIL;
+            player.swingHand(hand, true);
+            ((LivingEntity) entity).takeKnockback(0.4, player.getX() - entity.getX(), player.getZ() - entity.getZ());
+            entity.timeUntilRegen = 10;
+            return ActionResult.FAIL;
+        }
+        return ActionResult.PASS;
+    }
 
     private static boolean isPlayerHead(BlockState blockState) {
         return blockState.isOf(Blocks.PLAYER_HEAD) || blockState.isOf(Blocks.PLAYER_WALL_HEAD);
