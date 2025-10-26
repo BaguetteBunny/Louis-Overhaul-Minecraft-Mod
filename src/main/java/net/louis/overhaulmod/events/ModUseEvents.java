@@ -795,7 +795,7 @@ public class ModUseEvents {
     private static ActionResult featherDamageFreeKB(PlayerEntity player, World world, Hand hand, Entity entity, @Nullable EntityHitResult hitResult) {
         ItemStack stack = player.getStackInHand(hand);
         if (stack.isOf(Items.FEATHER) && !world.isClient && entity instanceof LivingEntity) {
-            if (entity.timeUntilRegen <= 0) return ActionResult.FAIL;
+            if (entity.timeUntilRegen > 0) return ActionResult.FAIL;
             player.swingHand(hand, true);
             ((LivingEntity) entity).takeKnockback(0.4, player.getX() - entity.getX(), player.getZ() - entity.getZ());
             entity.timeUntilRegen = 10;
