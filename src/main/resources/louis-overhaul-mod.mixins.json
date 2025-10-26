@@ -8,6 +8,7 @@
 		"ArmorStandEntityAccessor",
 		"ArrowEntityAccessor",
 		"BrushableBlockEntityAccessor",
+		"FarmlandBlockMixin",
 
 		"LivingEntityMixin",
 		"BundleContentsComponentMixin",
