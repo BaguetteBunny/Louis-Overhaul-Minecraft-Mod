@@ -17,14 +17,25 @@ public class CauldronBehaviorHooks {
             else if (stack.isIn(ItemTags.CANDLES)) {i = Items.CANDLE;}
             else if (stack.isIn(ItemTags.WOOL_CARPETS)) {i = Items.WHITE_CARPET;}
             else if (stack.isIn(ItemTags.TERRACOTTA)) {i = Items.TERRACOTTA;}
-            else if (stack.isIn(ItemTags.WOOL)) {i = Items.WHITE_WOOL;}
             else if (stack.isIn(ItemTags.BEDS)) {i = Items.WHITE_BED;}
             else {return ItemActionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;}
 
-            int count = player.isSneaking() ? stack.getCount() : 1;
-
+            int count = stack.getCount();
             stack.decrement(count);
-            if (!player.getInventory().insertStack(new ItemStack(i, count))) player.dropItem(stack, true);
+
+            player.setStackInHand(hand, new ItemStack(i, count));
+            player.incrementStat(Stats.USE_CAULDRON);
+            LeveledCauldronBlock.decrementFluidLevel(state, world, pos);
+        }
+        return ItemActionResult.success(world.isClient);
+    };
+
+    public static CauldronBehavior CLEAN_GLAZED_TERRACOTTA = (state, world, pos, player, hand, stack) -> {
+        if (!world.isClient) {
+            int count = stack.getCount();
+            stack.decrement(count);
+
+            player.setStackInHand(hand, new ItemStack(Items.TERRACOTTA, count));
             player.incrementStat(Stats.USE_CAULDRON);
             LeveledCauldronBlock.decrementFluidLevel(state, world, pos);
         }
@@ -35,7 +46,8 @@ public class CauldronBehaviorHooks {
         if (!world.isClient) {
             int count = stack.getCount();
             stack.decrement(count);
-            if (!player.getInventory().insertStack(new ItemStack(Items.WHITE_CONCRETE, count))) player.dropItem(stack, true);
+
+            player.setStackInHand(hand, new ItemStack(Items.WHITE_CONCRETE, count));
             player.incrementStat(Stats.USE_CAULDRON);
             LeveledCauldronBlock.decrementFluidLevel(state, world, pos);
         }
@@ -44,9 +56,10 @@ public class CauldronBehaviorHooks {
 
     public static CauldronBehavior CLEAN_CONCRETE_POWDER = (state, world, pos, player, hand, stack) -> {
         if (!world.isClient) {
-            int count = player.isSneaking() ? stack.getCount() : 1;
+            int count = stack.getCount();
             stack.decrement(count);
-            if (!player.getInventory().insertStack(new ItemStack(Items.WHITE_CONCRETE_POWDER, count))) player.dropItem(stack, true);
+
+            player.setStackInHand(hand, new ItemStack(Items.WHITE_CONCRETE_POWDER, count));
             player.incrementStat(Stats.USE_CAULDRON);
             LeveledCauldronBlock.decrementFluidLevel(state, world, pos);
         }
@@ -55,9 +68,10 @@ public class CauldronBehaviorHooks {
 
     public static CauldronBehavior CLEAN_GLASS = (state, world, pos, player, hand, stack) -> {
         if (!world.isClient) {
-            int count = player.isSneaking() ? stack.getCount() : 1;
+            int count = stack.getCount();
             stack.decrement(count);
-            if (!player.getInventory().insertStack(new ItemStack(Items.GLASS, count))) player.dropItem(stack, true);
+
+            player.setStackInHand(hand, new ItemStack(Items.GLASS, count));
             player.incrementStat(Stats.USE_CAULDRON);
             LeveledCauldronBlock.decrementFluidLevel(state, world, pos);
         }
@@ -66,9 +80,10 @@ public class CauldronBehaviorHooks {
 
     public static CauldronBehavior CLEAN_GLASS_PANE = (state, world, pos, player, hand, stack) -> {
         if (!world.isClient) {
-            int count = player.isSneaking() ? stack.getCount() : 1;
+            int count = stack.getCount();
             stack.decrement(count);
-            if (!player.getInventory().insertStack(new ItemStack(Items.GLASS_PANE, count))) player.dropItem(stack, true);
+
+            player.setStackInHand(hand, new ItemStack(Items.GLASS_PANE, count));
             player.incrementStat(Stats.USE_CAULDRON);
             LeveledCauldronBlock.decrementFluidLevel(state, world, pos);
         }
