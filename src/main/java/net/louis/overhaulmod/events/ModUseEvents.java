@@ -76,6 +76,7 @@ public class ModUseEvents {
 
         UseEntityCallback.EVENT.register(ModUseEvents::changeArmorStandVariant);
         UseEntityCallback.EVENT.register(ModUseEvents::dyeShulkers);
+        UseEntityCallback.EVENT.register(ModUseEvents::useBrushOnDyedShulkers);
 
         AttackEntityCallback.EVENT.register(ModUseEvents::featherDamageFreeKB);
     }
@@ -770,6 +771,35 @@ public class ModUseEvents {
         }
 
         return ActionResult.PASS;
+    }
+
+    private static ActionResult useBrushOnDyedShulkers(PlayerEntity player, World world, Hand hand, Entity entity, @Nullable EntityHitResult entityHitResult) {
+        ItemStack stack = player.getStackInHand(hand);
+        if (world.isClient
+                || !(stack.getItem() instanceof BrushItem)
+                || !(entity instanceof ShulkerEntity shulker)
+                || shulker.getVariant().isEmpty()
+        ) return ActionResult.PASS;
+
+        double x = entity.getX();
+        double y = entity.getY();
+        double z = entity.getZ();
+        world.playSound(null, x, y, z, SoundEvents.ENTITY_ARMADILLO_BRUSH, SoundCategory.NEUTRAL,
+                0.75F,
+                (world.getRandom().nextFloat() * 0.2F + 0.5F)
+        );
+        if (!player.isCreative()) stack.damage(16, player, EquipmentSlot.MAINHAND);
+
+        Optional<DyeColor> variant = shulker.getVariant();
+        DyeColor color = variant.get();
+        Item dyeItem = DyeItem.byColor(color);
+        ItemStack dyeStack = new ItemStack(dyeItem);
+
+        ItemEntity dyeItemEntity = new ItemEntity(world, x, y+0.4, z, dyeStack);
+        world.spawnEntity(dyeItemEntity);
+
+        player.swingHand(hand, true);
+        return ActionResult.SUCCESS;
     }
 
     private static ActionResult useOnSuspiciousBlock(PlayerEntity player, World world, Hand hand, BlockHitResult hitResult) {
