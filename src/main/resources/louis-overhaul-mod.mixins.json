@@ -24,7 +24,8 @@
 		"ArrowEntityMixin",
 		"ItemsMixin",
 		"FarmlandBlockMixin",
-		"CauldronBehaviorMixin"
+		"CauldronBehaviorMixin",
+		"RangedWeaponMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
