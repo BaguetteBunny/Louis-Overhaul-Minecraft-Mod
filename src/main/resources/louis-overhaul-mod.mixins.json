@@ -22,7 +22,7 @@
 		"ArmorStandMixin",
 		"ItemFrameMixin",
 		"ArrowEntityMixin",
-		"ItemMixin",
+		"ItemsMixin",
 		"FarmlandBlockMixin",
 		"CauldronBehaviorMixin"
 	],

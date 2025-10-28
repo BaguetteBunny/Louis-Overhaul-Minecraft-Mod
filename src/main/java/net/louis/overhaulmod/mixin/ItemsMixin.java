@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(Items.class)
-public abstract class ItemMixin {
+public abstract class ItemsMixin {
     @Shadow @Final @Mutable public static Item MUSHROOM_STEW;
     @Shadow @Final @Mutable public static Item BEETROOT_SOUP;
     @Shadow @Final @Mutable public static Item RABBIT_STEW;
