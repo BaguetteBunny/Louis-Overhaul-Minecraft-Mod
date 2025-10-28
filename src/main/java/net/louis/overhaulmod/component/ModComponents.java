@@ -6,20 +6,33 @@ import net.minecraft.component.ComponentType;
 import net.minecraft.entity.passive.CatVariant;
 import net.minecraft.entity.passive.ParrotEntity;
 import net.minecraft.entity.passive.WolfVariant;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.network.codec.PacketCodecs;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.registry.entry.RegistryElementCodec;
 import net.minecraft.registry.entry.RegistryEntry;
-import net.minecraft.registry.tag.CatVariantTags;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 
 import java.util.function.UnaryOperator;
 
 public class ModComponents {
+    public static final ComponentType<Item> ARROW_SHAFT = Registry.register(
+            Registries.DATA_COMPONENT_TYPE,
+            Identifier.of(LouisOverhaulMod.MOD_ID, "arrow_shaft"),
+            ComponentType.<Item>builder().codec(Registries.ITEM.getCodec()).build()
+            );
+    public static final ComponentType<Item> ARROW_HEAD = Registry.register(
+            Registries.DATA_COMPONENT_TYPE,
+            Identifier.of(LouisOverhaulMod.MOD_ID, "arrow_head"),
+            ComponentType.<Item>builder().codec(Registries.ITEM.getCodec()).build()
+    );
+
+    public static final ComponentType<Item> ARROW_FOOT = Registry.register(
+            Registries.DATA_COMPONENT_TYPE,
+            Identifier.of(LouisOverhaulMod.MOD_ID, "arrow_foot"),
+            ComponentType.<Item>builder().codec(Registries.ITEM.getCodec()).build()
+    );
 
     public static final ComponentType<Double> MOB_SPEED = Registry.register(
             Registries.DATA_COMPONENT_TYPE,
