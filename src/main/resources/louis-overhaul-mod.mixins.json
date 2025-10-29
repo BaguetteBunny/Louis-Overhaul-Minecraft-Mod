@@ -8,6 +8,7 @@
 		"ArmorStandEntityAccessor",
 		"ArrowEntityAccessor",
 		"BrushableBlockEntityAccessor",
+		"PersistentProjectileEntityAccessor",
 
 		"LivingEntityMixin",
 		"BundleContentsComponentMixin",
