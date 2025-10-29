@@ -9,6 +9,7 @@ import net.louis.overhaulmod.events.ModUseEvents;
 import net.louis.overhaulmod.item.ModItems;
 import net.louis.overhaulmod.potion.ModPotions;
 import net.louis.overhaulmod.sound.ModSounds;
+import net.louis.overhaulmod.utils.DespawnManager;
 import net.louis.overhaulmod.utils.GlowManager;
 import net.louis.overhaulmod.utils.ModLootTableModifiers;
 import org.slf4j.Logger;
@@ -32,12 +33,13 @@ public class LouisOverhaulMod implements ModInitializer {
 		ModUseEvents.registerMain();
 		ModUseEvents.registerStew();
 		ModUseEvents.registerProjectileItems();
-		tickGlow();
+		tickGlobal();
 	}
 
-	private void tickGlow() {
+	private void tickGlobal() {
 		ServerTickEvents.END_SERVER_TICK.register(server -> {
 			GlowManager.tick();
+			DespawnManager.tick();
 		});
 	}
 }

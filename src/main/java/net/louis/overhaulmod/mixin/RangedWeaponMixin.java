@@ -1,6 +1,7 @@
 package net.louis.overhaulmod.mixin;
 
 import net.louis.overhaulmod.component.ModComponents;
+import net.louis.overhaulmod.utils.DespawnManager;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.projectile.PersistentProjectileEntity;
@@ -54,6 +55,7 @@ public abstract class RangedWeaponMixin {
                 ProjectileEntity projectileEntity = createArrowEntity(world, shooter, stack, itemStack, critical);
 
                 projectileEntity.setNoGravity(hasNoGravity);
+                if (hasNoGravity) DespawnManager.addDespawnTimerToEntity(projectileEntity, 200);
 
                 shoot(shooter, projectileEntity, j, speed, divergence, k, target);
                 world.spawnEntity(projectileEntity);
@@ -89,9 +91,8 @@ public abstract class RangedWeaponMixin {
     public void addArrowAttribute(ItemStack selectedProjectile) {
         if (selectedProjectile.contains(ModComponents.ARROW_SHAFT)) {
             Item arrowHeadMaterial = selectedProjectile.get(ModComponents.ARROW_SHAFT);
-            if (arrowHeadMaterial.equals(Items.BREEZE_ROD)) {
-                hasNoGravity = true;
-            }
+
+            if (arrowHeadMaterial.equals(Items.BREEZE_ROD)) hasNoGravity = true;
         }
     }
 }
