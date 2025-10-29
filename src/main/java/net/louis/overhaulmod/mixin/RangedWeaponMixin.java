@@ -55,7 +55,7 @@ public abstract class RangedWeaponMixin {
                 ProjectileEntity projectileEntity = createArrowEntity(world, shooter, stack, itemStack, critical);
 
                 projectileEntity.setNoGravity(hasNoGravity);
-                if (hasNoGravity) DespawnManager.addDespawnTimerToEntity(projectileEntity, 200);
+                if (hasNoGravity) DespawnManager.addDespawnTimerToEntity(projectileEntity, 1200);
 
                 shoot(shooter, projectileEntity, j, speed, divergence, k, target);
                 world.spawnEntity(projectileEntity);
