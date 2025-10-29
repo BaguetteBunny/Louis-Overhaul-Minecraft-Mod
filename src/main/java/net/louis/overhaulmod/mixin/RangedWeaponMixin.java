@@ -44,6 +44,7 @@ public abstract class RangedWeaponMixin {
     private static boolean hasNoGravity = false;
     private static boolean hasPiercing = false;
     private static boolean hasLightness = false;
+    private static float baseDamage = 2.f;
 
     @Inject(method = "shootAll", at = @At("HEAD"), cancellable = true)
     public void shootAll(
@@ -71,6 +72,7 @@ public abstract class RangedWeaponMixin {
                 float k = h + i * ((j + 1) / 2) * g;
                 i = -i;
                 ProjectileEntity projectileEntity = createArrowEntity(world, shooter, stack, itemStack, critical);
+                PersistentProjectileEntity persistentProjectileEntity = (PersistentProjectileEntity) projectileEntity;
 
                 if (hasNoGravity) {
                     projectileEntity.setNoGravity(true);
@@ -79,6 +81,10 @@ public abstract class RangedWeaponMixin {
 
                 if (hasPiercing && projectileEntity instanceof PersistentProjectileEntity persistent) {
                     ((PersistentProjectileEntityAccessor) persistent).callSetPierceLevel((byte) 5);
+                }
+
+                if (baseDamage != 2.f) {
+                    persistentProjectileEntity.setDamage(baseDamage);
                 }
 
                 shoot(shooter, projectileEntity, j, speed, divergence, k, target);
@@ -122,6 +128,7 @@ public abstract class RangedWeaponMixin {
             assert arrowHeadMaterial != null;
 
             if (arrowHeadMaterial.equals(Items.BREEZE_ROD)) hasNoGravity = true;
+            if (arrowHeadMaterial.equals(Items.BLAZE_ROD)) baseDamage += 1.2f;
         }
 
         if (selectedProjectile.contains(ModComponents.ARROW_HEAD)) {
@@ -145,11 +152,12 @@ public abstract class RangedWeaponMixin {
                 ? EnchantmentHelper.getAmmoUse(serverWorld, stack, projectileStack, 1)
                 : 0;
 
-        if (hasNoGravity || hasPiercing || hasLightness) {
+        if (hasNoGravity || hasPiercing || hasLightness || baseDamage != 2.f) {
             hasLightness = false;
             hasPiercing = false;
             hasNoGravity = false;
-            i = 1;
+            baseDamage = 2.f;
+            if (shooter instanceof PlayerEntity && !((PlayerEntity) shooter).isCreative()) i = 1;
         }
 
         if (i > projectileStack.getCount()) {
