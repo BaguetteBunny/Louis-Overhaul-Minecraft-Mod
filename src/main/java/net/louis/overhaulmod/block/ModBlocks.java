@@ -13,6 +13,9 @@ import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 
 public class ModBlocks {
+    public static final Block ADVANCED_FLETCHING_TABLE = registerBlock("advanced_fletching_table",
+            new AdvancedFletchingTable(AbstractBlock.Settings.copy(Blocks.FLETCHING_TABLE)));
+
     public static final Block COPPER_RAIL = registerBlock("copper_rail",
             new PoweredRailBlock(AbstractBlock.Settings.create()
                     .strength(0.7f)
@@ -171,6 +174,9 @@ public class ModBlocks {
 
         // Add Group
         // entries.add(ModBlocks.);
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL).register(entries -> {
+            entries.add(ModBlocks.ADVANCED_FLETCHING_TABLE);
+        });
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.REDSTONE).register(entries -> {
             entries.add(ModBlocks.COPPER_RAIL);
         });

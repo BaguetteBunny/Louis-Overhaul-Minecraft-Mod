@@ -3,6 +3,7 @@ package net.louis.overhaulmod;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.louis.overhaulmod.block.ModBlocks;
+import net.louis.overhaulmod.block.entity.ModBlockEntities;
 import net.louis.overhaulmod.component.ModComponents;
 import net.louis.overhaulmod.effect.ModEffects;
 import net.louis.overhaulmod.events.ModUseEvents;
@@ -27,6 +28,8 @@ public class LouisOverhaulMod implements ModInitializer {
 		ModPotions.registerPotions();
 		ModItems.registerModItems();
 		ModBlocks.registerModBlocks();
+		ModBlockEntities.registerBlockEntities();
+
 		ModLootTableModifiers.modifyLootTables();
 		ModLootTableModifiers.replaceLootTables();
 
