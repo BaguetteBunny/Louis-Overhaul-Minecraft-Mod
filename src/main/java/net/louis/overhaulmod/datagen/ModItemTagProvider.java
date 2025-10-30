@@ -25,5 +25,8 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
         getOrCreateTagBuilder(ItemTags.PICKAXES)
                 .add(ModItems.AMETHYST_DAGGER);
+
+        getOrCreateTagBuilder(ItemTags.ARROWS)
+                .add(ModItems.ADVANCED_ARROW);
     }
 }

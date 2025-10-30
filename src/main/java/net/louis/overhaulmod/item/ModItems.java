@@ -13,6 +13,8 @@ import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
 public class ModItems {
+    public static final Item ADVANCED_ARROW = registerItem("advanced_arrow",
+            new ArrowItem(new Item.Settings()));
     public static final Item CHILLED_BONE = registerItem("chilled_bone",
             new Item(new Item.Settings()));
     public static final Item CHILLED_BONE_MEAL = registerItem("chilled_bone_meal",
@@ -98,6 +100,7 @@ public class ModItems {
         });
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT).register(entries -> {
             entries.add(NETHERITE_HORSE_ARMOR);
+            entries.add(ADVANCED_ARROW);
         });
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.FOOD_AND_DRINK).register(entries -> {
             entries.add(FISH_STEW);

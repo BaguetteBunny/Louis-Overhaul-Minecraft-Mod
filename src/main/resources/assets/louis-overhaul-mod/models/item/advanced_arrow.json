@@ -1,0 +1,9 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "louis-overhaul-mod:item/advanced_arrow"
+  },
+  "overrides": [
+    { "predicate": { "louis-overhaul-mod:atid": 0.111 }, "model": "louis-overhaul-mod:item/amethyst_dagger" }
+  ]
+}

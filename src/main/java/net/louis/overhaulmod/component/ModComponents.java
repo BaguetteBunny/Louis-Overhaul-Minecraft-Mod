@@ -27,7 +27,6 @@ public class ModComponents {
             Identifier.of(LouisOverhaulMod.MOD_ID, "arrow_head"),
             ComponentType.<Item>builder().codec(Registries.ITEM.getCodec()).build()
     );
-
     public static final ComponentType<Item> ARROW_FOOT = Registry.register(
             Registries.DATA_COMPONENT_TYPE,
             Identifier.of(LouisOverhaulMod.MOD_ID, "arrow_foot"),
