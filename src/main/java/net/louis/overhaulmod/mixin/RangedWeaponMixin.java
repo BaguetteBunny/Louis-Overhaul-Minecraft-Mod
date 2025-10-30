@@ -2,6 +2,7 @@ package net.louis.overhaulmod.mixin;
 
 import net.louis.overhaulmod.component.ModComponents;
 import net.louis.overhaulmod.utils.DespawnManager;
+import net.minecraft.component.ComponentType;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -11,6 +12,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.damage.DamageType;
 import net.minecraft.entity.damage.DamageTypes;
+import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.PersistentProjectileEntity;
 import net.minecraft.entity.projectile.ProjectileEntity;
@@ -44,6 +46,8 @@ public abstract class RangedWeaponMixin {
     private static boolean hasNoGravity = false;
     private static boolean hasPiercing = false;
     private static boolean hasLightness = false;
+    private static boolean hasHoming = false;
+    private static boolean hasBlockBreaking = false;
     private static float baseDamage = 2.f;
 
     @Inject(method = "shootAll", at = @At("HEAD"), cancellable = true)
@@ -136,6 +140,7 @@ public abstract class RangedWeaponMixin {
             assert arrowHeadMaterial != null;
 
             if (arrowHeadMaterial.equals(Items.AMETHYST_SHARD)) hasPiercing = true;
+            if (arrowHeadMaterial.equals(Items.ECHO_SHARD)) hasHoming = true;
         }
 
         if (selectedProjectile.contains(ModComponents.ARROW_FOOT)) {
@@ -152,10 +157,11 @@ public abstract class RangedWeaponMixin {
                 ? EnchantmentHelper.getAmmoUse(serverWorld, stack, projectileStack, 1)
                 : 0;
 
-        if (hasNoGravity || hasPiercing || hasLightness || baseDamage != 2.f) {
+        if (hasNoGravity || hasPiercing || hasLightness || hasHoming || baseDamage != 2.f) {
             hasLightness = false;
             hasPiercing = false;
             hasNoGravity = false;
+            hasHoming = false;
             baseDamage = 2.f;
             if (shooter instanceof PlayerEntity && !((PlayerEntity) shooter).isCreative()) i = 1;
         }

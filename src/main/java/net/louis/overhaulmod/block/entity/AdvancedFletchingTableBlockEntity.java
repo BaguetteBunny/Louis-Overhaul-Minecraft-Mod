@@ -35,9 +35,9 @@ public class AdvancedFletchingTableBlockEntity extends BlockEntity implements Im
     private static final int HEAD_SLOT = 3;
     private static final int OUTPUT_SLOT = 0;
 
-    Item[] FOOT_ITEMS = {Items.FEATHER, Items.PHANTOM_MEMBRANE};
+    Item[] FOOT_ITEMS = {Items.FEATHER, Items.PHANTOM_MEMBRANE, Items.ARMADILLO_SCUTE, Items.DRIED_KELP};
     Item[] SHAFT_ITEMS = {Items.STICK, Items.BLAZE_ROD, Items.BREEZE_ROD};
-    Item[] HEAD_ITEMS = {Items.FLINT, Items.AMETHYST_SHARD};
+    Item[] HEAD_ITEMS = {Items.FLINT, Items.AMETHYST_SHARD, Items.ECHO_SHARD, Items.PRISMARINE_SHARD};
 
     public AdvancedFletchingTableBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.FLETCHING_BE, pos, state);

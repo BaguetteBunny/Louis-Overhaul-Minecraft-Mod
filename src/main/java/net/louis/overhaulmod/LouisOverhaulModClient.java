@@ -39,6 +39,7 @@ public class LouisOverhaulModClient implements ClientModInitializer {
                     if (head == Items.AMETHYST_SHARD && shaft == Items.BLAZE_ROD && foot == Items.PHANTOM_MEMBRANE) return 0.111f;
 
                     if (head == Items.AMETHYST_SHARD) return 0.001F;
+                    if (head == Items.ECHO_SHARD) return 0.002F;
 
                     if (shaft == Items.BLAZE_ROD) return 0.01f;
                     if (shaft == Items.BREEZE_ROD) return 0.01f;

@@ -38,6 +38,7 @@ public class LouisOverhaulMod implements ModInitializer {
 		ModUseEvents.registerMain();
 		ModUseEvents.registerStew();
 		ModUseEvents.registerProjectileItems();
+
 		tickGlobal();
 	}
 
