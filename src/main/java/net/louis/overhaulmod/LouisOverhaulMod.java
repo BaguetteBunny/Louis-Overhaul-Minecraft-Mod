@@ -9,6 +9,7 @@ import net.louis.overhaulmod.effect.ModEffects;
 import net.louis.overhaulmod.events.ModUseEvents;
 import net.louis.overhaulmod.item.ModItems;
 import net.louis.overhaulmod.potion.ModPotions;
+import net.louis.overhaulmod.screen.ModScreenHandlers;
 import net.louis.overhaulmod.sound.ModSounds;
 import net.louis.overhaulmod.utils.DespawnManager;
 import net.louis.overhaulmod.utils.GlowManager;
@@ -29,6 +30,7 @@ public class LouisOverhaulMod implements ModInitializer {
 		ModItems.registerModItems();
 		ModBlocks.registerModBlocks();
 		ModBlockEntities.registerBlockEntities();
+		ModScreenHandlers.registerScreenHandlers();
 
 		ModLootTableModifiers.modifyLootTables();
 		ModLootTableModifiers.replaceLootTables();
