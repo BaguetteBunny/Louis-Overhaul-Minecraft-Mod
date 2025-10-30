@@ -48,7 +48,7 @@ public abstract class RangedWeaponMixin {
     private static boolean hasLightness = false;
     private static boolean hasHoming = false;
     private static boolean hasBlockBreaking = false;
-    private static float baseDamage = 2.f;
+    private static float damageModifier = 2.f;
 
     @Inject(method = "shootAll", at = @At("HEAD"), cancellable = true)
     public void shootAll(
@@ -87,10 +87,7 @@ public abstract class RangedWeaponMixin {
                     ((PersistentProjectileEntityAccessor) persistent).callSetPierceLevel((byte) 5);
                 }
 
-                if (baseDamage != 2.f) {
-                    persistentProjectileEntity.setDamage(baseDamage);
-                }
-
+                persistentProjectileEntity.setDamage(damageModifier);
                 shoot(shooter, projectileEntity, j, speed, divergence, k, target);
                 if (hasLightness) {
                     projectileEntity.setVelocity(projectileEntity.getVelocity().normalize().multiply(2.25f));
@@ -132,7 +129,7 @@ public abstract class RangedWeaponMixin {
             assert arrowHeadMaterial != null;
 
             if (arrowHeadMaterial.equals(Items.BREEZE_ROD)) hasNoGravity = true;
-            if (arrowHeadMaterial.equals(Items.BLAZE_ROD)) baseDamage += 1.2f;
+            if (arrowHeadMaterial.equals(Items.BLAZE_ROD)) damageModifier += 1.2f;
         }
 
         if (selectedProjectile.contains(ModComponents.ARROW_HEAD)) {
@@ -140,7 +137,7 @@ public abstract class RangedWeaponMixin {
             assert arrowHeadMaterial != null;
 
             if (arrowHeadMaterial.equals(Items.AMETHYST_SHARD)) hasPiercing = true;
-            if (arrowHeadMaterial.equals(Items.ECHO_SHARD)) hasHoming = true;
+            if (arrowHeadMaterial.equals(Items.ECHO_SHARD)) hasHoming = true; damageModifier -= 0.5f;
         }
 
         if (selectedProjectile.contains(ModComponents.ARROW_FOOT)) {
@@ -157,12 +154,12 @@ public abstract class RangedWeaponMixin {
                 ? EnchantmentHelper.getAmmoUse(serverWorld, stack, projectileStack, 1)
                 : 0;
 
-        if (hasNoGravity || hasPiercing || hasLightness || hasHoming || baseDamage != 2.f) {
+        if (hasNoGravity || hasPiercing || hasLightness || hasHoming || hasBlockBreaking || damageModifier != 2.f) {
             hasLightness = false;
             hasPiercing = false;
             hasNoGravity = false;
             hasHoming = false;
-            baseDamage = 2.f;
+            damageModifier = 2.f;
             if (shooter instanceof PlayerEntity && !((PlayerEntity) shooter).isCreative()) i = 1;
         }
 

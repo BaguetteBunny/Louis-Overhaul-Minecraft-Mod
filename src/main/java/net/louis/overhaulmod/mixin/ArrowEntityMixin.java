@@ -20,19 +20,16 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import java.util.List;
-
 @Mixin(ArrowEntity.class)
 public abstract class ArrowEntityMixin {
     ArrowEntity arrow = (ArrowEntity) (Object) this;
+    ComponentMap components = arrow.getItemStack().getComponents();
 
     @Inject(method = "tick", at = @At("TAIL"))
     private void injectHomingLogic(CallbackInfo ci) {
         if (arrow.getWorld().isClient || arrow.isOnGround()) return;
-        ComponentMap components = arrow.getItemStack().getComponents();
         if (!components.contains(ModComponents.ARROW_HEAD) || !Items.ECHO_SHARD.equals(components.get(ModComponents.ARROW_HEAD))) return;
 
-        arrow.setDamage(1.5);
         LivingEntity target = arrow.getWorld().getClosestEntity(
                 LivingEntity.class,
                 TargetPredicate.DEFAULT,

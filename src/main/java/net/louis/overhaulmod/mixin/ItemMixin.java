@@ -46,6 +46,7 @@ public class ItemMixin {
         if (item == Items.BLAZE_ROD) return TextColor.fromRgb(0xdb895c);
         if (item == Items.AMETHYST_SHARD) return TextColor.fromRgb(0xde78d9);
         if (item == Items.ECHO_SHARD) return TextColor.fromRgb(0x272757);
+        if (item == Items.PRISMARINE_SHARD) return TextColor.fromRgb(0x71d9e2);
         return TextColor.fromFormatting(Formatting.WHITE);
     }
 }
