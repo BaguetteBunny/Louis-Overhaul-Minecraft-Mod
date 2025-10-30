@@ -2,8 +2,11 @@ package net.louis.overhaulmod.block;
 
 import com.mojang.serialization.MapCodec;
 import net.louis.overhaulmod.block.entity.AdvancedFletchingTableBlockEntity;
+import net.louis.overhaulmod.block.entity.ModBlockEntities;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.entity.BlockEntityTicker;
+import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
@@ -56,4 +59,13 @@ public class AdvancedFletchingTable extends BlockWithEntity implements BlockEnti
         return ActionResult.SUCCESS;
     }
 
+    @Nullable
+    @Override
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
+        if (world.isClient) {
+            return null;
+        }
+        return validateTicker(type, ModBlockEntities.FLETCHING_BE,
+                (world1, pos, state1, blockEntity) -> blockEntity.tick(world1, pos, state1));
+    }
 }

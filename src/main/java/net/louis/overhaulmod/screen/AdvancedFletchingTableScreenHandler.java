@@ -19,22 +19,21 @@ public class AdvancedFletchingTableScreenHandler extends ScreenHandler {
     public AdvancedFletchingTableScreenHandler(int syncId, PlayerInventory playerInventory, BlockEntity blockEntity) {
         super(ModScreenHandlers.ADVANCED_FLETCHING_TABLE_SCREEN_HANDLER, syncId);
         this.inventory = ((Inventory) blockEntity);
-
-        this.addSlot(new Slot(inventory, 0, 8, 48) {
+        this.addSlot(new Slot(inventory, 1, 8, 48) {
             @Override
             public int getMaxItemCount() {
                 return 64;
             }
         });
 
-        this.addSlot(new Slot(inventory, 0, 26, 48) {
+        this.addSlot(new Slot(inventory, 2, 26, 48) {
             @Override
             public int getMaxItemCount() {
                 return 64;
             }
         });
 
-        this.addSlot(new Slot(inventory, 0, 44, 48) {
+        this.addSlot(new Slot(inventory, 3, 44, 48) {
             @Override
             public int getMaxItemCount() {
                 return 64;
@@ -44,6 +43,19 @@ public class AdvancedFletchingTableScreenHandler extends ScreenHandler {
             @Override
             public int getMaxItemCount() {
                 return 64;
+            }
+
+            @Override
+            public boolean canInsert(ItemStack stack) {
+                return false;
+            }
+
+            @Override
+            public void onTakeItem(PlayerEntity player, ItemStack stack) {
+                this.markDirty();
+                inventory.removeStack(1, 1);
+                inventory.removeStack(2, 1);
+                inventory.removeStack(3, 1);
             }
         });
 
@@ -55,7 +67,7 @@ public class AdvancedFletchingTableScreenHandler extends ScreenHandler {
     public ItemStack quickMove(PlayerEntity player, int invSlot) {
         ItemStack newStack = ItemStack.EMPTY;
         Slot slot = this.slots.get(invSlot);
-        if (slot != null && slot.hasStack()) {
+        if (slot.hasStack()) {
             ItemStack originalStack = slot.getStack();
             newStack = originalStack.copy();
             if (invSlot < this.inventory.size()) {

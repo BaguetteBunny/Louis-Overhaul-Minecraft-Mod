@@ -159,5 +159,11 @@
   "block.louis-overhaul-mod.red_nether_brick_fence": "Red Nether Brick Fence",
 
 
-  "sound.louis-overhaul-mod.saddled_goat_horn_use": "Saddled Goat Horn Use"
+  "sound.louis-overhaul-mod.saddled_goat_horn_use": "Saddled Goat Horn Use",
+
+
+  "tooltip.arrow.foot":  "• ғʟᴇᴛᴄʜɪɴɢ: %s",
+  "tooltip.arrow.shaft": "• sʜᴀғᴛ:       %s",
+  "tooltip.arrow.head":  "• ᴀʀʀᴏᴡʜᴇᴀᴅ: %s",
+  "tooltip.arrow.empty": " "
 }

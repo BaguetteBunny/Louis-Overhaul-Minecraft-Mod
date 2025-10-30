@@ -26,7 +26,8 @@
 		"ItemsMixin",
 		"FarmlandBlockMixin",
 		"CauldronBehaviorMixin",
-		"RangedWeaponMixin"
+		"RangedWeaponMixin",
+		"ItemMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
