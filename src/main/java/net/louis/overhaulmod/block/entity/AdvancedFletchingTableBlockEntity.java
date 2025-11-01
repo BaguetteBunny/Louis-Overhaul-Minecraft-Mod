@@ -100,8 +100,8 @@ public class AdvancedFletchingTableBlockEntity extends BlockEntity implements Im
     }
 
     private void craftItem(Item foot, Item shaft, Item head) {
-        ItemStack output = new ItemStack(ModItems.ADVANCED_ARROW, 8);
-        if (foot == Items.FEATHER && shaft == Items.STICK && head == Items.FLINT) output = new ItemStack(Items.ARROW, 8);
+        ItemStack output = new ItemStack(ModItems.ADVANCED_ARROW, 4);
+        if (foot == Items.FEATHER && shaft == Items.STICK && head == Items.FLINT) output = new ItemStack(Items.ARROW, 4);
 
         if (foot != Items.FEATHER) output.set(ModComponents.ARROW_FOOT, foot);
         if (shaft != Items.STICK) output.set(ModComponents.ARROW_SHAFT, shaft);
@@ -109,6 +109,7 @@ public class AdvancedFletchingTableBlockEntity extends BlockEntity implements Im
 
         this.setStack(OUTPUT_SLOT, output);
     }
+
     private boolean hasRecipe(Item foot, Item shaft, Item head) {
         return Arrays.asList(FOOT_ITEMS).contains(foot) &&
                 Arrays.asList(SHAFT_ITEMS).contains(shaft) &&
