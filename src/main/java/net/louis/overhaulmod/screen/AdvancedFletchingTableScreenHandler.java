@@ -22,27 +22,27 @@ public class AdvancedFletchingTableScreenHandler extends ScreenHandler {
     public AdvancedFletchingTableScreenHandler(int syncId, PlayerInventory playerInventory, BlockEntity blockEntity) {
         super(ModScreenHandlers.ADVANCED_FLETCHING_TABLE_SCREEN_HANDLER, syncId);
         this.inventory = ((Inventory) blockEntity);
-        this.addSlot(new Slot(inventory, 1, 8, 48) {
+        this.addSlot(new Slot(inventory, 1, 36, 52) {
             @Override
             public int getMaxItemCount() {
                 return 64;
             }
         });
 
-        this.addSlot(new Slot(inventory, 2, 26, 48) {
+        this.addSlot(new Slot(inventory, 2, 55, 35) {
             @Override
             public int getMaxItemCount() {
                 return 64;
             }
         });
 
-        this.addSlot(new Slot(inventory, 3, 44, 48) {
+        this.addSlot(new Slot(inventory, 3, 73, 17) {
             @Override
             public int getMaxItemCount() {
                 return 64;
             }
         });
-        this.addSlot(new Slot(inventory, 0, 98, 48) {
+        this.addSlot(new Slot(inventory, 0, 130, 35) {
             @Override
             public int getMaxItemCount() {
                 return 64;
