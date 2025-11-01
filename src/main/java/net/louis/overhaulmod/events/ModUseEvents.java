@@ -22,6 +22,8 @@ import net.minecraft.block.enums.DoubleBlockHalf;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.ProfileComponent;
 import net.minecraft.entity.*;
+import net.minecraft.entity.attribute.EntityAttribute;
+import net.minecraft.entity.attribute.EntityAttributeInstance;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.decoration.ArmorStandEntity;
 import net.minecraft.entity.decoration.ItemFrameEntity;
@@ -43,6 +45,7 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtOps;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.registry.*;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
@@ -824,11 +827,15 @@ public class ModUseEvents {
 
     private static ActionResult featherDamageFreeKB(PlayerEntity player, World world, Hand hand, Entity entity, @Nullable EntityHitResult hitResult) {
         ItemStack stack = player.getStackInHand(hand);
-        if (stack.isOf(Items.FEATHER) && !world.isClient && entity instanceof LivingEntity) {
+        if (stack.isOf(Items.FEATHER) && !world.isClient && entity instanceof LivingEntity e) {
             if (entity.timeUntilRegen > 0) return ActionResult.FAIL;
             player.swingHand(hand, true);
-            ((LivingEntity) entity).takeKnockback(0.4, player.getX() - entity.getX(), player.getZ() - entity.getZ());
-            entity.timeUntilRegen = 10;
+
+            double knockbackRes = e.getAttributeValue(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE);
+            double strength = (knockbackRes > 1 || knockbackRes < 0) ? 0 : 0.4*(1-knockbackRes);
+
+            e.takeKnockback(strength, player.getX() - entity.getX(), player.getZ() - entity.getZ());
+            e.timeUntilRegen = 10;
             return ActionResult.FAIL;
         }
         return ActionResult.PASS;
