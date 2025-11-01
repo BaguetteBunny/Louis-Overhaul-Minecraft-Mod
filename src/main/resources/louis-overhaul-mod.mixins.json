@@ -31,7 +31,8 @@
 		"ProjectileEntityMixin",
 		"EntityMixin",
 		"ArrowItemMixin",
-		"RecipeManagerMixin"
+		"RecipeManagerMixin",
+		"SculkCatalystBlockEntityMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
