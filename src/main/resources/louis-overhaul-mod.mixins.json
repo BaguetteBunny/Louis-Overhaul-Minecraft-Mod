@@ -28,7 +28,8 @@
 		"CauldronBehaviorMixin",
 		"RangedWeaponMixin",
 		"ItemMixin",
-		"ProjectileEntityMixin"
+		"ProjectileEntityMixin",
+		"EntityMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

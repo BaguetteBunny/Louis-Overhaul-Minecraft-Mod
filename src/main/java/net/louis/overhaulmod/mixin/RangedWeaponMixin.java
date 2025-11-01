@@ -47,7 +47,6 @@ public abstract class RangedWeaponMixin {
     private static boolean hasPiercing = false;
     private static boolean hasLightness = false;
     private static boolean hasHoming = false;
-    private static boolean hasBlockBreaking = false;
     private static float damageModifier = 2.f;
 
     @Inject(method = "shootAll", at = @At("HEAD"), cancellable = true)
@@ -154,7 +153,7 @@ public abstract class RangedWeaponMixin {
                 ? EnchantmentHelper.getAmmoUse(serverWorld, stack, projectileStack, 1)
                 : 0;
 
-        if (hasNoGravity || hasPiercing || hasLightness || hasHoming || hasBlockBreaking || damageModifier != 2.f) {
+        if (hasNoGravity || hasPiercing || hasLightness || hasHoming || damageModifier != 2.f) {
             hasLightness = false;
             hasPiercing = false;
             hasNoGravity = false;
