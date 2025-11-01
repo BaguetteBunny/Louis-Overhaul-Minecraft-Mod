@@ -35,7 +35,7 @@ public abstract class ArrowEntityMixin {
                 TargetPredicate.DEFAULT,
                 (LivingEntity) arrow.getOwner(),
                 arrow.getX(), arrow.getY(), arrow.getZ(),
-                arrow.getBoundingBox().expand(16.0)
+                arrow.getBoundingBox().expand(10)
         );
 
         if (target != null && target != arrow.getOwner()) {
