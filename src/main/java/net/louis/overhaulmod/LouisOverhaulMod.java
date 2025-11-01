@@ -18,11 +18,19 @@ import net.louis.overhaulmod.utils.GlowManager;
 import net.louis.overhaulmod.utils.ModLootTableModifiers;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.DispenserBlock;
+import net.minecraft.block.dispenser.ProjectileDispenserBehavior;
+import net.minecraft.entity.projectile.ArrowEntity;
+import net.minecraft.entity.projectile.PersistentProjectileEntity;
+import net.minecraft.entity.projectile.ProjectileEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.Position;
+import net.minecraft.world.World;
 import net.minecraft.world.poi.PointOfInterestType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -51,6 +59,8 @@ public class LouisOverhaulMod implements ModInitializer {
 		ModUseEvents.registerStew();
 		ModUseEvents.registerProjectileItems();
 
+		registerDispenserProjectles();
+
 		tickGlobal();
 		replaceFletcherPOI();
 	}
@@ -65,5 +75,9 @@ public class LouisOverhaulMod implements ModInitializer {
 	private void replaceFletcherPOI() {
 		Set<BlockState> states = ImmutableSet.copyOf(ModBlocks.ADVANCED_FLETCHING_TABLE.getStateManager().getStates());
 		PointOfInterestHelper.register(Identifier.ofVanilla("fletcher"), 1, 1, states);
+	}
+
+	private void registerDispenserProjectles() {
+		DispenserBlock.registerProjectileBehavior(ModItems.ADVANCED_ARROW);
 	}
 }

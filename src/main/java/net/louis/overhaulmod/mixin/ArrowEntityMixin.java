@@ -1,6 +1,7 @@
 package net.louis.overhaulmod.mixin;
 
 import net.louis.overhaulmod.component.ModComponents;
+import net.louis.overhaulmod.utils.DespawnManager;
 import net.minecraft.component.ComponentMap;
 import net.minecraft.entity.AreaEffectCloudEntity;
 import net.minecraft.entity.LivingEntity;
@@ -8,40 +9,71 @@ import net.minecraft.entity.ai.TargetPredicate;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.projectile.ArrowEntity;
 import net.minecraft.entity.Entity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.potion.Potion;
 import net.minecraft.component.type.PotionContentsComponent;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import static net.louis.overhaulmod.utils.ApplyArrowComponents.applyArrowComponentAbilities;
+
 @Mixin(ArrowEntity.class)
 public abstract class ArrowEntityMixin {
-    ArrowEntity arrow = (ArrowEntity) (Object) this;
-    ComponentMap components = arrow.getItemStack().getComponents();
+
+    @Inject(
+            method = "<init>(Lnet/minecraft/world/World;Lnet/minecraft/entity/LivingEntity;Lnet/minecraft/item/ItemStack;Lnet/minecraft/item/ItemStack;)V",
+            at = @At("RETURN")
+    )    private void onPlayerArrowSpawn(World world, LivingEntity owner, ItemStack stack, @Nullable ItemStack shotFrom, CallbackInfo ci) {
+        applyArrowComponentAbilities((ArrowEntity) (Object) this, stack);
+    }
+
+    @Inject(
+            method = "<init>(Lnet/minecraft/world/World;DDDLnet/minecraft/item/ItemStack;Lnet/minecraft/item/ItemStack;)V",
+            at = @At("RETURN")
+    )
+    private void onDispenserArrowSpawn(World world, double x, double y, double z, ItemStack stack, @Nullable ItemStack shotFrom, CallbackInfo ci) {
+        applyArrowComponentAbilities((ArrowEntity) (Object) this, stack);
+    }
+
+    @Inject(
+            method = "<init>(Lnet/minecraft/world/World;Lnet/minecraft/entity/LivingEntity;Lnet/minecraft/item/ItemStack;Lnet/minecraft/item/ItemStack;)V",
+            at = @At("RETURN")
+    )
+    private void onArrowSpawn(World world, @Nullable LivingEntity owner, ItemStack stack, @Nullable ItemStack shotFrom, CallbackInfo ci) {
+        applyArrowComponentAbilities((ArrowEntity) (Object) this, stack);
+    }
 
     @Inject(method = "tick", at = @At("TAIL"))
     private void injectHomingLogic(CallbackInfo ci) {
+        ArrowEntity arrow = (ArrowEntity) (Object) this;
+        ComponentMap components = arrow.getItemStack().getComponents();
         if (arrow.getWorld().isClient || arrow.isOnGround()) return;
-        if (!components.contains(ModComponents.ARROW_HEAD) || !Items.ECHO_SHARD.equals(components.get(ModComponents.ARROW_HEAD))) return;
 
-        LivingEntity target = arrow.getWorld().getClosestEntity(
-                LivingEntity.class,
-                TargetPredicate.DEFAULT,
-                (LivingEntity) arrow.getOwner(),
-                arrow.getX(), arrow.getY(), arrow.getZ(),
-                arrow.getBoundingBox().expand(10)
-        );
+        if (components.contains(ModComponents.ARROW_HEAD)) {
+            if (Items.ECHO_SHARD.equals(components.get(ModComponents.ARROW_HEAD))) {
+                LivingEntity target = arrow.getWorld().getClosestEntity(
+                        LivingEntity.class,
+                        TargetPredicate.DEFAULT,
+                        (LivingEntity) arrow.getOwner(),
+                        arrow.getX(), arrow.getY(), arrow.getZ(),
+                        arrow.getBoundingBox().expand(10)
+                );
 
-        if (target != null && target != arrow.getOwner()) {
-            Vec3d toTarget = target.getPos().add(0, target.getHeight() * 0.5, 0).subtract(arrow.getPos()).normalize();
-            Vec3d newVel = arrow.getVelocity().normalize().lerp(toTarget, 0.3).normalize().multiply(arrow.getVelocity().length());
-            arrow.setVelocity(newVel);
+                if (target != null && target != arrow.getOwner()) {
+                    Vec3d toTarget = target.getPos().add(0, target.getHeight() * 0.5, 0).subtract(arrow.getPos()).normalize();
+                    Vec3d newVel = arrow.getVelocity().normalize().lerp(toTarget, 0.3).normalize().multiply(arrow.getVelocity().length());
+                    arrow.setVelocity(newVel);
+                }
+            }
         }
     }
 
