@@ -9,6 +9,7 @@
 		"ArrowEntityAccessor",
 		"BrushableBlockEntityAccessor",
 		"PersistentProjectileEntityAccessor",
+		"RecipeManagerAccessor",
 
 		"LivingEntityMixin",
 		"BundleContentsComponentMixin",
@@ -29,7 +30,8 @@
 		"ItemMixin",
 		"ProjectileEntityMixin",
 		"EntityMixin",
-		"ArrowItemMixin"
+		"ArrowItemMixin",
+		"RecipeManagerMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

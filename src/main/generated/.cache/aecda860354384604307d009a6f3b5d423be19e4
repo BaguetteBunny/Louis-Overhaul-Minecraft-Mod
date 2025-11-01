@@ -1,8 +1,9 @@
-// 1.21.1	2025-11-01T18:00:44.4083974	Louis' Overhaul Mod/Recipes
+// 1.21.1	2025-11-01T21:51:11.1330412	Louis' Overhaul Mod/Recipes
 7077338f906e5820e1314c2cf83fd870e37109b8 data\louis-overhaul-mod\advancement\recipes\building_blocks\smooth_quartz_wall.json
 8ff9ef8b9312eb5f6b1108ed337cede56fbe87aa data\louis-overhaul-mod\recipe\cut_sandstone_stairs.json
 ca918666b585b3e93c1404b70ff9aebb53936f76 data\louis-overhaul-mod\advancement\recipes\misc\recall_clock.json
 a396cc39dc32e78662eb959c6d426eceffaaa5eb data\louis-overhaul-mod\recipe\polished_andesite_wall_from_polished_andesite_stonecutting.json
+2001dfe539827a58018e239d0b0e3f812fd949c9 data\louis-overhaul-mod\recipe\recovery_compass.json
 4c63376fc0163814731a404f97bfbba8b6220dbc data\louis-overhaul-mod\advancement\recipes\building_blocks\rose_quartz_pillar.json
 c78d05a2907273db364396d15a2e747ec9d3e2eb data\louis-overhaul-mod\recipe\calcite_slab.json
 5bb07fb1c26a0e645f8289cebc9cc8a52ecbd585 data\louis-overhaul-mod\advancement\recipes\building_blocks\purpur_wall.json
@@ -136,6 +137,7 @@ a3ac410a196de5e1f5fd4b8d17b3ba1d1d303664 data\louis-overhaul-mod\advancement\rec
 a7303b73dfb5ed3ab0aaecf347608ac3e3702066 data\louis-overhaul-mod\advancement\recipes\misc\chilled_bone_meal.json
 74c4f09d1f6701b7fe1f9d5cdb98e7557c703d96 data\louis-overhaul-mod\advancement\recipes\building_blocks\smooth_sandstone_wall.json
 bc907fe76e940be243b3db822b5864dd03d5aff2 data\louis-overhaul-mod\advancement\recipes\building_blocks\chiseled_lavender_quartz.json
+3dbd2a8fe5d10ac6448c3539b053db0e45165f7e data\louis-overhaul-mod\recipe\advanced_fletching_table.json
 008c26fed90b1ba52ed705aca21641aafe04d7de data\louis-overhaul-mod\advancement\recipes\building_blocks\cut_red_sandstone_wall_from_cut_red_sandstone_stonecutting.json
 765e37ac06e5a9e8a683d149de8fc197a7327350 data\louis-overhaul-mod\advancement\recipes\building_blocks\polished_diorite_wall.json
 622ecb4cbbea49221f51d448e32d8916188ba5fe data\louis-overhaul-mod\recipe\suspicious_sand.json
@@ -184,6 +186,7 @@ e31162597e24776f9f0a139bb0bc1b71ffb335ea data\louis-overhaul-mod\recipe\lavender
 8d43875d551460fb09a2d16cd9e9fa4afde6a473 data\louis-overhaul-mod\advancement\recipes\building_blocks\chiseled_purpur.json
 85d12a516d45fdd8b832b7289361f24a9d4645e8 data\louis-overhaul-mod\advancement\recipes\building_blocks\chiseled_quartz_bricks_from_quartz_bricks_stonecutting.json
 3231ee1d47038fe3c7c96accb26b09134f5b42d8 data\louis-overhaul-mod\advancement\recipes\building_blocks\cut_sandstone_stairs_from_cut_sandstone_stonecutting.json
+dfd6510040e639747359facbfd1514a77cefe312 data\louis-overhaul-mod\advancement\recipes\tools\recovery_compass.json
 79cd807b2ab09b15dfe80946b973b03f205e3588 data\louis-overhaul-mod\recipe\cut_red_sandstone_stairs_from_cut_red_sandstone_stonecutting.json
 9532cd6c6d26d60b0bdd04d39ab7078a13f53c0c data\louis-overhaul-mod\recipe\quartz_wall_from_quartz_block_stonecutting.json
 74470378a4320f10471e177170f156d27587ce0b data\louis-overhaul-mod\recipe\quartz_bricks_slab_from_quartz_bricks_stonecutting.json
@@ -200,6 +203,7 @@ cba88d5c3988bd25bd368a8253e2666da445dde1 data\louis-overhaul-mod\recipe\rose_qua
 4883b54c0d6348acfd8c3f145ecc83a27092069e data\louis-overhaul-mod\recipe\lavender_quartz_bricks.json
 bf4d6e057350f497f7010e8eaaf94b3851d603f4 data\louis-overhaul-mod\recipe\bundle.json
 c61c3155d74e508604bf9977bde21a2d2ca8c023 data\louis-overhaul-mod\advancement\recipes\building_blocks\cracked_bricks_from_smelting_bricks.json
+9d86f60451d0ca695d8c268486e2922e11b64e5a data\louis-overhaul-mod\advancement\recipes\misc\advanced_fletching_table.json
 022d9d4e4586b3b60fcb0a1cd4281667541b7da0 data\louis-overhaul-mod\recipe\polished_diorite_wall.json
 08be6d5180626d60ef21af17a6cf5cdcef2b8e1f data\louis-overhaul-mod\recipe\smooth_stone_wall.json
 38e4022d0762bd87c85c1af4d11de26d6b2a3bea data\louis-overhaul-mod\recipe\stone_wall_from_stone_stonecutting.json

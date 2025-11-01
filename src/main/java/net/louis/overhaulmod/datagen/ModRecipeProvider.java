@@ -11,6 +11,7 @@ import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.tag.ItemTags;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
@@ -129,6 +130,15 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerNetheriteUpgradeRecipe(exporter, Items.DIAMOND_HORSE_ARMOR, RecipeCategory.COMBAT, ModItems.NETHERITE_HORSE_ARMOR);
 
         // TOOLS
+        ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, Items.RECOVERY_COMPASS, 1)
+                .pattern("AAA")
+                .pattern("ACA")
+                .pattern("AAA")
+                .input('C', Items.COMPASS)
+                .input('A', Items.AMETHYST_SHARD)
+                .criterion(hasItem(Items.AMETHYST_SHARD), conditionsFromItem(Items.AMETHYST_SHARD))
+                .offerTo(exporter);
+
         ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, ModItems.AMETHYST_DAGGER, 1)
                 .pattern(" A")
                 .pattern("S ")
@@ -144,6 +154,15 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .offerTo(exporter);
 
         // MISC
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.ADVANCED_FLETCHING_TABLE, 1)
+                .pattern("FF ")
+                .pattern("PP ")
+                .pattern("PP ")
+                .input('F', Items.FLINT)
+                .input('P', ItemTags.PLANKS)
+                .criterion(hasItem(Items.FLINT), conditionsFromItem(Items.FLINT))
+                .offerTo(exporter);
+
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.RECALL_CLOCK, 1)
                 .pattern("PEP")
                 .pattern("PCP")

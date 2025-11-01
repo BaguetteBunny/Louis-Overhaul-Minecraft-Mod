@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "F": {
+      "item": "minecraft:flint"
+    },
+    "P": {
+      "tag": "minecraft:planks"
+    }
+  },
+  "pattern": [
+    "FF ",
+    "PP ",
+    "PP "
+  ],
+  "result": {
+    "count": 1,
+    "id": "louis-overhaul-mod:advanced_fletching_table"
+  }
+}
