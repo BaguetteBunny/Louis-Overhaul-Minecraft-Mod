@@ -20,7 +20,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class ArmorStandMixin {
     ArmorStandEntity stand = (ArmorStandEntity) (Object) this;
 
-
     @Inject(method = "damage", at = @At("HEAD"), cancellable = true)
     private void onArmorStandDamage(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
         if (!stand.isRemoved()
