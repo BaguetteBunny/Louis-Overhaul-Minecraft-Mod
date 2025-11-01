@@ -29,6 +29,10 @@ public class LouisOverhaulModClient implements ClientModInitializer {
         PetRecoveryCompass.registerModelPredicates();
 
         // Add Arrow Predicate
+        addArrowPredicate();
+    }
+
+    public void addArrowPredicate() {
         ModelPredicateProviderRegistry.register(
                 ModItems.ADVANCED_ARROW,
                 Identifier.of(LouisOverhaulMod.MOD_ID, "atid"),
