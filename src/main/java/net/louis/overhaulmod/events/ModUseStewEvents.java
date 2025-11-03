@@ -1,15 +1,20 @@
 package net.louis.overhaulmod.events;
 
 import net.fabricmc.fabric.api.event.player.UseEntityCallback;
+import net.louis.overhaulmod.LouisOverhaulMod;
+import net.louis.overhaulmod.effect.ModEffects;
 import net.louis.overhaulmod.item.ModItems;
+import net.louis.overhaulmod.mixin.LivingEntityAccessor;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.SuspiciousStewEffectsComponent;
 import net.minecraft.entity.*;
+import net.minecraft.entity.attribute.AttributeContainer;
+import net.minecraft.entity.attribute.EntityAttributeInstance;
+import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.entity.mob.ZombieEntity;
-import net.minecraft.entity.mob.ZombieVillagerEntity;
+import net.minecraft.entity.mob.*;
 import net.minecraft.entity.passive.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -24,6 +29,7 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
@@ -33,6 +39,8 @@ import java.util.List;
 import java.util.Objects;
 
 public class ModUseStewEvents {
+    private static final Identifier RARE_UPSCALE_ID = Identifier.of(LouisOverhaulMod.MOD_ID, "rare_upscale_id");
+
     public static void registerStew() {
         UseEntityCallback.EVENT.register(ModUseStewEvents::useMushroomStew);
         UseEntityCallback.EVENT.register(ModUseStewEvents::useRabbitStew);
@@ -174,40 +182,35 @@ public class ModUseStewEvents {
 
         SuspiciousStewEffectsComponent suspiciousStewEffectsComponent = stack.getOrDefault(DataComponentTypes.SUSPICIOUS_STEW_EFFECTS, SuspiciousStewEffectsComponent.DEFAULT);
         String effect = suspiciousStewEffectsComponent.effects().getFirst().effect().getIdAsString();
-        boolean succeeded = true;
 
+        // Gather Entity Type
+        EntityType<? extends LivingEntity> randomType = null;
         if (effect.equals("minecraft:poison") && TRANSFORMABLE_ZOMBIES.contains(entity.getType())) {
-            EntityType<? extends ZombieEntity> randomType = TRANSFORMABLE_ZOMBIES.get(world.getRandom().nextInt(TRANSFORMABLE_ZOMBIES.size()));
-            world.spawnEntity(getTransformedEntity((LivingEntity) entity, randomType, world));
+            randomType = TRANSFORMABLE_ZOMBIES.get(world.getRandom().nextInt(TRANSFORMABLE_ZOMBIES.size()));
         } else if (effect.equals("minecraft:regeneration") && TRANSFORMABLE_SMALL_FLYING.contains(entity.getType())) {
-            EntityType<? extends LivingEntity> randomType = TRANSFORMABLE_SMALL_FLYING.get(world.getRandom().nextInt(TRANSFORMABLE_SMALL_FLYING.size()));
-            world.spawnEntity(getTransformedEntity((LivingEntity) entity, randomType, world));
+            randomType = TRANSFORMABLE_SMALL_FLYING.get(world.getRandom().nextInt(TRANSFORMABLE_SMALL_FLYING.size()));
         } else if (effect.equals("minecraft:fire_resistance") && TRANSFORMABLE_FIRE.contains(entity.getType())) {
-            EntityType<? extends LivingEntity> randomType = TRANSFORMABLE_FIRE.get(world.getRandom().nextInt(TRANSFORMABLE_FIRE.size()));
-            world.spawnEntity(getTransformedEntity((LivingEntity) entity, randomType, world));
+            randomType = TRANSFORMABLE_FIRE.get(world.getRandom().nextInt(TRANSFORMABLE_FIRE.size()));
         } else if (effect.equals("minecraft:blindness") && TRANSFORMABLE_SQUID.contains(entity.getType())) {
-            EntityType<? extends LivingEntity> randomType = TRANSFORMABLE_SQUID.get(world.getRandom().nextInt(TRANSFORMABLE_SQUID.size()));
-            world.spawnEntity(getTransformedEntity((LivingEntity) entity, randomType, world));
+            randomType = TRANSFORMABLE_SQUID.get(world.getRandom().nextInt(TRANSFORMABLE_SQUID.size()));
         } else if (effect.equals("minecraft:saturation") && TRANSFORMABLE_FISH.contains(entity.getType())) {
-            EntityType<? extends LivingEntity> randomType = TRANSFORMABLE_FISH.get(world.getRandom().nextInt(TRANSFORMABLE_FISH.size()));
-            world.spawnEntity(getTransformedEntity((LivingEntity) entity, randomType, world));
+            randomType = TRANSFORMABLE_FISH.get(world.getRandom().nextInt(TRANSFORMABLE_FISH.size()));
         } else if (effect.equals("minecraft:jump_boost") && TRANSFORMABLE_SLIMES.contains(entity.getType())) {
-            EntityType<? extends LivingEntity> randomType = TRANSFORMABLE_SLIMES.get(world.getRandom().nextInt(TRANSFORMABLE_SLIMES.size()));
-            world.spawnEntity(getTransformedEntity((LivingEntity) entity, randomType, world));
+            randomType = TRANSFORMABLE_SLIMES.get(world.getRandom().nextInt(TRANSFORMABLE_SLIMES.size()));
         } else if (effect.equals("minecraft:night_vision") && TRANSFORMABLE_SKELETON.contains(entity.getType())) {
-            EntityType<? extends LivingEntity> randomType = TRANSFORMABLE_SKELETON.get(world.getRandom().nextInt(TRANSFORMABLE_SKELETON.size()));
-            world.spawnEntity(getTransformedEntity((LivingEntity) entity, randomType, world));
+            randomType = TRANSFORMABLE_SKELETON.get(world.getRandom().nextInt(TRANSFORMABLE_SKELETON.size()));
         } else if (effect.equals("minecraft:weakness") && TRANSFORMABLE_PILLAGER.contains(entity.getType())) {
-            EntityType<? extends LivingEntity> randomType = TRANSFORMABLE_PILLAGER.get(world.getRandom().nextInt(TRANSFORMABLE_PILLAGER.size()));
-            world.spawnEntity(getTransformedEntity((LivingEntity) entity, randomType, world));
+            randomType = TRANSFORMABLE_PILLAGER.get(world.getRandom().nextInt(TRANSFORMABLE_PILLAGER.size()));
         } else if (effect.equals("minecraft:wither") && TRANSFORMABLE_MISC.contains(entity.getType())) {
-            EntityType<? extends LivingEntity> randomType = TRANSFORMABLE_MISC.get(world.getRandom().nextInt(TRANSFORMABLE_MISC.size()));
-            world.spawnEntity(getTransformedEntity((LivingEntity) entity, randomType, world));
+            randomType = TRANSFORMABLE_MISC.get(world.getRandom().nextInt(TRANSFORMABLE_MISC.size()));
         }
-        else succeeded = false;
 
 
-        if (succeeded) {
+        if (randomType != null) {
+            LivingEntity newEntity = getTransformedEntity((LivingEntity) entity, randomType, world);
+            world.spawnEntity(newEntity);
+            if (world.getRandom().nextInt(100) == 1) makeBigger(newEntity);
+
             stewSuccess(entity, world, SoundEvents.BLOCK_BREWING_STAND_BREW, .5f, ParticleTypes.WITCH);
             player.swingHand(hand, true);
             entity.discard();
@@ -312,6 +315,18 @@ public class ModUseStewEvents {
     private static final List<EntityType<? extends LivingEntity>> TRANSFORMABLE_PILLAGER = List.of(
             EntityType.EVOKER,
             EntityType.PILLAGER,
-            EntityType.VINDICATOR
+            EntityType.VINDICATOR,
+            EntityType.WITCH
     );
+    public static void makeBigger(LivingEntity entity) {
+        if (entity == null) return;
+
+        EntityAttributeInstance scaleAttr = entity.getAttributes().getCustomInstance(EntityAttributes.GENERIC_SCALE);
+        if (scaleAttr == null) return;
+
+        if (scaleAttr.getModifier(RARE_UPSCALE_ID) != null) scaleAttr.removeModifier(RARE_UPSCALE_ID);
+        scaleAttr.addPersistentModifier(
+                new EntityAttributeModifier(RARE_UPSCALE_ID, 2.5, EntityAttributeModifier.Operation.ADD_VALUE)
+        );
+    }
 }
