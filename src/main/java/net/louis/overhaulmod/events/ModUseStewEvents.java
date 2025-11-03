@@ -210,7 +210,7 @@ public class ModUseStewEvents {
         if (randomType != null) {
             LivingEntity newEntity = getTransformedEntity((LivingEntity) entity, randomType, world);
             world.spawnEntity(newEntity);
-            if (world.getRandom().nextInt(100) == 1) makeBigger(newEntity);
+            if (world.getRandom().nextInt(100) == 1 && newEntity.getClass() != ZombieEntity.class) makeBigger(newEntity);
 
             stewSuccess(entity, world, SoundEvents.BLOCK_BREWING_STAND_BREW, .5f, ParticleTypes.WITCH);
             player.swingHand(hand, true);
