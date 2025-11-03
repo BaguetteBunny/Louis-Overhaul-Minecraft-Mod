@@ -331,7 +331,7 @@ public class ModUseStewEvents {
 
         if (scaleAttr.getModifier(RARE_UPSCALE_ID) != null) scaleAttr.removeModifier(RARE_UPSCALE_ID);
         scaleAttr.addPersistentModifier(
-                new EntityAttributeModifier(RARE_UPSCALE_ID, 2.5, EntityAttributeModifier.Operation.ADD_VALUE)
+                new EntityAttributeModifier(RARE_UPSCALE_ID, 2.75, EntityAttributeModifier.Operation.ADD_VALUE)
         );
     }
 }
