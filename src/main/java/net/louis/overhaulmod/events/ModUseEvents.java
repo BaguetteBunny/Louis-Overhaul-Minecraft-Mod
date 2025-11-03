@@ -5,9 +5,6 @@ import net.fabricmc.fabric.api.event.player.AttackEntityCallback;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 import net.fabricmc.fabric.api.event.player.UseEntityCallback;
 import net.fabricmc.fabric.api.event.player.UseItemCallback;
-import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityType;
-import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags;
-import net.louis.overhaulmod.block.ModBlocks;
 import net.louis.overhaulmod.entity.projectile.thrown.BrickEntity;
 import net.louis.overhaulmod.entity.projectile.thrown.NetherBrickEntity;
 import net.louis.overhaulmod.item.ModItems;
@@ -22,30 +19,13 @@ import net.minecraft.block.enums.DoubleBlockHalf;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.ProfileComponent;
 import net.minecraft.entity.*;
-import net.minecraft.entity.attribute.EntityAttribute;
-import net.minecraft.entity.attribute.EntityAttributeInstance;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.decoration.ArmorStandEntity;
-import net.minecraft.entity.decoration.ItemFrameEntity;
-import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.entity.mob.GiantEntity;
 import net.minecraft.entity.mob.ShulkerEntity;
-import net.minecraft.entity.mob.ZombieEntity;
-import net.minecraft.entity.mob.ZombieVillagerEntity;
-import net.minecraft.entity.passive.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.LlamaSpitEntity;
 import net.minecraft.item.*;
-import net.minecraft.loot.LootPool;
-import net.minecraft.loot.LootTable;
-import net.minecraft.loot.entry.ItemEntry;
-import net.minecraft.loot.provider.number.ConstantLootNumberProvider;
-import net.minecraft.nbt.NbtCompound;
-import net.minecraft.nbt.NbtOps;
 import net.minecraft.particle.ParticleTypes;
-import net.minecraft.registry.*;
-import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
@@ -54,12 +34,9 @@ import net.minecraft.text.Text;
 import net.minecraft.util.*;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.EntityHitResult;
-import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.*;
 import net.minecraft.util.math.random.Random;
-import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -82,13 +59,6 @@ public class ModUseEvents {
         UseEntityCallback.EVENT.register(ModUseEvents::useBrushOnDyedShulkers);
 
         AttackEntityCallback.EVENT.register(ModUseEvents::featherDamageFreeKB);
-    }
-
-    public static void registerStew() {
-        UseEntityCallback.EVENT.register(ModUseEvents::useMushroomStew);
-        UseEntityCallback.EVENT.register(ModUseEvents::useRabbitStew);
-        UseEntityCallback.EVENT.register(ModUseEvents::useFishStew);
-        UseEntityCallback.EVENT.register(ModUseEvents::useRottenStew);
     }
 
     public static void registerProjectileItems() {
@@ -396,248 +366,6 @@ public class ModUseEvents {
         }
         return TypedActionResult.pass(player.getStackInHand(hand));
 
-    }
-
-    private static ActionResult useMushroomStew(PlayerEntity player, World world, Hand hand, Entity entity, @Nullable EntityHitResult entityHitResult) {
-        ItemStack stack = player.getStackInHand(hand);
-        if (world.isClient || !stack.isOf(Items.MUSHROOM_STEW)) return ActionResult.PASS;
-
-        if (entity instanceof CowEntity targetCow && !(targetCow instanceof MooshroomEntity)) {
-            double x = targetCow.getX();
-            double y = targetCow.getY();
-            double z = targetCow.getZ();
-            if (!player.getAbilities().creativeMode) stack.decrement(1);
-
-            if ((int)(Math.random() * 11) == 1) {
-                world.playSound(null, targetCow.getBlockPos(), SoundEvents.ENTITY_LIGHTNING_BOLT_IMPACT,
-                        SoundCategory.PLAYERS, 1.0F, 2.0F);
-
-                float pitch = targetCow.getPitch();
-                float yaw = targetCow.getYaw();
-                boolean isBaby = targetCow.isBaby();
-                targetCow.discard();
-
-                ((ServerWorld) world).spawnParticles(
-                        ParticleTypes.HEART,
-                        x + 0,
-                        y + 1,
-                        z + 0,
-                        10,
-                        0.5, 0.5, 0.5,
-                        0.2
-                );
-
-                MooshroomEntity mooshroom = EntityType.MOOSHROOM.create(world);
-                mooshroom.refreshPositionAndAngles(x, y, z, yaw, pitch);
-                mooshroom.setBaby(isBaby);
-                world.spawnEntity(mooshroom);
-            }
-            else {
-                world.playSound(null, targetCow.getBlockPos(), SoundEvents.ENTITY_GENERIC_EXTINGUISH_FIRE,
-                        SoundCategory.PLAYERS, 1.0F, 2.0F);
-                ((ServerWorld) world).spawnParticles(
-                        ParticleTypes.SMOKE,
-                        x + 0,
-                        y + 1,
-                        z + 0,
-                        10,
-                        0.5, 0.5, 0.5,
-                        0.05
-                );
-            }
-            player.swingHand(hand, true);
-            return ActionResult.SUCCESS;
-        }
-        return ActionResult.PASS;
-    }
-
-    private static ActionResult useRabbitStew(PlayerEntity player, World world, Hand hand, Entity entity, @Nullable EntityHitResult entityHitResult) {
-        ItemStack stack = player.getStackInHand(hand);
-        if (world.isClient || !stack.isOf(Items.RABBIT_STEW)) return ActionResult.PASS;
-
-        if (entity instanceof RabbitEntity targetRabbit) {
-            int randomNum = (int)(Math.random() * 2);
-            double x = targetRabbit.getX();
-            double y = targetRabbit.getY();
-            double z = targetRabbit.getZ();
-            if (!player.getAbilities().creativeMode) stack.decrement(1);
-
-            if (randomNum == 1) {
-                world.playSound(null, targetRabbit.getBlockPos(), SoundEvents.ENTITY_LIGHTNING_BOLT_IMPACT,
-                        SoundCategory.PLAYERS, 1.0F, 2.0F);
-
-                targetRabbit.setVariant(RabbitEntity.RabbitType.EVIL);
-                ((ServerWorld) world).spawnParticles(
-                        ParticleTypes.ANGRY_VILLAGER,
-                        x + 0,
-                        y + 1,
-                        z + 0,
-                        10,
-                        0.5, 0.5, 0.5,
-                        0.2
-                );
-            }
-            else {
-                world.playSound(null, targetRabbit.getBlockPos(), SoundEvents.ENTITY_GENERIC_EXTINGUISH_FIRE,
-                        SoundCategory.PLAYERS, 1.0F, 2.0F);
-                ((ServerWorld) world).spawnParticles(
-                        ParticleTypes.SMOKE,
-                        x + 0,
-                        y + 1,
-                        z + 0,
-                        10,
-                        0.5, 0.5, 0.5,
-                        0.05
-                );
-            }
-            player.swingHand(hand, true);
-            return ActionResult.SUCCESS;
-        }
-        return ActionResult.PASS;
-    }
-
-    private static ActionResult useFishStew(PlayerEntity player, World world, Hand hand, Entity entity, @Nullable EntityHitResult entityHitResult) {
-        ItemStack stack = player.getStackInHand(hand);
-        if (world.isClient || !stack.isOf(ModItems.FISH_STEW)) return ActionResult.PASS;
-
-        if (entity instanceof DolphinEntity targetDolphin) {
-            double x = targetDolphin.getX();
-            double y = targetDolphin.getY();
-            double z = targetDolphin.getZ();
-            if (!player.getAbilities().creativeMode) stack.decrement(1);
-
-            if ((int)(Math.random() * 3) == 1) {
-                world.playSound(null, targetDolphin.getBlockPos(), SoundEvents.ENTITY_DOLPHIN_PLAY,
-                        SoundCategory.PLAYERS, 1.0F, 0.5F);
-                world.playSound(null, targetDolphin.getBlockPos(), SoundEvents.ENTITY_DOLPHIN_SPLASH,
-                        SoundCategory.PLAYERS, 0.5F, 0.5F);
-
-                ((ServerWorld) world).spawnParticles(
-                        ParticleTypes.DOLPHIN,
-                        x + 0,
-                        y + 0.5,
-                        z + 0,
-                        20,
-                        0.5, 0.5, 0.5,
-                        0.2
-                );
-                player.addStatusEffect(new StatusEffectInstance(StatusEffects.DOLPHINS_GRACE, 36000, 0));
-            }
-            else {
-                world.playSound(null, targetDolphin.getBlockPos(), SoundEvents.ENTITY_GENERIC_EXTINGUISH_FIRE,
-                        SoundCategory.PLAYERS, 1.0F, 2.0F);
-                ((ServerWorld) world).spawnParticles(
-                        ParticleTypes.SMOKE,
-                        x + 0,
-                        y + 1,
-                        z + 0,
-                        10,
-                        0.5, 0.5, 0.5,
-                        0.05
-                );
-            }
-            player.swingHand(hand, true);
-            return ActionResult.SUCCESS;
-        }
-        return ActionResult.PASS;
-    }
-
-    private static ActionResult useRottenStew(PlayerEntity player, World world, Hand hand, Entity entity, @Nullable EntityHitResult entityHitResult) {
-        ItemStack stack = player.getStackInHand(hand);
-        if (world.isClient || !stack.isOf(ModItems.ROTTEN_STEW)) return ActionResult.PASS;
-
-        if (entity instanceof ZombieEntity targetZombie) {
-            double x = targetZombie.getX();
-            double y = targetZombie.getY();
-            double z = targetZombie.getZ();
-
-            if (!player.getAbilities().creativeMode) stack.decrement(1);
-            if ((int) (Math.random() * 200) == 1) {
-                world.playSound(null, targetZombie.getBlockPos(), SoundEvents.ENTITY_ENDER_DRAGON_GROWL,
-                        SoundCategory.PLAYERS, 16.0F, 0.5F);
-                ((ServerWorld) world).spawnParticles(
-                        ParticleTypes.ELECTRIC_SPARK,
-                        x + 0,
-                        y + 0.5,
-                        z + 0,
-                        30,
-                        0.5, 0.5, 0.5,
-                        0.5
-                );
-                targetZombie.getAttributeInstance(EntityAttributes.GENERIC_SCALE).setBaseValue(6);
-                targetZombie.getAttributeInstance(EntityAttributes.GENERIC_ATTACK_DAMAGE).setBaseValue(50);
-                targetZombie.getAttributeInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED).setBaseValue(0.5);
-                targetZombie.setCustomName(Text.of("Giant"));
-            } else {
-                world.playSound(null, targetZombie.getBlockPos(), SoundEvents.ENTITY_GENERIC_EXTINGUISH_FIRE,
-                        SoundCategory.PLAYERS, 1.0F, 2.0F);
-                ((ServerWorld) world).spawnParticles(
-                        ParticleTypes.SMOKE,
-                        x + 0,
-                        y + 1,
-                        z + 0,
-                        10,
-                        0.5, 0.5, 0.5,
-                        0.05
-                );
-            }
-            player.swingHand(hand, true);
-            return ActionResult.SUCCESS;
-        }
-
-        if (entity instanceof VillagerEntity targetVillager) {
-            int randomNum = (int) (Math.random() * 5);
-            double x = targetVillager.getX();
-            double y = targetVillager.getY();
-            double z = targetVillager.getZ();
-            if (!player.getAbilities().creativeMode) stack.decrement(1);
-
-            if (randomNum == 1) {
-                world.playSound(null, targetVillager.getBlockPos(), SoundEvents.ENTITY_ZOMBIE_VILLAGER_CONVERTED,
-                        SoundCategory.PLAYERS, 1.0F, 0.5F);
-                world.playSound(null, targetVillager.getBlockPos(), SoundEvents.ENTITY_VILLAGER_NO,
-                        SoundCategory.PLAYERS, 0.5F, 0.5F);
-
-                ((ServerWorld) world).spawnParticles(
-                        ParticleTypes.ANGRY_VILLAGER,
-                        x + 0,
-                        y + 0.5,
-                        z + 0,
-                        10,
-                        0.5, 0.5, 0.5,
-                        0.2
-                );
-                ZombieVillagerEntity zombieVillagerEntity = targetVillager.convertTo(EntityType.ZOMBIE_VILLAGER, false);
-                if (zombieVillagerEntity != null) {
-                    ServerWorldAccess access = (ServerWorldAccess) world;
-
-                    zombieVillagerEntity.initialize(
-                            access, world.getLocalDifficulty(zombieVillagerEntity.getBlockPos()), SpawnReason.CONVERSION, new ZombieEntity.ZombieData(false, true));
-                    zombieVillagerEntity.setVillagerData(targetVillager.getVillagerData());
-                    zombieVillagerEntity.setGossipData(targetVillager.getGossip().serialize(NbtOps.INSTANCE));
-                    zombieVillagerEntity.setOfferData(targetVillager.getOffers().copy());
-                    zombieVillagerEntity.setXp(targetVillager.getExperience());
-                    zombieVillagerEntity.refreshPositionAndAngles(x, y, z, targetVillager.getYaw(), targetVillager.getPitch());
-                    targetVillager.discard();
-
-                } else {
-                    world.playSound(null, targetVillager.getBlockPos(), SoundEvents.ENTITY_GENERIC_EXTINGUISH_FIRE,
-                                SoundCategory.PLAYERS, 1.0F, 2.0F);
-                    ((ServerWorld) world).spawnParticles(
-                            ParticleTypes.SMOKE,
-                            x + 0,
-                            y + 1,
-                            z + 0,
-                            10,
-                            0.5, 0.5, 0.5,
-                            0.05
-                    );
-                }
-                player.swingHand(hand, true);
-                return ActionResult.SUCCESS;
-            }
-        }
-        return ActionResult.PASS;
     }
 
     private static TypedActionResult<ItemStack> useBrick(PlayerEntity player, World world, Hand hand) {

@@ -9,6 +9,7 @@ import net.louis.overhaulmod.block.entity.ModBlockEntities;
 import net.louis.overhaulmod.component.ModComponents;
 import net.louis.overhaulmod.effect.ModEffects;
 import net.louis.overhaulmod.events.ModUseEvents;
+import net.louis.overhaulmod.events.ModUseStewEvents;
 import net.louis.overhaulmod.item.ModItems;
 import net.louis.overhaulmod.potion.ModPotions;
 import net.louis.overhaulmod.screen.ModScreenHandlers;
@@ -16,22 +17,9 @@ import net.louis.overhaulmod.sound.ModSounds;
 import net.louis.overhaulmod.utils.DespawnManager;
 import net.louis.overhaulmod.utils.GlowManager;
 import net.louis.overhaulmod.utils.ModLootTableModifiers;
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.DispenserBlock;
-import net.minecraft.block.dispenser.ProjectileDispenserBehavior;
-import net.minecraft.entity.projectile.ArrowEntity;
-import net.minecraft.entity.projectile.PersistentProjectileEntity;
-import net.minecraft.entity.projectile.ProjectileEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.RegistryKey;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.math.Position;
-import net.minecraft.world.World;
-import net.minecraft.world.poi.PointOfInterestType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -56,8 +44,8 @@ public class LouisOverhaulMod implements ModInitializer {
 		ModLootTableModifiers.replaceLootTables();
 
 		ModUseEvents.registerMain();
-		ModUseEvents.registerStew();
 		ModUseEvents.registerProjectileItems();
+		ModUseStewEvents.registerStew();
 
 		registerDispenserProjectles();
 
