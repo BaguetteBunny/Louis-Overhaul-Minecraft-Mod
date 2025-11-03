@@ -12,6 +12,7 @@ import net.minecraft.entity.attribute.AttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributeInstance;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.mob.*;
@@ -243,6 +244,8 @@ public class ModUseStewEvents {
             if (!stack.isEmpty()) newEntity.equipStack(slot, stack.copy());
         }
 
+        for (StatusEffectInstance effect : living.getStatusEffects()) newEntity.addStatusEffect(effect);
+
         return newEntity;
     }
 
@@ -271,6 +274,8 @@ public class ModUseStewEvents {
         newEntity.setInvisible(living.isInvisible());
         newEntity.setSilent(living.isSilent());
         newEntity.setPortalCooldown(living.getPortalCooldown());
+
+        for (StatusEffectInstance effect : living.getStatusEffects()) newEntity.addStatusEffect(effect);
 
         return newEntity;
     }
