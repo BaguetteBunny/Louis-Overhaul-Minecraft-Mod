@@ -14,18 +14,10 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(AbstractBlock.class)
 public class AbstractBlockMixin {
-    @Inject(
-            method = "getCollisionShape",
-            at = @At("HEAD"),
-            cancellable = true
-    )
-    private void ignoreHorseLeafCollision(
-            BlockState state, BlockView world, BlockPos pos, ShapeContext context,
-            CallbackInfoReturnable<VoxelShape> cir
-    ) {
-        if (!(state.getBlock() instanceof LeavesBlock)) return;
 
-        if (context instanceof EntityShapeContext esc) {
+    @Inject(method = "getCollisionShape", at = @At("HEAD"), cancellable = true)
+    private void ignoreHorseLeafCollision(BlockState state, BlockView world, BlockPos pos, ShapeContext context, CallbackInfoReturnable<VoxelShape> cir) {
+        if (state.getBlock() instanceof LeavesBlock && context instanceof EntityShapeContext esc) {
             Entity entity = esc.getEntity();
             if (entity instanceof HorseEntity && ((HorseEntity) entity).isTame()) {
                 cir.setReturnValue(VoxelShapes.empty());
