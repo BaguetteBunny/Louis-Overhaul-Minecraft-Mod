@@ -18,6 +18,22 @@
     "louis-overhaul-mod:prismarine_wall",
     "louis-overhaul-mod:dark_prismarine_wall",
     "louis-overhaul-mod:stone_wall",
-    "louis-overhaul-mod:smooth_stone_wall"
+    "louis-overhaul-mod:smooth_stone_wall",
+    "louis-overhaul-mod:white_concrete_wall",
+    "louis-overhaul-mod:orange_concrete_wall",
+    "louis-overhaul-mod:magenta_concrete_wall",
+    "louis-overhaul-mod:light_blue_concrete_wall",
+    "louis-overhaul-mod:yellow_concrete_wall",
+    "louis-overhaul-mod:lime_concrete_wall",
+    "louis-overhaul-mod:pink_concrete_wall",
+    "louis-overhaul-mod:gray_concrete_wall",
+    "louis-overhaul-mod:light_gray_concrete_wall",
+    "louis-overhaul-mod:cyan_concrete_wall",
+    "louis-overhaul-mod:purple_concrete_wall",
+    "louis-overhaul-mod:blue_concrete_wall",
+    "louis-overhaul-mod:brown_concrete_wall",
+    "louis-overhaul-mod:green_concrete_wall",
+    "louis-overhaul-mod:red_concrete_wall",
+    "louis-overhaul-mod:black_concrete_wall"
   ]
 }

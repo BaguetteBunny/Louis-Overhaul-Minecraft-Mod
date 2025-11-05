@@ -4,14 +4,18 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.louis.overhaulmod.block.ModBlocks;
 import net.louis.overhaulmod.item.ModItems;
+import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.data.server.recipe.RecipeExporter;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
 import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.book.RecipeCategory;
+import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.ItemTags;
+import net.minecraft.util.DyeColor;
+import net.minecraft.util.Identifier;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
@@ -73,6 +77,13 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_RED_NETHER_BRICKS, Blocks.RED_NETHER_BRICKS, 1);
         offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_BRICKS, Blocks.BRICKS, 1);
         offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_QUARTZ_BRICKS, Blocks.QUARTZ_BRICKS, 1);
+
+        for (DyeColor color : DyeColor.values()) {
+            Block base = Registries.BLOCK.get(Identifier.ofVanilla(color.getName() + "_concrete"));
+            offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, Registries.BLOCK.get(Identifier.of("louis-overhaul-mod", color.getName() + "_concrete_stairs")), base, 1);
+            offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, Registries.BLOCK.get(Identifier.of("louis-overhaul-mod", color.getName() + "_concrete_slab")), base, 2);
+            offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, Registries.BLOCK.get(Identifier.of("louis-overhaul-mod", color.getName() + "_concrete_wall")), base, 1);
+        }
 
         // SMELTING
         offerSmelting(exporter,List.of(ModItems.SANDY_FLESH), RecipeCategory.BUILDING_BLOCKS, Items.SAND, 0.1f, 300, "flesh_to_sand");
@@ -554,5 +565,29 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(Blocks.RED_NETHER_BRICKS), conditionsFromItem(Blocks.RED_NETHER_BRICKS))
                 .offerTo(exporter);
 
+        for (DyeColor color : DyeColor.values()) {
+            Block base = Registries.BLOCK.get(Identifier.ofVanilla(color.getName() + "_concrete"));
+
+            ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, Registries.BLOCK.get(Identifier.of("louis-overhaul-mod", color.getName() + "_concrete_stairs")), 4)
+                    .pattern("A  ")
+                    .pattern("AA ")
+                    .pattern("AAA")
+                    .input('A', base)
+                    .criterion(hasItem(base), conditionsFromItem(base))
+                    .offerTo(exporter);
+
+            ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, Registries.BLOCK.get(Identifier.of("louis-overhaul-mod", color.getName() + "_concrete_slab")), 6)
+                    .pattern("AAA")
+                    .input('A', base)
+                    .criterion(hasItem(base), conditionsFromItem(base))
+                    .offerTo(exporter);
+
+            ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, Registries.BLOCK.get(Identifier.of("louis-overhaul-mod", color.getName() + "_concrete_wall")), 6)
+                    .pattern("AAA")
+                    .pattern("AAA")
+                    .input('A', base)
+                    .criterion(hasItem(base), conditionsFromItem(base))
+                    .offerTo(exporter);
+        }
     }
 }

@@ -4,7 +4,6 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.louis.overhaulmod.block.ModBlocks;
 import net.louis.overhaulmod.utils.ModTags;
-import net.minecraft.block.Blocks;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BlockTags;
 
@@ -91,7 +90,59 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.CHISELED_BRICKS)
                 .add(ModBlocks.CHISELED_QUARTZ_BRICKS)
 
-                .add(ModBlocks.RED_NETHER_BRICK_FENCE);
+                .add(ModBlocks.RED_NETHER_BRICK_FENCE)
+
+
+                .add(ModBlocks.WHITE_CONCRETE_STAIRS)
+                .add(ModBlocks.ORANGE_CONCRETE_STAIRS)
+                .add(ModBlocks.MAGENTA_CONCRETE_STAIRS)
+                .add(ModBlocks.LIGHT_BLUE_CONCRETE_STAIRS)
+                .add(ModBlocks.YELLOW_CONCRETE_STAIRS)
+                .add(ModBlocks.LIME_CONCRETE_STAIRS)
+                .add(ModBlocks.PINK_CONCRETE_STAIRS)
+                .add(ModBlocks.GRAY_CONCRETE_STAIRS)
+                .add(ModBlocks.LIGHT_GRAY_CONCRETE_STAIRS)
+                .add(ModBlocks.CYAN_CONCRETE_STAIRS)
+                .add(ModBlocks.PURPLE_CONCRETE_STAIRS)
+                .add(ModBlocks.BLUE_CONCRETE_STAIRS)
+                .add(ModBlocks.BROWN_CONCRETE_STAIRS)
+                .add(ModBlocks.GREEN_CONCRETE_STAIRS)
+                .add(ModBlocks.RED_CONCRETE_STAIRS)
+                .add(ModBlocks.BLACK_CONCRETE_STAIRS)
+
+                .add(ModBlocks.WHITE_CONCRETE_SLAB)
+                .add(ModBlocks.ORANGE_CONCRETE_SLAB)
+                .add(ModBlocks.MAGENTA_CONCRETE_SLAB)
+                .add(ModBlocks.LIGHT_BLUE_CONCRETE_SLAB)
+                .add(ModBlocks.YELLOW_CONCRETE_SLAB)
+                .add(ModBlocks.LIME_CONCRETE_SLAB)
+                .add(ModBlocks.PINK_CONCRETE_SLAB)
+                .add(ModBlocks.GRAY_CONCRETE_SLAB)
+                .add(ModBlocks.LIGHT_GRAY_CONCRETE_SLAB)
+                .add(ModBlocks.CYAN_CONCRETE_SLAB)
+                .add(ModBlocks.PURPLE_CONCRETE_SLAB)
+                .add(ModBlocks.BLUE_CONCRETE_SLAB)
+                .add(ModBlocks.BROWN_CONCRETE_SLAB)
+                .add(ModBlocks.GREEN_CONCRETE_SLAB)
+                .add(ModBlocks.RED_CONCRETE_SLAB)
+                .add(ModBlocks.BLACK_CONCRETE_SLAB)
+
+                .add(ModBlocks.WHITE_CONCRETE_WALL)
+                .add(ModBlocks.ORANGE_CONCRETE_WALL)
+                .add(ModBlocks.MAGENTA_CONCRETE_WALL)
+                .add(ModBlocks.LIGHT_BLUE_CONCRETE_WALL)
+                .add(ModBlocks.YELLOW_CONCRETE_WALL)
+                .add(ModBlocks.LIME_CONCRETE_WALL)
+                .add(ModBlocks.PINK_CONCRETE_WALL)
+                .add(ModBlocks.GRAY_CONCRETE_WALL)
+                .add(ModBlocks.LIGHT_GRAY_CONCRETE_WALL)
+                .add(ModBlocks.CYAN_CONCRETE_WALL)
+                .add(ModBlocks.PURPLE_CONCRETE_WALL)
+                .add(ModBlocks.BLUE_CONCRETE_WALL)
+                .add(ModBlocks.BROWN_CONCRETE_WALL)
+                .add(ModBlocks.GREEN_CONCRETE_WALL)
+                .add(ModBlocks.RED_CONCRETE_WALL)
+                .add(ModBlocks.BLACK_CONCRETE_WALL);
 
         getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL);
 
@@ -119,7 +170,24 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.PRISMARINE_WALL)
                 .add(ModBlocks.DARK_PRISMARINE_WALL)
                 .add(ModBlocks.STONE_WALL)
-                .add(ModBlocks.SMOOTH_STONE_WALL);
+                .add(ModBlocks.SMOOTH_STONE_WALL)
+
+                .add(ModBlocks.WHITE_CONCRETE_WALL)
+                .add(ModBlocks.ORANGE_CONCRETE_WALL)
+                .add(ModBlocks.MAGENTA_CONCRETE_WALL)
+                .add(ModBlocks.LIGHT_BLUE_CONCRETE_WALL)
+                .add(ModBlocks.YELLOW_CONCRETE_WALL)
+                .add(ModBlocks.LIME_CONCRETE_WALL)
+                .add(ModBlocks.PINK_CONCRETE_WALL)
+                .add(ModBlocks.GRAY_CONCRETE_WALL)
+                .add(ModBlocks.LIGHT_GRAY_CONCRETE_WALL)
+                .add(ModBlocks.CYAN_CONCRETE_WALL)
+                .add(ModBlocks.PURPLE_CONCRETE_WALL)
+                .add(ModBlocks.BLUE_CONCRETE_WALL)
+                .add(ModBlocks.BROWN_CONCRETE_WALL)
+                .add(ModBlocks.GREEN_CONCRETE_WALL)
+                .add(ModBlocks.RED_CONCRETE_WALL)
+                .add(ModBlocks.BLACK_CONCRETE_WALL);
 
         getOrCreateTagBuilder(BlockTags.FENCES)
                 .add(ModBlocks.RED_NETHER_BRICK_FENCE);

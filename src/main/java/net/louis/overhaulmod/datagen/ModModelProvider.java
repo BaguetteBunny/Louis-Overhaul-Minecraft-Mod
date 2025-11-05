@@ -4,8 +4,12 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.louis.overhaulmod.block.ModBlocks;
 import net.louis.overhaulmod.item.ModItems;
+import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.data.client.*;
+import net.minecraft.registry.Registries;
+import net.minecraft.util.DyeColor;
+import net.minecraft.util.Identifier;
 
 
 public class ModModelProvider extends FabricModelProvider {
@@ -99,6 +103,13 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CHISELED_MOSSY_STONE_BRICKS);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CHISELED_BRICKS);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CHISELED_QUARTZ_BRICKS);
+
+        for (DyeColor color : DyeColor.values()) {
+            BlockStateModelGenerator.BlockTexturePool pool = blockStateModelGenerator.registerCubeAllModelTexturePool(Registries.BLOCK.get(Identifier.ofVanilla(color + "_concrete")));
+            pool.stairs(Registries.BLOCK.get(Identifier.of("louis-overhaul-mod", color + "_concrete_stairs")));
+            pool.slab(Registries.BLOCK.get(Identifier.of("louis-overhaul-mod", color + "_concrete_slab")));
+            pool.wall(Registries.BLOCK.get(Identifier.of("louis-overhaul-mod", color + "_concrete_wall")));
+        }
     }
 
     @Override
