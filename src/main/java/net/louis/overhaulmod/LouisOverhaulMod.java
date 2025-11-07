@@ -10,6 +10,7 @@ import net.louis.overhaulmod.component.ModComponents;
 import net.louis.overhaulmod.effect.ModEffects;
 import net.louis.overhaulmod.events.ModUseEvents;
 import net.louis.overhaulmod.events.ModUseStewEvents;
+import net.louis.overhaulmod.fluid.ModFluids;
 import net.louis.overhaulmod.item.ModItems;
 import net.louis.overhaulmod.potion.ModPotions;
 import net.louis.overhaulmod.screen.ModScreenHandlers;
@@ -31,6 +32,7 @@ public class LouisOverhaulMod implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+		ModFluids.register();
 		ModSounds.registerSounds();
 		ModComponents.registerDataComponentTypes();
 		ModEffects.registerEffects();

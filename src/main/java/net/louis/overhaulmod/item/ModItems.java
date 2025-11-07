@@ -2,6 +2,7 @@ package net.louis.overhaulmod.item;
 
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.louis.overhaulmod.LouisOverhaulMod;
+import net.louis.overhaulmod.fluid.ModFluids;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.BundleContentsComponent;
 import net.minecraft.component.type.FoodComponent;
@@ -13,6 +14,23 @@ import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
 public class ModItems {
+    public static final Item WHITE_WATER_BUCKET = registerItem("white_water_bucket", new BucketItem(ModFluids.STILL_WHITE_WATER, new Item.Settings().maxCount(1).recipeRemainder(Items.BUCKET)));
+    public static final Item ORANGE_WATER_BUCKET = registerItem("orange_water_bucket", new BucketItem(ModFluids.STILL_ORANGE_WATER, new Item.Settings().maxCount(1).recipeRemainder(Items.BUCKET)));
+    public static final Item MAGENTA_WATER_BUCKET = registerItem("magenta_water_bucket", new BucketItem(ModFluids.STILL_MAGENTA_WATER, new Item.Settings().maxCount(1).recipeRemainder(Items.BUCKET)));
+    public static final Item LIGHT_BLUE_WATER_BUCKET = registerItem("light_blue_water_bucket", new BucketItem(ModFluids.STILL_LIGHT_BLUE_WATER, new Item.Settings().maxCount(1).recipeRemainder(Items.BUCKET)));
+    public static final Item YELLOW_WATER_BUCKET = registerItem("yellow_water_bucket", new BucketItem(ModFluids.STILL_YELLOW_WATER, new Item.Settings().maxCount(1).recipeRemainder(Items.BUCKET)));
+    public static final Item LIME_WATER_BUCKET = registerItem("lime_water_bucket", new BucketItem(ModFluids.STILL_LIME_WATER, new Item.Settings().maxCount(1).recipeRemainder(Items.BUCKET)));
+    public static final Item PINK_WATER_BUCKET = registerItem("pink_water_bucket", new BucketItem(ModFluids.STILL_PINK_WATER, new Item.Settings().maxCount(1).recipeRemainder(Items.BUCKET)));
+    public static final Item GRAY_WATER_BUCKET = registerItem("gray_water_bucket", new BucketItem(ModFluids.STILL_GRAY_WATER, new Item.Settings().maxCount(1).recipeRemainder(Items.BUCKET)));
+    public static final Item LIGHT_GRAY_WATER_BUCKET = registerItem("light_gray_water_bucket", new BucketItem(ModFluids.STILL_LIGHT_GRAY_WATER, new Item.Settings().maxCount(1).recipeRemainder(Items.BUCKET)));
+    public static final Item CYAN_WATER_BUCKET = registerItem("cyan_water_bucket", new BucketItem(ModFluids.STILL_CYAN_WATER, new Item.Settings().maxCount(1).recipeRemainder(Items.BUCKET)));
+    public static final Item PURPLE_WATER_BUCKET = registerItem("purple_water_bucket", new BucketItem(ModFluids.STILL_PURPLE_WATER, new Item.Settings().maxCount(1).recipeRemainder(Items.BUCKET)));
+    public static final Item BLUE_WATER_BUCKET = registerItem("blue_water_bucket", new BucketItem(ModFluids.STILL_BLUE_WATER, new Item.Settings().maxCount(1).recipeRemainder(Items.BUCKET)));
+    public static final Item BROWN_WATER_BUCKET = registerItem("brown_water_bucket", new BucketItem(ModFluids.STILL_BROWN_WATER, new Item.Settings().maxCount(1).recipeRemainder(Items.BUCKET)));
+    public static final Item GREEN_WATER_BUCKET = registerItem("green_water_bucket", new BucketItem(ModFluids.STILL_GREEN_WATER, new Item.Settings().maxCount(1).recipeRemainder(Items.BUCKET)));
+    public static final Item RED_WATER_BUCKET = registerItem("red_water_bucket", new BucketItem(ModFluids.STILL_RED_WATER, new Item.Settings().maxCount(1).recipeRemainder(Items.BUCKET)));
+    public static final Item BLACK_WATER_BUCKET = registerItem("black_water_bucket", new BucketItem(ModFluids.STILL_BLACK_WATER, new Item.Settings().maxCount(1).recipeRemainder(Items.BUCKET)));
+
     public static final Item ADVANCED_ARROW = registerItem("advanced_arrow",
             new ArrowItem(new Item.Settings()));
     public static final Item CHILLED_BONE = registerItem("chilled_bone",
@@ -88,7 +106,24 @@ public class ModItems {
 
     public static void registerModItems() {
         LouisOverhaulMod.LOGGER.info("Registering Mod Items for " + LouisOverhaulMod.MOD_ID);
-
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.COLORED_BLOCKS).register(entries -> {
+            entries.add(BLACK_WATER_BUCKET);
+            entries.add(WHITE_WATER_BUCKET);
+            entries.add(ORANGE_WATER_BUCKET);
+            entries.add(MAGENTA_WATER_BUCKET);
+            entries.add(LIGHT_BLUE_WATER_BUCKET);
+            entries.add(YELLOW_WATER_BUCKET);
+            entries.add(LIME_WATER_BUCKET);
+            entries.add(PINK_WATER_BUCKET);
+            entries.add(GRAY_WATER_BUCKET);
+            entries.add(LIGHT_GRAY_WATER_BUCKET);
+            entries.add(CYAN_WATER_BUCKET);
+            entries.add(PURPLE_WATER_BUCKET);
+            entries.add(BLUE_WATER_BUCKET);
+            entries.add(BROWN_WATER_BUCKET);
+            entries.add(GREEN_WATER_BUCKET);
+            entries.add(RED_WATER_BUCKET);
+        });
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(entries -> {
             entries.add(BAT_FANG);
             entries.add(ENDERMITE_HEART);

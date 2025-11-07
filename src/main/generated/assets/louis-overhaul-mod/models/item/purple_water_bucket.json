@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "louis-overhaul-mod:item/purple_water_bucket"
+  }
+}

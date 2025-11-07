@@ -80,6 +80,23 @@
   "item.louis-overhaul-mod.amethyst_dagger": "Amethyst Dagger",
   "item.louis-overhaul-mod.advanced_arrow": "Special Arrow",
 
+  "item.louis-overhaul-mod.white_water_bucket": "White Water Bucket",
+  "item.louis-overhaul-mod.light_gray_water_bucket": "Light Gray Water Bucket",
+  "item.louis-overhaul-mod.gray_water_bucket": "Gray Water Bucket",
+  "item.louis-overhaul-mod.black_water_bucket": "Black Water Bucket",
+  "item.louis-overhaul-mod.brown_water_bucket": "Brown Water Bucket",
+  "item.louis-overhaul-mod.red_water_bucket": "Red Water Bucket",
+  "item.louis-overhaul-mod.orange_water_bucket": "Orange Water Bucket",
+  "item.louis-overhaul-mod.yellow_water_bucket": "Yellow Water Bucket",
+  "item.louis-overhaul-mod.lime_water_bucket": "Lime Water Bucket",
+  "item.louis-overhaul-mod.green_water_bucket": "Green Water Bucket",
+  "item.louis-overhaul-mod.cyan_water_bucket": "Cyan Water Bucket",
+  "item.louis-overhaul-mod.light_blue_water_bucket": "Light Blue Water Bucket",
+  "item.louis-overhaul-mod.blue_water_bucket": "Blue Water Bucket",
+  "item.louis-overhaul-mod.purple_water_bucket": "Purple Water Bucket",
+  "item.louis-overhaul-mod.magenta_water_bucket": "Magenta Water Bucket",
+  "item.louis-overhaul-mod.pink_water_bucket": "Pink Water Bucket",
+
 
   "block.louis-overhaul-mod.advanced_fletching_table": "Fletching Table",
   "block.minecraft.fletching_table": "Broken Fletching Table",

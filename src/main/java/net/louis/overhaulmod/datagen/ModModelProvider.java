@@ -129,6 +129,23 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.ROTTEN_STEW, Models.GENERATED);
         itemModelGenerator.register(ModItems.CHILLED_BONE_MEAL, Models.GENERATED);
         itemModelGenerator.register(ModItems.AMETHYST_DAGGER, Models.HANDHELD);
+
+        itemModelGenerator.register(ModItems.WHITE_WATER_BUCKET, Models.HANDHELD);
+        itemModelGenerator.register(ModItems.ORANGE_WATER_BUCKET, Models.HANDHELD);
+        itemModelGenerator.register(ModItems.MAGENTA_WATER_BUCKET, Models.HANDHELD);
+        itemModelGenerator.register(ModItems.LIGHT_BLUE_WATER_BUCKET, Models.HANDHELD);
+        itemModelGenerator.register(ModItems.YELLOW_WATER_BUCKET, Models.HANDHELD);
+        itemModelGenerator.register(ModItems.LIME_WATER_BUCKET, Models.HANDHELD);
+        itemModelGenerator.register(ModItems.PINK_WATER_BUCKET, Models.HANDHELD);
+        itemModelGenerator.register(ModItems.GRAY_WATER_BUCKET, Models.HANDHELD);
+        itemModelGenerator.register(ModItems.LIGHT_GRAY_WATER_BUCKET, Models.HANDHELD);
+        itemModelGenerator.register(ModItems.CYAN_WATER_BUCKET, Models.HANDHELD);
+        itemModelGenerator.register(ModItems.PURPLE_WATER_BUCKET, Models.HANDHELD);
+        itemModelGenerator.register(ModItems.BLUE_WATER_BUCKET, Models.HANDHELD);
+        itemModelGenerator.register(ModItems.BROWN_WATER_BUCKET, Models.HANDHELD);
+        itemModelGenerator.register(ModItems.GREEN_WATER_BUCKET, Models.HANDHELD);
+        itemModelGenerator.register(ModItems.RED_WATER_BUCKET, Models.HANDHELD);
+        itemModelGenerator.register(ModItems.BLACK_WATER_BUCKET, Models.HANDHELD);
         // Pet Recovery Compass Generated Manually
     }
 }
