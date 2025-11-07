@@ -1,6 +1,6 @@
-// 1.21.1	2025-11-07T14:48:20.5690218	Louis' Overhaul Mod/Tags for minecraft:block
-776e585e89c1f844d64e21ceac182394b98c25ec data\minecraft\tags\block\mineable\pickaxe.json
+// 1.21.1	2025-11-07T22:54:01.3075265	Louis' Overhaul Mod/Tags for minecraft:block
 80b0dae6ba4e6c10261638ebb69b0d61926617fa data\minecraft\tags\block\rails.json
+776e585e89c1f844d64e21ceac182394b98c25ec data\minecraft\tags\block\mineable\pickaxe.json
 7df660695449f1976cf06fdd94888e28514c5a1e data\minecraft\tags\block\fences.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data\minecraft\tags\block\needs_stone_tool.json
 781d959bb6bbea7b36ae6b2d4a71ced43fd662b9 data\louis-overhaul-mod\tags\block\needs_amethyst_tool.json

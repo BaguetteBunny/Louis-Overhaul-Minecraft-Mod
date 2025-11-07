@@ -6,6 +6,7 @@ import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.fabricmc.fabric.api.object.builder.v1.world.poi.PointOfInterestHelper;
 import net.louis.overhaulmod.block.ModBlocks;
 import net.louis.overhaulmod.block.entity.ModBlockEntities;
+import net.louis.overhaulmod.cauldron.ModCauldron;
 import net.louis.overhaulmod.component.ModComponents;
 import net.louis.overhaulmod.effect.ModEffects;
 import net.louis.overhaulmod.events.ModUseEvents;
@@ -41,6 +42,7 @@ public class LouisOverhaulMod implements ModInitializer {
 		ModBlocks.registerModBlocks();
 		ModBlockEntities.registerBlockEntities();
 		ModScreenHandlers.registerScreenHandlers();
+		ModCauldron.registerBehaviors();
 
 		ModLootTableModifiers.modifyLootTables();
 		ModLootTableModifiers.replaceLootTables();

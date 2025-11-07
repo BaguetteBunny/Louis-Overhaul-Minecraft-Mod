@@ -3,6 +3,8 @@ package net.louis.overhaulmod.block;
 
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.louis.overhaulmod.LouisOverhaulMod;
+import net.louis.overhaulmod.cauldron.color.ColoredWaterCauldronBlock;
+import net.louis.overhaulmod.cauldron.HoneyCauldronBlock;
 import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -211,6 +213,11 @@ public class ModBlocks {
     public static final Block GREEN_CONCRETE_WALL = registerBlock("green_concrete_wall", new WallBlock(AbstractBlock.Settings.copy(Blocks.GREEN_CONCRETE).mapColor(MapColor.GREEN)));
     public static final Block RED_CONCRETE_WALL = registerBlock("red_concrete_wall", new WallBlock(AbstractBlock.Settings.copy(Blocks.RED_CONCRETE).mapColor(MapColor.RED)));
     public static final Block BLACK_CONCRETE_WALL = registerBlock("black_concrete_wall", new WallBlock(AbstractBlock.Settings.copy(Blocks.GREEN_CONCRETE).mapColor(MapColor.BLACK)));
+
+    public static final Block HONEY_CAULDRON = registerBlock("honey_cauldron",
+            new HoneyCauldronBlock(AbstractBlock.Settings.copy(Blocks.CAULDRON)));
+    public static final Block COLORED_WATER_CAULDRON = registerBlock("colored_water_cauldron",
+            new ColoredWaterCauldronBlock(AbstractBlock.Settings.copy(Blocks.CAULDRON)));
 
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);

@@ -1,0 +1,11 @@
+{
+  "parent": "minecraft:block/template_cauldron_full",
+  "textures": {
+    "content": "minecraft:block/honey_block_top",
+    "inside": "minecraft:block/cauldron_inner",
+    "particle": "minecraft:block/honey_block_top",
+    "bottom": "minecraft:block/cauldron_bottom",
+    "top": "minecraft:block/cauldron_top",
+    "side": "minecraft:block/cauldron_side"
+  }
+}
