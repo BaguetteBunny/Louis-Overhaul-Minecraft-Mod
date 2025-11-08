@@ -21,6 +21,10 @@ public class ArrowItemMixin extends Item implements ProjectileItem {
         super(settings);
     }
 
+     /**
+     * @author BaguetteBunny @ LouisOverhaulMod
+     * @reason Apply component abilities to arrows
+     */
     @Overwrite
     public ProjectileEntity createEntity(World world, Position pos, ItemStack stack, Direction direction) {
         ArrowEntity arrowEntity = new ArrowEntity(world, pos.getX(), pos.getY(), pos.getZ(), stack.copyWithCount(1), null);

@@ -3,6 +3,7 @@ package net.louis.overhaulmod.datagen;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.louis.overhaulmod.block.ModBlocks;
+import net.louis.overhaulmod.fluid.ModFluids;
 import net.louis.overhaulmod.item.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -11,11 +12,32 @@ import net.minecraft.registry.Registries;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 
+import java.util.List;
+
 
 public class ModModelProvider extends FabricModelProvider {
     public ModModelProvider(FabricDataOutput output) {
         super(output);
     }
+
+    private static final List<Block> COLORED_WATER_BLOCKS = List.of(
+            ModFluids.WHITE_WATER_BLOCK,
+            ModFluids.ORANGE_WATER_BLOCK,
+            ModFluids.MAGENTA_WATER_BLOCK,
+            ModFluids.LIGHT_BLUE_WATER_BLOCK,
+            ModFluids.YELLOW_WATER_BLOCK,
+            ModFluids.LIME_WATER_BLOCK,
+            ModFluids.PINK_WATER_BLOCK,
+            ModFluids.GRAY_WATER_BLOCK,
+            ModFluids.LIGHT_GRAY_WATER_BLOCK,
+            ModFluids.CYAN_WATER_BLOCK,
+            ModFluids.PURPLE_WATER_BLOCK,
+            ModFluids.BLUE_WATER_BLOCK,
+            ModFluids.BROWN_WATER_BLOCK,
+            ModFluids.GREEN_WATER_BLOCK,
+            ModFluids.RED_WATER_BLOCK,
+            ModFluids.BLACK_WATER_BLOCK
+    );
 
     @Override
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
@@ -110,6 +132,8 @@ public class ModModelProvider extends FabricModelProvider {
             pool.slab(Registries.BLOCK.get(Identifier.of("louis-overhaul-mod", color + "_concrete_slab")));
             pool.wall(Registries.BLOCK.get(Identifier.of("louis-overhaul-mod", color + "_concrete_wall")));
         }
+
+        for (var block : COLORED_WATER_BLOCKS) blockStateModelGenerator.registerStateWithModelReference(block, Blocks.WATER);
     }
 
     @Override
@@ -130,22 +154,22 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.CHILLED_BONE_MEAL, Models.GENERATED);
         itemModelGenerator.register(ModItems.AMETHYST_DAGGER, Models.HANDHELD);
 
-        itemModelGenerator.register(ModItems.WHITE_WATER_BUCKET, Models.HANDHELD);
-        itemModelGenerator.register(ModItems.ORANGE_WATER_BUCKET, Models.HANDHELD);
-        itemModelGenerator.register(ModItems.MAGENTA_WATER_BUCKET, Models.HANDHELD);
-        itemModelGenerator.register(ModItems.LIGHT_BLUE_WATER_BUCKET, Models.HANDHELD);
-        itemModelGenerator.register(ModItems.YELLOW_WATER_BUCKET, Models.HANDHELD);
-        itemModelGenerator.register(ModItems.LIME_WATER_BUCKET, Models.HANDHELD);
-        itemModelGenerator.register(ModItems.PINK_WATER_BUCKET, Models.HANDHELD);
-        itemModelGenerator.register(ModItems.GRAY_WATER_BUCKET, Models.HANDHELD);
-        itemModelGenerator.register(ModItems.LIGHT_GRAY_WATER_BUCKET, Models.HANDHELD);
-        itemModelGenerator.register(ModItems.CYAN_WATER_BUCKET, Models.HANDHELD);
-        itemModelGenerator.register(ModItems.PURPLE_WATER_BUCKET, Models.HANDHELD);
-        itemModelGenerator.register(ModItems.BLUE_WATER_BUCKET, Models.HANDHELD);
-        itemModelGenerator.register(ModItems.BROWN_WATER_BUCKET, Models.HANDHELD);
-        itemModelGenerator.register(ModItems.GREEN_WATER_BUCKET, Models.HANDHELD);
-        itemModelGenerator.register(ModItems.RED_WATER_BUCKET, Models.HANDHELD);
-        itemModelGenerator.register(ModItems.BLACK_WATER_BUCKET, Models.HANDHELD);
+        itemModelGenerator.register(ModItems.WHITE_WATER_BUCKET, Models.GENERATED);
+        itemModelGenerator.register(ModItems.ORANGE_WATER_BUCKET, Models.GENERATED);
+        itemModelGenerator.register(ModItems.MAGENTA_WATER_BUCKET, Models.GENERATED);
+        itemModelGenerator.register(ModItems.LIGHT_BLUE_WATER_BUCKET, Models.GENERATED);
+        itemModelGenerator.register(ModItems.YELLOW_WATER_BUCKET, Models.GENERATED);
+        itemModelGenerator.register(ModItems.LIME_WATER_BUCKET, Models.GENERATED);
+        itemModelGenerator.register(ModItems.PINK_WATER_BUCKET, Models.GENERATED);
+        itemModelGenerator.register(ModItems.GRAY_WATER_BUCKET, Models.GENERATED);
+        itemModelGenerator.register(ModItems.LIGHT_GRAY_WATER_BUCKET, Models.GENERATED);
+        itemModelGenerator.register(ModItems.CYAN_WATER_BUCKET, Models.GENERATED);
+        itemModelGenerator.register(ModItems.PURPLE_WATER_BUCKET, Models.GENERATED);
+        itemModelGenerator.register(ModItems.BLUE_WATER_BUCKET, Models.GENERATED);
+        itemModelGenerator.register(ModItems.BROWN_WATER_BUCKET, Models.GENERATED);
+        itemModelGenerator.register(ModItems.GREEN_WATER_BUCKET, Models.GENERATED);
+        itemModelGenerator.register(ModItems.RED_WATER_BUCKET, Models.GENERATED);
+        itemModelGenerator.register(ModItems.BLACK_WATER_BUCKET, Models.GENERATED);
         // Pet Recovery Compass Generated Manually
     }
 }

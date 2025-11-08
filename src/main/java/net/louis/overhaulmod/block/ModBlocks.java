@@ -3,7 +3,7 @@ package net.louis.overhaulmod.block;
 
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.louis.overhaulmod.LouisOverhaulMod;
-import net.louis.overhaulmod.cauldron.color.ColoredWaterCauldronBlock;
+import net.louis.overhaulmod.cauldron.ColoredWaterCauldronBlock;
 import net.louis.overhaulmod.cauldron.HoneyCauldronBlock;
 import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;

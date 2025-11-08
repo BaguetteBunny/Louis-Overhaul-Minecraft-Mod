@@ -1,8 +1,6 @@
 package net.louis.overhaulmod.cauldron;
 
-import net.fabricmc.fabric.api.tag.convention.v2.ConventionalFluidTags;
 import net.louis.overhaulmod.block.ModBlocks;
-import net.louis.overhaulmod.cauldron.color.ColoredWaterCauldronBlock;
 import net.louis.overhaulmod.item.ModItems;
 import net.louis.overhaulmod.utils.FluidType;
 import net.minecraft.block.Blocks;
@@ -16,7 +14,7 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ItemActionResult;
 import net.minecraft.world.event.GameEvent;
 
-import static net.louis.overhaulmod.cauldron.color.ColoredWaterCauldronBlock.FLUID_TYPE;
+import static net.louis.overhaulmod.cauldron.ColoredWaterCauldronBlock.FLUID_TYPE;
 
 public class ModCauldron {
     public static void registerHoneyCauldron() {
@@ -65,96 +63,112 @@ public class ModCauldron {
     public static void registerColoredCauldrons() {
         CauldronBehavior.EMPTY_CAULDRON_BEHAVIOR.map().put(ModItems.BLACK_WATER_BUCKET, (state, world, pos, player, hand, stack) -> {
             if (!world.isClient) {
+                world.playSound(null, pos, SoundEvents.ITEM_BUCKET_EMPTY, SoundCategory.BLOCKS, 1.0F, 1.0F);
                 player.setStackInHand(hand, new ItemStack(Items.BUCKET));
                 world.setBlockState(pos, ModBlocks.COLORED_WATER_CAULDRON.getDefaultState().with(FLUID_TYPE, FluidType.BLACK));}
             return ItemActionResult.success(world.isClient);});
 
         CauldronBehavior.EMPTY_CAULDRON_BEHAVIOR.map().put(ModItems.WHITE_WATER_BUCKET, (state, world, pos, player, hand, stack) -> {
             if (!world.isClient) {
+                world.playSound(null, pos, SoundEvents.ITEM_BUCKET_EMPTY, SoundCategory.BLOCKS, 1.0F, 1.0F);
                 player.setStackInHand(hand, new ItemStack(Items.BUCKET));
                 world.setBlockState(pos, ModBlocks.COLORED_WATER_CAULDRON.getDefaultState().with(FLUID_TYPE, FluidType.WHITE));}
             return ItemActionResult.success(world.isClient);});
 
         CauldronBehavior.EMPTY_CAULDRON_BEHAVIOR.map().put(ModItems.BROWN_WATER_BUCKET, (state, world, pos, player, hand, stack) -> {
             if (!world.isClient) {
+                world.playSound(null, pos, SoundEvents.ITEM_BUCKET_EMPTY, SoundCategory.BLOCKS, 1.0F, 1.0F);
                 player.setStackInHand(hand, new ItemStack(Items.BUCKET));
                 world.setBlockState(pos, ModBlocks.COLORED_WATER_CAULDRON.getDefaultState().with(FLUID_TYPE, FluidType.BROWN));}
             return ItemActionResult.success(world.isClient);});
 
         CauldronBehavior.EMPTY_CAULDRON_BEHAVIOR.map().put(ModItems.RED_WATER_BUCKET, (state, world, pos, player, hand, stack) -> {
             if (!world.isClient) {
+                world.playSound(null, pos, SoundEvents.ITEM_BUCKET_EMPTY, SoundCategory.BLOCKS, 1.0F, 1.0F);
                 player.setStackInHand(hand, new ItemStack(Items.BUCKET));
                 world.setBlockState(pos, ModBlocks.COLORED_WATER_CAULDRON.getDefaultState().with(FLUID_TYPE, FluidType.RED));}
             return ItemActionResult.success(world.isClient);});
 
         CauldronBehavior.EMPTY_CAULDRON_BEHAVIOR.map().put(ModItems.GREEN_WATER_BUCKET, (state, world, pos, player, hand, stack) -> {
             if (!world.isClient) {
+                world.playSound(null, pos, SoundEvents.ITEM_BUCKET_EMPTY, SoundCategory.BLOCKS, 1.0F, 1.0F);
                 player.setStackInHand(hand, new ItemStack(Items.BUCKET));
                 world.setBlockState(pos, ModBlocks.COLORED_WATER_CAULDRON.getDefaultState().with(FLUID_TYPE, FluidType.GREEN));}
             return ItemActionResult.success(world.isClient);});
 
         CauldronBehavior.EMPTY_CAULDRON_BEHAVIOR.map().put(ModItems.BLUE_WATER_BUCKET, (state, world, pos, player, hand, stack) -> {
             if (!world.isClient) {
+                world.playSound(null, pos, SoundEvents.ITEM_BUCKET_EMPTY, SoundCategory.BLOCKS, 1.0F, 1.0F);
                 player.setStackInHand(hand, new ItemStack(Items.BUCKET));
                 world.setBlockState(pos, ModBlocks.COLORED_WATER_CAULDRON.getDefaultState().with(FLUID_TYPE, FluidType.BLUE));}
             return ItemActionResult.success(world.isClient);});
 
         CauldronBehavior.EMPTY_CAULDRON_BEHAVIOR.map().put(ModItems.LIGHT_BLUE_WATER_BUCKET, (state, world, pos, player, hand, stack) -> {
             if (!world.isClient) {
+                world.playSound(null, pos, SoundEvents.ITEM_BUCKET_EMPTY, SoundCategory.BLOCKS, 1.0F, 1.0F);
                 player.setStackInHand(hand, new ItemStack(Items.BUCKET));
                 world.setBlockState(pos, ModBlocks.COLORED_WATER_CAULDRON.getDefaultState().with(FLUID_TYPE, FluidType.LIGHT_BLUE));}
             return ItemActionResult.success(world.isClient);});
 
         CauldronBehavior.EMPTY_CAULDRON_BEHAVIOR.map().put(ModItems.GRAY_WATER_BUCKET, (state, world, pos, player, hand, stack) -> {
             if (!world.isClient) {
+                world.playSound(null, pos, SoundEvents.ITEM_BUCKET_EMPTY, SoundCategory.BLOCKS, 1.0F, 1.0F);
                 player.setStackInHand(hand, new ItemStack(Items.BUCKET));
                 world.setBlockState(pos, ModBlocks.COLORED_WATER_CAULDRON.getDefaultState().with(FLUID_TYPE, FluidType.GRAY));}
             return ItemActionResult.success(world.isClient);});
 
         CauldronBehavior.EMPTY_CAULDRON_BEHAVIOR.map().put(ModItems.LIGHT_GRAY_WATER_BUCKET, (state, world, pos, player, hand, stack) -> {
             if (!world.isClient) {
+                world.playSound(null, pos, SoundEvents.ITEM_BUCKET_EMPTY, SoundCategory.BLOCKS, 1.0F, 1.0F);
                 player.setStackInHand(hand, new ItemStack(Items.BUCKET));
                 world.setBlockState(pos, ModBlocks.COLORED_WATER_CAULDRON.getDefaultState().with(FLUID_TYPE, FluidType.LIGHT_GRAY));}
             return ItemActionResult.success(world.isClient);});
 
         CauldronBehavior.EMPTY_CAULDRON_BEHAVIOR.map().put(ModItems.LIME_WATER_BUCKET, (state, world, pos, player, hand, stack) -> {
             if (!world.isClient) {
+                world.playSound(null, pos, SoundEvents.ITEM_BUCKET_EMPTY, SoundCategory.BLOCKS, 1.0F, 1.0F);
                 player.setStackInHand(hand, new ItemStack(Items.BUCKET));
                 world.setBlockState(pos, ModBlocks.COLORED_WATER_CAULDRON.getDefaultState().with(FLUID_TYPE, FluidType.LIME));}
             return ItemActionResult.success(world.isClient);});
 
         CauldronBehavior.EMPTY_CAULDRON_BEHAVIOR.map().put(ModItems.PURPLE_WATER_BUCKET, (state, world, pos, player, hand, stack) -> {
             if (!world.isClient) {
+                world.playSound(null, pos, SoundEvents.ITEM_BUCKET_EMPTY, SoundCategory.BLOCKS, 1.0F, 1.0F);
                 player.setStackInHand(hand, new ItemStack(Items.BUCKET));
                 world.setBlockState(pos, ModBlocks.COLORED_WATER_CAULDRON.getDefaultState().with(FLUID_TYPE, FluidType.PURPLE));}
             return ItemActionResult.success(world.isClient);});
 
         CauldronBehavior.EMPTY_CAULDRON_BEHAVIOR.map().put(ModItems.MAGENTA_WATER_BUCKET, (state, world, pos, player, hand, stack) -> {
             if (!world.isClient) {
+                world.playSound(null, pos, SoundEvents.ITEM_BUCKET_EMPTY, SoundCategory.BLOCKS, 1.0F, 1.0F);
                 player.setStackInHand(hand, new ItemStack(Items.BUCKET));
                 world.setBlockState(pos, ModBlocks.COLORED_WATER_CAULDRON.getDefaultState().with(FLUID_TYPE, FluidType.MAGENTA));}
             return ItemActionResult.success(world.isClient);});
 
         CauldronBehavior.EMPTY_CAULDRON_BEHAVIOR.map().put(ModItems.CYAN_WATER_BUCKET, (state, world, pos, player, hand, stack) -> {
             if (!world.isClient) {
+                world.playSound(null, pos, SoundEvents.ITEM_BUCKET_EMPTY, SoundCategory.BLOCKS, 1.0F, 1.0F);
                 player.setStackInHand(hand, new ItemStack(Items.BUCKET));
                 world.setBlockState(pos, ModBlocks.COLORED_WATER_CAULDRON.getDefaultState().with(FLUID_TYPE, FluidType.CYAN));}
             return ItemActionResult.success(world.isClient);});
 
         CauldronBehavior.EMPTY_CAULDRON_BEHAVIOR.map().put(ModItems.YELLOW_WATER_BUCKET, (state, world, pos, player, hand, stack) -> {
             if (!world.isClient) {
+                world.playSound(null, pos, SoundEvents.ITEM_BUCKET_EMPTY, SoundCategory.BLOCKS, 1.0F, 1.0F);
                 player.setStackInHand(hand, new ItemStack(Items.BUCKET));
                 world.setBlockState(pos, ModBlocks.COLORED_WATER_CAULDRON.getDefaultState().with(FLUID_TYPE, FluidType.YELLOW));}
             return ItemActionResult.success(world.isClient);});
 
         CauldronBehavior.EMPTY_CAULDRON_BEHAVIOR.map().put(ModItems.ORANGE_WATER_BUCKET, (state, world, pos, player, hand, stack) -> {
             if (!world.isClient) {
+                world.playSound(null, pos, SoundEvents.ITEM_BUCKET_EMPTY, SoundCategory.BLOCKS, 1.0F, 1.0F);
                 player.setStackInHand(hand, new ItemStack(Items.BUCKET));
                 world.setBlockState(pos, ModBlocks.COLORED_WATER_CAULDRON.getDefaultState().with(FLUID_TYPE, FluidType.ORANGE));}
             return ItemActionResult.success(world.isClient);});
 
         CauldronBehavior.EMPTY_CAULDRON_BEHAVIOR.map().put(ModItems.PINK_WATER_BUCKET, (state, world, pos, player, hand, stack) -> {
             if (!world.isClient) {
+                world.playSound(null, pos, SoundEvents.ITEM_BUCKET_EMPTY, SoundCategory.BLOCKS, 1.0F, 1.0F);
                 player.setStackInHand(hand, new ItemStack(Items.BUCKET));
                 world.setBlockState(pos, ModBlocks.COLORED_WATER_CAULDRON.getDefaultState().with(FLUID_TYPE, FluidType.PINK));}
             return ItemActionResult.success(world.isClient);});
@@ -180,6 +194,7 @@ public class ModCauldron {
                 else if (type == FluidType.BROWN) player.setStackInHand(hand, new ItemStack(ModItems.BROWN_WATER_BUCKET));
                 else if (type == FluidType.CYAN) player.setStackInHand(hand, new ItemStack(ModItems.CYAN_WATER_BUCKET));
                 world.setBlockState(pos, Blocks.CAULDRON.getDefaultState());
+                world.playSound(null, pos, SoundEvents.ITEM_BUCKET_FILL, SoundCategory.BLOCKS, 1.0F, 1.0F);
             }
             return ItemActionResult.success(world.isClient);
         });

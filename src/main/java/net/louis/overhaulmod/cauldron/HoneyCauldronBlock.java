@@ -29,7 +29,7 @@ public class HoneyCauldronBlock extends LeveledCauldronBlock {
 
         if (entity instanceof LivingEntity living && level > 0 && !living.getStatusEffects().isEmpty()) {
             living.clearStatusEffects();
-            world.playSound(null, pos, SoundEvents.ENTITY_GENERIC_SPLASH, SoundCategory.BLOCKS, 1.0F, 1.0F);
+            world.playSound(null, pos, SoundEvents.ENTITY_GENERIC_SPLASH, SoundCategory.BLOCKS, 1.0F, 2.0F);
             if (level > 1) world.setBlockState(pos, state.with(LEVEL, level - 1));
             else world.setBlockState(pos, Blocks.CAULDRON.getDefaultState());
 

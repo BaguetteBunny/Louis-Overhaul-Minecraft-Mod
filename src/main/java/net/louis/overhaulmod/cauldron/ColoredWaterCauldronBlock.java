@@ -1,7 +1,6 @@
-package net.louis.overhaulmod.cauldron.color;
+package net.louis.overhaulmod.cauldron;
 
 import com.mojang.serialization.MapCodec;
-import net.fabricmc.fabric.api.tag.convention.v2.ConventionalItemTags;
 import net.louis.overhaulmod.utils.FluidColors;
 import net.louis.overhaulmod.utils.FluidType;
 import net.minecraft.block.*;
@@ -12,9 +11,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.*;
-import net.minecraft.nbt.NbtCompound;
 import net.minecraft.particle.ParticleTypes;
-import net.minecraft.recipe.ArmorDyeRecipe;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.server.world.ServerWorld;
@@ -22,7 +19,6 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.EnumProperty;
-import net.minecraft.util.DyeColor;
 import net.minecraft.util.Hand;
 import net.minecraft.util.ItemActionResult;
 import net.minecraft.util.hit.BlockHitResult;
@@ -86,7 +82,8 @@ public class ColoredWaterCauldronBlock extends AbstractCauldronBlock {
 
     @Override
     protected ItemActionResult onUseWithItem(ItemStack stack, BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        if (world.isClient) return ItemActionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+        CauldronBehavior cauldronBehavior = (CauldronBehavior)this.behaviorMap.map().get(stack.getItem());
+        if (world.isClient) return cauldronBehavior.interact(state, world, pos, player, hand, stack);
         ItemStack newStack = null;
         Item item = stack.getItem();
 
@@ -125,9 +122,8 @@ public class ColoredWaterCauldronBlock extends AbstractCauldronBlock {
             }
             player.swingHand(hand, true);
             player.setStackInHand(hand, newStack);
-            return ItemActionResult.SUCCESS;
         }
 
-        return ItemActionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+        return cauldronBehavior.interact(state, world, pos, player, hand, stack);
     }
 }
