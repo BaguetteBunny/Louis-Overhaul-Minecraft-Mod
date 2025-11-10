@@ -17,6 +17,49 @@ import net.minecraft.world.event.GameEvent;
 import static net.louis.overhaulmod.cauldron.ColoredWaterCauldronBlock.FLUID_TYPE;
 
 public class ModCauldron {
+    public static void registerDragonBreathCauldron() {
+        CauldronBehavior.EMPTY_CAULDRON_BEHAVIOR.map().put(Items.DRAGON_BREATH, (state, world, pos, player, hand, stack) -> {
+            if (!world.isClient) {
+                player.setStackInHand(hand, ItemUsage.exchangeStack(stack, player, new ItemStack(Items.GLASS_BOTTLE)));
+                world.setBlockState(pos, ModBlocks.DRAGON_BREATH_CAULDRON.getDefaultState().with(LeveledCauldronBlock.LEVEL, 1));
+                world.playSound(null, pos, SoundEvents.ITEM_BOTTLE_EMPTY, SoundCategory.BLOCKS, 1.0F, 1.0F);
+                world.emitGameEvent(GameEvent.FLUID_PLACE, pos, GameEvent.Emitter.of(player, state));
+            }
+            return ItemActionResult.success(world.isClient);
+        });
+
+        // Filling an existing db cauldron (level < 3)
+        DragonBreathCauldronBlock.DB_CAULDRON_BEHAVIOR.map().put(Items.DRAGON_BREATH, (state, world, pos, player, hand, stack) -> {
+            int level = state.get(LeveledCauldronBlock.LEVEL);
+            if (level < 3) {
+                if (!world.isClient) {
+                    player.setStackInHand(hand, ItemUsage.exchangeStack(stack, player, new ItemStack(Items.GLASS_BOTTLE)));
+                    world.setBlockState(pos, state.with(LeveledCauldronBlock.LEVEL, level + 1));
+                    world.playSound(null, pos, SoundEvents.ITEM_BOTTLE_EMPTY, SoundCategory.BLOCKS, 1.0F, 1.5F);
+                    world.emitGameEvent(GameEvent.FLUID_PLACE, pos, GameEvent.Emitter.of(player, state));
+                }
+                return ItemActionResult.success(world.isClient);
+            }
+            return ItemActionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+        });
+
+        // Using an empty bottle on a db cauldron removes one level
+        DragonBreathCauldronBlock.DB_CAULDRON_BEHAVIOR.map().put(Items.GLASS_BOTTLE, (state, world, pos, player, hand, stack) -> {
+            int level = state.get(LeveledCauldronBlock.LEVEL);
+            if (!world.isClient) {
+                player.setStackInHand(hand, ItemUsage.exchangeStack(stack, player, new ItemStack(Items.DRAGON_BREATH)));
+                if (level > 1) {
+                    world.setBlockState(pos, state.with(LeveledCauldronBlock.LEVEL, level - 1));
+                } else {
+                    world.setBlockState(pos, Blocks.CAULDRON.getDefaultState());
+                }
+                world.playSound(null, pos, SoundEvents.ITEM_BOTTLE_FILL, SoundCategory.BLOCKS, 1.0F, 1.5F);
+                world.emitGameEvent(GameEvent.FLUID_PICKUP, pos, GameEvent.Emitter.of(player, state));
+            }
+            return ItemActionResult.success(world.isClient);
+        });
+    }
+
     public static void registerHoneyCauldron() {
         CauldronBehavior.EMPTY_CAULDRON_BEHAVIOR.map().put(Items.HONEY_BOTTLE, (state, world, pos, player, hand, stack) -> {
             if (!world.isClient) {
@@ -202,6 +245,7 @@ public class ModCauldron {
 
     public static void registerBehaviors() {
         registerHoneyCauldron();
+        registerDragonBreathCauldron();
         registerColoredCauldrons();
     }
 }

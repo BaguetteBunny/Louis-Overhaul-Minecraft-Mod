@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.louis.overhaulmod.block.ModBlocks;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.Item;
@@ -25,6 +26,10 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 
     @Override
     public void generate() {
+        addDrop(ModBlocks.DRAGON_BREATH_CAULDRON, Blocks.CAULDRON);
+        addDrop(ModBlocks.HONEY_CAULDRON, Blocks.CAULDRON);
+        addDrop(ModBlocks.COLORED_WATER_CAULDRON, Blocks.CAULDRON);
+
         addDrop(ModBlocks.COPPER_RAIL);
 
         addDrop(ModBlocks.GLOW_LANTERN);

@@ -4,6 +4,7 @@ package net.louis.overhaulmod.block;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.louis.overhaulmod.LouisOverhaulMod;
 import net.louis.overhaulmod.cauldron.ColoredWaterCauldronBlock;
+import net.louis.overhaulmod.cauldron.DragonBreathCauldronBlock;
 import net.louis.overhaulmod.cauldron.HoneyCauldronBlock;
 import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;
@@ -218,6 +219,8 @@ public class ModBlocks {
             new HoneyCauldronBlock(AbstractBlock.Settings.copy(Blocks.CAULDRON)));
     public static final Block COLORED_WATER_CAULDRON = registerBlock("colored_water_cauldron",
             new ColoredWaterCauldronBlock(AbstractBlock.Settings.copy(Blocks.CAULDRON)));
+    public static final Block DRAGON_BREATH_CAULDRON = registerBlock("dragon_breath_cauldron",
+            new DragonBreathCauldronBlock(AbstractBlock.Settings.copy(Blocks.CAULDRON)));
 
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);

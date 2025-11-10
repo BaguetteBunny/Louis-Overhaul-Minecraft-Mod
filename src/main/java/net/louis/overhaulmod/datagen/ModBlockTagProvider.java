@@ -20,7 +20,16 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         getOrCreateTagBuilder(ModTags.Blocks.NEEDS_AMETHYST_TOOL)
                 .addTag(BlockTags.NEEDS_STONE_TOOL);
 
+        getOrCreateTagBuilder(BlockTags.CAULDRONS)
+                .add(ModBlocks.DRAGON_BREATH_CAULDRON)
+                .add(ModBlocks.HONEY_CAULDRON)
+                .add(ModBlocks.COLORED_WATER_CAULDRON);
+
         getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
+                .add(ModBlocks.DRAGON_BREATH_CAULDRON)
+                .add(ModBlocks.COLORED_WATER_CAULDRON)
+                .add(ModBlocks.HONEY_CAULDRON)
+
                 .add(ModBlocks.COPPER_RAIL)
 
                 .add(ModBlocks.GLOW_LANTERN)
