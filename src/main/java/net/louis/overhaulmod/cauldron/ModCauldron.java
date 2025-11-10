@@ -2,15 +2,15 @@ package net.louis.overhaulmod.cauldron;
 
 import net.louis.overhaulmod.block.ModBlocks;
 import net.louis.overhaulmod.item.ModItems;
+import net.louis.overhaulmod.utils.FluidColors;
 import net.louis.overhaulmod.utils.FluidType;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.LeveledCauldronBlock;
 import net.minecraft.block.cauldron.CauldronBehavior;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemUsage;
-import net.minecraft.item.Items;
+import net.minecraft.item.*;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.util.DyeColor;
 import net.minecraft.util.ItemActionResult;
 import net.minecraft.world.event.GameEvent;
 
@@ -215,6 +215,20 @@ public class ModCauldron {
                 player.setStackInHand(hand, new ItemStack(Items.BUCKET));
                 world.setBlockState(pos, ModBlocks.COLORED_WATER_CAULDRON.getDefaultState().with(FLUID_TYPE, FluidType.PINK));}
             return ItemActionResult.success(world.isClient);});
+
+        for (var entry : FluidColors.DYE_ITEM.entrySet()) {
+            DyeColor color = entry.getValue();
+            FluidType fluidType = entry.getKey();
+            Item dyeItem = DyeItem.byColor(color);
+            CauldronBehavior.WATER_CAULDRON_BEHAVIOR.map().put(dyeItem, (state, world, pos, player, hand, stack) -> {
+                if (!world.isClient) {
+                    world.setBlockState(pos, ModBlocks.COLORED_WATER_CAULDRON.getDefaultState().with(ColoredWaterCauldronBlock.FLUID_TYPE, fluidType));
+                    world.playSound(null, pos, SoundEvents.ITEM_DYE_USE, SoundCategory.BLOCKS, 1.0F, 1.0F);
+                    stack.decrementUnlessCreative(1, player);
+                }
+                return ItemActionResult.success(world.isClient);
+            });
+        }
 
         // Empty Cauldron
         ColoredWaterCauldronBlock.COLORED_WATER_BEHAVIOR.map().put(Items.BUCKET, (state, world, pos, player, hand, stack) -> {
