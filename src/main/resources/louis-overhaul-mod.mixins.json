@@ -34,7 +34,8 @@
 		"ArrowItemMixin",
 		"RecipeManagerMixin",
 		"SculkCatalystBlockEntityMixin",
-		"ArmorMaterialMixin"
+		"ArmorMaterialMixin",
+		"LeavesBlockMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
