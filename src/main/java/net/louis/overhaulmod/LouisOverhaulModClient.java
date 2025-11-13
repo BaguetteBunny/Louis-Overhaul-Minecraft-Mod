@@ -35,8 +35,8 @@ public class LouisOverhaulModClient implements ClientModInitializer {
         // Add Predicate Texture Transform
         PetRecoveryCompass.registerModelPredicates();
 
-
         addArrowPredicate();
+
         addColoredWater();
     }
 
@@ -45,20 +45,23 @@ public class LouisOverhaulModClient implements ClientModInitializer {
                 ModItems.ADVANCED_ARROW,
                 Identifier.of(LouisOverhaulMod.MOD_ID, "atid"),
                 (stack, world, entity, seed) -> {
+                    int total = 0;
                     Item foot = stack.get(ModComponents.ARROW_FOOT);
                     Item shaft = stack.get(ModComponents.ARROW_SHAFT);
                     Item head = stack.get(ModComponents.ARROW_HEAD);
-                    if (head == Items.AMETHYST_SHARD && shaft == Items.BLAZE_ROD && foot == Items.PHANTOM_MEMBRANE) return 0.111f;
 
-                    if (head == Items.AMETHYST_SHARD) return 0.001F;
-                    if (head == Items.ECHO_SHARD) return 0.002F;
+                    if (head == Items.AMETHYST_SHARD) total += 1;
+                    if (head == Items.ECHO_SHARD) total += 2;
+                    if (head == Items.PRISMARINE_SHARD) total += 3;
 
-                    if (shaft == Items.BLAZE_ROD) return 0.01f;
-                    if (shaft == Items.BREEZE_ROD) return 0.01f;
+                    if (shaft == Items.BLAZE_ROD) total += 10;
+                    if (shaft == Items.BREEZE_ROD) total += 20;
 
-                    if (foot == Items.PHANTOM_MEMBRANE) return 0.1f;
+                    if (foot == Items.PHANTOM_MEMBRANE) total += 100;
+                    if (foot == Items.DRIED_KELP) total += 200;
+                    if (foot == Items.ARMADILLO_SCUTE) total += 300;
 
-                    return 0.0f;
+                    return Math.round((total / 1000f) * 1000f) / 1000f;
                 }
         );
     }
