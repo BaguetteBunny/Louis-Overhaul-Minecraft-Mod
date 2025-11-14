@@ -25,6 +25,9 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.HONEY_CAULDRON)
                 .add(ModBlocks.COLORED_WATER_CAULDRON);
 
+        getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)
+                .add(ModBlocks.SAWMILL);
+
         getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
                 .add(ModBlocks.DRAGON_BREATH_CAULDRON)
                 .add(ModBlocks.COLORED_WATER_CAULDRON)

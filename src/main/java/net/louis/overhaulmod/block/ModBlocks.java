@@ -26,6 +26,9 @@ public class ModBlocks {
                     .noCollision()
             ));
 
+    public static final Block SAWMILL = registerBlock("sawmill",
+            new SawmillBlock(AbstractBlock.Settings.copy(Blocks.CHERRY_PLANKS)));
+
     public static final Block GLOW_LANTERN = registerBlock("glow_lantern",
             new LanternBlock(AbstractBlock.Settings.copy(Blocks.SOUL_LANTERN)));
 
@@ -239,6 +242,7 @@ public class ModBlocks {
         // entries.add(ModBlocks.);
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL).register(entries -> {
             entries.add(ModBlocks.ADVANCED_FLETCHING_TABLE);
+            entries.add(ModBlocks.SAWMILL);
         });
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.REDSTONE).register(entries -> {
             entries.add(ModBlocks.COPPER_RAIL);

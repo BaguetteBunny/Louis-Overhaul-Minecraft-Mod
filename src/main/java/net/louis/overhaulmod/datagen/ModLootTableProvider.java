@@ -30,6 +30,8 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.HONEY_CAULDRON, Blocks.CAULDRON);
         addDrop(ModBlocks.COLORED_WATER_CAULDRON, Blocks.CAULDRON);
 
+        addDrop(ModBlocks.SAWMILL);
+
         addDrop(ModBlocks.COPPER_RAIL);
 
         addDrop(ModBlocks.GLOW_LANTERN);

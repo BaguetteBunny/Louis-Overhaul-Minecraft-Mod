@@ -4,12 +4,16 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.louis.overhaulmod.block.ModBlocks;
 import net.louis.overhaulmod.item.ModItems;
+import net.louis.overhaulmod.recipe.SawmillRecipeJsonBuilder;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.data.server.recipe.RecipeExporter;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
 import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder;
+import net.minecraft.data.server.recipe.StonecuttingRecipeJsonBuilder;
+import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.Items;
+import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryWrapper;
@@ -25,8 +29,87 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         super(output, registriesFuture);
     }
 
+    public static void offerSawmillingRecipe(RecipeExporter exporter, RecipeCategory category, ItemConvertible output, ItemConvertible input, int count) {
+        SawmillRecipeJsonBuilder.createSawmilling(Ingredient.ofItems(input), category, output, count)
+                .criterion(hasItem(input), conditionsFromItem(input))
+                .offerTo(exporter, convertBetween(output, input) + "_sawmilling");
+    }
+
+    public static void offerAllWoodSawmillingRecipes(RecipeExporter exporter) {
+        WoodTypeData[] woods = new WoodTypeData[] {
+                new WoodTypeData("oak", Blocks.OAK_PLANKS, Blocks.OAK_SLAB, Blocks.OAK_STAIRS, Blocks.OAK_TRAPDOOR,
+                        Blocks.OAK_DOOR, Blocks.OAK_BUTTON, Blocks.OAK_PRESSURE_PLATE, Blocks.OAK_SIGN,
+                        Blocks.OAK_FENCE, Blocks.OAK_FENCE_GATE, Items.STICK),
+                new WoodTypeData("spruce", Blocks.SPRUCE_PLANKS, Blocks.SPRUCE_SLAB, Blocks.SPRUCE_STAIRS, Blocks.SPRUCE_TRAPDOOR,
+                        Blocks.SPRUCE_DOOR, Blocks.SPRUCE_BUTTON, Blocks.SPRUCE_PRESSURE_PLATE, Blocks.SPRUCE_SIGN,
+                        Blocks.SPRUCE_FENCE, Blocks.SPRUCE_FENCE_GATE, Items.STICK),
+                new WoodTypeData("birch", Blocks.BIRCH_PLANKS, Blocks.BIRCH_SLAB, Blocks.BIRCH_STAIRS, Blocks.BIRCH_TRAPDOOR,
+                        Blocks.BIRCH_DOOR, Blocks.BIRCH_BUTTON, Blocks.BIRCH_PRESSURE_PLATE, Blocks.BIRCH_SIGN,
+                        Blocks.BIRCH_FENCE, Blocks.BIRCH_FENCE_GATE, Items.STICK),
+                new WoodTypeData("jungle", Blocks.JUNGLE_PLANKS, Blocks.JUNGLE_SLAB, Blocks.JUNGLE_STAIRS, Blocks.JUNGLE_TRAPDOOR,
+                        Blocks.JUNGLE_DOOR, Blocks.JUNGLE_BUTTON, Blocks.JUNGLE_PRESSURE_PLATE, Blocks.JUNGLE_SIGN,
+                        Blocks.JUNGLE_FENCE, Blocks.JUNGLE_FENCE_GATE, Items.STICK),
+                new WoodTypeData("acacia", Blocks.ACACIA_PLANKS, Blocks.ACACIA_SLAB, Blocks.ACACIA_STAIRS, Blocks.ACACIA_TRAPDOOR,
+                        Blocks.ACACIA_DOOR, Blocks.ACACIA_BUTTON, Blocks.ACACIA_PRESSURE_PLATE, Blocks.ACACIA_SIGN,
+                        Blocks.ACACIA_FENCE, Blocks.ACACIA_FENCE_GATE, Items.STICK),
+                new WoodTypeData("dark_oak", Blocks.DARK_OAK_PLANKS, Blocks.DARK_OAK_SLAB, Blocks.DARK_OAK_STAIRS, Blocks.DARK_OAK_TRAPDOOR,
+                        Blocks.DARK_OAK_DOOR, Blocks.DARK_OAK_BUTTON, Blocks.DARK_OAK_PRESSURE_PLATE, Blocks.DARK_OAK_SIGN,
+                        Blocks.DARK_OAK_FENCE, Blocks.DARK_OAK_FENCE_GATE, Items.STICK),
+                new WoodTypeData("mangrove", Blocks.MANGROVE_PLANKS, Blocks.MANGROVE_SLAB, Blocks.MANGROVE_STAIRS, Blocks.MANGROVE_TRAPDOOR,
+                        Blocks.MANGROVE_DOOR, Blocks.MANGROVE_BUTTON, Blocks.MANGROVE_PRESSURE_PLATE, Blocks.MANGROVE_SIGN,
+                        Blocks.MANGROVE_FENCE, Blocks.MANGROVE_FENCE_GATE, Items.STICK),
+                new WoodTypeData("cherry", Blocks.CHERRY_PLANKS, Blocks.CHERRY_SLAB, Blocks.CHERRY_STAIRS, Blocks.CHERRY_TRAPDOOR,
+                        Blocks.CHERRY_DOOR, Blocks.CHERRY_BUTTON, Blocks.CHERRY_PRESSURE_PLATE, Blocks.CHERRY_SIGN,
+                        Blocks.CHERRY_FENCE, Blocks.CHERRY_FENCE_GATE, Items.STICK),
+                new WoodTypeData("crimson", Blocks.CRIMSON_PLANKS, Blocks.CRIMSON_SLAB, Blocks.CRIMSON_STAIRS, Blocks.CRIMSON_TRAPDOOR,
+                        Blocks.CRIMSON_DOOR, Blocks.CRIMSON_BUTTON, Blocks.CRIMSON_PRESSURE_PLATE, Blocks.CRIMSON_SIGN,
+                        Blocks.CRIMSON_FENCE, Blocks.CRIMSON_FENCE_GATE, Items.STICK),
+                new WoodTypeData("warped", Blocks.WARPED_PLANKS, Blocks.WARPED_SLAB, Blocks.WARPED_STAIRS, Blocks.WARPED_TRAPDOOR,
+                        Blocks.WARPED_DOOR, Blocks.WARPED_BUTTON, Blocks.WARPED_PRESSURE_PLATE, Blocks.WARPED_SIGN,
+                        Blocks.WARPED_FENCE, Blocks.WARPED_FENCE_GATE, Items.STICK)
+        };
+
+        for (WoodTypeData wood : woods) {
+            offerSawmillingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, wood.stickOutput, wood.planks, 2);
+            offerSawmillingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, wood.slab, wood.planks, 2);
+            offerSawmillingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, wood.stairs, wood.planks, 1);
+            offerSawmillingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, wood.trapdoor, wood.planks, 1);
+            offerSawmillingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, wood.pressurePlate, wood.planks, 1);
+            offerSawmillingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, wood.door, wood.planks, 1);
+            offerSawmillingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, wood.button, wood.planks, 1);
+            offerSawmillingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, wood.sign, wood.planks, 1);
+            offerSawmillingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, wood.fence, wood.planks, 1);
+            offerSawmillingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, wood.fenceGate, wood.planks, 1);
+        }
+    }
+
+    private static class WoodTypeData {
+        final String name;
+        final ItemConvertible planks, slab, stairs, trapdoor, door, button, pressurePlate, sign, fence, fenceGate, stickOutput;
+
+        public WoodTypeData(String name, ItemConvertible planks, ItemConvertible slab, ItemConvertible stairs,
+                            ItemConvertible trapdoor, ItemConvertible door, ItemConvertible button,
+                            ItemConvertible pressurePlate, ItemConvertible sign, ItemConvertible fence,
+                            ItemConvertible fenceGate, ItemConvertible stickOutput) {
+            this.name = name;
+            this.planks = planks;
+            this.slab = slab;
+            this.stairs = stairs;
+            this.trapdoor = trapdoor;
+            this.door = door;
+            this.button = button;
+            this.pressurePlate = pressurePlate;
+            this.sign = sign;
+            this.fence = fence;
+            this.fenceGate = fenceGate;
+            this.stickOutput = stickOutput;
+        }
+    }
+
     @Override
     public void generate(RecipeExporter exporter) {
+        // SAW MILLING
+        offerAllWoodSawmillingRecipes(exporter);
 
         // STONE CUTTING
         offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_ROSE_QUARTZ, ModBlocks.ROSE_QUARTZ_BRICKS, 1);
@@ -172,6 +255,15 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .input('F', Items.FLINT)
                 .input('P', ItemTags.PLANKS)
                 .criterion(hasItem(Items.FLINT), conditionsFromItem(Items.FLINT))
+                .offerTo(exporter);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.SAWMILL, 1)
+                .pattern(" I ")
+                .pattern("WWW")
+                .pattern("   ")
+                .input('I', Items.FLINT)
+                .input('W', ItemTags.LOGS)
+                .criterion(hasItem(Items.IRON_INGOT), conditionsFromItem(Items.IRON_INGOT))
                 .offerTo(exporter);
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.RECALL_CLOCK, 1)

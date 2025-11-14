@@ -1,4 +1,4 @@
-// 1.21.1	2025-11-14T01:33:23.3222056	Louis' Overhaul Mod/Block Loot Tables
+// 1.21.1	2025-11-15T04:15:54.1365952	Louis' Overhaul Mod/Block Loot Tables
 74dec2e43bf2da28be565076798fc384e6fcc769 data\louis-overhaul-mod\loot_table\blocks\red_concrete_slab.json
 ea21a02ad7306ee0d7c12bf9d0ed8352e78f709c data\louis-overhaul-mod\loot_table\blocks\rose_quartz_wall.json
 b458f27d95d81a44db3c2c2522527955074288ce data\louis-overhaul-mod\loot_table\blocks\purple_concrete_stairs.json
@@ -37,6 +37,7 @@ a068cecc26fc255ead936d36080a60579327ed38 data\louis-overhaul-mod\loot_table\bloc
 96efa7e6aae736db4613b7afe2d25c9376ef0e89 data\louis-overhaul-mod\loot_table\blocks\polished_andesite_wall.json
 7545aad9e28638aa0e4642fe217e314ba989f263 data\louis-overhaul-mod\loot_table\blocks\cut_sandstone_stairs.json
 103d9124d8b591eeddf83b190d7177377bd94046 data\louis-overhaul-mod\loot_table\blocks\rose_quartz_pillar.json
+e985d535c18a9554b8d4e2eaf5171dd8d76a0ff3 data\louis-overhaul-mod\loot_table\blocks\sawmill.json
 660b4b1d9971cd88d1c50d7dbf61ec0dc6edef56 data\louis-overhaul-mod\loot_table\blocks\black_concrete_stairs.json
 69162718d5a49ee720b9f887fcf225bac926da4c data\louis-overhaul-mod\loot_table\blocks\brown_concrete_wall.json
 67010b34beaf56d414204013877bf487148da5d0 data\louis-overhaul-mod\loot_table\blocks\chiseled_dark_prismarine.json
@@ -51,8 +52,8 @@ ed2011e19786ae239c43722009d68704f3c427f8 data\louis-overhaul-mod\loot_table\bloc
 2c5d3a438c9a1ae97b69d05dff9e43dcc145c890 data\louis-overhaul-mod\loot_table\blocks\rose_quartz_slab.json
 265683871339cd03e8c4a1bd352444603621a2c1 data\louis-overhaul-mod\loot_table\blocks\brown_concrete_slab.json
 de6b18f30785df02080b8b0d2092d2322dd15007 data\louis-overhaul-mod\loot_table\blocks\rose_quartz_stairs.json
-2a11f7c2335a222989b001cf58d35fa6cd236815 data\louis-overhaul-mod\loot_table\blocks\pink_concrete_stairs.json
 01db83e8a7013910779381315b4d8ac668d76c24 data\louis-overhaul-mod\loot_table\blocks\quartz_bricks_stairs.json
+2a11f7c2335a222989b001cf58d35fa6cd236815 data\louis-overhaul-mod\loot_table\blocks\pink_concrete_stairs.json
 780c07782b19f250c583255b19d94595daa5213b data\louis-overhaul-mod\loot_table\blocks\green_concrete_wall.json
 727fe0d7c3af9f0f844b0f0a19c20ad69f11a362 data\louis-overhaul-mod\loot_table\blocks\stone_wall.json
 46c6317117208986bee51e8737bae1e6ea146dd2 data\louis-overhaul-mod\loot_table\blocks\lime_concrete_stairs.json

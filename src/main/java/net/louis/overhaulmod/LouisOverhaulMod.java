@@ -14,6 +14,7 @@ import net.louis.overhaulmod.events.ModUseStewEvents;
 import net.louis.overhaulmod.fluid.ModFluids;
 import net.louis.overhaulmod.item.ModItems;
 import net.louis.overhaulmod.potion.ModPotions;
+import net.louis.overhaulmod.recipe.ModRecipes;
 import net.louis.overhaulmod.screen.ModScreenHandlers;
 import net.louis.overhaulmod.sound.ModSounds;
 import net.louis.overhaulmod.utils.DespawnManager;
@@ -43,6 +44,7 @@ public class LouisOverhaulMod implements ModInitializer {
 		ModBlockEntities.registerBlockEntities();
 		ModScreenHandlers.registerScreenHandlers();
 		ModCauldron.registerBehaviors();
+		ModRecipes.registerRecipes();
 
 		ModLootTableModifiers.modifyLootTables();
 		ModLootTableModifiers.replaceLootTables();
