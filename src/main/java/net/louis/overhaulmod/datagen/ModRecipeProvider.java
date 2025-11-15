@@ -79,7 +79,10 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                         Blocks.CHERRY_FENCE, Blocks.CHERRY_FENCE_GATE, Items.STICK),
                 new WoodTypeData("bamboo", Blocks.BAMBOO_PLANKS, Blocks.BAMBOO_SLAB, Blocks.BAMBOO_STAIRS, Blocks.BAMBOO_TRAPDOOR,
                         Blocks.BAMBOO_DOOR, Blocks.BAMBOO_BUTTON, Blocks.BAMBOO_PRESSURE_PLATE, Blocks.BAMBOO_SIGN,
-                        Blocks.CHERRY_FENCE, Blocks.CHERRY_FENCE_GATE, Items.STICK),
+                        Blocks.BAMBOO_FENCE, Blocks.BAMBOO_FENCE_GATE, Items.STICK),
+                new WoodTypeData("bamboo_mosaic", Blocks.BAMBOO_MOSAIC, Blocks.BAMBOO_SLAB, Blocks.BAMBOO_STAIRS, Blocks.BAMBOO_TRAPDOOR,
+                        Blocks.BAMBOO_DOOR, Blocks.BAMBOO_BUTTON, Blocks.BAMBOO_PRESSURE_PLATE, Blocks.BAMBOO_SIGN,
+                        Blocks.BAMBOO_FENCE, Blocks.BAMBOO_FENCE_GATE, Items.STICK),
                 new WoodTypeData("crimson", Blocks.CRIMSON_PLANKS, Blocks.CRIMSON_SLAB, Blocks.CRIMSON_STAIRS, Blocks.CRIMSON_TRAPDOOR,
                         Blocks.CRIMSON_DOOR, Blocks.CRIMSON_BUTTON, Blocks.CRIMSON_PRESSURE_PLATE, Blocks.CRIMSON_SIGN,
                         Blocks.CRIMSON_FENCE, Blocks.CRIMSON_FENCE_GATE, Items.STICK),
@@ -182,6 +185,9 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         offerSawmillingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, Blocks.BAMBOO_MOSAIC_STAIRS, Blocks.BAMBOO_MOSAIC, 1);
         offerSawmillingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, Blocks.BAMBOO_MOSAIC_SLAB, Blocks.BAMBOO_MOSAIC, 2);
         offerSawmillingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.BAMBOO_MOSAIC_WALL, Blocks.BAMBOO_MOSAIC, 1);
+        offerSawmillingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, Blocks.BAMBOO_MOSAIC_STAIRS, Blocks.BAMBOO_BLOCK, 1);
+        offerSawmillingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, Blocks.BAMBOO_MOSAIC_SLAB, Blocks.BAMBOO_BLOCK, 2);
+        offerSawmillingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.BAMBOO_MOSAIC_WALL, Blocks.BAMBOO_BLOCK, 1);
 
         offerSawmillingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, Blocks.STRIPPED_ACACIA_LOG, Blocks.ACACIA_LOG, 1);
         offerSawmillingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, Blocks.STRIPPED_OAK_LOG, Blocks.OAK_LOG, 1);

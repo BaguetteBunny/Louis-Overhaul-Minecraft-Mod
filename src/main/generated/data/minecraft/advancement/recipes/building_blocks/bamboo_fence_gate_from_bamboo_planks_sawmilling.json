@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:cherry_fence_gate_from_bamboo_planks_sawmilling"
+        "recipe": "minecraft:bamboo_fence_gate_from_bamboo_planks_sawmilling"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:cherry_fence_gate_from_bamboo_planks_sawmilling"
+      "minecraft:bamboo_fence_gate_from_bamboo_planks_sawmilling"
     ]
   }
 }
