@@ -444,8 +444,8 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .pattern("DHD")
                 .pattern("DDD")
                 .input('D', Items.DRIED_KELP)
-                .input('H', Items.HAY_BLOCK)
-                .criterion(hasItem(Items.DRIED_KELP), conditionsFromItem(Items.DRIED_KELP))
+                .input('H', Items.DIAMOND)
+                .criterion(hasItem(Items.DIAMOND), conditionsFromItem(Items.DIAMOND))
                 .offerTo(exporter);
 
 
