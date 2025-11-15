@@ -2,31 +2,47 @@ package net.louis.overhaulmod.datagen;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
+import net.louis.overhaulmod.LouisOverhaulMod;
 import net.louis.overhaulmod.block.ModBlocks;
 import net.louis.overhaulmod.item.ModItems;
+import net.louis.overhaulmod.recipe.SawmillRecipe;
 import net.louis.overhaulmod.recipe.SawmillRecipeJsonBuilder;
+import net.minecraft.advancement.Advancement;
+import net.minecraft.advancement.criterion.RecipeUnlockedCriterion;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.component.DataComponentTypes;
+import net.minecraft.component.type.NbtComponent;
 import net.minecraft.data.server.recipe.RecipeExporter;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
 import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder;
 import net.minecraft.data.server.recipe.StonecuttingRecipeJsonBuilder;
-import net.minecraft.item.ItemConvertible;
-import net.minecraft.item.Items;
+import net.minecraft.entity.decoration.painting.PaintingEntity;
+import net.minecraft.entity.decoration.painting.PaintingVariant;
+import net.minecraft.entity.decoration.painting.PaintingVariants;
+import net.minecraft.item.*;
+import net.minecraft.nbt.NbtElement;
+import net.minecraft.nbt.NbtOps;
+import net.minecraft.recipe.CuttingRecipe;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.book.RecipeCategory;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.RegistryWrapper;
+import net.minecraft.registry.*;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 
 public class ModRecipeProvider extends FabricRecipeProvider {
+    private final CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture;
+
     public ModRecipeProvider(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
         super(output, registriesFuture);
+        this.registriesFuture = registriesFuture;
     }
 
     public static void offerSawmillingRecipe(RecipeExporter exporter, RecipeCategory category, ItemConvertible output, ItemConvertible input, int count) {
@@ -106,10 +122,59 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         }
     }
 
+    private static ItemStack createPaintingStack(RegistryEntry<PaintingVariant> variantEntry, RegistryWrapper.WrapperLookup registryLookup) {
+        RegistryOps<NbtElement> ops = registryLookup.getOps(NbtOps.INSTANCE);
+
+        NbtComponent nbtComponent = NbtComponent.DEFAULT
+                .with(ops, PaintingEntity.VARIANT_MAP_CODEC, variantEntry)
+                .getOrThrow() // DataResult -> either codec result or throw
+                .apply(nbt -> nbt.putString("id", "minecraft:painting")); // vanilla adds id = minecraft:painting
+
+        ItemStack stack = new ItemStack(Items.PAINTING);
+        stack.set(DataComponentTypes.ENTITY_DATA, nbtComponent);
+        return stack;
+    }
+
+    private static Identifier idOfPaintingEntry(RegistryEntry<PaintingVariant> entry) {
+        Optional<RegistryKey<PaintingVariant>> key = entry.getKey();
+        Identifier variantId = key.map(k -> k.getValue()).orElseGet(() -> Identifier.of("minecraft", "unknown_painting"));
+        return Identifier.of(LouisOverhaulMod.MOD_ID, "painting_to_" + variantId.getPath() + "_sawmilling");
+    }
+
+    private static void offerAllPaintingVariantSawmillRecipes(RecipeExporter exporter, RegistryWrapper.WrapperLookup registryLookup) {
+        RegistryWrapper.Impl<PaintingVariant> paintingRegistry = registryLookup.getWrapperOrThrow(RegistryKeys.PAINTING_VARIANT);
+        paintingRegistry.streamEntries()
+                .forEach(variantEntry -> {
+                    ItemStack outStack = createPaintingStack(variantEntry, registryLookup);
+
+                    SawmillRecipe recipe = new SawmillRecipe(
+                            "",
+                            Ingredient.ofItems(Items.PAINTING),
+                            outStack
+                    );
+
+                    Advancement.Builder adv = Advancement.Builder.create()
+                            .criterion("has_painting", RecipeUnlockedCriterion.create(idOfPaintingEntry(variantEntry)));
+                    exporter.accept(
+                            idOfPaintingEntry(variantEntry),
+                            recipe,
+                            adv.build(idOfPaintingEntry(variantEntry).withPrefixedPath("recipes/" + RecipeCategory.DECORATIONS.getName()))
+                    );
+                });
+    }
+
     @Override
     public void generate(RecipeExporter exporter) {
         // SAW MILLING
         offerAllWoodSawmillingRecipes(exporter);
+
+        try {
+            offerAllPaintingVariantSawmillRecipes(exporter, this.registriesFuture.get());
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        } catch (ExecutionException e) {
+            throw new RuntimeException(e);
+        }
 
         // STONE CUTTING
         offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_ROSE_QUARTZ, ModBlocks.ROSE_QUARTZ_BRICKS, 1);
