@@ -64,7 +64,25 @@ public class ModBlocks {
     public static final Block CALCITE_WALL = registerBlock("calcite_wall",
             new WallBlock(AbstractBlock.Settings.copy(Blocks.END_STONE_BRICK_WALL).mapColor(MapColor.WHITE)));
 
+    // DRIPSTONE FAMILY
+    public static final Block DRIPSTONE_SLAB = registerBlock("dripstone_slab",
+            new SlabBlock(AbstractBlock.Settings.copy(Blocks.DRIPSTONE_BLOCK)));
+    public static final Block DRIPSTONE_STAIRS = registerBlock("dripstone_stairs",
+            new StairsBlock(Blocks.DRIPSTONE_BLOCK.getDefaultState(), AbstractBlock.Settings.copy(Blocks.STONE_STAIRS).mapColor(MapColor.TERRACOTTA_BROWN)));
+    public static final Block DRIPSTONE_WALL = registerBlock("dripstone_wall",
+            new WallBlock(AbstractBlock.Settings.copy(Blocks.STONE_STAIRS).mapColor(MapColor.TERRACOTTA_BROWN)));
+
+    // SMOOTH BASALT FAMILY
+    public static final Block SMOOTH_BASALT_SLAB = registerBlock("smooth_basalt_slab",
+            new SlabBlock(AbstractBlock.Settings.copy(Blocks.BASALT)));
+    public static final Block SMOOTH_BASALT_STAIRS = registerBlock("smooth_basalt_stairs",
+            new StairsBlock(Blocks.BASALT.getDefaultState(), AbstractBlock.Settings.copy(Blocks.BASALT).mapColor(MapColor.BLACK)));
+    public static final Block SMOOTH_BASALT_WALL = registerBlock("smooth_basalt_wall",
+            new WallBlock(AbstractBlock.Settings.copy(Blocks.STONE_STAIRS).mapColor(MapColor.BLACK)));
+
     // MISSING WALL FAMILY
+    public static final Block BAMBOO_MOSAIC_WALL = registerBlock("bamboo_mosaic_wall",
+            new WallBlock(AbstractBlock.Settings.copy(Blocks.BAMBOO_FENCE)));
     public static final Block PURPUR_WALL = registerBlock("purpur_wall",
             new WallBlock(AbstractBlock.Settings.copy(Blocks.END_STONE_BRICK_WALL).mapColor(MapColor.PINK)));
     public static final Block QUARTZ_WALL = registerBlock("quartz_wall",
@@ -302,6 +320,7 @@ public class ModBlocks {
             entries.add(ModBlocks.DARK_PRISMARINE_WALL);
             entries.add(ModBlocks.SMOOTH_STONE_WALL);
             entries.add(ModBlocks.STONE_WALL);
+            entries.add(ModBlocks.BAMBOO_MOSAIC_WALL);
 
             entries.add(ModBlocks.CHISELED_DARK_PRISMARINE);
             entries.add(ModBlocks.CHISELED_PURPUR);
@@ -368,6 +387,14 @@ public class ModBlocks {
             entries.add(ModBlocks.GREEN_CONCRETE_WALL);
             entries.add(ModBlocks.RED_CONCRETE_WALL);
             entries.add(ModBlocks.BLACK_CONCRETE_WALL);
+
+            entries.add(ModBlocks.DRIPSTONE_SLAB);
+            entries.add(ModBlocks.DRIPSTONE_STAIRS);
+            entries.add(ModBlocks.DRIPSTONE_WALL);
+
+            entries.add(ModBlocks.SMOOTH_BASALT_SLAB);
+            entries.add(ModBlocks.SMOOTH_BASALT_STAIRS);
+            entries.add(ModBlocks.SMOOTH_BASALT_WALL);
         });
 
     }

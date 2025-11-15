@@ -26,6 +26,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.COLORED_WATER_CAULDRON);
 
         getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)
+                .add(ModBlocks.BAMBOO_MOSAIC_WALL)
                 .add(ModBlocks.SAWMILL);
 
         getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
@@ -69,6 +70,14 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.CALCITE_SLAB)
                 .add(ModBlocks.CALCITE_STAIRS)
                 .add(ModBlocks.CALCITE_WALL)
+
+                .add(ModBlocks.SMOOTH_BASALT_SLAB)
+                .add(ModBlocks.SMOOTH_BASALT_STAIRS)
+                .add(ModBlocks.SMOOTH_BASALT_WALL)
+
+                .add(ModBlocks.DRIPSTONE_SLAB)
+                .add(ModBlocks.DRIPSTONE_STAIRS)
+                .add(ModBlocks.DRIPSTONE_WALL)
 
                 .add(ModBlocks.SMOOTH_STONE_STAIRS)
                 .add(ModBlocks.CUT_RED_SANDSTONE_STAIRS)
@@ -167,6 +176,8 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
                 .add(ModBlocks.QUARTZ_BRICKS_WALL)
                 .add(ModBlocks.CALCITE_WALL)
+                .add(ModBlocks.DRIPSTONE_WALL)
+                .add(ModBlocks.SMOOTH_BASALT_WALL)
 
                 .add(ModBlocks.PURPUR_WALL)
                 .add(ModBlocks.QUARTZ_WALL)
@@ -183,6 +194,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.DARK_PRISMARINE_WALL)
                 .add(ModBlocks.STONE_WALL)
                 .add(ModBlocks.SMOOTH_STONE_WALL)
+                .add(ModBlocks.BAMBOO_MOSAIC_WALL)
 
                 .add(ModBlocks.WHITE_CONCRETE_WALL)
                 .add(ModBlocks.ORANGE_CONCRETE_WALL)

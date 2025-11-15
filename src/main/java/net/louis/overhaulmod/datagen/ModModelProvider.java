@@ -70,6 +70,18 @@ public class ModModelProvider extends FabricModelProvider {
         calcitePool.slab(ModBlocks.CALCITE_SLAB);
         calcitePool.wall(ModBlocks.CALCITE_WALL);
 
+        BlockStateModelGenerator.BlockTexturePool sbasaltPool = blockStateModelGenerator.registerCubeAllModelTexturePool(Blocks.SMOOTH_BASALT);
+        sbasaltPool.stairs(ModBlocks.SMOOTH_BASALT_STAIRS);
+        sbasaltPool.slab(ModBlocks.SMOOTH_BASALT_SLAB);
+        sbasaltPool.wall(ModBlocks.SMOOTH_BASALT_WALL);
+
+        BlockStateModelGenerator.BlockTexturePool dripstonePool = blockStateModelGenerator.registerCubeAllModelTexturePool(Blocks.DRIPSTONE_BLOCK);
+        dripstonePool.stairs(ModBlocks.DRIPSTONE_STAIRS);
+        dripstonePool.slab(ModBlocks.DRIPSTONE_SLAB);
+        dripstonePool.wall(ModBlocks.DRIPSTONE_WALL);
+
+        BlockStateModelGenerator.BlockTexturePool bmosaicPool = blockStateModelGenerator.registerCubeAllModelTexturePool(Blocks.BAMBOO_MOSAIC);
+        bmosaicPool.wall(ModBlocks.BAMBOO_MOSAIC_WALL);
         BlockStateModelGenerator.BlockTexturePool purpurPool = blockStateModelGenerator.registerCubeAllModelTexturePool(Blocks.PURPUR_BLOCK);
         purpurPool.wall(ModBlocks.PURPUR_WALL);
         BlockStateModelGenerator.BlockTexturePool smoothQuartzPool = blockStateModelGenerator.registerCubeAllModelTexturePool(Blocks.SMOOTH_QUARTZ);
