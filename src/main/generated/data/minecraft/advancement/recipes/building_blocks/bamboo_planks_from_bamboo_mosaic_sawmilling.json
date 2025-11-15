@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_bamboo_block": {
+    "has_bamboo_mosaic": {
       "conditions": {
         "items": [
           {
-            "items": "minecraft:bamboo_block"
+            "items": "minecraft:bamboo_mosaic"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:bamboo_mosaic_wall_from_bamboo_block_sawmilling"
+        "recipe": "minecraft:bamboo_planks_from_bamboo_mosaic_sawmilling"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_bamboo_block"
+      "has_bamboo_mosaic"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:bamboo_mosaic_wall_from_bamboo_block_sawmilling"
+      "minecraft:bamboo_planks_from_bamboo_mosaic_sawmilling"
     ]
   }
 }

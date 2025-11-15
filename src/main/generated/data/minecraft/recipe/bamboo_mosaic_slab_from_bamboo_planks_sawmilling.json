@@ -1,7 +1,7 @@
 {
   "type": "louis-overhaul-mod:sawmill",
   "ingredient": {
-    "item": "minecraft:bamboo_block"
+    "item": "minecraft:bamboo_planks"
   },
   "result": {
     "count": 2,

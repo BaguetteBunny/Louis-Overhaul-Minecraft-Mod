@@ -1,10 +1,10 @@
 {
   "type": "louis-overhaul-mod:sawmill",
   "ingredient": {
-    "item": "minecraft:bamboo_block"
+    "item": "minecraft:bamboo_planks"
   },
   "result": {
     "count": 1,
-    "id": "minecraft:bamboo_mosaic_stairs"
+    "id": "louis-overhaul-mod:bamboo_mosaic_wall"
   }
 }
