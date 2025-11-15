@@ -217,6 +217,9 @@ public class ModRecipeProvider extends FabricRecipeProvider {
 
 
         // STONE CUTTING
+        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, Blocks.CHISELED_POLISHED_BLACKSTONE, Blocks.POLISHED_BLACKSTONE_BRICKS, 1);
+        offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, Blocks.CHISELED_DEEPSLATE, Blocks.DEEPSLATE_TILES, 1);
+
         offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHISELED_ROSE_QUARTZ, ModBlocks.ROSE_QUARTZ_BRICKS, 1);
         offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.ROSE_QUARTZ_STAIRS, ModBlocks.ROSE_QUARTZ_BRICKS, 1);
         offerStonecuttingRecipe(exporter, RecipeCategory.BUILDING_BLOCKS, ModBlocks.ROSE_QUARTZ_SLAB, ModBlocks.ROSE_QUARTZ_BRICKS, 2);
@@ -331,6 +334,18 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .input('C', Items.COPPER_INGOT)
                 .input('S', Items.STICK)
                 .criterion(hasItem(Items.COPPER_INGOT), conditionsFromItem(Items.COPPER_INGOT))
+                .offerTo(exporter);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.REDSTONE, Blocks.POLISHED_BLACKSTONE_PRESSURE_PLATE, 1)
+                .pattern("AA")
+                .pattern("  ")
+                .input('A', Items.BLACKSTONE)
+                .criterion(hasItem(Items.BLACKSTONE), conditionsFromItem(Items.BLACKSTONE))
+                .offerTo(exporter);
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.REDSTONE, Blocks.POLISHED_BLACKSTONE_BUTTON, 1)
+                .input(Blocks.BLACKSTONE)
+                .criterion(hasItem(Blocks.BLACKSTONE), conditionsFromItem(Blocks.BLACKSTONE))
                 .offerTo(exporter);
 
         // COMBAT
@@ -449,6 +464,19 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .input('D', Items.DRIED_KELP)
                 .input('H', Items.DIAMOND)
                 .criterion(hasItem(Items.DIAMOND), conditionsFromItem(Items.DIAMOND))
+                .offerTo(exporter);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, Blocks.CHISELED_POLISHED_BLACKSTONE, 1)
+                .pattern("D")
+                .pattern("D")
+                .input('D', Blocks.POLISHED_BLACKSTONE_BRICK_SLAB)
+                .criterion(hasItem(Blocks.POLISHED_BLACKSTONE_BRICK_SLAB), conditionsFromItem(Blocks.POLISHED_BLACKSTONE_BRICK_SLAB))
+                .offerTo(exporter);
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, Blocks.CHISELED_DEEPSLATE, 1)
+                .pattern("D ")
+                .pattern("D ")
+                .input('D', Blocks.DEEPSLATE_TILE_SLAB)
+                .criterion(hasItem(Blocks.DEEPSLATE_TILE_SLAB), conditionsFromItem(Blocks.DEEPSLATE_TILE_SLAB))
                 .offerTo(exporter);
 
 

@@ -23,6 +23,11 @@ import java.util.stream.Collectors;
 @Mixin(RecipeManager.class)
 public class RecipeManagerMixin {
     private static final Set<Identifier> RECIPES_TO_REMOVE = Set.of(
+            Identifier.ofVanilla("polished_blackstone_button"),
+            Identifier.ofVanilla("polished_blackstone_pressure_plate"),
+            Identifier.ofVanilla("chiseled_polished_blackstone"),
+            Identifier.ofVanilla("chiseled_deepslate"),
+
             Identifier.ofVanilla("fletching_table"),
             Identifier.ofVanilla("recovery_compass")
     );
