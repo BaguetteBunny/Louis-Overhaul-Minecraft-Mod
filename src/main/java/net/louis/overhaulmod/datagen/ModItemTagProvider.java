@@ -28,5 +28,14 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
         getOrCreateTagBuilder(ItemTags.ARROWS)
                 .add(ModItems.ADVANCED_ARROW);
+
+        getOrCreateTagBuilder(ItemTags.STONE_TOOL_MATERIALS)
+                .add(Items.END_STONE)
+                .add(Items.STONE)
+                .add(Items.DRIPSTONE_BLOCK)
+                .add(Items.DIORITE)
+                .add(Items.ANDESITE)
+                .add(Items.GRANITE);
+
     }
 }

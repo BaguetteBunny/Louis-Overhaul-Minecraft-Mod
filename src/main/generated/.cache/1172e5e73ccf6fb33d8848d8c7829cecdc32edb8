@@ -1,8 +1,9 @@
-// 1.21.1	2025-11-15T16:46:13.1403106	Louis' Overhaul Mod/Block Loot Tables
+// 1.21.1	2025-11-15T18:00:39.6043561	Louis' Overhaul Mod/Block Loot Tables
 74dec2e43bf2da28be565076798fc384e6fcc769 data\louis-overhaul-mod\loot_table\blocks\red_concrete_slab.json
 ea21a02ad7306ee0d7c12bf9d0ed8352e78f709c data\louis-overhaul-mod\loot_table\blocks\rose_quartz_wall.json
 b458f27d95d81a44db3c2c2522527955074288ce data\louis-overhaul-mod\loot_table\blocks\purple_concrete_stairs.json
 548d115eeb79b74d3fbe03951bdc179110ed6f8a data\louis-overhaul-mod\loot_table\blocks\honey_cauldron.json
+2a168ca92654f572000b866efadfb629deb09017 data\louis-overhaul-mod\loot_table\blocks\end_stone_wall.json
 a62519b70fad3f3f929ae8ff2e0ac1dfd7e59144 data\louis-overhaul-mod\loot_table\blocks\black_concrete_slab.json
 046cddd3516a8b18190edd1fc828620e04ba6921 data\louis-overhaul-mod\loot_table\blocks\lavender_quartz_slab.json
 95c234e30e5fd2bf0fc1758a32aa889ef7307769 data\louis-overhaul-mod\loot_table\blocks\cracked_bricks.json
@@ -42,6 +43,7 @@ a068cecc26fc255ead936d36080a60579327ed38 data\louis-overhaul-mod\loot_table\bloc
 e985d535c18a9554b8d4e2eaf5171dd8d76a0ff3 data\louis-overhaul-mod\loot_table\blocks\sawmill.json
 660b4b1d9971cd88d1c50d7dbf61ec0dc6edef56 data\louis-overhaul-mod\loot_table\blocks\black_concrete_stairs.json
 69162718d5a49ee720b9f887fcf225bac926da4c data\louis-overhaul-mod\loot_table\blocks\brown_concrete_wall.json
+51439e37597cad2b5b191ca994c89b4c516f2c8d data\louis-overhaul-mod\loot_table\blocks\end_stone_pressure_plate.json
 663bef3895321c16d92fdb84503b83a7c494d4a3 data\louis-overhaul-mod\loot_table\blocks\smooth_basalt_slab.json
 67010b34beaf56d414204013877bf487148da5d0 data\louis-overhaul-mod\loot_table\blocks\chiseled_dark_prismarine.json
 507367d04547e389c7eba8070c0b5102233022cf data\louis-overhaul-mod\loot_table\blocks\chiseled_lavender_quartz.json
@@ -55,6 +57,7 @@ ed2011e19786ae239c43722009d68704f3c427f8 data\louis-overhaul-mod\loot_table\bloc
 2c5d3a438c9a1ae97b69d05dff9e43dcc145c890 data\louis-overhaul-mod\loot_table\blocks\rose_quartz_slab.json
 265683871339cd03e8c4a1bd352444603621a2c1 data\louis-overhaul-mod\loot_table\blocks\brown_concrete_slab.json
 de6b18f30785df02080b8b0d2092d2322dd15007 data\louis-overhaul-mod\loot_table\blocks\rose_quartz_stairs.json
+dda25b2a1ebdf9ba72bdccf45118828a99388436 data\louis-overhaul-mod\loot_table\blocks\end_stone_stairs.json
 2a11f7c2335a222989b001cf58d35fa6cd236815 data\louis-overhaul-mod\loot_table\blocks\pink_concrete_stairs.json
 01db83e8a7013910779381315b4d8ac668d76c24 data\louis-overhaul-mod\loot_table\blocks\quartz_bricks_stairs.json
 780c07782b19f250c583255b19d94595daa5213b data\louis-overhaul-mod\loot_table\blocks\green_concrete_wall.json
@@ -99,6 +102,7 @@ e757a8e2a4b7b0aba54c0c2ce6e623d7a5a0d42a data\louis-overhaul-mod\loot_table\bloc
 3fdfa216e4ac3e5e2c48c7bab7fe843e9b3d77d9 data\louis-overhaul-mod\loot_table\blocks\lime_concrete_wall.json
 36c78af9c0ce6f00d9a5896d24572963a9f871d6 data\louis-overhaul-mod\loot_table\blocks\white_concrete_wall.json
 ded73cbf77326a65a292003346c61ed483df08c2 data\louis-overhaul-mod\loot_table\blocks\chiseled_rose_quartz.json
+cd18ade4cc3e1cca2ab0b0717f045894f301b224 data\louis-overhaul-mod\loot_table\blocks\end_stone_button.json
 9011bacd49603012e461d5d8bbcd7ffc8e57ae07 data\louis-overhaul-mod\loot_table\blocks\dripstone_wall.json
 e339a2534d1f2a252e576af8bd09ea45d9e2b3d1 data\louis-overhaul-mod\loot_table\blocks\chiseled_bricks.json
 66d7394a99e0171d61edc538ab2c57a80df1037b data\louis-overhaul-mod\loot_table\blocks\prismarine_wall.json
@@ -118,3 +122,4 @@ e5ea32b8b651172f420e0e937259318cc8179fb0 data\louis-overhaul-mod\loot_table\bloc
 f97c57ba3aaa937d154ea02ed08922c61580fe9f data\louis-overhaul-mod\loot_table\blocks\lavender_quartz_bricks.json
 8fb746515681a867a02c40f101932d23ddc4cc6e data\louis-overhaul-mod\loot_table\blocks\red_concrete_wall.json
 7d61554b1988e7bab010450f0fa58d9c2b6ce129 data\louis-overhaul-mod\loot_table\blocks\copper_rail.json
+06cda93cf76540e97687d5261dfcc9ac178a45f4 data\louis-overhaul-mod\loot_table\blocks\end_stone_slab.json

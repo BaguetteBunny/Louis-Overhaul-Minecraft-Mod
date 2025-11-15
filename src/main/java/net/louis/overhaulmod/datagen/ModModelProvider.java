@@ -46,6 +46,13 @@ public class ModModelProvider extends FabricModelProvider {
 
         blockStateModelGenerator.registerLantern(ModBlocks.GLOW_LANTERN);
 
+        BlockStateModelGenerator.BlockTexturePool endstonePool = blockStateModelGenerator.registerCubeAllModelTexturePool(Blocks.END_STONE);
+        endstonePool.stairs(ModBlocks.END_STONE_STAIRS);
+        endstonePool.slab(ModBlocks.END_STONE_SLAB);
+        endstonePool.wall(ModBlocks.END_STONE_WALL);
+        endstonePool.pressurePlate(ModBlocks.END_STONE_PRESSURE_PLATE);
+        endstonePool.button(ModBlocks.END_STONE_BUTTON);
+
         BlockStateModelGenerator.BlockTexturePool roseQuartzPool = blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.ROSE_QUARTZ_BRICKS);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.CHISELED_ROSE_QUARTZ);
         blockStateModelGenerator.registerLog(ModBlocks.ROSE_QUARTZ_PILLAR).log(ModBlocks.ROSE_QUARTZ_PILLAR).wood(ModBlocks.ROSE_QUARTZ_COLUMN);

@@ -32,6 +32,18 @@ public class ModBlocks {
     public static final Block GLOW_LANTERN = registerBlock("glow_lantern",
             new LanternBlock(AbstractBlock.Settings.copy(Blocks.SOUL_LANTERN)));
 
+    // ENDSTONE FAMILY
+    public static final Block END_STONE_SLAB = registerBlock("end_stone_slab",
+            new SlabBlock(AbstractBlock.Settings.copy(Blocks.END_STONE)));
+    public static final Block END_STONE_STAIRS = registerBlock("end_stone_stairs",
+            new StairsBlock(Blocks.END_STONE.getDefaultState(), AbstractBlock.Settings.copy(Blocks.END_STONE_BRICK_STAIRS)));
+    public static final Block END_STONE_WALL = registerBlock("end_stone_wall",
+            new WallBlock(AbstractBlock.Settings.copy(Blocks.END_STONE)));
+    public static final Block END_STONE_PRESSURE_PLATE = registerBlock("end_stone_pressure_plate",
+            new PressurePlateBlock(BlockSetType.STONE, AbstractBlock.Settings.copy(Blocks.END_STONE)));
+    public static final Block END_STONE_BUTTON = registerBlock("end_stone_button",
+            new ButtonBlock(BlockSetType.STONE, 30, AbstractBlock.Settings.copy(Blocks.END_STONE)));
+
     // ROSE QUARTZ FAMILY
     public static final Block ROSE_QUARTZ_BRICKS = registerBlock("rose_quartz_bricks",
             new Block(AbstractBlock.Settings.copy(Blocks.QUARTZ_BLOCK).mapColor(MapColor.PINK)));
@@ -264,6 +276,8 @@ public class ModBlocks {
         });
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.REDSTONE).register(entries -> {
             entries.add(ModBlocks.COPPER_RAIL);
+            entries.add(ModBlocks.END_STONE_PRESSURE_PLATE);
+            entries.add(ModBlocks.END_STONE_BUTTON);
         });
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(entries -> {
             entries.add(ModBlocks.GLOW_LANTERN);
@@ -395,6 +409,10 @@ public class ModBlocks {
             entries.add(ModBlocks.SMOOTH_BASALT_SLAB);
             entries.add(ModBlocks.SMOOTH_BASALT_STAIRS);
             entries.add(ModBlocks.SMOOTH_BASALT_WALL);
+
+            entries.add(ModBlocks.END_STONE_SLAB);
+            entries.add(ModBlocks.END_STONE_STAIRS);
+            entries.add(ModBlocks.END_STONE_WALL);
         });
 
     }

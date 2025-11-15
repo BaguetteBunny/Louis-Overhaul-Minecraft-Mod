@@ -29,6 +29,12 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.BAMBOO_MOSAIC_WALL)
                 .add(ModBlocks.SAWMILL);
 
+        getOrCreateTagBuilder(BlockTags.STONE_PRESSURE_PLATES)
+                .add(ModBlocks.END_STONE_PRESSURE_PLATE);
+
+        getOrCreateTagBuilder(BlockTags.STONE_BUTTONS)
+                .add(ModBlocks.END_STONE_BUTTON);
+
         getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
                 .add(ModBlocks.DRAGON_BREATH_CAULDRON)
                 .add(ModBlocks.COLORED_WATER_CAULDRON)
@@ -37,6 +43,12 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.COPPER_RAIL)
 
                 .add(ModBlocks.GLOW_LANTERN)
+
+                .add(ModBlocks.END_STONE_STAIRS)
+                .add(ModBlocks.END_STONE_WALL)
+                .add(ModBlocks.END_STONE_BUTTON)
+                .add(ModBlocks.END_STONE_PRESSURE_PLATE)
+                .add(ModBlocks.END_STONE_SLAB)
 
                 .add(ModBlocks.ROSE_QUARTZ_BRICKS)
                 .add(ModBlocks.CHISELED_ROSE_QUARTZ)
@@ -178,6 +190,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.CALCITE_WALL)
                 .add(ModBlocks.DRIPSTONE_WALL)
                 .add(ModBlocks.SMOOTH_BASALT_WALL)
+                .add(ModBlocks.END_STONE_WALL)
 
                 .add(ModBlocks.PURPUR_WALL)
                 .add(ModBlocks.QUARTZ_WALL)
