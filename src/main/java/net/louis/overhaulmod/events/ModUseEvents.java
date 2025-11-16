@@ -26,9 +26,11 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.LlamaSpitEntity;
 import net.minecraft.item.*;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.stat.Stats;
 import net.minecraft.state.property.Properties;
 import net.minecraft.text.Text;
 import net.minecraft.util.*;
@@ -42,6 +44,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.function.Consumer;
 
 public class ModUseEvents {
 
@@ -50,6 +53,7 @@ public class ModUseEvents {
         UseBlockCallback.EVENT.register(ModUseEvents::oxidizeCopperWithClock);
         UseBlockCallback.EVENT.register(ModUseEvents::retexturePlayerHead);
         UseBlockCallback.EVENT.register(ModUseEvents::useChilledBonemeal);
+        UseBlockCallback.EVENT.register(ModUseEvents::rcHarvest);
 
         UseItemCallback.EVENT.register(ModUseEvents::getLlamaSpitBottle);
         UseItemCallback.EVENT.register(ModUseEvents::useGlowInk);
@@ -565,6 +569,51 @@ public class ModUseEvents {
             e.takeKnockback(strength, player.getX() - entity.getX(), player.getZ() - entity.getZ());
             e.timeUntilRegen = 10;
             return ActionResult.FAIL;
+        }
+        return ActionResult.PASS;
+    }
+
+    private static ActionResult rcHarvest(PlayerEntity player, World world, Hand hand, BlockHitResult hitResult) {
+        if (world.isClient()) return ActionResult.PASS;
+
+        ItemStack stack = player.getStackInHand(hand);
+        Item item = stack.getItem();
+        if ((!player.getMainHandStack().isEmpty() || !player.getOffHandStack().isEmpty()) && !(player.getMainHandStack().getItem() instanceof HoeItem)) return ActionResult.PASS;
+
+        BlockState replanted = null;
+        BlockPos pos = hitResult.getBlockPos();
+        BlockState state = world.getBlockState(pos);
+        Block block = state.getBlock();
+
+        if (block instanceof CropBlock crop && crop.isMature(state) && !(block instanceof BeetrootsBlock)) {
+            world.breakBlock(pos, true, player);
+            replanted = crop.getDefaultState().with(CropBlock.AGE, 0);
+        } else if (block instanceof BeetrootsBlock beetroot && beetroot.isMature(state)) {
+            world.breakBlock(pos, true, player);
+            replanted = beetroot.getDefaultState();
+        }
+
+        if (replanted != null) {
+            if (item instanceof HoeItem hoe) {
+                stack.damage(1, player, EquipmentSlot.MAINHAND);
+                player.incrementStat(Stats.USED.getOrCreateStat(hoe));
+            }
+
+            world.setBlockState(pos, replanted, Block.NOTIFY_ALL);
+            player.incrementStat(Stats.MINED.getOrCreateStat(block));
+
+            world.playSound(
+                    null,
+                    player.getX(),
+                    player.getY(),
+                    player.getZ(),
+                    SoundEvents.BLOCK_SWEET_BERRY_BUSH_PICK_BERRIES,
+                    SoundCategory.BLOCKS,
+                    0.75F,
+                    (world.getRandom().nextFloat() * 0.2F + 1.5F)
+            );
+            player.swingHand(Hand.MAIN_HAND, true);
+            return ActionResult.SUCCESS;
         }
         return ActionResult.PASS;
     }
