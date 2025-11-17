@@ -458,6 +458,22 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(Items.GHAST_TEAR), conditionsFromItem(Items.GHAST_TEAR))
                 .offerTo(exporter);
 
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, Blocks.CALCITE, 4)
+                .pattern("AB")
+                .pattern("BA")
+                .input('A', Items.BONE_MEAL)
+                .input('B', Items.CHARCOAL)
+                .criterion(hasItem(Items.BONE_MEAL), conditionsFromItem(Items.BONE_MEAL))
+                .offerTo(exporter);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, Blocks.DEEPSLATE, 4)
+                .pattern("AB")
+                .pattern("BA")
+                .input('A', Blocks.STONE)
+                .input('B', Blocks.CLAY)
+                .criterion(hasItem(Items.STONE), conditionsFromItem(Items.STONE))
+                .offerTo(exporter);
+
         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, Blocks.SUSPICIOUS_SAND, 1)
                 .pattern("FS")
                 .pattern("SF")
