@@ -17,6 +17,12 @@ import net.minecraft.util.Identifier;
 import java.util.function.UnaryOperator;
 
 public class ModComponents {
+    public static final ComponentType<CustomBundleContentsComponent> CUSTOM_BUNDLE_CONTENTS = register(
+            "custom_bundle_contents", builder -> builder.codec(CustomBundleContentsComponent.CODEC).packetCodec(CustomBundleContentsComponent.PACKET_CODEC).cache()
+    );
+    public static final ComponentType<CustomBundleContentsComponent> MAX_BUNDLE_COUNT = register(
+            "max_bundle_count", builder -> builder.codec(CustomBundleContentsComponent.CODEC).packetCodec(CustomBundleContentsComponent.PACKET_CODEC).cache()
+    );
     public static final ComponentType<Item> ARROW_SHAFT = Registry.register(
             Registries.DATA_COMPONENT_TYPE,
             Identifier.of(LouisOverhaulMod.MOD_ID, "arrow_shaft"),

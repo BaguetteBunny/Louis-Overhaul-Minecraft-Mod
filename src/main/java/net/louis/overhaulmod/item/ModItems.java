@@ -2,6 +2,8 @@ package net.louis.overhaulmod.item;
 
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.louis.overhaulmod.LouisOverhaulMod;
+import net.louis.overhaulmod.component.CustomBundleContentsComponent;
+import net.louis.overhaulmod.component.ModComponents;
 import net.louis.overhaulmod.fluid.ModFluids;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.BundleContentsComponent;
@@ -12,6 +14,8 @@ import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
+
+import java.util.List;
 
 public class ModItems {
     public static final Item WHITE_WATER_BUCKET = registerItem("white_water_bucket", new BucketItem(ModFluids.STILL_WHITE_WATER, new Item.Settings().maxCount(1).recipeRemainder(Items.BUCKET)));
@@ -85,6 +89,15 @@ public class ModItems {
     public static final Item POTION_POUCH = registerItem("potion_pouch",
             new PotionPouch(new Item.Settings().maxCount(1).component(DataComponentTypes.BUNDLE_CONTENTS, BundleContentsComponent.DEFAULT)));
 
+    public static final Item LARGE_BUNDLE = registerItem("large_bundle",
+            new BigBundleItem(new Item.Settings().maxCount(1).component(ModComponents.CUSTOM_BUNDLE_CONTENTS, new CustomBundleContentsComponent(List.of(), 128)), 128));
+
+    public static final Item MASSIVE_BUNDLE = registerItem("massive_bundle",
+            new BigBundleItem(new Item.Settings().maxCount(1).component(ModComponents.CUSTOM_BUNDLE_CONTENTS, new CustomBundleContentsComponent(List.of(), 256)), 256));
+
+    public static final Item PIONEER_POUCH = registerItem("pioneer_pouch",
+            new PioneerPouch(new Item.Settings().maxCount(1).component(ModComponents.CUSTOM_BUNDLE_CONTENTS, new CustomBundleContentsComponent(List.of(), 512)), 512));
+
     public static final Item SADDLED_GOAT_HORN = registerItem("saddled_goat_horn",
             new SaddledGoatHorn(new Item.Settings().maxCount(1)));
 
@@ -149,6 +162,9 @@ public class ModItems {
             entries.add(SADDLED_GOAT_HORN);
             entries.add(PET_RECOVERY_COMPASS);
             entries.add(RECALL_CLOCK);
+            entries.add(LARGE_BUNDLE);
+            entries.add(MASSIVE_BUNDLE);
+            entries.add(PIONEER_POUCH);
         });
     }
 }

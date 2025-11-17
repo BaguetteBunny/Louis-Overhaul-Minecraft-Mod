@@ -2,11 +2,14 @@ package net.louis.overhaulmod;
 
 import com.google.common.collect.ImmutableSet;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.client.rendering.v1.TooltipComponentCallback;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.fabricmc.fabric.api.object.builder.v1.world.poi.PointOfInterestHelper;
 import net.louis.overhaulmod.block.ModBlocks;
 import net.louis.overhaulmod.block.entity.ModBlockEntities;
 import net.louis.overhaulmod.cauldron.ModCauldron;
+import net.louis.overhaulmod.component.CustomBundleTooltipComponent;
+import net.louis.overhaulmod.component.CustomBundleTooltipData;
 import net.louis.overhaulmod.component.ModComponents;
 import net.louis.overhaulmod.effect.ModEffects;
 import net.louis.overhaulmod.events.ModUseEvents;
@@ -34,6 +37,8 @@ public class LouisOverhaulMod implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+		registerCustomBundleTooltip();
+
 		ModFluids.register();
 		ModSounds.registerSounds();
 		ModComponents.registerDataComponentTypes();
@@ -57,6 +62,15 @@ public class LouisOverhaulMod implements ModInitializer {
 
 		tickGlobal();
 		replaceFletcherPOI();
+	}
+
+	private void registerCustomBundleTooltip() {
+		TooltipComponentCallback.EVENT.register((tooltipData) -> {
+			if (tooltipData instanceof CustomBundleTooltipData custom) {
+				return new CustomBundleTooltipComponent(custom.contents());
+			}
+			return null;
+		});
 	}
 
 	private void tickGlobal() {
