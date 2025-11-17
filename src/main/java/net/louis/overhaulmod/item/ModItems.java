@@ -90,13 +90,11 @@ public class ModItems {
             new PotionPouch(new Item.Settings().maxCount(1).component(DataComponentTypes.BUNDLE_CONTENTS, BundleContentsComponent.DEFAULT)));
 
     public static final Item LARGE_BUNDLE = registerItem("large_bundle",
-            new BigBundleItem(new Item.Settings().maxCount(1).component(ModComponents.CUSTOM_BUNDLE_CONTENTS, new CustomBundleContentsComponent(List.of(), 128)), 128));
-
+            new BigBundleItem(new Item.Settings().maxCount(1), 128));
     public static final Item MASSIVE_BUNDLE = registerItem("massive_bundle",
-            new BigBundleItem(new Item.Settings().maxCount(1).component(ModComponents.CUSTOM_BUNDLE_CONTENTS, new CustomBundleContentsComponent(List.of(), 256)), 256));
-
+            new BigBundleItem(new Item.Settings().maxCount(1), 256));
     public static final Item PIONEER_POUCH = registerItem("pioneer_pouch",
-            new PioneerPouch(new Item.Settings().maxCount(1).component(ModComponents.CUSTOM_BUNDLE_CONTENTS, new CustomBundleContentsComponent(List.of(), 512)), 512));
+            new PioneerPouch(new Item.Settings().maxCount(1), 512));
 
     public static final Item SADDLED_GOAT_HORN = registerItem("saddled_goat_horn",
             new SaddledGoatHorn(new Item.Settings().maxCount(1)));

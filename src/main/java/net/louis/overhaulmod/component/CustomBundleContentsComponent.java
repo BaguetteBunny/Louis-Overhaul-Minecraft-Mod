@@ -28,14 +28,6 @@ public final class CustomBundleContentsComponent implements TooltipData {
                     Codec.INT.fieldOf("max_slots").forGetter(c -> c.maximumSlots)
             ).apply(instance, CustomBundleContentsComponent::new)
     );
-    public static final PacketCodec<RegistryByteBuf, CustomBundleContentsComponent> PACKET_CODEC =
-            PacketCodec.tuple(
-                    ItemStack.PACKET_CODEC.collect(PacketCodecs.toList()),
-                    CustomBundleContentsComponent::getStacks,
-                    PacketCodecs.INTEGER,
-                    c -> c.maximumSlots,
-                    CustomBundleContentsComponent::new
-            );
 
     private static final int ADD_TO_NEW_SLOT = -1;
     final List<ItemStack> stacks;
@@ -75,6 +67,10 @@ public final class CustomBundleContentsComponent implements TooltipData {
 
     public ItemStack get(int index) {
         return (ItemStack)this.stacks.get(index);
+    }
+
+    public int getMaximumSlots() {
+        return this.maximumSlots;
     }
 
     public Stream<ItemStack> stream() {
@@ -152,19 +148,23 @@ public final class CustomBundleContentsComponent implements TooltipData {
             }
         }
 
-        private int getMaxAllowed(ItemStack stack) {
-            Fraction fraction = Fraction.ONE.subtract(this.occupancy);
-            return Math.max(fraction.divideBy(CustomBundleContentsComponent.getOccupancy(stack, this.max)).intValue(), 0);
-        }
-
         public int add(ItemStack stack) {
             if (isMaxed(stack)) return 0;
             if (!stack.isEmpty() && stack.getItem().canBeNested()) {
-                int i = Math.min(stack.getCount(), this.getMaxAllowed(stack));
+                if (this.occupancy.compareTo(Fraction.ONE) >= 0) {
+                    return 0;
+                }
+
+                Fraction itemOccupancy = CustomBundleContentsComponent.getOccupancy(stack, this.max);
+                Fraction remainingSpace = Fraction.ONE.subtract(this.occupancy);
+
+                int maxItemsThatFit = remainingSpace.divideBy(itemOccupancy).intValue();
+                int i = Math.min(Math.min(stack.getCount(), maxItemsThatFit), stack.getMaxCount());
+
                 if (i == 0) {
                     return 0;
                 } else {
-                    this.occupancy = this.occupancy.add(CustomBundleContentsComponent.getOccupancy(stack, this.max).multiplyBy(Fraction.getFraction(i, 1)));
+                    this.occupancy = this.occupancy.add(itemOccupancy.multiplyBy(Fraction.getFraction(i, 1)));
                     int j = this.addInternal(stack);
                     if (j != -1) {
                         ItemStack itemStack = (ItemStack)this.stacks.remove(j);
@@ -184,8 +184,7 @@ public final class CustomBundleContentsComponent implements TooltipData {
 
         public int add(Slot slot, PlayerEntity player) {
             ItemStack itemStack = slot.getStack();
-            int i = this.getMaxAllowed(itemStack);
-            return this.add(slot.takeStackRange(itemStack.getCount(), i, player));
+            return this.add(slot.takeStackRange(itemStack.getCount(), this.max, player));
         }
 
         private boolean isMaxed(ItemStack stack) {

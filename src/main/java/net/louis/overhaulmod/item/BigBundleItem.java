@@ -26,7 +26,7 @@ import java.util.Optional;
 
 public class BigBundleItem extends Item {
     private static final int ITEM_BAR_COLOR = MathHelper.packRgb(0.4F, 0.4F, 1.0F);
-    private final int max;
+    int max;
 
     public BigBundleItem(Settings settings, int max_slot) {
         super(settings);
@@ -44,28 +44,25 @@ public class BigBundleItem extends Item {
             return false;
         } else {
             CustomBundleContentsComponent bundleContentsComponent = stack.get(ModComponents.CUSTOM_BUNDLE_CONTENTS);
-            if (bundleContentsComponent == null) {
-                return false;
-            } else {
-                ItemStack itemStack = slot.getStack();
-                CustomBundleContentsComponent.Builder builder = new CustomBundleContentsComponent.Builder(bundleContentsComponent);
-                if (itemStack.isEmpty()) {
-                    this.playRemoveOneSound(player);
-                    ItemStack itemStack2 = builder.removeFirst();
-                    if (itemStack2 != null) {
-                        ItemStack itemStack3 = slot.insertStack(itemStack2);
-                        builder.add(itemStack3);
-                    }
-                } else if (itemStack.getItem().canBeNested()) {
-                    int i = builder.add(slot, player);
-                    if (i > 0) {
-                        this.playInsertSound(player);
-                    }
+            if (bundleContentsComponent == null) bundleContentsComponent = new CustomBundleContentsComponent(List.of(), this.max);
+            ItemStack itemStack = slot.getStack();
+            CustomBundleContentsComponent.Builder builder = new CustomBundleContentsComponent.Builder(bundleContentsComponent);
+            if (itemStack.isEmpty()) {
+                this.playRemoveOneSound(player);
+                ItemStack itemStack2 = builder.removeFirst();
+                if (itemStack2 != null) {
+                    ItemStack itemStack3 = slot.insertStack(itemStack2);
+                    builder.add(itemStack3);
                 }
-
-                stack.set(ModComponents.CUSTOM_BUNDLE_CONTENTS, builder.build());
-                return true;
+            } else if (itemStack.getItem().canBeNested()) {
+                int i = builder.add(slot, player);
+                if (i > 0) {
+                    this.playInsertSound(player);
+                }
             }
+
+            stack.set(ModComponents.CUSTOM_BUNDLE_CONTENTS, builder.build());
+            return true;
         }
     }
 
@@ -73,26 +70,23 @@ public class BigBundleItem extends Item {
     public boolean onClicked(ItemStack stack, ItemStack otherStack, Slot slot, ClickType clickType, PlayerEntity player, StackReference cursorStackReference) {
         if (clickType == ClickType.RIGHT && slot.canTakePartial(player)) {
             CustomBundleContentsComponent bundleContentsComponent = stack.get(ModComponents.CUSTOM_BUNDLE_CONTENTS);
-            if (bundleContentsComponent == null) {
-                return false;
-            } else {
-                CustomBundleContentsComponent.Builder builder = new CustomBundleContentsComponent.Builder(bundleContentsComponent);
-                if (otherStack.isEmpty()) {
-                    ItemStack itemStack = builder.removeFirst();
-                    if (itemStack != null) {
-                        this.playRemoveOneSound(player);
-                        cursorStackReference.set(itemStack);
-                    }
-                } else {
-                    int i = builder.add(otherStack);
-                    if (i > 0) {
-                        this.playInsertSound(player);
-                    }
+            if (bundleContentsComponent == null) bundleContentsComponent = new CustomBundleContentsComponent(List.of(), this.max);
+            CustomBundleContentsComponent.Builder builder = new CustomBundleContentsComponent.Builder(bundleContentsComponent);
+            if (otherStack.isEmpty()) {
+                ItemStack itemStack = builder.removeFirst();
+                if (itemStack != null) {
+                    this.playRemoveOneSound(player);
+                    cursorStackReference.set(itemStack);
                 }
-
-                stack.set(ModComponents.CUSTOM_BUNDLE_CONTENTS, builder.build());
-                return true;
+            } else {
+                int i = builder.add(otherStack);
+                if (i > 0) {
+                    this.playInsertSound(player);
+                }
             }
+
+            stack.set(ModComponents.CUSTOM_BUNDLE_CONTENTS, builder.build());
+            return true;
         } else {
             return false;
         }
