@@ -252,6 +252,58 @@
 
   "sound.louis-overhaul-mod.saddled_goat_horn_use": "Saddled Goat Horn Use",
 
+  "enchantment.minecraft.protection.desc": "Reduces damage from all sources",
+  "enchantment.minecraft.fire_protection.desc": "Reduces fire and lava damage",
+  "enchantment.minecraft.feather_falling.desc": "Reduces fall damage",
+  "enchantment.minecraft.blast_protection.desc": "Reduces explosion damage",
+  "enchantment.minecraft.projectile_protection.desc": "Reduces projectile damage",
+  "enchantment.minecraft.respiration.desc": "Extends underwater breathing duration",
+  "enchantment.minecraft.aqua_affinity.desc": "Increases underwater mining speed",
+  "enchantment.minecraft.thorns.desc": "Damages attackers when hit",
+  "enchantment.minecraft.depth_strider.desc": "Increases water movement speed",
+  "enchantment.minecraft.frost_walker.desc": "Freezes water into ice",
+  "enchantment.minecraft.soul_speed.desc": "Increases movement speed on soul sand and soul soil",
+  "enchantment.minecraft.swift_sneak.desc": "Increases sneaking movement speed",
+
+  "enchantment.minecraft.sharpness.desc": "Increases overall weapon damage",
+  "enchantment.minecraft.smite.desc": "Increases damage against undead mobs",
+  "enchantment.minecraft.bane_of_arthropods.desc": "Increases damage against arthropods",
+  "enchantment.minecraft.knockback.desc": "Increases knockback against enemies",
+  "enchantment.minecraft.fire_aspect.desc": "Sets targets on fire",
+  "enchantment.minecraft.looting.desc": "Increases mob loot drops",
+  "enchantment.minecraft.sweeping_edge.desc": "Increases sweeping attack damage",
+
+  "enchantment.minecraft.efficiency.desc": "Increases mining and digging speed",
+  "enchantment.minecraft.silk_touch.desc": "Mines blocks in their original form",
+  "enchantment.minecraft.unbreaking.desc": "Increases item durability",
+  "enchantment.minecraft.fortune.desc": "Increases ore and crop drops",
+
+  "enchantment.minecraft.power.desc": "Increases arrow damage",
+  "enchantment.minecraft.punch.desc": "Increases arrow knockback",
+  "enchantment.minecraft.flame.desc": "Arrows set targets on fire",
+  "enchantment.minecraft.infinity.desc": "Shooting doesn't consume arrows",
+
+  "enchantment.minecraft.luck_of_the_sea.desc": "Increases fishing luck",
+  "enchantment.minecraft.lure.desc": "Decreases fishing wait time",
+
+  "enchantment.minecraft.loyalty.desc": "Trident returns after being thrown",
+  "enchantment.minecraft.impaling.desc": "Increases damage against aquatic mobs",
+  "enchantment.minecraft.riptide.desc": "Trident launches player when thrown in water or in rain",
+  "enchantment.minecraft.channeling.desc": "Summons lightning bolt on mob during thunderstorms",
+
+  "enchantment.minecraft.multishot.desc": "Shoots three arrows at once",
+  "enchantment.minecraft.quick_charge.desc": "Decreases crossbow reload time",
+  "enchantment.minecraft.piercing.desc": "Arrows pass through multiple entities",
+
+  "enchantment.minecraft.mending.desc": "Repairs item when gaining experience",
+
+  "enchantment.minecraft.density.desc": "Increases mace smash attack damage per block fallen",
+  "enchantment.minecraft.breach.desc": "Reduces effectiveness of target's armor",
+  "enchantment.minecraft.wind_burst.desc": "Launches user up upon smashing enemy",
+
+  "enchantment.minecraft.vanishing_curse.desc": "???",
+  "enchantment.minecraft.binding_curse.desc": "???",
+
 
   "tooltip.arrow.foot":  "• ғʟᴇᴛᴄʜɪɴɢ: %s",
   "tooltip.arrow.shaft": "• sʜᴀғᴛ:       %s",

@@ -36,7 +36,8 @@
 		"SculkCatalystBlockEntityMixin",
 		"ArmorMaterialMixin",
 		"LeavesBlockMixin",
-		"AbstractMinecartEntityMixin"
+		"AbstractMinecartEntityMixin",
+		"ItemStackMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
