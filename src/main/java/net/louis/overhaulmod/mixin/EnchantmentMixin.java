@@ -7,7 +7,7 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.mob.BlazeEntity;
 import net.minecraft.entity.mob.BreezeEntity;
 import net.minecraft.entity.mob.IllagerEntity;
-import net.minecraft.item.ItemStack;
+import net.minecraft.item.*;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.registry.tag.DamageTypeTags;
@@ -111,6 +111,83 @@ public class EnchantmentMixin {
                 damage.setValue(currentDamage + bonusDamage);
             }
             ci.cancel();
+        }
+    }
+
+    @Inject(method = "isSupportedItem", at = @At("HEAD"), cancellable = true)
+    private void expandEnchantmentCompatibility(ItemStack stack, CallbackInfoReturnable<Boolean> cir) {
+        Enchantment thisEnchant = (Enchantment)(Object)this;
+        Item item = stack.getItem();
+        String enchantName = thisEnchant.description().getString().toLowerCase();
+        if (enchantName.contains("bane of arthropods")) {
+            if (item instanceof MaceItem || item instanceof TridentItem ||
+                    item instanceof BowItem || item instanceof CrossbowItem) {
+                cir.setReturnValue(true);
+            }
+        }
+
+        if (enchantName.contains("smite")) {
+            if (item instanceof MaceItem || item instanceof TridentItem ||
+                    item instanceof BowItem || item instanceof CrossbowItem) {
+                cir.setReturnValue(true);
+            }
+        }
+
+        if (enchantName.contains("looting")) {
+            if (item instanceof MaceItem || item instanceof TridentItem ||
+                    item instanceof BowItem || item instanceof CrossbowItem) {
+                cir.setReturnValue(true);
+            }
+        }
+
+        if (enchantName.contains("fire aspect")) {
+            if (item instanceof TridentItem || item instanceof MaceItem) {
+                cir.setReturnValue(true);
+            }
+        }
+
+        if (enchantName.contains("punch")) {
+            if (item instanceof CrossbowItem) {
+                cir.setReturnValue(true);
+            }
+        }
+
+        if (enchantName.contains("knockback")) {
+            if (item instanceof TridentItem || item instanceof MaceItem) {
+                cir.setReturnValue(true);
+            }
+        }
+
+        if (enchantName.contains("flame")) {
+            if (item instanceof CrossbowItem || item instanceof TridentItem) {
+                cir.setReturnValue(true);
+            }
+        }
+
+        if (enchantName.contains("power")) {
+            if (item instanceof CrossbowItem || item instanceof TridentItem) {
+                cir.setReturnValue(true);
+            }
+        }
+
+        if (enchantName.contains("sharpness")) {
+            if (item instanceof TridentItem || item instanceof MaceItem) {
+                cir.setReturnValue(true);
+            }
+        }
+
+        if (enchantName.contains("impaling")) {
+            if (item instanceof MaceItem || item instanceof SwordItem ||
+                    item instanceof BowItem || item instanceof CrossbowItem || item instanceof AxeItem) {
+                cir.setReturnValue(true);
+            }
+        }
+
+        if (enchantName.contains("breach")) {
+            if (item instanceof AxeItem || item instanceof TridentItem ||
+                    item instanceof BowItem || item instanceof CrossbowItem) {
+                cir.setReturnValue(true);
+            }
         }
     }
 
