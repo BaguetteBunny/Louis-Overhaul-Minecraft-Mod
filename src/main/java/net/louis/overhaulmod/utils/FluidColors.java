@@ -1,5 +1,6 @@
 package net.louis.overhaulmod.utils;
 
+import net.louis.overhaulmod.utils.enums.FluidType;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.util.DyeColor;

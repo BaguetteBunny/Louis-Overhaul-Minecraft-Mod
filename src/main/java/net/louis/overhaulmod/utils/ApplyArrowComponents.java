@@ -1,7 +1,7 @@
 package net.louis.overhaulmod.utils;
 
 import net.louis.overhaulmod.component.ModComponents;
-import net.louis.overhaulmod.mixin.PersistentProjectileEntityAccessor;
+import net.louis.overhaulmod.mixin.accessor.PersistentProjectileEntityAccessor;
 import net.minecraft.component.ComponentMap;
 import net.minecraft.entity.projectile.ArrowEntity;
 import net.minecraft.item.ItemStack;

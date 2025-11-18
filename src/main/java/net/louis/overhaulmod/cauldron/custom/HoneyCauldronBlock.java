@@ -1,4 +1,4 @@
-package net.louis.overhaulmod.cauldron;
+package net.louis.overhaulmod.cauldron.custom;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;

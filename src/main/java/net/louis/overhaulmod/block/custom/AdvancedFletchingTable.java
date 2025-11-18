@@ -1,4 +1,4 @@
-package net.louis.overhaulmod.block;
+package net.louis.overhaulmod.block.custom;
 
 import com.mojang.serialization.MapCodec;
 import net.louis.overhaulmod.block.entity.AdvancedFletchingTableBlockEntity;
@@ -8,7 +8,6 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.ItemScatterer;
 import net.minecraft.util.hit.BlockHitResult;

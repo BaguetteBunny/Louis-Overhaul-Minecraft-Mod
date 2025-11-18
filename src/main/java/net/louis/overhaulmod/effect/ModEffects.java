@@ -1,6 +1,9 @@
 package net.louis.overhaulmod.effect;
 
 import net.louis.overhaulmod.LouisOverhaulMod;
+import net.louis.overhaulmod.effect.custom.DwarfismEffect;
+import net.louis.overhaulmod.effect.custom.GigantismEffect;
+import net.louis.overhaulmod.effect.custom.GroundedEffect;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.effect.StatusEffect;

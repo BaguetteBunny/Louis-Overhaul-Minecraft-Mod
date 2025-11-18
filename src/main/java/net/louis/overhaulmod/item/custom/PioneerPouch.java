@@ -1,4 +1,4 @@
-package net.louis.overhaulmod.item;
+package net.louis.overhaulmod.item.custom;
 
 import net.louis.overhaulmod.component.CustomBundleContentsComponent;
 import net.louis.overhaulmod.component.ModComponents;

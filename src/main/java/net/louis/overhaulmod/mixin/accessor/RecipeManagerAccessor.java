@@ -1,4 +1,4 @@
-package net.louis.overhaulmod.mixin;
+package net.louis.overhaulmod.mixin.accessor;
 
 import net.minecraft.recipe.RecipeEntry;
 import net.minecraft.recipe.RecipeManager;

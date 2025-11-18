@@ -8,8 +8,8 @@ import net.fabricmc.fabric.api.event.player.UseItemCallback;
 import net.louis.overhaulmod.entity.projectile.thrown.BrickEntity;
 import net.louis.overhaulmod.entity.projectile.thrown.NetherBrickEntity;
 import net.louis.overhaulmod.item.ModItems;
-import net.louis.overhaulmod.mixin.ArmorStandEntityAccessor;
-import net.louis.overhaulmod.mixin.BrushableBlockEntityAccessor;
+import net.louis.overhaulmod.mixin.accessor.ArmorStandEntityAccessor;
+import net.louis.overhaulmod.mixin.accessor.BrushableBlockEntityAccessor;
 import net.louis.overhaulmod.utils.GlowManager;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
@@ -26,7 +26,6 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.LlamaSpitEntity;
 import net.minecraft.item.*;
 import net.minecraft.particle.ParticleTypes;
-import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
@@ -44,7 +43,6 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.function.Consumer;
 
 public class ModUseEvents {
 

@@ -1,6 +1,7 @@
 package net.louis.overhaulmod.mixin;
 
 import net.louis.overhaulmod.component.ModComponents;
+import net.louis.overhaulmod.item.custom.PetRecoveryCompass;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.entity.passive.ParrotEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -21,7 +22,7 @@ public class ParrotEntityMixin {
         ParrotEntity parrot = (ParrotEntity) (Object) this;
         ItemStack itemInHand = player.getStackInHand(hand);
 
-        if (itemInHand.getItem() instanceof net.louis.overhaulmod.item.PetRecoveryCompass) {
+        if (itemInHand.getItem() instanceof PetRecoveryCompass) {
             if (parrot.isTamed() && parrot.getOwner() == player) {
                 if (!parrot.getWorld().isClient) {
                     itemInHand.set(ModComponents.PET_TYPE, "Parrot");

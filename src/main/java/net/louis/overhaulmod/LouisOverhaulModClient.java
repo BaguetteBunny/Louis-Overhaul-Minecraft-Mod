@@ -9,7 +9,7 @@ import net.louis.overhaulmod.block.ModBlocks;
 import net.louis.overhaulmod.component.ModComponents;
 import net.louis.overhaulmod.fluid.ModFluids;
 import net.louis.overhaulmod.item.ModItems;
-import net.louis.overhaulmod.item.PetRecoveryCompass;
+import net.louis.overhaulmod.item.custom.PetRecoveryCompass;
 import net.louis.overhaulmod.screen.AdvancedFletchingTableScreen;
 import net.louis.overhaulmod.screen.ModScreenHandlers;
 import net.louis.overhaulmod.screen.SawmillScreen;

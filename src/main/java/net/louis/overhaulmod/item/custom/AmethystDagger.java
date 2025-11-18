@@ -1,10 +1,10 @@
-package net.louis.overhaulmod.item;
+package net.louis.overhaulmod.item.custom;
 
+import net.louis.overhaulmod.utils.enums.ModToolMaterials;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.item.PickaxeItem;

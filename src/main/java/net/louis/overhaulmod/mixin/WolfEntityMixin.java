@@ -1,6 +1,7 @@
 package net.louis.overhaulmod.mixin;
 
 import net.louis.overhaulmod.component.ModComponents;
+import net.louis.overhaulmod.item.custom.PetRecoveryCompass;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.entity.passive.WolfEntity;
 import net.minecraft.entity.passive.WolfVariant;
@@ -23,7 +24,7 @@ public class WolfEntityMixin {
         WolfEntity wolf = (WolfEntity) (Object) this;
         ItemStack itemInHand = player.getStackInHand(hand);
 
-        if (itemInHand.getItem() instanceof net.louis.overhaulmod.item.PetRecoveryCompass) {
+        if (itemInHand.getItem() instanceof PetRecoveryCompass) {
             if (wolf.isTamed() && wolf.getOwner() == player) {
                 if (!wolf.getWorld().isClient) {
                     itemInHand.set(ModComponents.PET_TYPE, "Wolf");

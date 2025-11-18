@@ -1,4 +1,4 @@
-package net.louis.overhaulmod.effect;
+package net.louis.overhaulmod.effect.custom;
 
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;

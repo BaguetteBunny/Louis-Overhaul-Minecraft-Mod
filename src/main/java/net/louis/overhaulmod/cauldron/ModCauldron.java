@@ -1,9 +1,12 @@
 package net.louis.overhaulmod.cauldron;
 
 import net.louis.overhaulmod.block.ModBlocks;
+import net.louis.overhaulmod.cauldron.custom.ColoredWaterCauldronBlock;
+import net.louis.overhaulmod.cauldron.custom.DragonBreathCauldronBlock;
+import net.louis.overhaulmod.cauldron.custom.HoneyCauldronBlock;
 import net.louis.overhaulmod.item.ModItems;
 import net.louis.overhaulmod.utils.FluidColors;
-import net.louis.overhaulmod.utils.FluidType;
+import net.louis.overhaulmod.utils.enums.FluidType;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.LeveledCauldronBlock;
 import net.minecraft.block.cauldron.CauldronBehavior;
@@ -14,7 +17,7 @@ import net.minecraft.util.DyeColor;
 import net.minecraft.util.ItemActionResult;
 import net.minecraft.world.event.GameEvent;
 
-import static net.louis.overhaulmod.cauldron.ColoredWaterCauldronBlock.FLUID_TYPE;
+import static net.louis.overhaulmod.cauldron.custom.ColoredWaterCauldronBlock.FLUID_TYPE;
 
 public class ModCauldron {
     public static void registerDragonBreathCauldron() {

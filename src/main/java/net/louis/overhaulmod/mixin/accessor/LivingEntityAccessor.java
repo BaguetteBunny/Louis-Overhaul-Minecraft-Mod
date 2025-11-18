@@ -1,4 +1,4 @@
-package net.louis.overhaulmod.mixin;
+package net.louis.overhaulmod.mixin.accessor;
 
 import net.minecraft.entity.LivingEntity;
 import org.spongepowered.asm.mixin.Mixin;

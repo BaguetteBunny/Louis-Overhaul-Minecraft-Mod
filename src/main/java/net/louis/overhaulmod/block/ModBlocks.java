@@ -3,9 +3,11 @@ package net.louis.overhaulmod.block;
 
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.louis.overhaulmod.LouisOverhaulMod;
-import net.louis.overhaulmod.cauldron.ColoredWaterCauldronBlock;
-import net.louis.overhaulmod.cauldron.DragonBreathCauldronBlock;
-import net.louis.overhaulmod.cauldron.HoneyCauldronBlock;
+import net.louis.overhaulmod.block.custom.AdvancedFletchingTable;
+import net.louis.overhaulmod.block.custom.SawmillBlock;
+import net.louis.overhaulmod.cauldron.custom.ColoredWaterCauldronBlock;
+import net.louis.overhaulmod.cauldron.custom.DragonBreathCauldronBlock;
+import net.louis.overhaulmod.cauldron.custom.HoneyCauldronBlock;
 import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;

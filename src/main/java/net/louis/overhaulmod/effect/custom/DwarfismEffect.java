@@ -1,14 +1,12 @@
-package net.louis.overhaulmod.effect;
+package net.louis.overhaulmod.effect.custom;
 
 import net.louis.overhaulmod.LouisOverhaulMod;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.AttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributeInstance;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.Identifier;
 
 public class DwarfismEffect extends StatusEffect {

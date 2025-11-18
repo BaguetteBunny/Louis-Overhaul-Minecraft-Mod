@@ -1,8 +1,9 @@
-package net.louis.overhaulmod.item;
+package net.louis.overhaulmod.item.custom;
 
 import net.louis.overhaulmod.component.ModComponents;
-import net.louis.overhaulmod.mixin.CatAccessor;
-import net.louis.overhaulmod.mixin.WolfAccessor;
+import net.louis.overhaulmod.item.ModItems;
+import net.louis.overhaulmod.mixin.accessor.CatAccessor;
+import net.louis.overhaulmod.mixin.accessor.WolfAccessor;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.item.ModelPredicateProviderRegistry;
 import net.minecraft.entity.EntityType;

@@ -1,9 +1,9 @@
-package net.louis.overhaulmod.cauldron;
+package net.louis.overhaulmod.cauldron.custom;
 
 import com.mojang.serialization.MapCodec;
 import net.louis.overhaulmod.block.ModBlocks;
 import net.louis.overhaulmod.utils.FluidColors;
-import net.louis.overhaulmod.utils.FluidType;
+import net.louis.overhaulmod.utils.enums.FluidType;
 import net.minecraft.block.*;
 import net.minecraft.block.cauldron.CauldronBehavior;
 import net.minecraft.component.DataComponentTypes;

@@ -1,4 +1,4 @@
-package net.louis.overhaulmod.cauldron;
+package net.louis.overhaulmod.cauldron.custom;
 
 import it.unimi.dsi.fastutil.objects.Object2IntMap;
 import net.minecraft.block.BlockState;

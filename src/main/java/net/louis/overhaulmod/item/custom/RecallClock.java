@@ -1,4 +1,4 @@
-package net.louis.overhaulmod.item;
+package net.louis.overhaulmod.item.custom;
 
 import net.minecraft.block.BedBlock;
 import net.minecraft.block.BlockState;

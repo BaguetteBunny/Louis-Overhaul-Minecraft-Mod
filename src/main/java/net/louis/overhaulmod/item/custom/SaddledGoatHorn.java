@@ -1,7 +1,7 @@
-package net.louis.overhaulmod.item;
+package net.louis.overhaulmod.item.custom;
 
 import net.louis.overhaulmod.component.ModComponents;
-import net.louis.overhaulmod.mixin.HorseAccessor;
+import net.louis.overhaulmod.mixin.accessor.HorseAccessor;
 import net.louis.overhaulmod.sound.ModSounds;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;

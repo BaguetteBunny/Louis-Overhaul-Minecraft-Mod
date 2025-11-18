@@ -1,4 +1,4 @@
-package net.louis.overhaulmod.utils;
+package net.louis.overhaulmod.utils.enums;
 
 
 import net.minecraft.util.StringIdentifiable;

@@ -1,4 +1,4 @@
-package net.louis.overhaulmod.item;
+package net.louis.overhaulmod.utils.enums;
 
 import com.google.common.base.Suppliers;
 import net.louis.overhaulmod.utils.ModTags;

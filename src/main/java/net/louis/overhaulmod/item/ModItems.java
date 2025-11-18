@@ -2,9 +2,8 @@ package net.louis.overhaulmod.item;
 
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.louis.overhaulmod.LouisOverhaulMod;
-import net.louis.overhaulmod.component.CustomBundleContentsComponent;
-import net.louis.overhaulmod.component.ModComponents;
 import net.louis.overhaulmod.fluid.ModFluids;
+import net.louis.overhaulmod.item.custom.*;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.BundleContentsComponent;
 import net.minecraft.component.type.FoodComponent;
@@ -14,8 +13,6 @@ import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
-
-import java.util.List;
 
 public class ModItems {
     public static final Item WHITE_WATER_BUCKET = registerItem("white_water_bucket", new BucketItem(ModFluids.STILL_WHITE_WATER, new Item.Settings().maxCount(1).recipeRemainder(Items.BUCKET)));

@@ -1,4 +1,4 @@
-package net.louis.overhaulmod.mixin;
+package net.louis.overhaulmod.mixin.accessor;
 
 import net.minecraft.block.entity.BrushableBlockEntity;
 import net.minecraft.item.ItemStack;

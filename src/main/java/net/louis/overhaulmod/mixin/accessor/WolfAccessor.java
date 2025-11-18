@@ -1,4 +1,4 @@
-package net.louis.overhaulmod.mixin;
+package net.louis.overhaulmod.mixin.accessor;
 
 import net.minecraft.entity.passive.WolfEntity;
 import net.minecraft.util.DyeColor;
