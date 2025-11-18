@@ -12,6 +12,8 @@ import net.louis.overhaulmod.component.CustomBundleTooltipComponent;
 import net.louis.overhaulmod.component.CustomBundleTooltipData;
 import net.louis.overhaulmod.component.ModComponents;
 import net.louis.overhaulmod.effect.ModEffects;
+import net.louis.overhaulmod.enchantments.ModEnchantmentEffects;
+import net.louis.overhaulmod.enchantments.ModEnchantments;
 import net.louis.overhaulmod.events.ModUseEvents;
 import net.louis.overhaulmod.events.ModUseStewEvents;
 import net.louis.overhaulmod.fluid.ModFluids;
@@ -52,6 +54,7 @@ public class LouisOverhaulMod implements ModInitializer {
 		ModScreenHandlers.registerScreenHandlers();
 		ModCauldron.registerBehaviors();
 		ModRecipes.registerRecipes();
+		ModEnchantmentEffects.registerEnchantmentEffects();
 
 		ModLootTableModifiers.modifyLootTables();
 		ModLootTableModifiers.replaceLootTables();
