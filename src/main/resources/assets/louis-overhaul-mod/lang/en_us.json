@@ -309,8 +309,8 @@
   "enchantment.minecraft.breach.desc": "Reduces effectiveness of target's armor",
   "enchantment.minecraft.wind_burst.desc": "Launches user up upon smashing enemy",
 
-  "enchantment.minecraft.vanishing_curse.desc": "???",
-  "enchantment.minecraft.binding_curse.desc": "???",
+  "enchantment.minecraft.vanishing_curse.desc": "Items disappear on death.",
+  "enchantment.minecraft.binding_curse.desc": "Armor becomes stuck on the wearer.",
 
 
   "tooltip.arrow.foot":  "• ғʟᴇᴛᴄʜɪɴɢ: %s",

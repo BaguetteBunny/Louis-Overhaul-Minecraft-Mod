@@ -9,6 +9,10 @@ import net.minecraft.item.EnchantedBookItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.tooltip.TooltipType;
+import net.minecraft.registry.entry.RegistryEntry;
+import net.minecraft.registry.tag.EnchantmentTags;
+import net.minecraft.text.MutableText;
+import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
@@ -75,5 +79,44 @@ public class ItemStackMixin {
 
         tooltip.add(1, Text.literal("Enchantments: " + current + "/" + cap)
                 .formatted(current >= cap ? Formatting.RED : Formatting.DARK_GRAY));
+    }
+
+    @Inject(method = "getTooltip", at = @At("RETURN"))
+    private void obfuscateCurseNames(Item.TooltipContext context, PlayerEntity player, TooltipType type, CallbackInfoReturnable<List<Text>> cir) {
+        ItemStack stack = (ItemStack) (Object) this;
+
+        // Don't obfuscate on enchanted books
+        if (stack.getItem() instanceof EnchantedBookItem) return;
+
+
+        List<Text> tooltip = cir.getReturnValue();
+        ItemEnchantmentsComponent enchantments = stack.get(DataComponentTypes.ENCHANTMENTS);
+
+        if (enchantments == null || enchantments.isEmpty()) return;
+
+
+        for (int i = 0; i < tooltip.size(); i++) {
+            Text line = tooltip.get(i);
+            String lineString = line.getString();
+
+            for (var entry : enchantments.getEnchantmentEntries()) {
+                RegistryEntry<Enchantment> enchantment = entry.getKey();
+
+                if (enchantment.isIn(EnchantmentTags.CURSE)) {
+                    String enchantName = Enchantment.getName(enchantment, enchantments.getLevel(enchantment)).getString();
+                    if (lineString.contains(enchantName)) {
+                        MutableText newText = Text.literal("Curse of ")
+                                .formatted(Formatting.RED)
+                                .append(Text.literal("Something")
+                                        .setStyle(Style.EMPTY
+                                                .withColor(Formatting.RED)
+                                                .withObfuscated(true)));
+
+                        tooltip.set(i, newText);
+                        break;
+                    }
+                }
+            }
+        }
     }
 }
