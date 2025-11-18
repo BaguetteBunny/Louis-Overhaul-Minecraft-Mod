@@ -37,7 +37,9 @@
 		"ArmorMaterialMixin",
 		"LeavesBlockMixin",
 		"AbstractMinecartEntityMixin",
-		"ItemStackMixin"
+		"ItemStackMixin",
+		"AnvilScreenHandlerMixin",
+		"EnchantmentMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

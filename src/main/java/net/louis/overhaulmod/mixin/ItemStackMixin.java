@@ -1,5 +1,6 @@
 package net.louis.overhaulmod.mixin;
 
+import net.louis.overhaulmod.utils.EnchantmentCapRegistry;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.ItemEnchantmentsComponent;
 import net.minecraft.enchantment.Enchantment;
@@ -54,5 +55,25 @@ public class ItemStackMixin {
 
         tooltip.clear();
         tooltip.addAll(newTooltip);
+    }
+
+    @Inject(method = "getTooltip", at = @At("RETURN"))
+    private void addEnchantmentCapTooltip(Item.TooltipContext context, PlayerEntity player, TooltipType type, CallbackInfoReturnable<List<Text>> cir) {
+        ItemStack stack = (ItemStack)(Object)this;
+
+        if (!EnchantmentCapRegistry.hasCap(stack.getItem())) {
+            return;
+        }
+
+        int cap = EnchantmentCapRegistry.getCap(stack.getItem());
+
+        ItemEnchantmentsComponent enchantments = stack.get(DataComponentTypes.ENCHANTMENTS);
+        int current = enchantments != null ? enchantments.getSize() : 0;
+
+
+        List<Text> tooltip = cir.getReturnValue();
+
+        tooltip.add(1, Text.literal("Enchantments: " + current + "/" + cap)
+                .formatted(current >= cap ? Formatting.RED : Formatting.DARK_GRAY));
     }
 }

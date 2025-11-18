@@ -21,6 +21,7 @@ import net.louis.overhaulmod.recipe.ModRecipes;
 import net.louis.overhaulmod.screen.ModScreenHandlers;
 import net.louis.overhaulmod.sound.ModSounds;
 import net.louis.overhaulmod.utils.DespawnManager;
+import net.louis.overhaulmod.utils.EnchantmentCapRegistry;
 import net.louis.overhaulmod.utils.GlowManager;
 import net.louis.overhaulmod.utils.ModLootTableModifiers;
 import net.minecraft.block.BlockState;
@@ -38,6 +39,7 @@ public class LouisOverhaulMod implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		registerCustomBundleTooltip();
+		EnchantmentCapRegistry.register();
 
 		ModFluids.register();
 		ModSounds.registerSounds();

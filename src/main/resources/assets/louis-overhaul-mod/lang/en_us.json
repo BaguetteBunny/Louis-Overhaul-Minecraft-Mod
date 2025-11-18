@@ -252,7 +252,7 @@
 
   "sound.louis-overhaul-mod.saddled_goat_horn_use": "Saddled Goat Horn Use",
 
-  "enchantment.minecraft.protection.desc": "Reduces damage from all sources",
+  "enchantment.minecraft.protection.desc": "Reduces damage from melee damage",
   "enchantment.minecraft.fire_protection.desc": "Reduces fire and lava damage",
   "enchantment.minecraft.feather_falling.desc": "Reduces fall damage",
   "enchantment.minecraft.blast_protection.desc": "Reduces explosion damage",
