@@ -5,13 +5,9 @@ import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.ItemEnchantmentsComponent;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
-import net.minecraft.item.EnchantedBookItem;
 import net.minecraft.item.ItemStack;
-import net.minecraft.screen.AnvilScreenHandler;
-import net.minecraft.screen.ForgingScreenHandler;
-import net.minecraft.screen.ScreenHandlerContext;
-import net.minecraft.screen.ScreenHandlerType;
-import org.spongepowered.asm.mixin.Final;
+import net.minecraft.item.Items;
+import net.minecraft.screen.*;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -20,6 +16,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(AnvilScreenHandler.class)
 public abstract class AnvilScreenHandlerMixin extends ForgingScreenHandler {
+    @Shadow private Property levelCost;
 
     public AnvilScreenHandlerMixin(ScreenHandlerType<?> type, int syncId, PlayerInventory playerInventory, ScreenHandlerContext context) {
         super(type, syncId, playerInventory, context);
@@ -50,6 +47,18 @@ public abstract class AnvilScreenHandlerMixin extends ForgingScreenHandler {
 
         if (enchantments != null && enchantments.getSize() > cap) {
             this.output.setStack(0, ItemStack.EMPTY);
+        }
+    }
+
+    @Inject(method = "updateResult", at = @At("RETURN"))
+    private void force30LevelsIfBothItemsEnchanted(CallbackInfo ci) {
+        ItemStack first = this.input.getStack(0);
+        ItemStack second = this.input.getStack(1);
+
+        if (!first.isEmpty() && !second.isEmpty()
+                && first.hasEnchantments() && second.hasEnchantments()
+                && !first.isOf(Items.ENCHANTED_BOOK) && !second.isOf(Items.ENCHANTED_BOOK)) {
+            levelCost.set(30);
         }
     }
 }
