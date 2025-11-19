@@ -2,6 +2,7 @@ package net.louis.overhaulmod.enchantments;
 
 import net.louis.overhaulmod.LouisOverhaulMod;
 import net.louis.overhaulmod.enchantments.custom.LifestealEnchantmentEffect;
+import net.louis.overhaulmod.enchantments.custom.SmeltingEnchantmentEffect;
 import net.minecraft.component.EnchantmentEffectComponentTypes;
 import net.minecraft.component.type.AttributeModifierSlot;
 import net.minecraft.enchantment.Enchantment;
@@ -16,6 +17,8 @@ import net.minecraft.util.Identifier;
 public class ModEnchantments {
     public static final RegistryKey<Enchantment> VAMPIRISM =
             RegistryKey.of(RegistryKeys.ENCHANTMENT, Identifier.of(LouisOverhaulMod.MOD_ID, "vampirism"));
+    public static final RegistryKey<Enchantment> SMELTING =
+            RegistryKey.of(RegistryKeys.ENCHANTMENT, Identifier.of(LouisOverhaulMod.MOD_ID, "smelting"));
 
     public static void bootstrap(Registerable<Enchantment> registerable) {
         var enchantments = registerable.getRegistryLookup(RegistryKeys.ENCHANTMENT);
@@ -23,7 +26,7 @@ public class ModEnchantments {
 
         register(registerable, VAMPIRISM, Enchantment.builder(Enchantment.definition(
                         items.getOrThrow(ItemTags.WEAPON_ENCHANTABLE),
-                        items.getOrThrow(ItemTags.SWORD_ENCHANTABLE),
+                        items.getOrThrow(ItemTags.WEAPON_ENCHANTABLE),
                         2,
                         4,
                         Enchantment.leveledCost(5, 7),
@@ -34,6 +37,17 @@ public class ModEnchantments {
                 .addEffect(EnchantmentEffectComponentTypes.POST_ATTACK,
                         EnchantmentEffectTarget.ATTACKER, EnchantmentEffectTarget.VICTIM,
                         new LifestealEnchantmentEffect()));
+
+        register(registerable, SMELTING, Enchantment.builder(Enchantment.definition(
+                        items.getOrThrow(ItemTags.MINING_ENCHANTABLE),
+                        items.getOrThrow(ItemTags.MINING_ENCHANTABLE),
+                        1,
+                        1,
+                        Enchantment.leveledCost(23, 2),
+                        Enchantment.leveledCost(35, 5),
+                        0,
+                        AttributeModifierSlot.MAINHAND))
+                .exclusiveSet(enchantments.getOrThrow(EnchantmentTags.MINING_EXCLUSIVE_SET)));
     }
 
     private static void register(Registerable<Enchantment> registry, RegistryKey<Enchantment> key, Enchantment.Builder builder) {

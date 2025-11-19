@@ -16,7 +16,8 @@ public class ModEnchantmentTagProvider extends FabricTagProvider.EnchantmentTagP
     @Override
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
         getOrCreateTagBuilder(EnchantmentTags.IN_ENCHANTING_TABLE)
-                .add(ModEnchantments.VAMPIRISM);
+                .add(ModEnchantments.VAMPIRISM)
+                .add(ModEnchantments.SMELTING);
 
         getOrCreateTagBuilder(EnchantmentTags.TRADEABLE)
                 .add(ModEnchantments.VAMPIRISM);
@@ -25,7 +26,8 @@ public class ModEnchantmentTagProvider extends FabricTagProvider.EnchantmentTagP
                 .add(ModEnchantments.VAMPIRISM);
 
         getOrCreateTagBuilder(EnchantmentTags.ON_RANDOM_LOOT)
-                .add(ModEnchantments.VAMPIRISM);
+                .add(ModEnchantments.VAMPIRISM)
+                .add(ModEnchantments.SMELTING);
 
         getOrCreateTagBuilder(EnchantmentTags.ON_TRADED_EQUIPMENT)
                 .add(ModEnchantments.VAMPIRISM);
@@ -36,7 +38,8 @@ public class ModEnchantmentTagProvider extends FabricTagProvider.EnchantmentTagP
         getOrCreateTagBuilder(EnchantmentTags.NON_TREASURE)
                 .add(ModEnchantments.VAMPIRISM);
 
-        getOrCreateTagBuilder(EnchantmentTags.TREASURE);
+        getOrCreateTagBuilder(EnchantmentTags.TREASURE)
+                .add(ModEnchantments.SMELTING);
 
     }
 }

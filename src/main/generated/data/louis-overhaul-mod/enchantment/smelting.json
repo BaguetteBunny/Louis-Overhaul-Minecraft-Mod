@@ -1,0 +1,31 @@
+{
+  "anvil_cost": 0,
+  "description": {
+    "translate": "enchantment.louis-overhaul-mod.smelting"
+  },
+  "effects": {
+    "minecraft:hit_block": [
+      {
+        "effect": {
+          "type": "louis-overhaul-mod:smelting"
+        }
+      }
+    ]
+  },
+  "exclusive_set": "#minecraft:smelts_loot",
+  "max_cost": {
+    "base": 35,
+    "per_level_above_first": 5
+  },
+  "max_level": 1,
+  "min_cost": {
+    "base": 23,
+    "per_level_above_first": 2
+  },
+  "primary_items": "#minecraft:enchantable/mining",
+  "slots": [
+    "mainhand"
+  ],
+  "supported_items": "#minecraft:enchantable/mining",
+  "weight": 1
+}

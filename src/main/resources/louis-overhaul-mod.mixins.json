@@ -38,7 +38,8 @@
 		"AbstractMinecartEntityMixin",
 		"ItemStackMixin",
 		"AnvilScreenHandlerMixin",
-		"EnchantmentMixin"
+		"EnchantmentMixin",
+		"BlockMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
