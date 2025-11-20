@@ -44,6 +44,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import static net.louis.overhaulmod.utils.EnchantmentUtils.hasEnchant;
+
 public class ModUseEvents {
 
     public static void registerMain() {
@@ -571,12 +573,13 @@ public class ModUseEvents {
         return ActionResult.PASS;
     }
 
-    private static ActionResult rcHarvest(PlayerEntity player, World world, Hand hand, BlockHitResult hitResult) {
+    public static ActionResult rcHarvest(PlayerEntity player, World world, Hand hand, BlockHitResult hitResult) {
         if (world.isClient()) return ActionResult.PASS;
 
         ItemStack stack = player.getStackInHand(hand);
         Item item = stack.getItem();
         if ((!player.getMainHandStack().isEmpty() || !player.getOffHandStack().isEmpty()) && !(player.getMainHandStack().getItem() instanceof HoeItem)) return ActionResult.PASS;
+        if (hasEnchant(stack, "tilling")) return ActionResult.PASS;
 
         BlockState replanted = null;
         BlockPos pos = hitResult.getBlockPos();
@@ -611,7 +614,7 @@ public class ModUseEvents {
                     SoundEvents.BLOCK_SWEET_BERRY_BUSH_PICK_BERRIES,
                     SoundCategory.BLOCKS,
                     0.75F,
-                    (world.getRandom().nextFloat() * 0.2F + 1.5F)
+                   (world.getRandom().nextFloat() * 0.2F + 1.5F)
             );
             player.swingHand(Hand.MAIN_HAND, true);
             return ActionResult.SUCCESS;
@@ -652,7 +655,7 @@ public class ModUseEvents {
         });
     }
 
-    private static void dropBlockWithFortune(World world, BlockPos pos, BlockState state, PlayerEntity player, ItemStack tool) {
+    public static void dropBlockWithFortune(World world, BlockPos pos, BlockState state, PlayerEntity player, ItemStack tool) {
         if (world instanceof ServerWorld serverWorld) {
             List<ItemStack> drops = Block.getDroppedStacks(state, serverWorld, pos, null, player, tool);
             for (ItemStack drop : drops) Block.dropStack(world, pos, drop);

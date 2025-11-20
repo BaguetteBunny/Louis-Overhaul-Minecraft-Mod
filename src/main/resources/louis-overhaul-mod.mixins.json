@@ -39,7 +39,9 @@
 		"ItemStackMixin",
 		"AnvilScreenHandlerMixin",
 		"EnchantmentMixin",
-		"BlockMixin"
+		"BlockMixin",
+		"ShovelItemMixin",
+		"HoeItemMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

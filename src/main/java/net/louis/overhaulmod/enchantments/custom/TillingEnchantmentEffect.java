@@ -7,8 +7,8 @@ import net.minecraft.entity.Entity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.Vec3d;
 
-public record SmeltingEnchantmentEffect() implements EnchantmentEntityEffect {
-    public static final MapCodec<SmeltingEnchantmentEffect> CODEC = MapCodec.unit(SmeltingEnchantmentEffect::new);
+public record TillingEnchantmentEffect() implements EnchantmentEntityEffect {
+    public static final MapCodec<TillingEnchantmentEffect> CODEC = MapCodec.unit(TillingEnchantmentEffect::new);
 
     @Override
     public void apply(ServerWorld world, int level, EnchantmentEffectContext context, Entity user, Vec3d pos) {

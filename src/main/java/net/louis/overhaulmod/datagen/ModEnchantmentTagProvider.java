@@ -17,26 +17,33 @@ public class ModEnchantmentTagProvider extends FabricTagProvider.EnchantmentTagP
     protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
         getOrCreateTagBuilder(EnchantmentTags.IN_ENCHANTING_TABLE)
                 .add(ModEnchantments.VAMPIRISM)
-                .add(ModEnchantments.SMELTING);
+                .add(ModEnchantments.SMELTING)
+                .add(ModEnchantments.TILLING);
 
         getOrCreateTagBuilder(EnchantmentTags.TRADEABLE)
-                .add(ModEnchantments.VAMPIRISM);
+                .add(ModEnchantments.VAMPIRISM)
+                .add(ModEnchantments.TILLING);
 
         getOrCreateTagBuilder(EnchantmentTags.ON_MOB_SPAWN_EQUIPMENT)
-                .add(ModEnchantments.VAMPIRISM);
+                .add(ModEnchantments.VAMPIRISM)
+                .add(ModEnchantments.TILLING);
 
         getOrCreateTagBuilder(EnchantmentTags.ON_RANDOM_LOOT)
                 .add(ModEnchantments.VAMPIRISM)
-                .add(ModEnchantments.SMELTING);
+                .add(ModEnchantments.SMELTING)
+                .add(ModEnchantments.TILLING);
 
         getOrCreateTagBuilder(EnchantmentTags.ON_TRADED_EQUIPMENT)
-                .add(ModEnchantments.VAMPIRISM);
+                .add(ModEnchantments.VAMPIRISM)
+                .add(ModEnchantments.TILLING);
 
         getOrCreateTagBuilder(EnchantmentTags.DOUBLE_TRADE_PRICE)
-                .add(ModEnchantments.VAMPIRISM);
+                .add(ModEnchantments.VAMPIRISM)
+                .add(ModEnchantments.TILLING);
 
         getOrCreateTagBuilder(EnchantmentTags.NON_TREASURE)
-                .add(ModEnchantments.VAMPIRISM);
+                .add(ModEnchantments.VAMPIRISM)
+                .add(ModEnchantments.TILLING);
 
         getOrCreateTagBuilder(EnchantmentTags.TREASURE)
                 .add(ModEnchantments.SMELTING);

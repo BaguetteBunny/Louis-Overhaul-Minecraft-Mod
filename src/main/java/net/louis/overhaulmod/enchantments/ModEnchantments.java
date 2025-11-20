@@ -2,7 +2,6 @@ package net.louis.overhaulmod.enchantments;
 
 import net.louis.overhaulmod.LouisOverhaulMod;
 import net.louis.overhaulmod.enchantments.custom.LifestealEnchantmentEffect;
-import net.louis.overhaulmod.enchantments.custom.SmeltingEnchantmentEffect;
 import net.minecraft.component.EnchantmentEffectComponentTypes;
 import net.minecraft.component.type.AttributeModifierSlot;
 import net.minecraft.enchantment.Enchantment;
@@ -19,6 +18,8 @@ public class ModEnchantments {
             RegistryKey.of(RegistryKeys.ENCHANTMENT, Identifier.of(LouisOverhaulMod.MOD_ID, "vampirism"));
     public static final RegistryKey<Enchantment> SMELTING =
             RegistryKey.of(RegistryKeys.ENCHANTMENT, Identifier.of(LouisOverhaulMod.MOD_ID, "smelting"));
+    public static final RegistryKey<Enchantment> TILLING =
+            RegistryKey.of(RegistryKeys.ENCHANTMENT, Identifier.of(LouisOverhaulMod.MOD_ID, "tilling"));
 
     public static void bootstrap(Registerable<Enchantment> registerable) {
         var enchantments = registerable.getRegistryLookup(RegistryKeys.ENCHANTMENT);
@@ -41,6 +42,17 @@ public class ModEnchantments {
         register(registerable, SMELTING, Enchantment.builder(Enchantment.definition(
                         items.getOrThrow(ItemTags.MINING_ENCHANTABLE),
                         items.getOrThrow(ItemTags.MINING_ENCHANTABLE),
+                        1,
+                        1,
+                        Enchantment.leveledCost(23, 2),
+                        Enchantment.leveledCost(35, 5),
+                        0,
+                        AttributeModifierSlot.MAINHAND))
+                .exclusiveSet(enchantments.getOrThrow(EnchantmentTags.MINING_EXCLUSIVE_SET)));
+
+        register(registerable, TILLING, Enchantment.builder(Enchantment.definition(
+                        items.getOrThrow(ItemTags.MINING_ENCHANTABLE),
+                        items.getOrThrow(ItemTags.SHOVELS),
                         1,
                         1,
                         Enchantment.leveledCost(23, 2),

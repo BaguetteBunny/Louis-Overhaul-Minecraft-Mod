@@ -22,6 +22,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import static net.louis.overhaulmod.utils.EnchantmentUtils.SMELTING_TRANSFORM_MAP;
+
 @Mixin(Block.class)
 public class BlockMixin {
 
@@ -61,10 +63,8 @@ public class BlockMixin {
         if (!hasAutoSmelt) return;
 
         Block minedBlock = state.getBlock();
-        Map<Block, Item> transformMap = SmeltingEnchantmentEffect.TRANSFORM_MAP;
-
-        if (transformMap.containsKey(minedBlock)) {
-            Item transformedItem = transformMap.get(minedBlock);
+        if (SMELTING_TRANSFORM_MAP.containsKey(minedBlock)) {
+            Item transformedItem = SMELTING_TRANSFORM_MAP.get(minedBlock);
             int totalCount = drops.stream().mapToInt(ItemStack::getCount).sum();
 
             cir.setReturnValue(List.of(new ItemStack(transformedItem, totalCount)));
