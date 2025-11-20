@@ -584,10 +584,13 @@ public class ModUseEvents {
         Block block = state.getBlock();
 
         if (block instanceof CropBlock crop && crop.isMature(state) && !(block instanceof BeetrootsBlock)) {
-            world.breakBlock(pos, true, player);
+            dropBlockWithFortune(world, pos, state, player, stack);
+            world.setBlockState(pos, Blocks.AIR.getDefaultState(), Block.NOTIFY_ALL);
             replanted = crop.getDefaultState().with(CropBlock.AGE, 0);
+
         } else if (block instanceof BeetrootsBlock beetroot && beetroot.isMature(state)) {
-            world.breakBlock(pos, true, player);
+            dropBlockWithFortune(world, pos, state, player, stack);
+            world.setBlockState(pos, Blocks.AIR.getDefaultState(), Block.NOTIFY_ALL);
             replanted = beetroot.getDefaultState();
         }
 
@@ -647,6 +650,13 @@ public class ModUseEvents {
                         world.getBlockState(skullEntity.getPos()), 3);
             });
         });
+    }
+
+    private static void dropBlockWithFortune(World world, BlockPos pos, BlockState state, PlayerEntity player, ItemStack tool) {
+        if (world instanceof ServerWorld serverWorld) {
+            List<ItemStack> drops = Block.getDroppedStacks(state, serverWorld, pos, null, player, tool);
+            for (ItemStack drop : drops) Block.dropStack(world, pos, drop);
+        }
     }
 }
 
