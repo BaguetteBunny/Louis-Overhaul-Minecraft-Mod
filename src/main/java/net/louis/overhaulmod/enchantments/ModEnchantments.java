@@ -2,6 +2,7 @@ package net.louis.overhaulmod.enchantments;
 
 import net.louis.overhaulmod.LouisOverhaulMod;
 import net.louis.overhaulmod.enchantments.custom.LifestealEnchantmentEffect;
+import net.louis.overhaulmod.tags.ModTags;
 import net.minecraft.component.EnchantmentEffectComponentTypes;
 import net.minecraft.component.type.AttributeModifierSlot;
 import net.minecraft.enchantment.Enchantment;
@@ -51,8 +52,8 @@ public class ModEnchantments {
                 .exclusiveSet(enchantments.getOrThrow(EnchantmentTags.MINING_EXCLUSIVE_SET)));
 
         register(registerable, TILLING, Enchantment.builder(Enchantment.definition(
-                        items.getOrThrow(ItemTags.MINING_ENCHANTABLE),
-                        items.getOrThrow(ItemTags.SHOVELS),
+                        items.getOrThrow(ModTags.Items.SHOVEL_HOE_ENCHANTABLE),
+                        items.getOrThrow(ModTags.Items.SHOVEL_HOE_ENCHANTABLE),
                         1,
                         1,
                         Enchantment.leveledCost(23, 2),

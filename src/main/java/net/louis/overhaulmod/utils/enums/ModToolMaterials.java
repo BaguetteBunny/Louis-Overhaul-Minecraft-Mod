@@ -1,7 +1,7 @@
 package net.louis.overhaulmod.utils.enums;
 
 import com.google.common.base.Suppliers;
-import net.louis.overhaulmod.utils.ModTags;
+import net.louis.overhaulmod.tags.ModTags;
 import net.minecraft.block.Block;
 import net.minecraft.item.Items;
 import net.minecraft.item.ToolMaterial;

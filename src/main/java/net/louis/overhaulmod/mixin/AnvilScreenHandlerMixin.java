@@ -86,6 +86,13 @@ public abstract class AnvilScreenHandlerMixin extends ForgingScreenHandler {
                 // Calculate cost and apply enchantments
                 for (var entry : bookEnchants.getEnchantmentEntries()) {
                     RegistryEntry<Enchantment> enchantment = entry.getKey();
+                    if (!enchantment.value().isSupportedItem(leftStack)) {
+                        this.output.setStack(0, ItemStack.EMPTY);
+                        this.levelCost.set(0);
+                        ci.cancel();
+                        return;
+                    }
+
                     int level = entry.getIntValue();
                     int weight = enchantment.value().getWeight();
 
