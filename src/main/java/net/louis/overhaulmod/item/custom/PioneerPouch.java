@@ -25,7 +25,7 @@ public class PioneerPouch extends BigBundleItem {
 
     @Override
     public boolean onClicked(ItemStack stack, ItemStack otherStack, Slot slot, ClickType clickType, PlayerEntity player, StackReference cursorStackReference) {
-        if (!(otherStack.getItem() instanceof BlockItem)) {
+        if (!(otherStack.getItem() instanceof BlockItem) && !otherStack.isEmpty()) {
             return false;
         }
         return super.onClicked(stack, otherStack, slot, clickType, player, cursorStackReference);
