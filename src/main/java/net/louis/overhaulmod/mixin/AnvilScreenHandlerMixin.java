@@ -16,6 +16,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(AnvilScreenHandler.class)
 public abstract class AnvilScreenHandlerMixin extends ForgingScreenHandler {
@@ -54,6 +55,24 @@ public abstract class AnvilScreenHandlerMixin extends ForgingScreenHandler {
     }
 
     @Inject(method = "updateResult", at = @At("RETURN"))
+    private void zeroCostForBooks(CallbackInfo ci) {
+        ItemStack leftStack = this.input.getStack(0);
+        ItemStack rightStack = this.input.getStack(1);
+
+        if (leftStack.getItem() instanceof EnchantedBookItem && rightStack.getItem() instanceof EnchantedBookItem)
+            this.levelCost.set(0);
+    }
+
+    @Inject(method = "canTakeOutput", at = @At("HEAD"), cancellable = true)
+    protected void takeZeroCostBook(PlayerEntity player, boolean present, CallbackInfoReturnable<Boolean> cir) {
+        ItemStack leftStack = this.input.getStack(0);
+        ItemStack rightStack = this.input.getStack(1);
+        if (leftStack.getItem() instanceof EnchantedBookItem && rightStack.getItem() instanceof EnchantedBookItem)
+            cir.setReturnValue(true);
+
+    }
+
+    @Inject(method = "updateResult", at = @At("RETURN"))
     private void force30LevelsIfBothItemsEnchanted(CallbackInfo ci) {
         ItemStack first = this.input.getStack(0);
         ItemStack second = this.input.getStack(1);
@@ -69,7 +88,7 @@ public abstract class AnvilScreenHandlerMixin extends ForgingScreenHandler {
     private void customAnvilMechanics(CallbackInfo ci) {
         ItemStack leftStack = this.input.getStack(0);
         ItemStack rightStack = this.input.getStack(1);
-        if (leftStack.isEmpty()) return;
+        if (leftStack.isEmpty() || leftStack.getItem() instanceof EnchantedBookItem) return;
 
         // Case 1: Enchantment Book Application
         if (rightStack.getItem() instanceof EnchantedBookItem) {
@@ -82,16 +101,14 @@ public abstract class AnvilScreenHandlerMixin extends ForgingScreenHandler {
                 );
 
                 int cost = 0;
+                int cap = EnchantmentCapRegistry.getCap(result.getItem());
+                ItemEnchantmentsComponent finalEnchants = result.get(DataComponentTypes.ENCHANTMENTS);
+                int successCounter = finalEnchants != null ? finalEnchants.getSize() : 0;
 
                 // Calculate cost and apply enchantments
                 for (var entry : bookEnchants.getEnchantmentEntries()) {
                     RegistryEntry<Enchantment> enchantment = entry.getKey();
-                    if (!enchantment.value().isSupportedItem(leftStack)) {
-                        this.output.setStack(0, ItemStack.EMPTY);
-                        this.levelCost.set(0);
-                        ci.cancel();
-                        return;
-                    }
+                    if (!enchantment.value().isSupportedItem(leftStack) || successCounter >= cap) continue;
 
                     int level = entry.getIntValue();
                     int weight = enchantment.value().getWeight();
@@ -99,18 +116,16 @@ public abstract class AnvilScreenHandlerMixin extends ForgingScreenHandler {
                     int enchantCost = (weight > 5) ? 5 * level : (10 - weight) * level;
 
                     cost += enchantCost;
+                    successCounter++;
                     builder.set(enchantment, level);
                 }
 
                 result.set(DataComponentTypes.ENCHANTMENTS, builder.build());
 
-                // Cap at 35
-                if (cost > 35) cost = 35;
+                // Cap at 999
+                if (cost > 999) cost = 999;
 
-                int cap = EnchantmentCapRegistry.getCap(result.getItem());
-                ItemEnchantmentsComponent finalEnchants = result.get(DataComponentTypes.ENCHANTMENTS);
-
-                if (finalEnchants != null && finalEnchants.getSize() > cap) {
+                if (finalEnchants != null && successCounter == finalEnchants.getSize()) {
                     this.output.setStack(0, ItemStack.EMPTY);
                     this.levelCost.set(0);
                     ci.cancel();
