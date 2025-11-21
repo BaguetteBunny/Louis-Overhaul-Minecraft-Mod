@@ -3,6 +3,8 @@ package net.louis.overhaulmod.item.custom;
 import net.louis.overhaulmod.component.CustomBundleTooltipData;
 import net.louis.overhaulmod.component.CustomBundleContentsComponent;
 import net.louis.overhaulmod.component.ModComponents;
+import net.louis.overhaulmod.item.ModItems;
+import net.minecraft.client.item.ModelPredicateProviderRegistry;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.ItemEntity;
@@ -33,6 +35,17 @@ public class BigBundleItem extends Item {
         this.max = max_slot;
     }
 
+    public static void registerBigBundlePredicate(Item item) {
+        ModelPredicateProviderRegistry.register(
+                item,
+                Identifier.of("filled"),
+                (stack, world, entity, seed) -> {
+                    CustomBundleContentsComponent component = stack.getOrDefault(ModComponents.CUSTOM_BUNDLE_CONTENTS, null);
+                    return (component != null && !component.isEmpty()) ? 1.0f : 0.0f;
+                }
+        );
+    }
+
     public float getAmountFilled(ItemStack stack) {
         CustomBundleContentsComponent bundleContentsComponent = stack.getOrDefault(ModComponents.CUSTOM_BUNDLE_CONTENTS, new CustomBundleContentsComponent(List.of(), this.max));
         return bundleContentsComponent.getOccupancy().floatValue();
@@ -40,11 +53,11 @@ public class BigBundleItem extends Item {
 
     @Override
     public boolean onStackClicked(ItemStack stack, Slot slot, ClickType clickType, PlayerEntity player) {
+        CustomBundleContentsComponent bundleContentsComponent = stack.get(ModComponents.CUSTOM_BUNDLE_CONTENTS);
+        if (bundleContentsComponent == null) bundleContentsComponent = new CustomBundleContentsComponent(List.of(), this.max);
         if (clickType != ClickType.RIGHT) {
             return false;
         } else {
-            CustomBundleContentsComponent bundleContentsComponent = stack.get(ModComponents.CUSTOM_BUNDLE_CONTENTS);
-            if (bundleContentsComponent == null) bundleContentsComponent = new CustomBundleContentsComponent(List.of(), this.max);
             ItemStack itemStack = slot.getStack();
             CustomBundleContentsComponent.Builder builder = new CustomBundleContentsComponent.Builder(bundleContentsComponent);
             if (itemStack.isEmpty()) {
@@ -68,9 +81,9 @@ public class BigBundleItem extends Item {
 
     @Override
     public boolean onClicked(ItemStack stack, ItemStack otherStack, Slot slot, ClickType clickType, PlayerEntity player, StackReference cursorStackReference) {
+        CustomBundleContentsComponent bundleContentsComponent = stack.get(ModComponents.CUSTOM_BUNDLE_CONTENTS);
+        if (bundleContentsComponent == null) bundleContentsComponent = new CustomBundleContentsComponent(List.of(), this.max);
         if (clickType == ClickType.RIGHT && slot.canTakePartial(player)) {
-            CustomBundleContentsComponent bundleContentsComponent = stack.get(ModComponents.CUSTOM_BUNDLE_CONTENTS);
-            if (bundleContentsComponent == null) bundleContentsComponent = new CustomBundleContentsComponent(List.of(), this.max);
             CustomBundleContentsComponent.Builder builder = new CustomBundleContentsComponent.Builder(bundleContentsComponent);
             if (otherStack.isEmpty()) {
                 ItemStack itemStack = builder.removeFirst();

@@ -6,9 +6,11 @@ import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandlerRegistry;
 import net.louis.overhaulmod.block.ModBlocks;
+import net.louis.overhaulmod.component.CustomBundleContentsComponent;
 import net.louis.overhaulmod.component.ModComponents;
 import net.louis.overhaulmod.fluid.ModFluids;
 import net.louis.overhaulmod.item.ModItems;
+import net.louis.overhaulmod.item.custom.BigBundleItem;
 import net.louis.overhaulmod.item.custom.PetRecoveryCompass;
 import net.louis.overhaulmod.screen.AdvancedFletchingTableScreen;
 import net.louis.overhaulmod.screen.ModScreenHandlers;
@@ -37,6 +39,9 @@ public class LouisOverhaulModClient implements ClientModInitializer {
 
         // Add Predicate Texture Transform
         PetRecoveryCompass.registerModelPredicates();
+        BigBundleItem.registerBigBundlePredicate(ModItems.LARGE_BUNDLE);
+        BigBundleItem.registerBigBundlePredicate(ModItems.MASSIVE_BUNDLE);
+        BigBundleItem.registerBigBundlePredicate(ModItems.PIONEER_POUCH);
 
         addArrowPredicate();
 

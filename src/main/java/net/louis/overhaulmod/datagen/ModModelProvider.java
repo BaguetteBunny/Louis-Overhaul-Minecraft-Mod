@@ -172,9 +172,6 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.ROTTEN_STEW, Models.GENERATED);
         itemModelGenerator.register(ModItems.CHILLED_BONE_MEAL, Models.GENERATED);
         itemModelGenerator.register(ModItems.AMETHYST_DAGGER, Models.HANDHELD);
-        itemModelGenerator.register(ModItems.LARGE_BUNDLE, Models.HANDHELD);
-        itemModelGenerator.register(ModItems.MASSIVE_BUNDLE, Models.HANDHELD);
-        itemModelGenerator.register(ModItems.PIONEER_POUCH, Models.HANDHELD);
 
         itemModelGenerator.register(ModItems.WHITE_WATER_BUCKET, Models.GENERATED);
         itemModelGenerator.register(ModItems.ORANGE_WATER_BUCKET, Models.GENERATED);
