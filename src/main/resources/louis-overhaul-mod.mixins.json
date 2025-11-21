@@ -41,7 +41,8 @@
 		"EnchantmentMixin",
 		"BlockMixin",
 		"ShovelItemMixin",
-		"HoeItemMixin"
+		"HoeItemMixin",
+		"SmallFireballEntityMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

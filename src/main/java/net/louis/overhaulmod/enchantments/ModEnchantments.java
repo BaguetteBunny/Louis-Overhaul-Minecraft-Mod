@@ -21,6 +21,8 @@ public class ModEnchantments {
             RegistryKey.of(RegistryKeys.ENCHANTMENT, Identifier.of(LouisOverhaulMod.MOD_ID, "smelting"));
     public static final RegistryKey<Enchantment> TILLING =
             RegistryKey.of(RegistryKeys.ENCHANTMENT, Identifier.of(LouisOverhaulMod.MOD_ID, "tilling"));
+    public static final RegistryKey<Enchantment> FIRE_BLAST =
+            RegistryKey.of(RegistryKeys.ENCHANTMENT, Identifier.of(LouisOverhaulMod.MOD_ID, "fire_blast"));
 
     public static void bootstrap(Registerable<Enchantment> registerable) {
         var enchantments = registerable.getRegistryLookup(RegistryKeys.ENCHANTMENT);
@@ -54,6 +56,17 @@ public class ModEnchantments {
         register(registerable, TILLING, Enchantment.builder(Enchantment.definition(
                         items.getOrThrow(ModTags.Items.SHOVEL_HOE_ENCHANTABLE),
                         items.getOrThrow(ModTags.Items.SHOVEL_HOE_ENCHANTABLE),
+                        1,
+                        1,
+                        Enchantment.leveledCost(23, 2),
+                        Enchantment.leveledCost(35, 5),
+                        0,
+                        AttributeModifierSlot.MAINHAND))
+                .exclusiveSet(enchantments.getOrThrow(EnchantmentTags.MINING_EXCLUSIVE_SET)));
+
+        register(registerable, FIRE_BLAST, Enchantment.builder(Enchantment.definition(
+                        items.getOrThrow(ModTags.Items.FLINT_AND_STEEL_ENCHANTABLE),
+                        items.getOrThrow(ModTags.Items.FLINT_AND_STEEL_ENCHANTABLE),
                         1,
                         1,
                         Enchantment.leveledCost(23, 2),

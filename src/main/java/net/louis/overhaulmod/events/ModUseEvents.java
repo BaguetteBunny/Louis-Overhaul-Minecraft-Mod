@@ -21,9 +21,12 @@ import net.minecraft.component.type.ProfileComponent;
 import net.minecraft.entity.*;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.decoration.ArmorStandEntity;
+import net.minecraft.entity.mob.BlazeEntity;
 import net.minecraft.entity.mob.ShulkerEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.projectile.FireballEntity;
 import net.minecraft.entity.projectile.LlamaSpitEntity;
+import net.minecraft.entity.projectile.SmallFireballEntity;
 import net.minecraft.item.*;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
@@ -57,6 +60,7 @@ public class ModUseEvents {
 
         UseItemCallback.EVENT.register(ModUseEvents::getLlamaSpitBottle);
         UseItemCallback.EVENT.register(ModUseEvents::useGlowInk);
+        UseItemCallback.EVENT.register(ModUseEvents::useFireBlastEnchant);
 
         UseEntityCallback.EVENT.register(ModUseEvents::changeArmorStandVariant);
         UseEntityCallback.EVENT.register(ModUseEvents::dyeShulkers);
@@ -491,6 +495,30 @@ public class ModUseEvents {
 
         player.swingHand(hand, true);
         return TypedActionResult.success(stack, world.isClient());
+    }
+
+    private static TypedActionResult<ItemStack> useFireBlastEnchant(PlayerEntity player, World world, Hand hand) {
+        ItemStack stack = player.getStackInHand(hand);
+        Item item = stack.getItem();
+        if (world.isClient() || player.getItemCooldownManager().isCoolingDown(item)) return TypedActionResult.pass(stack);
+
+
+        if (item instanceof FlintAndSteelItem && hasEnchant(stack, "fire_blast")) {
+            player.getItemCooldownManager().set(stack.getItem(), 20);
+            world.playSound(null, player.getX(), player.getY(), player.getZ(),
+                    SoundEvents.ENTITY_BLAZE_SHOOT, SoundCategory.PLAYERS,
+                    1.0F, 2.0F
+            );
+
+            Entity fireball = new SmallFireballEntity(world, player, player.getRotationVector());
+            fireball.setPos(player.getX(), player.getEyeY() - 0.1, player.getZ());
+            world.spawnEntity(fireball);
+
+            stack.damage(3, player, player.getPreferredEquipmentSlot(stack));
+            player.swingHand(hand, true);
+            return TypedActionResult.success(stack, world.isClient());
+        }
+        return TypedActionResult.pass(stack);
     }
 
     private static ActionResult dyeShulkers(PlayerEntity player, World world, Hand hand, Entity entity, @Nullable EntityHitResult entityHitResult) {
