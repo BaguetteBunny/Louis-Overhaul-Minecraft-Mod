@@ -4,16 +4,21 @@ import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.damage.DamageTypes;
 import net.minecraft.entity.mob.BlazeEntity;
 import net.minecraft.entity.mob.BreezeEntity;
+import net.minecraft.entity.mob.DrownedEntity;
 import net.minecraft.entity.mob.IllagerEntity;
 import net.minecraft.item.*;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.entry.RegistryEntry;
+import net.minecraft.registry.tag.BiomeTags;
 import net.minecraft.registry.tag.DamageTypeTags;
 import net.minecraft.registry.tag.EntityTypeTags;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.BiomeKeys;
 import org.apache.commons.lang3.mutable.MutableFloat;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -165,13 +170,14 @@ public class EnchantmentMixin {
         }
 
         if (enchantName.contains("power")) {
-            if (item instanceof CrossbowItem || item instanceof TridentItem) {
+            if (item instanceof CrossbowItem) {
                 cir.setReturnValue(true);
             }
         }
 
-        if (enchantName.contains("sharpness")) {
-            if (item instanceof TridentItem || item instanceof MaceItem) {
+        if (enchantName.contains("illager's bane")) {
+            if (item instanceof MaceItem || item instanceof TridentItem ||
+                    item instanceof BowItem || item instanceof CrossbowItem) {
                 cir.setReturnValue(true);
             }
         }
@@ -184,8 +190,7 @@ public class EnchantmentMixin {
         }
 
         if (enchantName.contains("breach")) {
-            if (item instanceof AxeItem || item instanceof TridentItem ||
-                    item instanceof BowItem || item instanceof CrossbowItem) {
+            if (item instanceof AxeItem || item instanceof TridentItem) {
                 cir.setReturnValue(true);
             }
         }
@@ -199,7 +204,10 @@ public class EnchantmentMixin {
     }
 
     private boolean shouldImpalingWork(ServerWorld world, Entity target) {
-        if (target.isTouchingWater() || target.isSubmergedInWater()) return true;
+        RegistryEntry<Biome> biome = world.getBiome(target.getBlockPos());
+
+        if (!biome.isIn(BiomeTags.IS_OVERWORLD) || biome.matchesId(BiomeKeys.SAVANNA.getValue()) || biome.matchesId(BiomeKeys.DESERT.getValue())) return false;
+        if (target.isTouchingWater() || target.isSubmergedInWater() || target instanceof DrownedEntity) return true;
 
         if (world.isRaining()) {
             BlockPos headPos = BlockPos.ofFloored(target.getX(), target.getEyeY(), target.getZ());
@@ -230,25 +238,31 @@ public class EnchantmentMixin {
 
     private boolean isMagicDamage(DamageSource source) {
         return source.isIn(DamageTypeTags.WITCH_RESISTANT_TO) ||
-                source.getName().equals("magic") ||
-                source.getName().equals("indirectMagic") ||
-                source.getName().equals("thorns") ||
+                source.isOf(DamageTypes.MAGIC) ||
+                source.isOf(DamageTypes.INDIRECT_MAGIC) ||
+                source.isOf(DamageTypes.THORNS) ||
+                source.isOf(DamageTypes.DRAGON_BREATH) ||
+                source.isOf(DamageTypes.SONIC_BOOM) ||
+                source.isOf(DamageTypes.CRAMMING) ||
                 (source.getSource() != null &&
                         (source.getSource().getType().toString().contains("guardian") ||
                                 source.getSource().getType().toString().contains("evoker_fangs")));
     }
 
     private boolean isEnvironmentalDamage(DamageSource source) {
-        String name = source.getName();
-        return name.equals("cactus") ||
-                name.equals("sweetBerryBush") ||
-                name.equals("freeze") ||
-                name.equals("stalagmite") ||
-                name.equals("fallingBlock") ||
-                name.equals("flyIntoWall") ||
-                name.equals("outOfWorld") ||
-                name.equals("drown") ||
-                name.equals("starve") ||
+        return source.isOf(DamageTypes.CACTUS) ||
+                source.isOf(DamageTypes.SWEET_BERRY_BUSH) ||
+                source.isOf(DamageTypes.FREEZE) ||
+                source.isOf(DamageTypes.STALAGMITE) ||
+                source.isOf(DamageTypes.FALLING_BLOCK) ||
+                source.isOf(DamageTypes.FALLING_ANVIL) ||
+                source.isOf(DamageTypes.FLY_INTO_WALL) ||
+                source.isOf(DamageTypes.OUT_OF_WORLD) ||
+                source.isOf(DamageTypes.OUTSIDE_BORDER) ||
+                source.isOf(DamageTypes.DROWN) ||
+                source.isOf(DamageTypes.STARVE) ||
+                source.isOf(DamageTypes.CAMPFIRE) ||
+                source.isOf(DamageTypes.FIREWORKS) ||
                 (source.getAttacker() == null && source.getSource() == null);
     }
 }
