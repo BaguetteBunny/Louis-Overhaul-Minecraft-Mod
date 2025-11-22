@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_bamboo_mosaic": {
+    "has_quartz_block": {
       "conditions": {
         "items": [
           {
-            "items": "minecraft:bamboo_mosaic"
+            "items": "minecraft:quartz_block"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:bamboo_mosaic_stairs_from_bamboo_mosaic_sawmilling"
+        "recipe": "louis-overhaul-mod:quartz_bricks_slab_from_quartz_block_stonecutting"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_bamboo_mosaic"
+      "has_quartz_block"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:bamboo_mosaic_stairs_from_bamboo_mosaic_sawmilling"
+      "louis-overhaul-mod:quartz_bricks_slab_from_quartz_block_stonecutting"
     ]
   }
 }
