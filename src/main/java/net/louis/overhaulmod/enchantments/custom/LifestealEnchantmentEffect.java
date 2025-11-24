@@ -5,7 +5,6 @@ import net.minecraft.enchantment.EnchantmentEffectContext;
 import net.minecraft.enchantment.effect.EnchantmentEntityEffect;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
@@ -23,9 +22,7 @@ public record LifestealEnchantmentEffect() implements EnchantmentEntityEffect {
             float healthHealed = cappedLevel * victim.getMaxHealth() / 20;
             float newHealth = Math.min(attacker.getHealth() + healthHealed, attacker.getMaxHealth());
             attacker.setHealth(newHealth);
-
-            if (attacker instanceof PlayerEntity)
-                world.playSound(null, attacker.getX(), attacker.getY(), attacker.getZ(), SoundEvents.ENTITY_SHEEP_SHEAR, SoundCategory.PLAYERS, 1f, 2.f);
+            world.playSound(null, attacker.getX(), attacker.getY(), attacker.getZ(), SoundEvents.ENTITY_SHEEP_SHEAR, SoundCategory.PLAYERS, 1.f, 1.f);
         }
     }
 
