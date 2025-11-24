@@ -42,7 +42,8 @@
 		"BlockMixin",
 		"ShovelItemMixin",
 		"HoeItemMixin",
-		"SmallFireballEntityMixin"
+		"SmallFireballEntityMixin",
+		"ReplaceDiskEnchantmentEffectMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

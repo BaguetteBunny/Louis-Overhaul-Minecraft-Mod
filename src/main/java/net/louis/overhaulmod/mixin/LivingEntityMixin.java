@@ -2,7 +2,11 @@ package net.louis.overhaulmod.mixin;
 
 import net.louis.overhaulmod.effect.ModEffects;
 import net.louis.overhaulmod.utils.TeleportUtils;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.SkullBlock;
+import net.minecraft.component.DataComponentTypes;
+import net.minecraft.component.type.ItemEnchantmentsComponent;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
@@ -11,7 +15,11 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.mob.EndermiteEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.server.world.ServerWorld;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -64,6 +72,61 @@ public class LivingEntityMixin {
                 cir.setReturnValue(.0);
             } else {
                 cir.setReturnValue(original);
+            }
+        }
+    }
+
+    @Inject(method = "tick", at = @At("TAIL"))
+    private void applyFrostWalkerWhileMounted(CallbackInfo ci) {
+        LivingEntity entity = (LivingEntity)(Object)this;
+
+        if (entity.getWorld().isClient() || !entity.hasVehicle()) return;
+        if (!(entity.getWorld() instanceof ServerWorld world)) return;
+
+        // Check if player has Frost Walker on boots
+        ItemEnchantmentsComponent enchantments = entity.getEquippedStack(
+                net.minecraft.entity.EquipmentSlot.FEET
+        ).get(DataComponentTypes.ENCHANTMENTS);
+
+        if (enchantments == null) return;
+
+        int frostWalkerLevel = 0;
+        for (var entry : enchantments.getEnchantmentEntries()) {
+            String enchantId = world.getRegistryManager()
+                    .get(RegistryKeys.ENCHANTMENT)
+                    .getId(entry.getKey().value())
+                    .toString();
+
+            if (enchantId.contains("frost_walker")) {
+                frostWalkerLevel = entry.getIntValue();
+                break;
+            }
+        }
+
+        if (frostWalkerLevel == 0) return;
+
+        // Apply Frost Walker effect
+        BlockPos blockPos = entity.getBlockPos().down();
+        BlockState frostedIce = Blocks.FROSTED_ICE.getDefaultState();
+        int radius = 2*frostWalkerLevel;
+
+        for (BlockPos targetPos : BlockPos.iterate(
+                blockPos.add(-radius, -radius, -radius),
+                blockPos.add(radius, radius, radius)
+        )) {
+            if (targetPos.getSquaredDistance(entity.getBlockPos()) < MathHelper.square(radius)) {
+                BlockState stateAtPos = world.getBlockState(targetPos);
+                BlockState aboveState = world.getBlockState(targetPos.up());
+
+                if (stateAtPos.getFluidState().isOf(net.minecraft.fluid.Fluids.WATER) &&
+                        stateAtPos.getFluidState().isStill() &&
+                        aboveState.isAir() &&
+                        world.canSetBlock(targetPos) &&
+                        frostedIce.canPlaceAt(world, targetPos)) {
+
+                    world.setBlockState(targetPos, frostedIce);
+                    world.scheduleBlockTick(targetPos, Blocks.FROSTED_ICE, MathHelper.nextInt(world.random, 60, 120));
+                }
             }
         }
     }
