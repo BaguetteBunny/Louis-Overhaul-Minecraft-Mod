@@ -17,17 +17,15 @@ public record LifestealEnchantmentEffect() implements EnchantmentEntityEffect {
     @Override
     public void apply(ServerWorld world, int level, EnchantmentEffectContext context, Entity user, Vec3d pos) {
         LivingEntity attacker = context.owner();
-
         int cappedLevel = Math.min(level, 5);
-        int denom = 12 - cappedLevel * 2;
-        if (denom < 1) denom = 1;
-        if (world.random.nextInt(denom) == 0) {
-            float healAmount = 2.f;
-            float newHealth = Math.min(attacker.getHealth() + healAmount, attacker.getMaxHealth());
+
+        if (user instanceof LivingEntity victim && !victim.isAlive() && attacker != null && attacker.isAlive()) {
+            float healthHealed = cappedLevel * victim.getMaxHealth() / 20;
+            float newHealth = Math.min(attacker.getHealth() + healthHealed, attacker.getMaxHealth());
             attacker.setHealth(newHealth);
 
-            if (attacker instanceof PlayerEntity player)
-                world.playSound(player, attacker.getX(), attacker.getY(), attacker.getZ(), SoundEvents.ENTITY_SHEEP_SHEAR, SoundCategory.PLAYERS, 1f, 2.f);
+            if (attacker instanceof PlayerEntity)
+                world.playSound(null, attacker.getX(), attacker.getY(), attacker.getZ(), SoundEvents.ENTITY_SHEEP_SHEAR, SoundCategory.PLAYERS, 1f, 2.f);
         }
     }
 
