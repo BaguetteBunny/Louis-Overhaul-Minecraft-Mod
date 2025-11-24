@@ -1,5 +1,7 @@
 package net.louis.overhaulmod.mixin;
 
+import net.minecraft.block.*;
+import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.ItemEntity;
@@ -11,6 +13,8 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
+import net.minecraft.util.hit.BlockHitResult;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -38,9 +42,26 @@ public class ItemFrameMixin {
         ItemStack stack = player.getStackInHand(hand);
         ItemFrameEntity frame = ((ItemFrameEntity) (Object) this);
 
-        if (!player.isSneaking() || !stack.isOf(Items.PHANTOM_MEMBRANE) || frame.isInvisible()) {
-            return;
+        World world = player.getWorld();
+        BlockPos chestPos = frame.getAttachedBlockPos().offset(frame.getFacing().getOpposite());
+        BlockState state = world.getBlockState(chestPos);
+        Block block = state.getBlock();
+
+        if (frame.getHeldItemStack() != ItemStack.EMPTY && !player.isSneaking() && isChest(block)) {
+            ActionResult result = state.onUse(world, player, new BlockHitResult(
+                    player.getPos(),
+                    frame.getFacing().getOpposite(),
+                    chestPos, false)
+            );
+
+            if (result.isAccepted() && !world.isClient()) {
+                player.swingHand(hand, true);
+                cir.setReturnValue(result);
+                cir.cancel();
+            }
         }
+
+        if (!player.isSneaking() || !stack.isOf(Items.PHANTOM_MEMBRANE) || frame.isInvisible()) return;
 
         frame.setInvisible(true);
         stack.damage(1, player, EquipmentSlot.MAINHAND);
@@ -49,5 +70,9 @@ public class ItemFrameMixin {
 
         cir.setReturnValue(ActionResult.SUCCESS);
         cir.cancel();
+    }
+
+    private boolean isChest(Block block) {
+        return (block == Blocks.CHEST || block == Blocks.TRAPPED_CHEST || block == Blocks.ENDER_CHEST);
     }
 }
