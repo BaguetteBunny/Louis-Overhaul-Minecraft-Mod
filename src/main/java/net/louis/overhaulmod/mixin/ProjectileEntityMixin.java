@@ -59,7 +59,7 @@ public class ProjectileEntityMixin {
         ) {
             EntityHitResult entityHitResult = (EntityHitResult)hitResult;
             Entity entity = entityHitResult.getEntity();
-            entity.timeUntilRegen = 0;
+            entity.timeUntilRegen = 1;
         }
     }
 }

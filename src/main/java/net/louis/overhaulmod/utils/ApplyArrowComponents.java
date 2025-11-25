@@ -15,6 +15,9 @@ public class ApplyArrowComponents {
         if (components.contains(ModComponents.ARROW_FOOT)) {
             if (Items.PHANTOM_MEMBRANE.equals(components.get(ModComponents.ARROW_FOOT))) {
                 arrow.setVelocity(arrow.getVelocity().normalize().multiply(2.25f));}
+
+            if (Items.ARMADILLO_SCUTE.equals(components.get(ModComponents.ARROW_FOOT))) {
+                DespawnManager.addDespawnTimerToEntity(arrow, 200);}
         }
 
         if (components.contains(ModComponents.ARROW_SHAFT)) {
