@@ -18,35 +18,43 @@ public class ModEnchantmentTagProvider extends FabricTagProvider.EnchantmentTagP
         getOrCreateTagBuilder(EnchantmentTags.IN_ENCHANTING_TABLE)
                 .add(ModEnchantments.VAMPIRISM)
                 .add(ModEnchantments.SMELTING)
-                .add(ModEnchantments.TILLING);
+                .add(ModEnchantments.TILLING)
+                .add(ModEnchantments.GIANT_KILLER);
 
         getOrCreateTagBuilder(EnchantmentTags.TRADEABLE)
                 .add(ModEnchantments.VAMPIRISM)
-                .add(ModEnchantments.TILLING);
+                .add(ModEnchantments.TILLING)
+                .add(ModEnchantments.GIANT_KILLER);
 
         getOrCreateTagBuilder(EnchantmentTags.ON_MOB_SPAWN_EQUIPMENT)
                 .add(ModEnchantments.VAMPIRISM)
-                .add(ModEnchantments.TILLING);
+                .add(ModEnchantments.TILLING)
+                .add(ModEnchantments.GIANT_KILLER);
 
         getOrCreateTagBuilder(EnchantmentTags.ON_RANDOM_LOOT)
                 .add(ModEnchantments.VAMPIRISM)
                 .add(ModEnchantments.SMELTING)
-                .add(ModEnchantments.TILLING);
+                .add(ModEnchantments.TILLING)
+                .add(ModEnchantments.GIANT_KILLER);
 
         getOrCreateTagBuilder(EnchantmentTags.ON_TRADED_EQUIPMENT)
                 .add(ModEnchantments.VAMPIRISM)
-                .add(ModEnchantments.TILLING);
+                .add(ModEnchantments.TILLING)
+                .add(ModEnchantments.GIANT_KILLER);
 
         getOrCreateTagBuilder(EnchantmentTags.DOUBLE_TRADE_PRICE)
                 .add(ModEnchantments.VAMPIRISM)
-                .add(ModEnchantments.TILLING);
+                .add(ModEnchantments.TILLING)
+                .add(ModEnchantments.GIANT_KILLER);
 
         getOrCreateTagBuilder(EnchantmentTags.NON_TREASURE)
                 .add(ModEnchantments.VAMPIRISM)
-                .add(ModEnchantments.TILLING);
+                .add(ModEnchantments.TILLING)
+                .add(ModEnchantments.GIANT_KILLER);
 
         getOrCreateTagBuilder(EnchantmentTags.TREASURE)
-                .add(ModEnchantments.SMELTING);
+                .add(ModEnchantments.SMELTING)
+                .add(ModEnchantments.GIANT_KILLER);
 
     }
 }

@@ -3,6 +3,7 @@ package net.louis.overhaulmod.mixin;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.damage.DamageTypes;
 import net.minecraft.entity.mob.BlazeEntity;
@@ -114,6 +115,14 @@ public class EnchantmentMixin {
                 float currentDamage = damage.getValue();
                 float bonusDamage = 2.5f * level;
                 damage.setValue(currentDamage + bonusDamage);
+            }
+            ci.cancel();
+        }
+
+        if (enchantId.equals("giant_killer") && target instanceof LivingEntity living) {
+            if (living.getHealth() > 20) {
+                float damageBoost = Math.min(level * (living.getHealth() - 20.f) / 10.f, 10.f);
+                damage.setValue(damage.getValue() + damageBoost);
             }
             ci.cancel();
         }

@@ -1,4 +1,4 @@
-// 1.21.1	2025-11-22T18:14:47.0087573	Louis' Overhaul Mod/Model Definitions
+// 1.21.1	2025-11-28T01:15:29.8566041	Louis' Overhaul Mod/Model Definitions
 e5a33b4a2db42195222fa1709b3d9533ac41e453 assets\louis-overhaul-mod\blockstates\magenta_water_block.json
 e5a33b4a2db42195222fa1709b3d9533ac41e453 assets\louis-overhaul-mod\blockstates\yellow_water_block.json
 2233459e735bb9ba4e7cdfcbdb491240fbfcf224 assets\louis-overhaul-mod\models\block\blue_concrete_stairs.json
@@ -153,8 +153,8 @@ a5fa774a8feb5901423aeffd65f07e34143388e7 assets\louis-overhaul-mod\models\item\b
 dc6d0214caf685f733c52d2abaa1af054abffd13 assets\louis-overhaul-mod\models\block\lavender_quartz_pillar.json
 d61dfe150a72a97327b5b79acac96c5fb2c9fd30 assets\minecraft\models\block\smooth_stone.json
 e730f02c15cbc65f6252573dc789cac4d2d93179 assets\louis-overhaul-mod\blockstates\white_concrete_slab.json
-697444fe1a2e53f16a640394f21642aa4d503bdb assets\louis-overhaul-mod\models\item\endermite_heart.json
 4b325a4c406f3044c6ed498bece9b110f4436c2b assets\louis-overhaul-mod\models\block\glow_lantern_hanging.json
+697444fe1a2e53f16a640394f21642aa4d503bdb assets\louis-overhaul-mod\models\item\endermite_heart.json
 7fc74cbbb9b3ad7d240562f863841db81ff34dde assets\louis-overhaul-mod\models\item\yellow_concrete_slab.json
 7a9f5a001c698a6ab7541207fbad70609128d9a7 assets\louis-overhaul-mod\models\block\red_concrete_stairs_inner.json
 b5f304245dbc8474c49b61668b3996aec17f7ba3 assets\louis-overhaul-mod\models\block\orange_concrete_wall_post.json
@@ -283,8 +283,8 @@ b8f78f0ac849c09dd1d7a1383d4f403bcb5d0c51 assets\louis-overhaul-mod\models\block\
 971f9effc0d72a0c9ec3d2ee55e83eb003eba0cd assets\louis-overhaul-mod\models\block\polished_diorite_wall_inventory.json
 cad9b94d1f83bf29c17a55b04977a13905f79413 assets\louis-overhaul-mod\models\item\rose_quartz_stairs.json
 46e0177af589a595589b804083b4a7ec7b3a37c4 assets\louis-overhaul-mod\models\block\purpur_wall_side.json
-2c6f34826fb31dd21f7bedecf3c0eb178e6b9604 assets\minecraft\blockstates\light_gray_concrete.json
 521091c9a3c556401c23bfc82532d8a3b3bc7a79 assets\louis-overhaul-mod\blockstates\chiseled_deepslate_bricks.json
+2c6f34826fb31dd21f7bedecf3c0eb178e6b9604 assets\minecraft\blockstates\light_gray_concrete.json
 31a0069c0644bd1fd203e2b12479707c88371d5a assets\minecraft\blockstates\stone.json
 a40fc4b2813edf402182eb1c8d7922fd3ed1faef assets\louis-overhaul-mod\models\block\chiseled_deepslate_bricks.json
 ec3f773b032ee7897b48129ba9e2237cbd484479 assets\louis-overhaul-mod\models\block\chiseled_prismarine_bricks.json
@@ -296,8 +296,8 @@ fe426982e012579f0aa75cfbb7ae517d5dac9ae3 assets\louis-overhaul-mod\blockstates\c
 0768de05726c65ccba113612872b016635d973da assets\minecraft\models\block\cyan_concrete.json
 1e465788babd37f5fa78971f2e0d091612a20397 assets\louis-overhaul-mod\models\item\magenta_concrete_wall.json
 a939be937078ae97ad698d3e3b39c1e6f0d6377f assets\louis-overhaul-mod\blockstates\lime_concrete_wall.json
-ed2ee7563312d673bcef599ae0255765f64107a2 assets\minecraft\models\block\polished_granite.json
 094a4bc94b6b12eb2030d55a5e4320f547d17eb4 assets\louis-overhaul-mod\models\block\dark_prismarine_wall_inventory.json
+ed2ee7563312d673bcef599ae0255765f64107a2 assets\minecraft\models\block\polished_granite.json
 89359d01b2032ccdb8db74934fb4a37948c44f0d assets\louis-overhaul-mod\models\block\purpur_wall_post.json
 0809079f37716853902a651c5ae1c4e90ea76ceb assets\louis-overhaul-mod\models\block\gray_concrete_wall_post.json
 f46a5c8066d093aa25b9999c50a7886601f34c46 assets\louis-overhaul-mod\models\item\smooth_sandstone_wall.json
@@ -342,8 +342,8 @@ fd3dfe1f7de24a1defbad9c3857426c29aa7d222 assets\minecraft\blockstates\gray_concr
 87fe0a071c9540d1231ba39dc29b895bf2fd62ba assets\louis-overhaul-mod\models\block\end_stone_wall_inventory.json
 fea7f33e6269f5199480063c25897980042ab4b0 assets\louis-overhaul-mod\models\block\cracked_tuff_bricks.json
 9f98a962f9564fe3f6af06486615ed3aa5e0b5ad assets\louis-overhaul-mod\models\block\orange_concrete_stairs_outer.json
-fe7b8d4cc4a7097c73dafe8b0141837eae1c2914 assets\louis-overhaul-mod\models\item\quartz_bricks_slab.json
 4f7f00393d6e62fff0df6675611ab929a136d829 assets\louis-overhaul-mod\models\item\brown_concrete_stairs.json
+fe7b8d4cc4a7097c73dafe8b0141837eae1c2914 assets\louis-overhaul-mod\models\item\quartz_bricks_slab.json
 205f90b0224cf03801fa1b25f8ed99e393e1b8d2 assets\louis-overhaul-mod\models\block\magenta_concrete_slab_top.json
 f3d5febd805c85d5aee652341cb7d2ad710658e0 assets\louis-overhaul-mod\models\block\light_gray_concrete_slab.json
 3e890582a9b4642bba1669797088537a9eb07fed assets\louis-overhaul-mod\blockstates\cracked_end_stone_bricks.json
@@ -426,8 +426,8 @@ a4af617fefda8ae2359d3a765bf4c4ee554691cb assets\louis-overhaul-mod\models\block\
 b708c3e5809a3a7cc6e4fcfd84e29bf90520b592 assets\louis-overhaul-mod\blockstates\rose_quartz_wall.json
 fa1977f90990009d85788dccd52aca88acbc5dd1 assets\louis-overhaul-mod\models\item\cracked_quartz_bricks.json
 24aa17d5d7239248f15086d2f5a33dd5a8659767 assets\louis-overhaul-mod\models\item\light_gray_concrete_wall.json
-af6e4d9ff46be8ed7e01f84c4654360feb1b4619 assets\louis-overhaul-mod\models\block\smooth_red_sandstone_wall_side.json
 3c128b9b4cbf96599ede93bb93d29caaf55fcac7 assets\louis-overhaul-mod\models\item\blue_concrete_slab.json
+af6e4d9ff46be8ed7e01f84c4654360feb1b4619 assets\louis-overhaul-mod\models\block\smooth_red_sandstone_wall_side.json
 60bb8cb900eb7192fedf104e0182c9a9746daa1b assets\louis-overhaul-mod\models\block\pink_concrete_stairs_outer.json
 31931639f6560886512b2cc1e307f54243425603 assets\louis-overhaul-mod\models\block\yellow_concrete_wall_inventory.json
 dc65e47c51577544732ff4fcf20b61bb5715c007 assets\louis-overhaul-mod\models\item\white_concrete_stairs.json
@@ -462,10 +462,10 @@ bd8575208556fcf4fb00e7c4c7028717c7006447 assets\louis-overhaul-mod\blockstates\p
 15e401f318958991c3e6e3ce2c5192db9d7a7cb2 assets\louis-overhaul-mod\blockstates\calcite_slab.json
 ba26cb64e508f86f3689273a0a38e28b383972c0 assets\louis-overhaul-mod\models\item\dripstone_wall.json
 fbfa025fa04fd7c63201305b1ec00048d4ce15aa assets\louis-overhaul-mod\models\block\light_gray_concrete_stairs.json
-e5a33b4a2db42195222fa1709b3d9533ac41e453 assets\louis-overhaul-mod\blockstates\blue_water_block.json
 4bde48adeca4c55f5d204e66893ed6fad2ab45e7 assets\minecraft\blockstates\white_concrete.json
-958c66f668378cf6e9cb11be953424d745d29bfe assets\louis-overhaul-mod\blockstates\purple_concrete_wall.json
+e5a33b4a2db42195222fa1709b3d9533ac41e453 assets\louis-overhaul-mod\blockstates\blue_water_block.json
 e5a33b4a2db42195222fa1709b3d9533ac41e453 assets\louis-overhaul-mod\blockstates\white_water_block.json
+958c66f668378cf6e9cb11be953424d745d29bfe assets\louis-overhaul-mod\blockstates\purple_concrete_wall.json
 4a8c56c3fe1623f1d59e544a2dd18f9081e91976 assets\louis-overhaul-mod\blockstates\light_gray_concrete_slab.json
 fc5bf587f4c0f70080be92fb521aedbf70caf435 assets\minecraft\models\block\gray_concrete.json
 5f76aeab444078a4c5447109d1233624cbe0ef2c assets\louis-overhaul-mod\models\block\lavender_quartz_column.json
@@ -483,8 +483,8 @@ b9a665096cad6f6cba03a4a6d3a091aa052c16ed assets\louis-overhaul-mod\models\block\
 e8d1d4737036b0984edfd637dbb7f8bca9449500 assets\louis-overhaul-mod\models\block\cyan_concrete_stairs.json
 bccb211942c79c9799e1def7d72b060135ec12e1 assets\louis-overhaul-mod\models\item\chiseled_mossy_stone_bricks.json
 71d75b01fc9178fe3a83af93659f70da3518d752 assets\louis-overhaul-mod\models\block\end_stone_button_pressed.json
-09ee286a3597fb7a0a6e55fd971082d6cd63eb5a assets\louis-overhaul-mod\blockstates\chiseled_dark_prismarine.json
 b6b9cff871b6bfc2f5d9e5053c74219d0a5373be assets\louis-overhaul-mod\models\block\red_concrete_stairs_outer.json
+09ee286a3597fb7a0a6e55fd971082d6cd63eb5a assets\louis-overhaul-mod\blockstates\chiseled_dark_prismarine.json
 ff8891661b3ab79366a4232b118079cf7810047b assets\louis-overhaul-mod\models\item\lavender_quartz_bricks.json
 ff65b5c74f9a3700d86eedb63cbedebe0ad42314 assets\louis-overhaul-mod\models\item\bat_fang.json
 687cfe370db1b0309b494276c28312cb0573d148 assets\louis-overhaul-mod\models\item\smooth_quartz_wall.json
@@ -541,8 +541,8 @@ d8f96dd88538e79f6528d85f044cc449a0d92cf6 assets\minecraft\models\block\dripstone
 67e2586abb60a7c02e68b2597564a9009e1bf77b assets\louis-overhaul-mod\models\item\lavender_quartz_slab.json
 86c27ecad848ceec2605f0375e86c0f2ee2a73d4 assets\louis-overhaul-mod\models\block\black_concrete_wall_post.json
 353d3ec67c7dafef425dcd57635b9b39e659a54c assets\louis-overhaul-mod\models\block\brown_concrete_slab.json
-3c43a9c78d0e84eff2d483cc01a1b68438c10f6b assets\minecraft\blockstates\orange_concrete.json
 bee9680f24150757d0071a6ae18e940430df2b82 assets\louis-overhaul-mod\blockstates\orange_concrete_slab.json
+3c43a9c78d0e84eff2d483cc01a1b68438c10f6b assets\minecraft\blockstates\orange_concrete.json
 44a23412498474e5bb85c0231817ac85913b416a assets\louis-overhaul-mod\models\block\light_gray_concrete_slab_top.json
 6253f69d594648e16a82fefb6e36c029aa07796b assets\louis-overhaul-mod\models\block\lavender_quartz_slab.json
 91773f8b0d18616f8c982cc8d072988cad020eb1 assets\louis-overhaul-mod\models\block\light_blue_concrete_slab.json
@@ -594,11 +594,11 @@ e2ea261d292b0b04ad2058640d65a701e1007adb assets\louis-overhaul-mod\models\block\
 f8b6f093886e1d7c4916c63dd2f938e831af957b assets\minecraft\blockstates\cut_sandstone.json
 42c6ad051abaa26727fcbfe7d003f39b358cff9a assets\louis-overhaul-mod\models\block\calcite_wall_side_tall.json
 081c981f0e7afef3a5778958e28dc831477a75c6 assets\louis-overhaul-mod\models\block\lime_concrete_stairs_outer.json
-a1561298b33c85776b0b8dd48bd50f8441b64d49 assets\louis-overhaul-mod\blockstates\rose_quartz_stairs.json
 c3045c4f01b27dc88757ecd6236d9ac00fe12973 assets\louis-overhaul-mod\blockstates\lavender_quartz_slab.json
+a1561298b33c85776b0b8dd48bd50f8441b64d49 assets\louis-overhaul-mod\blockstates\rose_quartz_stairs.json
 11abb6d79b2f41fae228ffad3f60184eff764c25 assets\louis-overhaul-mod\models\block\end_stone_stairs.json
-f75d60911047ee0b590835494d649f7dafe88d32 assets\louis-overhaul-mod\blockstates\dark_prismarine_wall.json
 2bbb1ee6b4ac274b2732796c6613c434aecfee4c assets\louis-overhaul-mod\blockstates\prismarine_wall.json
+f75d60911047ee0b590835494d649f7dafe88d32 assets\louis-overhaul-mod\blockstates\dark_prismarine_wall.json
 87f088da91bd1c8909ffad23602bf17264a431fa assets\louis-overhaul-mod\models\item\polished_diorite_wall.json
 09d3cbac1dd174d6ebb6070913c842e370f51583 assets\louis-overhaul-mod\models\item\calcite_wall.json
 f69d251dfd4016090ef739c921922dfc54f24a3b assets\louis-overhaul-mod\models\block\orange_concrete_slab.json

@@ -23,6 +23,8 @@ public class ModEnchantments {
             RegistryKey.of(RegistryKeys.ENCHANTMENT, Identifier.of(LouisOverhaulMod.MOD_ID, "tilling"));
     public static final RegistryKey<Enchantment> FIRE_BLAST =
             RegistryKey.of(RegistryKeys.ENCHANTMENT, Identifier.of(LouisOverhaulMod.MOD_ID, "fire_blast"));
+    public static final RegistryKey<Enchantment> GIANT_KILLER =
+            RegistryKey.of(RegistryKeys.ENCHANTMENT, Identifier.of(LouisOverhaulMod.MOD_ID, "giant_killer"));
 
     public static void bootstrap(Registerable<Enchantment> registerable) {
         var enchantments = registerable.getRegistryLookup(RegistryKeys.ENCHANTMENT);
@@ -74,6 +76,17 @@ public class ModEnchantments {
                         0,
                         AttributeModifierSlot.MAINHAND))
                 .exclusiveSet(enchantments.getOrThrow(EnchantmentTags.MINING_EXCLUSIVE_SET)));
+
+        register(registerable, GIANT_KILLER, Enchantment.builder(Enchantment.definition(
+                        items.getOrThrow(ItemTags.WEAPON_ENCHANTABLE),
+                        items.getOrThrow(ItemTags.WEAPON_ENCHANTABLE),
+                        2,
+                        5,
+                        Enchantment.leveledCost(5, 8),
+                        Enchantment.leveledCost(25, 8),
+                        0,
+                        AttributeModifierSlot.MAINHAND))
+                .exclusiveSet(enchantments.getOrThrow(EnchantmentTags.DAMAGE_EXCLUSIVE_SET)));
     }
 
     private static void register(Registerable<Enchantment> registry, RegistryKey<Enchantment> key, Enchantment.Builder builder) {
