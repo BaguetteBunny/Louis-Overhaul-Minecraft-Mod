@@ -1,17 +1,23 @@
 package net.louis.overhaulmod.utils;
 
+import net.louis.overhaulmod.enchantments.ModEnchantments;
 import net.louis.overhaulmod.item.ModItems;
 import net.fabricmc.fabric.api.loot.v3.LootTableEvents;
+import net.minecraft.component.ComponentMap;
+import net.minecraft.component.DataComponentTypes;
+import net.minecraft.component.type.ItemEnchantmentsComponent;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.Items;
 import net.minecraft.loot.LootPool;
 import net.minecraft.loot.LootTable;
+import net.minecraft.loot.LootTables;
 import net.minecraft.loot.condition.KilledByPlayerLootCondition;
 import net.minecraft.loot.condition.RandomChanceLootCondition;
 import net.minecraft.loot.condition.RandomChanceWithEnchantedBonusLootCondition;
 import net.minecraft.loot.entry.ItemEntry;
 import net.minecraft.loot.function.EnchantedCountIncreaseLootFunction;
+import net.minecraft.loot.function.SetComponentsLootFunction;
 import net.minecraft.loot.function.SetCountLootFunction;
 import net.minecraft.loot.function.SetPotionLootFunction;
 import net.minecraft.loot.provider.number.ConstantLootNumberProvider;
@@ -177,6 +183,24 @@ public class ModLootTableModifiers {
                         .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)).build())
                         .apply(EnchantedCountIncreaseLootFunction.builder(registry, UniformLootNumberProvider.create(1.0f, 1.0f)).build());
                 tableBuilder.pool(poolBuilder.build());
+            }
+
+            // Add Fire Blast to Nether Chests
+            if (LootTables.NETHER_BRIDGE_CHEST.equals(key)) {
+                RegistryEntry<Enchantment> fireStrike = registry.getWrapperOrThrow(RegistryKeys.ENCHANTMENT)
+                        .getOrThrow(ModEnchantments.FIRE_BLAST);
+
+                ItemEnchantmentsComponent.Builder enchantmentBuilder =
+                        new ItemEnchantmentsComponent.Builder(ItemEnchantmentsComponent.DEFAULT);
+                enchantmentBuilder.add(fireStrike, 1);
+
+                LootPool.Builder poolBuilder = LootPool.builder()
+                        .rolls(ConstantLootNumberProvider.create(1))
+                        .conditionally(RandomChanceLootCondition.builder(0.012f))
+                        .with(ItemEntry.builder(Items.ENCHANTED_BOOK)
+                                .apply(SetComponentsLootFunction.builder(DataComponentTypes.STORED_ENCHANTMENTS, enchantmentBuilder.build())));
+
+                tableBuilder.pool(poolBuilder);
             }
         });
     }
