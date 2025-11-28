@@ -22,10 +22,8 @@ import net.minecraft.component.type.ProfileComponent;
 import net.minecraft.entity.*;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.decoration.ArmorStandEntity;
-import net.minecraft.entity.mob.BlazeEntity;
 import net.minecraft.entity.mob.ShulkerEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.projectile.FireballEntity;
 import net.minecraft.entity.projectile.LlamaSpitEntity;
 import net.minecraft.entity.projectile.SmallFireballEntity;
 import net.minecraft.item.*;
@@ -56,7 +54,7 @@ public class ModUseEvents {
         UseBlockCallback.EVENT.register(ModUseEvents::useOnSuspiciousBlock);
         UseBlockCallback.EVENT.register(ModUseEvents::oxidizeCopperWithClock);
         UseBlockCallback.EVENT.register(ModUseEvents::retexturePlayerHead);
-        UseBlockCallback.EVENT.register(ModUseEvents::useChilledBonemeal);
+        UseBlockCallback.EVENT.register(ModUseEvents::useBonemealOnOtherCrops);
         UseBlockCallback.EVENT.register(ModUseEvents::rcHarvest);
 
         UseItemCallback.EVENT.register(ModUseEvents::getLlamaSpitBottle);
@@ -196,9 +194,9 @@ public class ModUseEvents {
         return ActionResult.PASS;
     }
 
-    private static ActionResult useChilledBonemeal(PlayerEntity player, World world, Hand hand, BlockHitResult hitResult) {
+    private static ActionResult useBonemealOnOtherCrops(PlayerEntity player, World world, Hand hand, BlockHitResult hitResult) {
         ItemStack heldItem = player.getStackInHand(hand);
-        if (world.isClient() || !heldItem.isOf(ModItems.CHILLED_BONE_MEAL)) {
+        if (world.isClient() || !heldItem.isOf(Items.BONE_MEAL)) {
             return ActionResult.PASS;
         }
 
@@ -451,7 +449,6 @@ public class ModUseEvents {
 
         return TypedActionResult.success(stack, world.isClient());
     }
-
 
     private static ActionResult changeArmorStandVariant(PlayerEntity player, World world, Hand hand, Entity entity, @Nullable EntityHitResult entityHitResult) {
         ItemStack stack = player.getMainHandStack();
