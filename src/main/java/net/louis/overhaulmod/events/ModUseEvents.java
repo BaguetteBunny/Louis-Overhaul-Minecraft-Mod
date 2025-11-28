@@ -7,6 +7,7 @@ import net.fabricmc.fabric.api.event.player.UseEntityCallback;
 import net.fabricmc.fabric.api.event.player.UseItemCallback;
 import net.louis.overhaulmod.entity.projectile.thrown.BrickEntity;
 import net.louis.overhaulmod.entity.projectile.thrown.NetherBrickEntity;
+import net.louis.overhaulmod.entity.projectile.thrown.PurifiedWaterEntity;
 import net.louis.overhaulmod.item.ModItems;
 import net.louis.overhaulmod.mixin.accessor.ArmorStandEntityAccessor;
 import net.louis.overhaulmod.mixin.accessor.BrushableBlockEntityAccessor;
@@ -72,6 +73,7 @@ public class ModUseEvents {
     public static void registerProjectileItems() {
         UseItemCallback.EVENT.register(ModUseEvents::useBrick);
         UseItemCallback.EVENT.register(ModUseEvents::useNetherBrick);
+        UseItemCallback.EVENT.register(ModUseEvents::usePurifiedWaterBottle);
     }
 
     private static ActionResult oxidizeCopperWithClock(PlayerEntity player, World world, Hand hand, BlockHitResult hitResult) {
@@ -431,6 +433,25 @@ public class ModUseEvents {
 
         return TypedActionResult.success(stack, world.isClient());
     }
+
+    private static TypedActionResult<ItemStack> usePurifiedWaterBottle(PlayerEntity player, World world, Hand hand) {
+        ItemStack stack = player.getStackInHand(hand);
+
+        if (!stack.isOf(ModItems.PURIFIED_WATER_BOTTLE) || player.getItemCooldownManager().isCoolingDown(ModItems.PURIFIED_WATER_BOTTLE)) return TypedActionResult.pass(player.getStackInHand(hand));
+
+        world.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.ENTITY_SPLASH_POTION_THROW,
+                SoundCategory.PLAYERS, 0.5F, 0.4F / (world.getRandom().nextFloat() * 0.4F + 0.8F));
+        PurifiedWaterEntity purifiedWaterEntity = new PurifiedWaterEntity(world, player);
+        purifiedWaterEntity.setItem(stack);
+        purifiedWaterEntity.setVelocity(player, player.getPitch(), player.getYaw(), -10.0F, 1.0F, 1.0F);
+        world.spawnEntity(purifiedWaterEntity);
+
+        stack.decrementUnlessCreative(1, player);
+        player.getItemCooldownManager().set(ModItems.PURIFIED_WATER_BOTTLE, 5);
+
+        return TypedActionResult.success(stack, world.isClient());
+    }
+
 
     private static ActionResult changeArmorStandVariant(PlayerEntity player, World world, Hand hand, Entity entity, @Nullable EntityHitResult entityHitResult) {
         ItemStack stack = player.getMainHandStack();

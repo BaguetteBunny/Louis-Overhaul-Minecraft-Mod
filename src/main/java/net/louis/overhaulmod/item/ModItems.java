@@ -32,6 +32,9 @@ public class ModItems {
     public static final Item RED_WATER_BUCKET = registerItem("red_water_bucket", new BucketItem(ModFluids.STILL_RED_WATER, new Item.Settings().maxCount(1).recipeRemainder(Items.BUCKET)));
     public static final Item BLACK_WATER_BUCKET = registerItem("black_water_bucket", new BucketItem(ModFluids.STILL_BLACK_WATER, new Item.Settings().maxCount(1).recipeRemainder(Items.BUCKET)));
 
+    public static final Item PURIFIED_WATER_BOTTLE = registerItem("purified_water_bottle",
+            new Item(new Item.Settings().maxCount(1)));
+
     public static final Item ADVANCED_ARROW = registerItem("advanced_arrow",
             new ArrowItem(new Item.Settings()));
     public static final Item CHILLED_BONE = registerItem("chilled_bone",
@@ -149,6 +152,7 @@ public class ModItems {
             entries.add(FISH_STEW);
             entries.add(ROTTEN_STEW);
             entries.add(VEGETABLE_STEW);
+            entries.add(PURIFIED_WATER_BOTTLE);
         });
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.TOOLS).register(entries -> {
             entries.add(AMETHYST_DAGGER);

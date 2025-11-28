@@ -16,10 +16,7 @@ import net.minecraft.loot.condition.KilledByPlayerLootCondition;
 import net.minecraft.loot.condition.RandomChanceLootCondition;
 import net.minecraft.loot.condition.RandomChanceWithEnchantedBonusLootCondition;
 import net.minecraft.loot.entry.ItemEntry;
-import net.minecraft.loot.function.EnchantedCountIncreaseLootFunction;
-import net.minecraft.loot.function.SetComponentsLootFunction;
-import net.minecraft.loot.function.SetCountLootFunction;
-import net.minecraft.loot.function.SetPotionLootFunction;
+import net.minecraft.loot.function.*;
 import net.minecraft.loot.provider.number.ConstantLootNumberProvider;
 import net.minecraft.loot.provider.number.UniformLootNumberProvider;
 import net.minecraft.potion.Potions;
@@ -200,6 +197,22 @@ public class ModLootTableModifiers {
                         .with(ItemEntry.builder(Items.ENCHANTED_BOOK)
                                 .apply(SetComponentsLootFunction.builder(DataComponentTypes.STORED_ENCHANTMENTS, enchantmentBuilder.build())));
 
+                tableBuilder.pool(poolBuilder);
+            }
+
+            // Add Purified Water to Desert Well & Temples
+            if (LootTables.DESERT_WELL_ARCHAEOLOGY.equals(key)) {
+                LootPool.Builder poolBuilder = LootPool.builder()
+                        .rolls(ConstantLootNumberProvider.create(1))
+                        .conditionally(RandomChanceLootCondition.builder(0.333f))
+                        .with(ItemEntry.builder(ModItems.PURIFIED_WATER_BOTTLE).weight(1));
+                tableBuilder.pool(poolBuilder);
+            }
+            if (LootTables.DESERT_PYRAMID_ARCHAEOLOGY.equals(key)) {
+                LootPool.Builder poolBuilder = LootPool.builder()
+                        .rolls(ConstantLootNumberProvider.create(1))
+                        .conditionally(RandomChanceLootCondition.builder(0.125f))
+                        .with(ItemEntry.builder(ModItems.PURIFIED_WATER_BOTTLE).weight(1));
                 tableBuilder.pool(poolBuilder);
             }
         });

@@ -157,6 +157,7 @@ public class ModModelProvider extends FabricModelProvider {
 
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
+        itemModelGenerator.register(ModItems.PURIFIED_WATER_BOTTLE, Models.GENERATED);
         itemModelGenerator.register(ModItems.CHILLED_BONE, Models.GENERATED);
         itemModelGenerator.register(ModItems.SANDY_FLESH, Models.GENERATED);
         itemModelGenerator.register(ModItems.BAT_FANG, Models.GENERATED);
