@@ -9,12 +9,14 @@ import net.louis.overhaulmod.cauldron.custom.ColoredWaterCauldronBlock;
 import net.louis.overhaulmod.cauldron.custom.DragonBreathCauldronBlock;
 import net.louis.overhaulmod.cauldron.custom.HoneyCauldronBlock;
 import net.minecraft.block.*;
+import net.minecraft.block.enums.NoteBlockInstrument;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.sound.BlockSoundGroup;
+import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 
 public class ModBlocks {
@@ -33,6 +35,14 @@ public class ModBlocks {
 
     public static final Block GLOW_LANTERN = registerBlock("glow_lantern",
             new LanternBlock(AbstractBlock.Settings.copy(Blocks.SOUL_LANTERN)));
+
+    // BONE BLOCKS
+    public static final Block CHILLED_BONE_BLOCK = registerBlock("chilled_bone_block",
+            new PillarBlock(AbstractBlock.Settings.copy(Blocks.BONE_BLOCK).mapColor(DyeColor.LIGHT_BLUE).slipperiness(0.98f)));
+    public static final Block TOXIC_BONE_BLOCK = registerBlock("toxic_bone_block",
+            new PillarBlock(AbstractBlock.Settings.copy(Blocks.BONE_BLOCK).mapColor(DyeColor.LIME)));
+    public static final Block DECREPIT_BONE_BLOCK = registerBlock("decrepit_bone_block",
+            new PillarBlock(AbstractBlock.Settings.copy(Blocks.BONE_BLOCK).mapColor(DyeColor.BLACK)));
 
     // ENDSTONE FAMILY
     public static final Block END_STONE_SLAB = registerBlock("end_stone_slab",
@@ -283,6 +293,10 @@ public class ModBlocks {
         });
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(entries -> {
             entries.add(ModBlocks.GLOW_LANTERN);
+
+            entries.add(ModBlocks.CHILLED_BONE_BLOCK);
+            entries.add(ModBlocks.TOXIC_BONE_BLOCK);
+            entries.add(ModBlocks.DECREPIT_BONE_BLOCK);
 
             entries.add(ModBlocks.ROSE_QUARTZ_BRICKS);
             entries.add(ModBlocks.ROSE_QUARTZ_PILLAR);

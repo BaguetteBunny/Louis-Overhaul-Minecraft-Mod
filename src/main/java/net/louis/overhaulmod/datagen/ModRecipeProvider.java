@@ -388,6 +388,14 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .input(ModItems.CHILLED_BONE)
                 .criterion(hasItem(ModItems.CHILLED_BONE), conditionsFromItem(ModItems.CHILLED_BONE))
                 .offerTo(exporter);
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.TOXIC_BONE, 3)
+                .input(ModItems.TOXIC_BONE)
+                .criterion(hasItem(ModItems.TOXIC_BONE), conditionsFromItem(ModItems.TOXIC_BONE))
+                .offerTo(exporter);
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.DECREPIT_BONE_MEAL, 3)
+                .input(ModItems.DECREPIT_BONE)
+                .criterion(hasItem(ModItems.DECREPIT_BONE), conditionsFromItem(ModItems.DECREPIT_BONE))
+                .offerTo(exporter);
 
         // MISC
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.ADVANCED_FLETCHING_TABLE, 1)
@@ -444,6 +452,28 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .input('S', Items.STRING)
                 .input('B', ModItems.BAT_FANG)
                 .criterion(hasItem(Items.RABBIT_HIDE), conditionsFromItem(Items.RABBIT_HIDE))
+                .offerTo(exporter);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.CHILLED_BONE_BLOCK, 1)
+                .pattern("AAA")
+                .pattern("AAA")
+                .pattern("AAA")
+                .input('A', ModItems.CHILLED_BONE_MEAL)
+                .criterion(hasItem(ModItems.CHILLED_BONE_MEAL), conditionsFromItem(ModItems.CHILLED_BONE_MEAL))
+                .offerTo(exporter);
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.TOXIC_BONE_BLOCK, 1)
+                .pattern("AAA")
+                .pattern("AAA")
+                .pattern("AAA")
+                .input('A', ModItems.TOXIC_BONE_MEAL)
+                .criterion(hasItem(ModItems.TOXIC_BONE_MEAL), conditionsFromItem(ModItems.TOXIC_BONE_MEAL))
+                .offerTo(exporter);
+        ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, ModBlocks.DECREPIT_BONE_BLOCK, 1)
+                .pattern("AAA")
+                .pattern("AAA")
+                .pattern("AAA")
+                .input('A', ModItems.DECREPIT_BONE_MEAL)
+                .criterion(hasItem(ModItems.DECREPIT_BONE_MEAL), conditionsFromItem(ModItems.DECREPIT_BONE_MEAL))
                 .offerTo(exporter);
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.BUILDING_BLOCKS, Blocks.CRYING_OBSIDIAN, 8)

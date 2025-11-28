@@ -56,6 +56,7 @@ public class ModUseEvents {
         UseBlockCallback.EVENT.register(ModUseEvents::oxidizeCopperWithClock);
         UseBlockCallback.EVENT.register(ModUseEvents::retexturePlayerHead);
         UseBlockCallback.EVENT.register(ModUseEvents::useBonemealOnOtherCrops);
+        UseBlockCallback.EVENT.register(ModUseEvents::useDecrepitBonemealOnCrops);
         UseBlockCallback.EVENT.register(ModUseEvents::rcHarvest);
 
         UseItemCallback.EVENT.register(ModUseEvents::getLlamaSpitBottle);
@@ -266,6 +267,48 @@ public class ModUseEvents {
             }
         }
 
+        // Case 5: VINES
+        if (targetBlock instanceof VineBlock) {
+            BlockPos checkDownPos = pos;
+            for (int j = 0; j < 9; j++) {
+                checkDownPos = checkDownPos.down();
+                if (world.isAir(checkDownPos)) {
+                    world.setBlockState(checkDownPos, blockState, Block.NOTIFY_ALL);
+                    world.playSound(null, pos, SoundEvents.ITEM_BONE_MEAL_USE,
+                            SoundCategory.PLAYERS, 1.0F, 0.5F);
+                    ((ServerWorld) world).spawnParticles(
+                            ParticleTypes.HAPPY_VILLAGER,
+                            x,
+                            y,
+                            z,
+                            10,
+                            0.5, 0.5, 0.5,
+                            0.2
+                    );
+                    return ActionResult.SUCCESS;
+                }
+                else if (!world.getBlockState(pos).isOf(Blocks.VINE)) {
+                    break;
+                }
+            }
+        }
+        return ActionResult.PASS;
+    }
+
+    private static ActionResult useDecrepitBonemealOnCrops(PlayerEntity player, World world, Hand hand, BlockHitResult hitResult) {
+        ItemStack heldItem = player.getStackInHand(hand);
+        if (world.isClient() || !heldItem.isOf(ModItems.DECREPIT_BONE_MEAL)) {
+            return ActionResult.PASS;
+        }
+
+        BlockPos pos = hitResult.getBlockPos();
+        BlockState blockState = world.getBlockState(pos);
+        Block targetBlock = blockState.getBlock();
+
+        double x = pos.getX() + 0.5;
+        double y = pos.getY() + 0.5;
+        double z = pos.getZ() + 0.5;
+
         // Case 3: NETHER WART
         if (blockState.contains(NetherWartBlock.AGE)) {
             int age = blockState.get(NetherWartBlock.AGE);
@@ -304,32 +347,6 @@ public class ModUseEvents {
                         0.2
                 );
                 return ActionResult.SUCCESS;
-            }
-        }
-
-        // Case 5: VINES
-        if (targetBlock instanceof VineBlock) {
-            BlockPos checkDownPos = pos;
-            for (int j = 0; j < 9; j++) {
-                checkDownPos = checkDownPos.down();
-                if (world.isAir(checkDownPos)) {
-                    world.setBlockState(checkDownPos, blockState, Block.NOTIFY_ALL);
-                    world.playSound(null, pos, SoundEvents.ITEM_BONE_MEAL_USE,
-                            SoundCategory.PLAYERS, 1.0F, 0.5F);
-                    ((ServerWorld) world).spawnParticles(
-                            ParticleTypes.HAPPY_VILLAGER,
-                            x,
-                            y,
-                            z,
-                            10,
-                            0.5, 0.5, 0.5,
-                            0.2
-                    );
-                    return ActionResult.SUCCESS;
-                }
-                else if (!world.getBlockState(pos).isOf(Blocks.VINE)) {
-                    break;
-                }
             }
         }
         return ActionResult.PASS;
@@ -557,11 +574,13 @@ public class ModUseEvents {
     }
 
     private static ActionResult useBrushOnDyedShulkers(PlayerEntity player, World world, Hand hand, Entity entity, @Nullable EntityHitResult entityHitResult) {
+        if (hand != Hand.MAIN_HAND) return ActionResult.PASS;
         ItemStack stack = player.getStackInHand(hand);
         if (world.isClient
                 || !(stack.getItem() instanceof BrushItem)
                 || !(entity instanceof ShulkerEntity shulker)
                 || shulker.getVariant().isEmpty()
+                || entityHitResult == null
         ) return ActionResult.PASS;
 
         double x = entity.getX();

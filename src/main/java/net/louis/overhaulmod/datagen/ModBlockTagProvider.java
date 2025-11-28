@@ -43,6 +43,9 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.COPPER_RAIL)
 
                 .add(ModBlocks.GLOW_LANTERN)
+                .add(ModBlocks.CHILLED_BONE_BLOCK)
+                .add(ModBlocks.TOXIC_BONE_BLOCK)
+                .add(ModBlocks.DECREPIT_BONE_BLOCK)
 
                 .add(ModBlocks.END_STONE_STAIRS)
                 .add(ModBlocks.END_STONE_WALL)

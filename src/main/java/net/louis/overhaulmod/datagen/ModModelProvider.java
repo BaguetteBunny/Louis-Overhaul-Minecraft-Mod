@@ -46,6 +46,10 @@ public class ModModelProvider extends FabricModelProvider {
 
         blockStateModelGenerator.registerLantern(ModBlocks.GLOW_LANTERN);
 
+        blockStateModelGenerator.registerLog(ModBlocks.CHILLED_BONE_BLOCK);
+        blockStateModelGenerator.registerLog(ModBlocks.TOXIC_BONE_BLOCK);
+        blockStateModelGenerator.registerLog(ModBlocks.DECREPIT_BONE_BLOCK);
+
         BlockStateModelGenerator.BlockTexturePool endstonePool = blockStateModelGenerator.registerCubeAllModelTexturePool(Blocks.END_STONE);
         endstonePool.stairs(ModBlocks.END_STONE_STAIRS);
         endstonePool.slab(ModBlocks.END_STONE_SLAB);
@@ -159,6 +163,8 @@ public class ModModelProvider extends FabricModelProvider {
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
         itemModelGenerator.register(ModItems.PURIFIED_WATER_BOTTLE, Models.GENERATED);
         itemModelGenerator.register(ModItems.CHILLED_BONE, Models.GENERATED);
+        itemModelGenerator.register(ModItems.TOXIC_BONE, Models.GENERATED);
+        itemModelGenerator.register(ModItems.DECREPIT_BONE, Models.GENERATED);
         itemModelGenerator.register(ModItems.SANDY_FLESH, Models.GENERATED);
         itemModelGenerator.register(ModItems.BAT_FANG, Models.GENERATED);
         itemModelGenerator.register(ModItems.NETHERITE_HORSE_ARMOR, Models.GENERATED);
@@ -172,6 +178,8 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.FISH_STEW, Models.GENERATED);
         itemModelGenerator.register(ModItems.ROTTEN_STEW, Models.GENERATED);
         itemModelGenerator.register(ModItems.CHILLED_BONE_MEAL, Models.GENERATED);
+        itemModelGenerator.register(ModItems.TOXIC_BONE_MEAL, Models.GENERATED);
+        itemModelGenerator.register(ModItems.DECREPIT_BONE_MEAL, Models.GENERATED);
         itemModelGenerator.register(ModItems.AMETHYST_DAGGER, Models.HANDHELD);
 
         itemModelGenerator.register(ModItems.WHITE_WATER_BUCKET, Models.GENERATED);

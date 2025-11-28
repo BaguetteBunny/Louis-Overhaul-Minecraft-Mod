@@ -37,10 +37,20 @@ public class ModItems {
 
     public static final Item ADVANCED_ARROW = registerItem("advanced_arrow",
             new ArrowItem(new Item.Settings()));
+
     public static final Item CHILLED_BONE = registerItem("chilled_bone",
             new Item(new Item.Settings()));
     public static final Item CHILLED_BONE_MEAL = registerItem("chilled_bone_meal",
             new Item(new Item.Settings()));
+    public static final Item TOXIC_BONE = registerItem("toxic_bone",
+            new Item(new Item.Settings()));
+    public static final Item TOXIC_BONE_MEAL = registerItem("toxic_bone_meal",
+            new Item(new Item.Settings()));
+    public static final Item DECREPIT_BONE = registerItem("decrepit_bone",
+            new Item(new Item.Settings()));
+    public static final Item DECREPIT_BONE_MEAL = registerItem("decrepit_bone_meal",
+            new Item(new Item.Settings()));
+
     public static final Item BAT_FANG = registerItem("bat_fang",
             new Item(new Item.Settings()));
     public static final Item ENDERMITE_HEART = registerItem("endermite_heart",
@@ -136,13 +146,17 @@ public class ModItems {
             entries.add(RED_WATER_BUCKET);
         });
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(entries -> {
+            entries.add(LLAMAS_SPIT);
             entries.add(BAT_FANG);
             entries.add(ENDERMITE_HEART);
             entries.add(DECAYING_FLESH);
             entries.add(SANDY_FLESH);
             entries.add(CHILLED_BONE);
-            entries.add(LLAMAS_SPIT);
+            entries.add(TOXIC_BONE);
+            entries.add(DECREPIT_BONE);
             entries.add(CHILLED_BONE_MEAL);
+            entries.add(TOXIC_BONE_MEAL);
+            entries.add(DECREPIT_BONE_MEAL);
         });
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT).register(entries -> {
             entries.add(NETHERITE_HORSE_ARMOR);

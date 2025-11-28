@@ -68,6 +68,10 @@
   "item.louis-overhaul-mod.sandy_flesh": "Sandy Flesh",
   "item.louis-overhaul-mod.chilled_bone": "Chilled Bone",
   "item.louis-overhaul-mod.chilled_bone_meal": "Chilled Bone Meal",
+  "item.louis-overhaul-mod.toxic_bone": "Toxic Bone",
+  "item.louis-overhaul-mod.toxic_bone_meal": "Toxic Bone Meal",
+  "item.louis-overhaul-mod.decrepit_bone": "Decrepit Bone",
+  "item.louis-overhaul-mod.decrepit_bone_meal": "Decrepit Bone Meal",
   "item.louis-overhaul-mod.pet_recovery_compass": "Pet Recovery Compass",
   "item.louis-overhaul-mod.recall_clock": "Recall Clock",
   "item.louis-overhaul-mod.llamas_spit": "Llama's Spit",
@@ -110,6 +114,10 @@
   "block.minecraft.polished_blackstone_pressure_plate": "Blackstone Pressure Plate",
   "block.minecraft.chiseled_polished_blackstone": "Chiseled Polished Blackstone Bricks",
   "block.minecraft.chiseled_deepslate": "Chiseled Deepslate Tiles",
+
+  "block.louis-overhaul-mod.chilled_bone_block": "Chilled Bone Block",
+  "block.louis-overhaul-mod.toxic_bone_block": "Toxic Bone Block",
+  "block.louis-overhaul-mod.decrepit_bone_block": "Decrepit Bone Block",
 
   "block.louis-overhaul-mod.end_stone_stairs": "End Stone Stairs",
   "block.louis-overhaul-mod.end_stone_slab": "End Stone Slab",
