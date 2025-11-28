@@ -23,6 +23,7 @@ import net.minecraft.entity.*;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.decoration.ArmorStandEntity;
 import net.minecraft.entity.mob.ShulkerEntity;
+import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.LlamaSpitEntity;
 import net.minecraft.entity.projectile.SmallFireballEntity;
@@ -64,6 +65,7 @@ public class ModUseEvents {
         UseEntityCallback.EVENT.register(ModUseEvents::changeArmorStandVariant);
         UseEntityCallback.EVENT.register(ModUseEvents::dyeShulkers);
         UseEntityCallback.EVENT.register(ModUseEvents::useBrushOnDyedShulkers);
+        UseEntityCallback.EVENT.register(ModUseEvents::useChilledBonemealOnAnimal);
 
         AttackEntityCallback.EVENT.register(ModUseEvents::featherDamageFreeKB);
     }
@@ -569,7 +571,7 @@ public class ModUseEvents {
                 0.75F,
                 (world.getRandom().nextFloat() * 0.2F + 0.5F)
         );
-        if (!player.isCreative()) stack.damage(16, player, EquipmentSlot.MAINHAND);
+        if (!player.isCreative()) stack.damage(8, player, EquipmentSlot.MAINHAND);
 
         Optional<DyeColor> variant = shulker.getVariant();
         DyeColor color = variant.get();
@@ -581,6 +583,40 @@ public class ModUseEvents {
 
         player.swingHand(hand, true);
         return ActionResult.SUCCESS;
+    }
+
+    private static ActionResult useChilledBonemealOnAnimal(PlayerEntity player, World world, Hand hand, Entity entity, @Nullable EntityHitResult entityHitResult) {
+        if (hand != Hand.MAIN_HAND) return ActionResult.PASS;
+        ItemStack stack = player.getStackInHand(hand);
+        if (world.isClient
+                || stack.getItem() != ModItems.CHILLED_BONE_MEAL
+                || !(entity instanceof PassiveEntity animal)
+                || !animal.isBaby()
+                || entityHitResult == null
+        ) return ActionResult.PASS;
+
+        double x = animal.getX();
+        double y = animal.getY();
+        double z = animal.getZ();
+
+
+        if (animal.getBreedingAge() < -24000) {
+            animal.setBreedingAge(-24000);
+            world.playSound(null, x, y, z, SoundEvents.BLOCK_BEACON_DEACTIVATE, SoundCategory.NEUTRAL,
+                    0.75F,
+                    (world.getRandom().nextFloat() * 0.2F + 0.5F)
+            );
+        } else {
+            animal.setBreedingAge(Integer.MIN_VALUE);
+            world.playSound(null, x, y, z, SoundEvents.BLOCK_BEACON_ACTIVATE, SoundCategory.NEUTRAL,
+                    0.75F,
+                    (world.getRandom().nextFloat() * 0.2F + 0.5F)
+            );
+        }
+
+        stack.decrementUnlessCreative(1, player);
+        player.swingHand(hand, true);
+        return ActionResult.CONSUME;
     }
 
     private static ActionResult useOnSuspiciousBlock(PlayerEntity player, World world, Hand hand, BlockHitResult hitResult) {
