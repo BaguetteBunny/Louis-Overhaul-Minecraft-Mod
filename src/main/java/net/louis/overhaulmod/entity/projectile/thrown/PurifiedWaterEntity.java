@@ -1,5 +1,6 @@
 package net.louis.overhaulmod.entity.projectile.thrown;
 
+import net.louis.overhaulmod.block.ModBlocks;
 import net.louis.overhaulmod.item.ModItems;
 import net.louis.overhaulmod.utils.ParticleShapeUtil;
 import net.minecraft.block.Block;
@@ -80,6 +81,10 @@ public class PurifiedWaterEntity extends ThrownItemEntity {
         PURIFIED_WATER_BLOCK_TRANSFORM.put(Blocks.CRYING_OBSIDIAN, Blocks.OBSIDIAN);
         PURIFIED_WATER_BLOCK_TRANSFORM.put(Blocks.NETHER_GOLD_ORE, Blocks.NETHERRACK);
         PURIFIED_WATER_BLOCK_TRANSFORM.put(Blocks.NETHER_QUARTZ_ORE, Blocks.NETHERRACK);
+
+        PURIFIED_WATER_BLOCK_TRANSFORM.put(ModBlocks.DECREPIT_BONE_BLOCK, Blocks.BONE_BLOCK);
+        PURIFIED_WATER_BLOCK_TRANSFORM.put(ModBlocks.CHILLED_BONE_BLOCK, Blocks.BONE_BLOCK);
+        PURIFIED_WATER_BLOCK_TRANSFORM.put(ModBlocks.TOXIC_BONE_BLOCK, Blocks.BONE_BLOCK);
     }
 
     @Override
