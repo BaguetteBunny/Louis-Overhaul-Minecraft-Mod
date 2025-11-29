@@ -1,4 +1,4 @@
-package net.louis.overhaulmod.entity.projectile.thrown;
+package net.louis.overhaulmod.entity.custom.thrown.projectile;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -20,27 +20,25 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
 import java.util.Set;
 
-public class NetherBrickEntity extends ThrownItemEntity {
-    public NetherBrickEntity(EntityType<? extends NetherBrickEntity> entityType, World world) {
+public class BrickEntity extends ThrownItemEntity {
+    public BrickEntity(EntityType<? extends BrickEntity> entityType, World world) {
         super(entityType, world);
     }
 
-    public NetherBrickEntity(World world, LivingEntity owner) {
+    public BrickEntity(World world, LivingEntity owner) {
         super(EntityType.SNOWBALL, owner, world);
     }
 
-    public NetherBrickEntity(World world, double x, double y, double z) {
+    public BrickEntity(World world, double x, double y, double z) {
         super(EntityType.SNOWBALL, x, y, z, world);
     }
 
     private static final Set<Block> BREAKABLE_GLASS_BLOCKS = Set.of(
             Blocks.GLASS,
-            Blocks.TINTED_GLASS,
             Blocks.WHITE_STAINED_GLASS,
             Blocks.ORANGE_STAINED_GLASS,
             Blocks.MAGENTA_STAINED_GLASS,
@@ -79,7 +77,7 @@ public class NetherBrickEntity extends ThrownItemEntity {
 
     @Override
     protected Item getDefaultItem() {
-        return Items.NETHER_BRICK;
+        return Items.BRICK;
     }
 
     private ParticleEffect getParticleParameters() {
@@ -104,15 +102,13 @@ public class NetherBrickEntity extends ThrownItemEntity {
     protected void onEntityHit(EntityHitResult entityHitResult) {
         super.onEntityHit(entityHitResult);
         Entity entity = entityHitResult.getEntity();
-        entity.damage(this.getDamageSources().thrown(this, this.getOwner()), 2);
-
-        Vec3d velocity = this.getVelocity().normalize().multiply(0.8);
-        entity.addVelocity(velocity.x, 0.1, velocity.z);
-        entity.velocityModified = true;
+        int i = 2;
+        entity.damage(this.getDamageSources().thrown(this, this.getOwner()), i);
     }
 
     @Override
     protected void onCollision(HitResult hitResult) {
+        super.onCollision(hitResult);
         World world = this.getWorld();
 
         if (!world.isClient && hitResult.getType() == HitResult.Type.BLOCK) {
@@ -121,14 +117,14 @@ public class NetherBrickEntity extends ThrownItemEntity {
             BlockState state = world.getBlockState(pos);
 
             if (BREAKABLE_GLASS_BLOCKS.contains(state.getBlock())) {
-                world.breakBlock(pos, false, this);
+                world.breakBlock(pos, true, this);
                 world.playSound(null, pos, SoundEvents.BLOCK_GLASS_BREAK, SoundCategory.BLOCKS, 3.0F, 1.0F);
-                return;
             }
-        }
 
-        super.onCollision(hitResult);
-        this.getWorld().sendEntityStatus(this, EntityStatuses.PLAY_DEATH_SOUND_OR_ADD_PROJECTILE_HIT_PARTICLES);
-        this.discard();
+            world.sendEntityStatus(this, EntityStatuses.PLAY_DEATH_SOUND_OR_ADD_PROJECTILE_HIT_PARTICLES);
+            this.discard();
+        }
     }
 }
+
+

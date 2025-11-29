@@ -2,6 +2,7 @@ package net.louis.overhaulmod.item;
 
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.louis.overhaulmod.LouisOverhaulMod;
+import net.louis.overhaulmod.entity.ModEntities;
 import net.louis.overhaulmod.fluid.ModFluids;
 import net.louis.overhaulmod.item.custom.*;
 import net.minecraft.component.DataComponentTypes;
@@ -121,6 +122,9 @@ public class ModItems {
     public static final Item AMETHYST_DAGGER = registerItem("amethyst_dagger",
             new AmethystDagger(new Item.Settings()));
 
+    public static final Item BROWN_BEAR_SPAWN_EGG = registerItem("brown_bear_spawn_egg",
+            new SpawnEggItem(ModEntities.BROWN_BEAR, 0xa37539, 0xbf935a, new Item.Settings()));
+
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, Identifier.of(LouisOverhaulMod.MOD_ID, name), item);
     }
@@ -144,6 +148,9 @@ public class ModItems {
             entries.add(BROWN_WATER_BUCKET);
             entries.add(GREEN_WATER_BUCKET);
             entries.add(RED_WATER_BUCKET);
+        });
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.SPAWN_EGGS).register(entries -> {
+            entries.add(BROWN_BEAR_SPAWN_EGG);
         });
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(entries -> {
             entries.add(LLAMAS_SPIT);

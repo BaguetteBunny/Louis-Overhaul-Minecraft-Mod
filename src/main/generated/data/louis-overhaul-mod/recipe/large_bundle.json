@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:iron_ingot"
+    },
+    "B": {
+      "item": "louis-overhaul-mod:bat_fang"
+    },
+    "K": {
+      "item": "minecraft:bundle"
+    },
+    "L": {
+      "item": "minecraft:leather"
+    }
+  },
+  "pattern": [
+    "LBL",
+    "AKA",
+    "LBL"
+  ],
+  "result": {
+    "count": 1,
+    "id": "louis-overhaul-mod:large_bundle"
+  }
+}

@@ -13,6 +13,7 @@ import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 
 import java.util.List;
+import java.util.Optional;
 
 
 public class ModModelProvider extends FabricModelProvider {
@@ -198,6 +199,9 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.GREEN_WATER_BUCKET, Models.GENERATED);
         itemModelGenerator.register(ModItems.RED_WATER_BUCKET, Models.GENERATED);
         itemModelGenerator.register(ModItems.BLACK_WATER_BUCKET, Models.GENERATED);
+
+        itemModelGenerator.register(ModItems.BROWN_BEAR_SPAWN_EGG,
+                new Model(Optional.of(Identifier.of("item/template_spawn_egg")), Optional.empty()));
         // Pet Recovery Compass Generated Manually
     }
 }

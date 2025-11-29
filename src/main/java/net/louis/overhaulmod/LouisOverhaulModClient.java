@@ -5,9 +5,14 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandlerRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.louis.overhaulmod.block.ModBlocks;
 import net.louis.overhaulmod.component.CustomBundleContentsComponent;
 import net.louis.overhaulmod.component.ModComponents;
+import net.louis.overhaulmod.entity.ModEntities;
+import net.louis.overhaulmod.entity.custom.client.BearEntityModel;
+import net.louis.overhaulmod.entity.custom.client.BearEntityRenderer;
 import net.louis.overhaulmod.fluid.ModFluids;
 import net.louis.overhaulmod.item.ModItems;
 import net.louis.overhaulmod.item.custom.BigBundleItem;
@@ -31,6 +36,10 @@ public class LouisOverhaulModClient implements ClientModInitializer {
         // Render Screen
         HandledScreens.register(ModScreenHandlers.ADVANCED_FLETCHING_TABLE_SCREEN_HANDLER, AdvancedFletchingTableScreen::new);
         HandledScreens.register(ModScreenHandlers.SAWMILL_SCREEN_HANDLER, SawmillScreen::new);
+
+        // Add Entities
+        EntityModelLayerRegistry.registerModelLayer(BearEntityModel.BEAR, BearEntityModel::getTexturedModelData);
+        EntityRendererRegistry.register(ModEntities.BROWN_BEAR, BearEntityRenderer::new);
 
         // Add Block Transparency
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.COPPER_RAIL, RenderLayer.getCutout());

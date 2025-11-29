@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:rabbit_hide"
+    },
+    "B": {
+      "item": "louis-overhaul-mod:bat_fang"
+    },
+    "K": {
+      "item": "minecraft:leather"
+    },
+    "R": {
+      "item": "minecraft:redstone_block"
+    }
+  },
+  "pattern": [
+    "RBR",
+    "AKA",
+    "RBR"
+  ],
+  "result": {
+    "count": 1,
+    "id": "louis-overhaul-mod:pioneer_pouch"
+  }
+}

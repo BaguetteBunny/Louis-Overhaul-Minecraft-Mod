@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableSet;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.rendering.v1.TooltipComponentCallback;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
+import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.world.poi.PointOfInterestHelper;
 import net.louis.overhaulmod.block.ModBlocks;
 import net.louis.overhaulmod.block.entity.ModBlockEntities;
@@ -14,6 +15,8 @@ import net.louis.overhaulmod.component.ModComponents;
 import net.louis.overhaulmod.effect.ModEffects;
 import net.louis.overhaulmod.enchantments.ModEnchantmentEffects;
 import net.louis.overhaulmod.enchantments.ModEnchantments;
+import net.louis.overhaulmod.entity.ModEntities;
+import net.louis.overhaulmod.entity.custom.living.BearEntity;
 import net.louis.overhaulmod.events.ModUseEvents;
 import net.louis.overhaulmod.events.ModUseStewEvents;
 import net.louis.overhaulmod.fluid.ModFluids;
@@ -51,6 +54,7 @@ public class LouisOverhaulMod implements ModInitializer {
 		ModItems.registerModItems();
 		ModBlocks.registerModBlocks();
 		ModBlockEntities.registerBlockEntities();
+		ModEntities.registerModEntities();
 		ModScreenHandlers.registerScreenHandlers();
 		ModCauldron.registerBehaviors();
 		ModRecipes.registerRecipes();
@@ -67,6 +71,8 @@ public class LouisOverhaulMod implements ModInitializer {
 
 		tickGlobal();
 		replaceFletcherPOI();
+
+		FabricDefaultAttributeRegistry.register(ModEntities.BROWN_BEAR, BearEntity.createBrownBearAttributes());
 	}
 
 	private void registerCustomBundleTooltip() {

@@ -1,4 +1,4 @@
-package net.louis.overhaulmod.entity.projectile.thrown;
+package net.louis.overhaulmod.entity.custom.thrown.projectile;
 
 import net.louis.overhaulmod.block.ModBlocks;
 import net.louis.overhaulmod.item.ModItems;

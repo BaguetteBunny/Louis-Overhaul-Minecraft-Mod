@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:gold_ingot"
+    },
+    "B": {
+      "item": "louis-overhaul-mod:bat_fang"
+    },
+    "K": {
+      "item": "minecraft:bundle"
+    },
+    "L": {
+      "item": "minecraft:rabbit_hide"
+    }
+  },
+  "pattern": [
+    "LBL",
+    "AKA",
+    "LBL"
+  ],
+  "result": {
+    "count": 1,
+    "id": "louis-overhaul-mod:massive_bundle"
+  }
+}

@@ -426,6 +426,39 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(Items.CLOCK), conditionsFromItem(Items.CLOCK))
                 .offerTo(exporter);
 
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.PIONEER_POUCH, 1)
+                .pattern("RBR")
+                .pattern("AKA")
+                .pattern("RBR")
+                .input('R', Items.REDSTONE_BLOCK)
+                .input('B', ModItems.BAT_FANG)
+                .input('A', Items.RABBIT_HIDE)
+                .input('K', Items.LEATHER)
+                .criterion(hasItem(Items.LEATHER), conditionsFromItem(Items.LEATHER))
+                .offerTo(exporter);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.LARGE_BUNDLE, 1)
+                .pattern("LBL")
+                .pattern("AKA")
+                .pattern("LBL")
+                .input('L', Items.LEATHER)
+                .input('B', ModItems.BAT_FANG)
+                .input('A', Items.IRON_INGOT)
+                .input('K', Items.BUNDLE)
+                .criterion(hasItem(Items.BUNDLE), conditionsFromItem(Items.BUNDLE))
+                .offerTo(exporter);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.MASSIVE_BUNDLE, 1)
+                .pattern("LBL")
+                .pattern("AKA")
+                .pattern("LBL")
+                .input('L', Items.RABBIT_HIDE)
+                .input('B', ModItems.BAT_FANG)
+                .input('A', Items.GOLD_INGOT)
+                .input('K', Items.BUNDLE)
+                .criterion(hasItem(Items.BUNDLE), conditionsFromItem(Items.BUNDLE))
+                .offerTo(exporter);
+
         ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, Items.BUNDLE, 1)
                 .input(Items.LEATHER)
                 .input(Items.STRING)

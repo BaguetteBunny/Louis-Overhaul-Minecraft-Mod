@@ -104,6 +104,8 @@
   "item.louis-overhaul-mod.magenta_water_bucket": "Magenta Water Bucket",
   "item.louis-overhaul-mod.pink_water_bucket": "Pink Water Bucket",
 
+  "item.louis-overhaul-mod.brown_bear_spawn_egg": "Brown Bear Spawn Egg",
+
   "block.louis-overhaul-mod.advanced_fletching_table": "Fletching Table",
   "block.minecraft.fletching_table": "Broken Fletching Table",
   "block.louis-overhaul-mod.sawmill": "Sawmill",
@@ -334,6 +336,8 @@
 
   "enchantment.minecraft.vanishing_curse.desc": "Items disappear on death.",
   "enchantment.minecraft.binding_curse.desc": "Armor becomes stuck on the wearer.",
+
+  "entity.louis-overhaul-mod.brown_bear": "Brown Bear",
 
 
   "tooltip.arrow.foot":  "• ғʟᴇᴛᴄʜɪɴɢ: %s",
