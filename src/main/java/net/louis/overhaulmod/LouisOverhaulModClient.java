@@ -13,6 +13,8 @@ import net.louis.overhaulmod.component.ModComponents;
 import net.louis.overhaulmod.entity.ModEntities;
 import net.louis.overhaulmod.entity.custom.client.BearEntityModel;
 import net.louis.overhaulmod.entity.custom.client.BearEntityRenderer;
+import net.louis.overhaulmod.entity.custom.client.ChairRenderer;
+import net.louis.overhaulmod.entity.custom.misc.ChairEntity;
 import net.louis.overhaulmod.fluid.ModFluids;
 import net.louis.overhaulmod.item.ModItems;
 import net.louis.overhaulmod.item.custom.BigBundleItem;
@@ -40,6 +42,8 @@ public class LouisOverhaulModClient implements ClientModInitializer {
         // Add Entities
         EntityModelLayerRegistry.registerModelLayer(BearEntityModel.BEAR, BearEntityModel::getTexturedModelData);
         EntityRendererRegistry.register(ModEntities.BROWN_BEAR, BearEntityRenderer::new);
+
+        EntityRendererRegistry.register(ModEntities.CHAIR, ChairRenderer::new);
 
         // Add Block Transparency
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.COPPER_RAIL, RenderLayer.getCutout());

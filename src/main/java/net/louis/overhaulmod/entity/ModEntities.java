@@ -2,7 +2,7 @@ package net.louis.overhaulmod.entity;
 
 import net.louis.overhaulmod.LouisOverhaulMod;
 import net.louis.overhaulmod.entity.custom.living.BearEntity;
-import net.minecraft.entity.Entity;
+import net.louis.overhaulmod.entity.custom.misc.ChairEntity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.registry.Registries;
@@ -15,6 +15,11 @@ public class ModEntities {
             Identifier.of(LouisOverhaulMod.MOD_ID, "brown_bear"),
             EntityType.Builder.create(BearEntity::new, SpawnGroup.AMBIENT)
                     .dimensions(1.4f, 1.4f).build());
+
+    public static final EntityType<ChairEntity> CHAIR = Registry.register(Registries.ENTITY_TYPE,
+            Identifier.of(LouisOverhaulMod.MOD_ID, "chair_entity"),
+            EntityType.Builder.create(ChairEntity::new, SpawnGroup.MISC)
+                    .dimensions(1.0f, 0.49f).build());
 
 
     public static void registerModEntities() {

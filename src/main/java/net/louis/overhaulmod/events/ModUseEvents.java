@@ -5,6 +5,8 @@ import net.fabricmc.fabric.api.event.player.AttackEntityCallback;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 import net.fabricmc.fabric.api.event.player.UseEntityCallback;
 import net.fabricmc.fabric.api.event.player.UseItemCallback;
+import net.louis.overhaulmod.entity.ModEntities;
+import net.louis.overhaulmod.entity.custom.misc.ChairEntity;
 import net.louis.overhaulmod.entity.custom.thrown.projectile.BrickEntity;
 import net.louis.overhaulmod.entity.custom.thrown.projectile.NetherBrickEntity;
 import net.louis.overhaulmod.entity.custom.thrown.projectile.PurifiedWaterEntity;
@@ -29,6 +31,7 @@ import net.minecraft.entity.projectile.LlamaSpitEntity;
 import net.minecraft.entity.projectile.SmallFireballEntity;
 import net.minecraft.item.*;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
@@ -40,6 +43,7 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.math.*;
 import net.minecraft.util.math.random.Random;
+import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
@@ -58,6 +62,7 @@ public class ModUseEvents {
         UseBlockCallback.EVENT.register(ModUseEvents::useBonemealOnOtherCrops);
         UseBlockCallback.EVENT.register(ModUseEvents::useDecrepitBonemealOnCrops);
         UseBlockCallback.EVENT.register(ModUseEvents::rcHarvest);
+        UseBlockCallback.EVENT.register(ModUseEvents::sitOnSaddleUse);
 
         UseItemCallback.EVENT.register(ModUseEvents::getLlamaSpitBottle);
         UseItemCallback.EVENT.register(ModUseEvents::useGlowInk);
@@ -721,6 +726,32 @@ public class ModUseEvents {
             return ActionResult.SUCCESS;
         }
         return ActionResult.PASS;
+    }
+
+    public static ActionResult sitOnSaddleUse(PlayerEntity player, World world, Hand hand, BlockHitResult hitResult) {
+        if (world.isClient()) return ActionResult.PASS;
+
+        ItemStack stack = player.getStackInHand(hand);
+        Item item = stack.getItem();
+        BlockPos pos = hitResult.getBlockPos();
+        BlockState state = world.getBlockState(pos);
+
+        if (item != Items.SADDLE) return ActionResult.PASS;
+
+        if (state.isIn(BlockTags.STAIRS) || state.isIn(BlockTags.SLABS)) {
+            Entity entity;
+            List<ChairEntity> entities = world.getEntitiesByType(ModEntities.CHAIR, new Box(pos), chair -> true);
+            if(entities.isEmpty()) {
+                entity = ModEntities.CHAIR.spawn((ServerWorld) world, pos, SpawnReason.TRIGGERED);
+            } else {
+                entity = entities.get(0);
+            }
+
+            player.startRiding(entity);
+
+            player.swingHand(Hand.MAIN_HAND, true);
+            return ActionResult.SUCCESS;
+        } return ActionResult.PASS;
     }
 
     private static boolean isPlayerHead(BlockState blockState) {
