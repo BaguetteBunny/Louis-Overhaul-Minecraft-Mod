@@ -43,7 +43,9 @@
 		"ShovelItemMixin",
 		"HoeItemMixin",
 		"SmallFireballEntityMixin",
-		"ReplaceDiskEnchantmentEffectMixin"
+		"PigEntityMixin",
+		"ReplaceDiskEnchantmentEffectMixin",
+		"PolarBearEntityMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
