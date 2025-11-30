@@ -3,6 +3,7 @@ package net.louis.overhaulmod.mixin;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.damage.DamageTypes;
@@ -102,7 +103,7 @@ public class EnchantmentMixin {
         }
 
         if (enchantId.equals("bane_of_arthropods")) {
-            if (isArthropodOrFireMob(target)) {
+            if (isArthropodOrFireMob(target) || hasElytra(target)) {
                 float currentDamage = damage.getValue();
                 float bonusDamage = 2.5f * level;
                 damage.setValue(currentDamage + bonusDamage);
@@ -210,6 +211,11 @@ public class EnchantmentMixin {
 
         return entity instanceof BlazeEntity || entity instanceof BreezeEntity ||
                 entity.getType() == EntityType.BLAZE || entity.getType() == EntityType.BREEZE;
+    }
+
+    private boolean hasElytra(Entity entity) {
+        if (!(entity instanceof LivingEntity le)) return false;
+        return le.getEquippedStack(EquipmentSlot.CHEST).isOf(Items.ELYTRA);
     }
 
     private boolean shouldImpalingWork(ServerWorld world, Entity target) {
