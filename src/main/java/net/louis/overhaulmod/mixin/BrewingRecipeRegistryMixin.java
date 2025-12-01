@@ -14,7 +14,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class BrewingRecipeRegistryMixin {
     @Inject(method = "registerDefaults", at = @At("HEAD"), cancellable = true)
     private static void overrideDefaults(BrewingRecipeRegistry.Builder builder, CallbackInfo ci) {
-        ci.cancel();
 
         // Potion Types
         builder.registerPotionType(Items.POTION);
@@ -193,6 +192,8 @@ public class BrewingRecipeRegistryMixin {
         builder.registerPotionRecipe(ModPotions.GIGANTISM, Items.GLOWSTONE_DUST, ModPotions.STRONG_GIGANTISM);
         builder.registerPotionRecipe(ModPotions.LONG_GIGANTISM, Items.REDSTONE_BLOCK, ModPotions.LONGEST_GIGANTISM);
         builder.registerPotionRecipe(ModPotions.STRONG_GIGANTISM, Items.GLOWSTONE, ModPotions.STRONGEST_GIGANTISM);
+
+        ci.cancel();
 
     }
 }

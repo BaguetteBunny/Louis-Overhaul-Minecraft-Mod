@@ -45,7 +45,9 @@
 		"SmallFireballEntityMixin",
 		"PigEntityMixin",
 		"ReplaceDiskEnchantmentEffectMixin",
-		"PolarBearEntityMixin"
+		"PolarBearEntityMixin",
+		"PotionContentsComponentMixin",
+		"StatusEffectInstanceMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
