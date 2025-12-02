@@ -47,7 +47,8 @@
 		"ReplaceDiskEnchantmentEffectMixin",
 		"PolarBearEntityMixin",
 		"PotionContentsComponentMixin",
-		"StatusEffectInstanceMixin"
+		"StatusEffectInstanceMixin",
+		"GrindstoneScreenHandlerMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
