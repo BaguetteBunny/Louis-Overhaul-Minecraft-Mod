@@ -18,7 +18,9 @@ import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BrushableBlockEntity;
 import net.minecraft.block.entity.SkullBlockEntity;
+import net.minecraft.block.enums.BlockHalf;
 import net.minecraft.block.enums.DoubleBlockHalf;
+import net.minecraft.block.enums.SlabType;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.ProfileComponent;
 import net.minecraft.entity.*;
@@ -36,6 +38,7 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
+import net.minecraft.state.property.EnumProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.text.Text;
 import net.minecraft.util.*;
@@ -45,6 +48,7 @@ import net.minecraft.util.math.*;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.World;
+import net.minecraft.world.gen.feature.util.CaveSurface;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -736,9 +740,11 @@ public class ModUseEvents {
         BlockPos pos = hitResult.getBlockPos();
         BlockState state = world.getBlockState(pos);
 
-        if (item != Items.SADDLE) return ActionResult.PASS;
+        if (item != Items.SADDLE || player.getItemCooldownManager().isCoolingDown(item)) return ActionResult.PASS;
 
-        if (state.isIn(BlockTags.STAIRS) || state.isIn(BlockTags.SLABS)) {
+        if (isValidSittableBlock(state)) {
+            player.getItemCooldownManager().set(stack.getItem(), 10);
+
             Entity entity;
             List<ChairEntity> entities = world.getEntitiesByType(ModEntities.CHAIR, new Box(pos), chair -> true);
             if(entities.isEmpty()) {
@@ -792,6 +798,12 @@ public class ModUseEvents {
             List<ItemStack> drops = Block.getDroppedStacks(state, serverWorld, pos, null, player, tool);
             for (ItemStack drop : drops) Block.dropStack(world, pos, drop);
         }
+    }
+
+    private static boolean isValidSittableBlock(BlockState state) {
+        if (state.getBlock() instanceof StairsBlock) return state.get(StairsBlock.HALF) == BlockHalf.BOTTOM;
+        if (state.getBlock() instanceof SlabBlock) return state.get(SlabBlock.TYPE) == SlabType.BOTTOM;
+        return state.getBlock() instanceof BedBlock;
     }
 }
 
