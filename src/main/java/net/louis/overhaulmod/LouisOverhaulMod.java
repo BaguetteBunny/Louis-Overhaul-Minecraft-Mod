@@ -2,6 +2,9 @@ package net.louis.overhaulmod;
 
 import com.google.common.collect.ImmutableSet;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.biome.v1.BiomeModification;
+import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
+import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.fabric.api.client.rendering.v1.TooltipComponentCallback;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
@@ -31,7 +34,14 @@ import net.louis.overhaulmod.utils.GlowManager;
 import net.louis.overhaulmod.utils.ModLootTableModifiers;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.DispenserBlock;
+import net.minecraft.entity.SpawnGroup;
+import net.minecraft.entity.SpawnLocationTypes;
+import net.minecraft.entity.SpawnRestriction;
+import net.minecraft.entity.passive.AnimalEntity;
+import net.minecraft.entity.passive.PolarBearEntity;
 import net.minecraft.util.Identifier;
+import net.minecraft.world.Heightmap;
+import net.minecraft.world.biome.BiomeKeys;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -54,7 +64,6 @@ public class LouisOverhaulMod implements ModInitializer {
 		ModItems.registerModItems();
 		ModBlocks.registerModBlocks();
 		ModBlockEntities.registerBlockEntities();
-		ModEntities.registerModEntities();
 		ModScreenHandlers.registerScreenHandlers();
 		ModCauldron.registerBehaviors();
 		ModRecipes.registerRecipes();
@@ -71,6 +80,13 @@ public class LouisOverhaulMod implements ModInitializer {
 
 		tickGlobal();
 		replaceFletcherPOI();
+
+		BiomeModifications.addSpawn(
+				BiomeSelectors.includeByKey(BiomeKeys.CHERRY_GROVE, BiomeKeys.FOREST, BiomeKeys.BIRCH_FOREST, BiomeKeys.OLD_GROWTH_BIRCH_FOREST, BiomeKeys.WINDSWEPT_FOREST, BiomeKeys.RIVER, BiomeKeys.FLOWER_FOREST),
+				SpawnGroup.CREATURE, ModEntities.BROWN_BEAR, 10, 1, 2);
+		SpawnRestriction.register(ModEntities.BROWN_BEAR, SpawnLocationTypes.ON_GROUND, Heightmap.Type.MOTION_BLOCKING, AnimalEntity::isValidNaturalSpawn);
+
+		ModEntities.registerModEntities();
 
 		FabricDefaultAttributeRegistry.register(ModEntities.BROWN_BEAR, BearEntity.createBrownBearAttributes());
 	}

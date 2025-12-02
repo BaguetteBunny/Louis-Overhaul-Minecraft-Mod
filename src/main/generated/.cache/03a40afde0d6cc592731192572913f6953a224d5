@@ -1,12 +1,12 @@
-// 1.21.1	2025-11-29T17:26:02.8862322	Louis' Overhaul Mod/Tags for minecraft:block
+// 1.21.1	2025-12-02T14:47:48.7647113	Louis' Overhaul Mod/Tags for minecraft:block
 80b0dae6ba4e6c10261638ebb69b0d61926617fa data\minecraft\tags\block\rails.json
 7df660695449f1976cf06fdd94888e28514c5a1e data\minecraft\tags\block\fences.json
 c247cda2289cc377eaba8334104834cf4af5af29 data\minecraft\tags\block\stone_buttons.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data\minecraft\tags\block\needs_stone_tool.json
 781d959bb6bbea7b36ae6b2d4a71ced43fd662b9 data\louis-overhaul-mod\tags\block\needs_amethyst_tool.json
 0fc88eb8aceb968563434e0f2a4a6e8694b20c0d data\minecraft\tags\block\hoglin_repellents.json
-19f41911d55f5b68c04c65a95aed55784afd07ce data\minecraft\tags\block\walls.json
 3459402c35d3bc980c05b8328405ba9704b03ffb data\minecraft\tags\block\stone_pressure_plates.json
+19f41911d55f5b68c04c65a95aed55784afd07ce data\minecraft\tags\block\walls.json
 0ed6f1e9a8514d47670badc02a43e2f5c2e80b4d data\minecraft\tags\block\mineable\axe.json
 56b803698bed67e12e5c47c5e1a117236a59cb74 data\minecraft\tags\block\mineable\pickaxe.json
 f4d98fe78b264ec8f6e2c67a019d6bfb2749b7c0 data\minecraft\tags\block\stairs.json

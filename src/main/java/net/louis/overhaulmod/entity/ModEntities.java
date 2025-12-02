@@ -13,7 +13,7 @@ import net.minecraft.util.Identifier;
 public class ModEntities {
     public static final EntityType<BearEntity> BROWN_BEAR = Registry.register(Registries.ENTITY_TYPE,
             Identifier.of(LouisOverhaulMod.MOD_ID, "brown_bear"),
-            EntityType.Builder.create(BearEntity::new, SpawnGroup.AMBIENT)
+            EntityType.Builder.create(BearEntity::new, SpawnGroup.CREATURE)
                     .dimensions(1.4f, 1.4f).build());
 
     public static final EntityType<ChairEntity> CHAIR = Registry.register(Registries.ENTITY_TYPE,

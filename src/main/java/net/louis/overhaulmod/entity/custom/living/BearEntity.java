@@ -67,13 +67,6 @@ public class BearEntity extends PolarBearEntity {
         return baby;
     }
 
-    public static boolean canSpawn(EntityType<PolarBearEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
-        RegistryEntry<Biome> registryEntry = world.getBiome(pos);
-        return !registryEntry.isIn(BiomeTags.IS_FOREST)
-                ? isValidNaturalSpawn(type, world, spawnReason, pos, random)
-                : isLightLevelValidForNaturalSpawn(world, pos) && world.getBlockState(pos.down()).isIn(BlockTags.ANIMALS_SPAWNABLE_ON);
-    }
-
     /* VARIANT */
     @Override
     protected void initDataTracker(DataTracker.Builder builder) {
