@@ -2,6 +2,7 @@ package net.louis.overhaulmod.events;
 
 import net.fabricmc.fabric.api.event.player.UseEntityCallback;
 import net.louis.overhaulmod.LouisOverhaulMod;
+import net.louis.overhaulmod.config.ModConfig;
 import net.louis.overhaulmod.item.ModItems;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.SuspiciousStewEffectsComponent;
@@ -76,7 +77,7 @@ public class ModUseStewEvents {
 
     private static ActionResult useMushroomStew(PlayerEntity player, World world, Hand hand, Entity entity, @Nullable EntityHitResult entityHitResult) {
         ItemStack stack = player.getStackInHand(hand);
-        if (world.isClient || !stack.isOf(Items.MUSHROOM_STEW) || entity.getClass() != CowEntity.class) return ActionResult.PASS;
+        if (world.isClient() || !ModConfig.INSTANCE.enableStewMobEffects || !stack.isOf(Items.MUSHROOM_STEW) || entity.getClass() != CowEntity.class) return ActionResult.PASS;
 
 
         CowEntity targetCow = (CowEntity) entity;
@@ -99,7 +100,7 @@ public class ModUseStewEvents {
 
     private static ActionResult useRabbitStew(PlayerEntity player, World world, Hand hand, Entity entity, @Nullable EntityHitResult entityHitResult) {
         ItemStack stack = player.getStackInHand(hand);
-        if (world.isClient || !stack.isOf(Items.RABBIT_STEW)) return ActionResult.PASS;
+        if (world.isClient || !stack.isOf(Items.RABBIT_STEW) || !ModConfig.INSTANCE.enableStewMobEffects) return ActionResult.PASS;
 
         if (entity.getClass() == RabbitEntity.class) {
             RabbitEntity targetRabbit = (RabbitEntity) entity;
@@ -118,7 +119,7 @@ public class ModUseStewEvents {
 
     private static ActionResult useFishStew(PlayerEntity player, World world, Hand hand, Entity entity, @Nullable EntityHitResult entityHitResult) {
         ItemStack stack = player.getStackInHand(hand);
-        if (world.isClient || !stack.isOf(ModItems.FISH_STEW)) return ActionResult.PASS;
+        if (world.isClient || !stack.isOf(ModItems.FISH_STEW) || !ModConfig.INSTANCE.enableStewMobEffects) return ActionResult.PASS;
 
         if (entity.getClass() == DolphinEntity.class) {
             DolphinEntity targetDolphin = (DolphinEntity) entity;
@@ -138,7 +139,7 @@ public class ModUseStewEvents {
 
     private static ActionResult useRottenStew(PlayerEntity player, World world, Hand hand, Entity entity, @Nullable EntityHitResult entityHitResult) {
         ItemStack stack = player.getStackInHand(hand);
-        if (world.isClient || !stack.isOf(ModItems.ROTTEN_STEW)) return ActionResult.PASS;
+        if (world.isClient || !stack.isOf(ModItems.ROTTEN_STEW) || !ModConfig.INSTANCE.enableStewMobEffects) return ActionResult.PASS;
 
         if (entity.getClass() == ZombieEntity.class) {
             ZombieEntity targetZombie = (ZombieEntity) entity;
@@ -175,7 +176,7 @@ public class ModUseStewEvents {
 
     private static ActionResult useSuspiciousStew(PlayerEntity player, World world, Hand hand, Entity entity, @Nullable EntityHitResult entityHitResult) {
         ItemStack stack = player.getStackInHand(hand);
-        if (world.isClient || !stack.isOf(Items.SUSPICIOUS_STEW) || !(entity instanceof LivingEntity)) return ActionResult.PASS;
+        if (world.isClient() || !ModConfig.INSTANCE.enableSusStewRNG || !stack.isOf(Items.SUSPICIOUS_STEW) || !(entity instanceof LivingEntity)) return ActionResult.PASS;
 
         SuspiciousStewEffectsComponent suspiciousStewEffectsComponent = stack.getOrDefault(DataComponentTypes.SUSPICIOUS_STEW_EFFECTS, SuspiciousStewEffectsComponent.DEFAULT);
         String effect = suspiciousStewEffectsComponent.effects().getFirst().effect().getIdAsString();

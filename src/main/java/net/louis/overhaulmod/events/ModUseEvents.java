@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.event.player.AttackEntityCallback;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 import net.fabricmc.fabric.api.event.player.UseEntityCallback;
 import net.fabricmc.fabric.api.event.player.UseItemCallback;
+import net.louis.overhaulmod.config.ModConfig;
 import net.louis.overhaulmod.entity.ModEntities;
 import net.louis.overhaulmod.entity.custom.misc.ChairEntity;
 import net.louis.overhaulmod.entity.custom.thrown.projectile.BrickEntity;
@@ -33,12 +34,10 @@ import net.minecraft.entity.projectile.LlamaSpitEntity;
 import net.minecraft.entity.projectile.SmallFireballEntity;
 import net.minecraft.item.*;
 import net.minecraft.particle.ParticleTypes;
-import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
-import net.minecraft.state.property.EnumProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.text.Text;
 import net.minecraft.util.*;
@@ -46,9 +45,7 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.math.*;
 import net.minecraft.util.math.random.Random;
-import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.World;
-import net.minecraft.world.gen.feature.util.CaveSurface;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -89,7 +86,7 @@ public class ModUseEvents {
     private static ActionResult oxidizeCopperWithClock(PlayerEntity player, World world, Hand hand, BlockHitResult hitResult) {
         ItemStack stack = player.getStackInHand(hand);
 
-        if (!world.isClient && stack.getItem() == Items.CLOCK) {
+        if (!world.isClient() && stack.getItem() == Items.CLOCK || !ModConfig.INSTANCE.oxidizeCopperWithClock) {
             BlockPos pos = hitResult.getBlockPos();
             BlockState state = world.getBlockState(pos);
             Block block = state.getBlock();
@@ -175,9 +172,7 @@ public class ModUseEvents {
     }
 
     private static ActionResult retexturePlayerHead(PlayerEntity player, World world, Hand hand, BlockHitResult hitResult) {
-        if (world.isClient()) {
-            return ActionResult.PASS;
-        }
+        if (world.isClient() || !ModConfig.INSTANCE.retexturePlayerHead) return ActionResult.PASS;
 
         ItemStack heldItem = player.getStackInHand(hand);
         BlockPos pos = hitResult.getBlockPos();
@@ -208,7 +203,7 @@ public class ModUseEvents {
 
     private static ActionResult useBonemealOnOtherCrops(PlayerEntity player, World world, Hand hand, BlockHitResult hitResult) {
         ItemStack heldItem = player.getStackInHand(hand);
-        if (world.isClient() || !heldItem.isOf(Items.BONE_MEAL)) {
+        if (world.isClient() || !heldItem.isOf(Items.BONE_MEAL) || !ModConfig.INSTANCE.useBonemealOnOtherCrops) {
             return ActionResult.PASS;
         }
 
@@ -362,7 +357,7 @@ public class ModUseEvents {
     }
 
     private static TypedActionResult<ItemStack> getLlamaSpitBottle(PlayerEntity player, World world, Hand hand) {
-        if (world.isClient) return TypedActionResult.pass(player.getStackInHand(hand));
+        if (world.isClient()) return TypedActionResult.pass(player.getStackInHand(hand));
 
         ItemStack stack = player.getStackInHand(hand);
 
@@ -407,7 +402,7 @@ public class ModUseEvents {
     private static TypedActionResult<ItemStack> useBrick(PlayerEntity player, World world, Hand hand) {
         ItemStack stack = player.getStackInHand(hand);
 
-        if (!stack.isOf(Items.BRICK) || player.getItemCooldownManager().isCoolingDown(Items.BRICK)) {
+        if (!stack.isOf(Items.BRICK) || player.getItemCooldownManager().isCoolingDown(Items.BRICK) || !ModConfig.INSTANCE.enableThrowableBricks) {
             return TypedActionResult.pass(player.getStackInHand(hand));
         }
 
@@ -435,7 +430,7 @@ public class ModUseEvents {
     private static TypedActionResult<ItemStack> useNetherBrick(PlayerEntity player, World world, Hand hand) {
         ItemStack stack = player.getStackInHand(hand);
 
-        if (!stack.isOf(Items.NETHER_BRICK) || player.getItemCooldownManager().isCoolingDown(Items.NETHER_BRICK)) {
+        if (!stack.isOf(Items.NETHER_BRICK) || player.getItemCooldownManager().isCoolingDown(Items.NETHER_BRICK) || !ModConfig.INSTANCE.enableThrowableBricks) {
             return TypedActionResult.pass(player.getStackInHand(hand));
         }
 
@@ -480,7 +475,7 @@ public class ModUseEvents {
 
     private static ActionResult changeArmorStandVariant(PlayerEntity player, World world, Hand hand, Entity entity, @Nullable EntityHitResult entityHitResult) {
         ItemStack stack = player.getMainHandStack();
-        if (world.isClient() || !player.isSneaking() || !(entity instanceof ArmorStandEntity stand)) {
+        if (world.isClient() || !player.isSneaking() || !(entity instanceof ArmorStandEntity stand)  || !ModConfig.INSTANCE.changeArmorstand) {
             return ActionResult.PASS;
         }
 
@@ -569,7 +564,7 @@ public class ModUseEvents {
 
     private static ActionResult dyeShulkers(PlayerEntity player, World world, Hand hand, Entity entity, @Nullable EntityHitResult entityHitResult) {
         ItemStack stack = player.getStackInHand(hand);
-        if (world.isClient || !(stack.getItem() instanceof DyeItem dyeItem)) return ActionResult.PASS;
+        if (world.isClient() || !(stack.getItem() instanceof DyeItem dyeItem) || !ModConfig.INSTANCE.dyeShulkerAndBrush) return ActionResult.PASS;
 
         if (entity instanceof ShulkerEntity shulker) {
             stack.decrementUnlessCreative(1, player);
@@ -583,7 +578,7 @@ public class ModUseEvents {
     }
 
     private static ActionResult useBrushOnDyedShulkers(PlayerEntity player, World world, Hand hand, Entity entity, @Nullable EntityHitResult entityHitResult) {
-        if (hand != Hand.MAIN_HAND) return ActionResult.PASS;
+        if (hand != Hand.MAIN_HAND  || !ModConfig.INSTANCE.dyeShulkerAndBrush) return ActionResult.PASS;
         ItemStack stack = player.getStackInHand(hand);
         if (world.isClient
                 || !(stack.getItem() instanceof BrushItem)
@@ -649,7 +644,7 @@ public class ModUseEvents {
 
     private static ActionResult useOnSuspiciousBlock(PlayerEntity player, World world, Hand hand, BlockHitResult hitResult) {
         ItemStack stack = player.getStackInHand(hand);
-        if (world.isClient || !player.isSneaking() || stack.isEmpty()) return ActionResult.PASS;
+        if (world.isClient || !player.isSneaking() || stack.isEmpty() || !ModConfig.INSTANCE.useOnSusSand) return ActionResult.PASS;
 
         BlockPos pos = hitResult.getBlockPos();
         BlockEntity blockEntity = world.getBlockEntity(pos);
@@ -669,7 +664,7 @@ public class ModUseEvents {
 
     private static ActionResult featherDamageFreeKB(PlayerEntity player, World world, Hand hand, Entity entity, @Nullable EntityHitResult hitResult) {
         ItemStack stack = player.getStackInHand(hand);
-        if (stack.isOf(Items.FEATHER) && !world.isClient && entity instanceof LivingEntity e) {
+        if (stack.isOf(Items.FEATHER) && !world.isClient && entity instanceof LivingEntity e && ModConfig.INSTANCE.enableFeatherAttack) {
             if (entity.timeUntilRegen > 0) return ActionResult.FAIL;
             player.swingHand(hand, true);
 
@@ -684,7 +679,7 @@ public class ModUseEvents {
     }
 
     public static ActionResult rcHarvest(PlayerEntity player, World world, Hand hand, BlockHitResult hitResult) {
-        if (world.isClient()) return ActionResult.PASS;
+        if (world.isClient() || !ModConfig.INSTANCE.enableRcHarvest) return ActionResult.PASS;
 
         ItemStack stack = player.getStackInHand(hand);
         Item item = stack.getItem();
@@ -733,7 +728,7 @@ public class ModUseEvents {
     }
 
     public static ActionResult sitOnSaddleUse(PlayerEntity player, World world, Hand hand, BlockHitResult hitResult) {
-        if (world.isClient()) return ActionResult.PASS;
+        if (world.isClient() || !ModConfig.INSTANCE.enableSitting) return ActionResult.PASS;
 
         ItemStack stack = player.getStackInHand(hand);
         Item item = stack.getItem();

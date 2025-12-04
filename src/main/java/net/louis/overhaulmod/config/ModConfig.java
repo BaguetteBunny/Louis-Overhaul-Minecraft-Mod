@@ -1,0 +1,58 @@
+package net.louis.overhaulmod.config;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+
+public class ModConfig {
+
+    private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
+    private static final File FILE = new File("config/overhaul.json");
+
+    public static ModConfig INSTANCE = new ModConfig();
+
+    // Stew Section
+    public boolean enableSusStewRNG = true;
+    public boolean enableStewMobEffects = true;
+
+    // Misc Section
+    public boolean enableSitting = true;
+    public boolean enableRcHarvest = true;
+    public boolean enableThrowableBricks = true;
+    public boolean oxidizeCopperWithClock = true;
+    public boolean useOnSusSand = true;
+    public boolean retexturePlayerHead = true;
+    public boolean useBonemealOnOtherCrops = true;
+    //public boolean useGlowInk = true;
+    public boolean changeArmorstand = true;
+    public boolean dyeShulkerAndBrush = true;
+    public boolean enableFeatherAttack = true;
+
+    // --- load ---
+    public static void load() {
+        try {
+            if (!FILE.exists()) {
+                save();
+                return;
+            }
+            INSTANCE = GSON.fromJson(new FileReader(FILE), ModConfig.class);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    // --- save ---
+    public static void save() {
+        try {
+            FILE.getParentFile().mkdirs();
+            FileWriter writer = new FileWriter(FILE);
+            GSON.toJson(INSTANCE, writer);
+            writer.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}

@@ -2,7 +2,6 @@ package net.louis.overhaulmod;
 
 import com.google.common.collect.ImmutableSet;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.biome.v1.BiomeModification;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.fabricmc.fabric.api.client.rendering.v1.TooltipComponentCallback;
@@ -15,9 +14,9 @@ import net.louis.overhaulmod.cauldron.ModCauldron;
 import net.louis.overhaulmod.component.CustomBundleTooltipComponent;
 import net.louis.overhaulmod.component.CustomBundleTooltipData;
 import net.louis.overhaulmod.component.ModComponents;
+import net.louis.overhaulmod.config.ModConfig;
 import net.louis.overhaulmod.effect.ModEffects;
 import net.louis.overhaulmod.enchantments.ModEnchantmentEffects;
-import net.louis.overhaulmod.enchantments.ModEnchantments;
 import net.louis.overhaulmod.entity.ModEntities;
 import net.louis.overhaulmod.entity.custom.living.BearEntity;
 import net.louis.overhaulmod.events.ModUseEvents;
@@ -38,7 +37,6 @@ import net.minecraft.entity.SpawnGroup;
 import net.minecraft.entity.SpawnLocationTypes;
 import net.minecraft.entity.SpawnRestriction;
 import net.minecraft.entity.passive.AnimalEntity;
-import net.minecraft.entity.passive.PolarBearEntity;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.Heightmap;
 import net.minecraft.world.biome.BiomeKeys;
@@ -53,6 +51,8 @@ public class LouisOverhaulMod implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+		ModConfig.load();
+
 		registerCustomBundleTooltip();
 		EnchantmentCapRegistry.register();
 
