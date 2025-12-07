@@ -69,7 +69,7 @@ public class SawmillRecipeJsonBuilder implements CraftingRecipeJsonBuilder {
         this.criteria.forEach(builder::criterion);
         CuttingRecipe cuttingRecipe = this.recipeFactory
                 .create((String) Objects.requireNonNullElse(this.group, ""), this.input, new ItemStack(this.output, this.count));
-        exporter.accept(recipeId, cuttingRecipe, builder.build(recipeId.withPrefixedPath("recipes/" + this.category.getName() + "/")));
+        exporter.accept(recipeId, cuttingRecipe, builder.build(recipeId.withPrefixedPath("recipes/")));
     }
 
     private void validate(Identifier recipeId) {
