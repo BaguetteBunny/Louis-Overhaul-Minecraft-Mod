@@ -47,6 +47,9 @@ public class ModModelProvider extends FabricModelProvider {
 
         blockStateModelGenerator.registerLantern(ModBlocks.GLOW_LANTERN);
 
+        blockStateModelGenerator.registerFlowerPotPlant(ModBlocks.MYSTIC_ROSE, ModBlocks.POTTED_MYSTIC_ROSE, BlockStateModelGenerator.TintType.NOT_TINTED);
+        blockStateModelGenerator.registerFlowerPotPlant(ModBlocks.COBALT_FLOWER, ModBlocks.POTTED_COBALT_FLOWER, BlockStateModelGenerator.TintType.NOT_TINTED);
+
         blockStateModelGenerator.registerLog(ModBlocks.CHILLED_BONE_BLOCK);
         blockStateModelGenerator.registerLog(ModBlocks.TOXIC_BONE_BLOCK);
         blockStateModelGenerator.registerLog(ModBlocks.DECREPIT_BONE_BLOCK);
@@ -181,6 +184,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.CHILLED_BONE_MEAL, Models.GENERATED);
         itemModelGenerator.register(ModItems.TOXIC_BONE_MEAL, Models.GENERATED);
         itemModelGenerator.register(ModItems.DECREPIT_BONE_MEAL, Models.GENERATED);
+        itemModelGenerator.register(ModItems.EMPYREAN_POWDER, Models.GENERATED);
         itemModelGenerator.register(ModItems.AMETHYST_DAGGER, Models.HANDHELD);
 
         itemModelGenerator.register(ModItems.WHITE_WATER_BUCKET, Models.GENERATED);
@@ -200,8 +204,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.RED_WATER_BUCKET, Models.GENERATED);
         itemModelGenerator.register(ModItems.BLACK_WATER_BUCKET, Models.GENERATED);
 
-        itemModelGenerator.register(ModItems.BROWN_BEAR_SPAWN_EGG,
-                new Model(Optional.of(Identifier.of("item/template_spawn_egg")), Optional.empty()));
+        itemModelGenerator.register(ModItems.BROWN_BEAR_SPAWN_EGG, new Model(Optional.of(Identifier.of("item/template_spawn_egg")), Optional.empty()));
         // Pet Recovery Compass Generated Manually
     }
 }

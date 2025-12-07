@@ -1,25 +1,37 @@
 package net.louis.overhaulmod.mixin;
 
+import net.louis.overhaulmod.component.ModComponents;
 import net.louis.overhaulmod.effect.ModEffects;
+import net.louis.overhaulmod.item.ModItems;
 import net.louis.overhaulmod.utils.TeleportUtils;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.SkullBlock;
 import net.minecraft.component.DataComponentTypes;
+import net.minecraft.component.type.FoodComponent;
 import net.minecraft.component.type.ItemEnchantmentsComponent;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.effect.StatusEffect;
+import net.minecraft.entity.effect.StatusEffectCategory;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffectUtil;
 import net.minecraft.entity.mob.EndermiteEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.sound.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.world.World;
+import net.minecraft.world.event.GameEvent;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -28,16 +40,20 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+import java.util.Collection;
+import java.util.List;
 import java.util.Random;
+import java.util.Stack;
 
 @Mixin(LivingEntity.class)
 public class LivingEntityMixin {
+    LivingEntity self = (LivingEntity) (Object) this;
+
     @Inject(method = "damage", at = @At("HEAD"))
     private void onDamage(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
         Entity attacker = source.getAttacker();
-        Entity target = (Entity) (Object) this;
 
-        if (attacker instanceof EndermiteEntity && target instanceof ServerPlayerEntity player) {
+        if (attacker instanceof EndermiteEntity && self instanceof ServerPlayerEntity player) {
             Random random = new Random();
             if (random.nextBoolean()) {TeleportUtils.chorusTeleport(player);}
         }
@@ -45,7 +61,6 @@ public class LivingEntityMixin {
 
     @Inject(method = "jump", at = @At("HEAD"), cancellable = true)
     private void overrideJump(CallbackInfo ci) {
-        LivingEntity self = (LivingEntity) (Object) this;
         if (self.hasStatusEffect(ModEffects.GROUNDED)) {
             ci.cancel();
         }
@@ -53,7 +68,6 @@ public class LivingEntityMixin {
 
     @Inject(method = "getAttackDistanceScalingFactor", at = @At("RETURN"), cancellable = true)
     private void injectedHeadDetectionReduction(Entity entity, CallbackInfoReturnable<Double> cir) {
-        LivingEntity self = (LivingEntity) (Object) this;
         double original = cir.getReturnValue();
         ItemStack head = self.getEquippedStack(EquipmentSlot.HEAD);
 
@@ -76,15 +90,27 @@ public class LivingEntityMixin {
         }
     }
 
+    @Inject(method = "eatFood", at = @At("HEAD"), cancellable = true)
+    private void removeNegEffects(World world, ItemStack stack, FoodComponent foodComponent, CallbackInfoReturnable<Boolean> cir) {
+        if (stack.getComponents().get(ModComponents.SEASONING) == ModItems.EMPYREAN_POWDER && self instanceof ServerPlayerEntity player && !world.isClient()) {
+            Collection<StatusEffectInstance> effects = List.copyOf(player.getStatusEffects());
+            for (StatusEffectInstance effectInstance : effects) {
+                StatusEffect se = effectInstance.getEffectType().value();
+                if (se.getCategory() == StatusEffectCategory.HARMFUL) {
+                    player.removeStatusEffect(effectInstance.getEffectType());
+                }
+            }
+        }
+    }
+
     @Inject(method = "tick", at = @At("TAIL"))
     private void applyFrostWalkerWhileMounted(CallbackInfo ci) {
-        LivingEntity entity = (LivingEntity)(Object)this;
 
-        if (entity.getWorld().isClient() || !entity.hasVehicle()) return;
-        if (!(entity.getWorld() instanceof ServerWorld world)) return;
+        if (self.getWorld().isClient() || !self.hasVehicle()) return;
+        if (!(self.getWorld() instanceof ServerWorld world)) return;
 
         // Check if player has Frost Walker on boots
-        ItemEnchantmentsComponent enchantments = entity.getEquippedStack(
+        ItemEnchantmentsComponent enchantments = self.getEquippedStack(
                 net.minecraft.entity.EquipmentSlot.FEET
         ).get(DataComponentTypes.ENCHANTMENTS);
 
@@ -106,7 +132,7 @@ public class LivingEntityMixin {
         if (frostWalkerLevel == 0) return;
 
         // Apply Frost Walker effect
-        BlockPos blockPos = entity.getBlockPos().down();
+        BlockPos blockPos = self.getBlockPos().down();
         BlockState frostedIce = Blocks.FROSTED_ICE.getDefaultState();
         int radius = 2*frostWalkerLevel;
 
@@ -114,7 +140,7 @@ public class LivingEntityMixin {
                 blockPos.add(-radius, -radius, -radius),
                 blockPos.add(radius, radius, radius)
         )) {
-            if (targetPos.getSquaredDistance(entity.getBlockPos()) < MathHelper.square(radius)) {
+            if (targetPos.getSquaredDistance(self.getBlockPos()) < MathHelper.square(radius)) {
                 BlockState stateAtPos = world.getBlockState(targetPos);
                 BlockState aboveState = world.getBlockState(targetPos.up());
 

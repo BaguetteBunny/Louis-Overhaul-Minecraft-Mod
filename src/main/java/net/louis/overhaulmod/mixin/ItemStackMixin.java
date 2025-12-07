@@ -1,5 +1,6 @@
 package net.louis.overhaulmod.mixin;
 
+import net.louis.overhaulmod.component.ModComponents;
 import net.louis.overhaulmod.utils.EnchantmentCapRegistry;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.ItemEnchantmentsComponent;
@@ -58,6 +59,20 @@ public class ItemStackMixin {
         }
 
         tooltip.clear();
+        tooltip.addAll(newTooltip);
+    }
+
+    @Inject(method = "getTooltip", at = @At("RETURN"))
+    private void addSeasoningDescription(Item.TooltipContext context, PlayerEntity player, TooltipType type, CallbackInfoReturnable<List<Text>> cir) {
+        ItemStack stack = (ItemStack)(Object)this;
+
+        if (!stack.getComponents().contains(ModComponents.SEASONING)) return;
+
+        List<Text> tooltip = cir.getReturnValue();
+        List<Text> newTooltip = new ArrayList<>();
+
+        newTooltip.add(Text.literal("• Seasoning: ").append(stack.getComponents().get(ModComponents.SEASONING).getName()).formatted(Formatting.GOLD));
+
         tooltip.addAll(newTooltip);
     }
 

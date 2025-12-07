@@ -36,6 +36,9 @@ public class ModItems {
     public static final Item PURIFIED_WATER_BOTTLE = registerItem("purified_water_bottle",
             new Item(new Item.Settings().maxCount(1)));
 
+    public static final Item EMPYREAN_POWDER = registerItem("empyrean_powder",
+            new Item(new Item.Settings().maxCount(16)));
+
     public static final Item ADVANCED_ARROW = registerItem("advanced_arrow",
             new ArrowItem(new Item.Settings()));
 
@@ -153,6 +156,7 @@ public class ModItems {
             entries.add(BROWN_BEAR_SPAWN_EGG);
         });
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(entries -> {
+            entries.add(EMPYREAN_POWDER);
             entries.add(LLAMAS_SPIT);
             entries.add(BAT_FANG);
             entries.add(ENDERMITE_HEART);

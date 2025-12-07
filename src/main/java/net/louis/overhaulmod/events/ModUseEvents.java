@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.event.player.AttackEntityCallback;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 import net.fabricmc.fabric.api.event.player.UseEntityCallback;
 import net.fabricmc.fabric.api.event.player.UseItemCallback;
+import net.louis.overhaulmod.component.ModComponents;
 import net.louis.overhaulmod.config.ModConfig;
 import net.louis.overhaulmod.entity.ModEntities;
 import net.louis.overhaulmod.entity.custom.misc.ChairEntity;
@@ -68,6 +69,7 @@ public class ModUseEvents {
         UseItemCallback.EVENT.register(ModUseEvents::getLlamaSpitBottle);
         UseItemCallback.EVENT.register(ModUseEvents::useGlowInk);
         UseItemCallback.EVENT.register(ModUseEvents::useFireBlastEnchant);
+        UseItemCallback.EVENT.register(ModUseEvents::useSeasoning);
 
         UseEntityCallback.EVENT.register(ModUseEvents::changeArmorStandVariant);
         UseEntityCallback.EVENT.register(ModUseEvents::dyeShulkers);
@@ -560,6 +562,28 @@ public class ModUseEvents {
             return TypedActionResult.success(stack, world.isClient());
         }
         return TypedActionResult.pass(stack);
+    }
+
+    private static TypedActionResult<ItemStack> useSeasoning(PlayerEntity player, World world, Hand hand) {
+        ItemStack powderStack = player.getStackInHand(Hand.OFF_HAND);
+        ItemStack foodStack = player.getStackInHand(Hand.MAIN_HAND);
+
+        if (hand != Hand.MAIN_HAND || !powderStack.isOf(ModItems.EMPYREAN_POWDER) || world.isClient() || foodStack.get(DataComponentTypes.FOOD) == null || foodStack.get(ModComponents.SEASONING) != null) return TypedActionResult.pass(powderStack);
+
+        if (foodStack.getCount() <= 8) foodStack.set(ModComponents.SEASONING, ModItems.EMPYREAN_POWDER);
+        else {
+            foodStack.setCount(foodStack.getCount() - 8);
+
+            ItemStack newStack = foodStack.copy();
+            newStack.setCount(8);
+            newStack.set(ModComponents.SEASONING, ModItems.EMPYREAN_POWDER);
+            player.giveItemStack(newStack);
+        }
+
+        powderStack.decrementUnlessCreative(1, player);
+        world.playSound(null, player.getBlockPos(), SoundEvents.ITEM_HOE_TILL, SoundCategory.PLAYERS, 1f, 2f);
+        player.swingHand(hand, true);
+        return TypedActionResult.success(powderStack);
     }
 
     private static ActionResult dyeShulkers(PlayerEntity player, World world, Hand hand, Entity entity, @Nullable EntityHitResult entityHitResult) {

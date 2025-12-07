@@ -1,5 +1,6 @@
 package net.louis.overhaulmod.utils;
 
+import net.louis.overhaulmod.block.ModBlocks;
 import net.louis.overhaulmod.enchantments.ModEnchantments;
 import net.louis.overhaulmod.item.ModItems;
 import net.fabricmc.fabric.api.loot.v3.LootTableEvents;
@@ -41,6 +42,50 @@ public class ModLootTableModifiers {
             RegistryKey<Enchantment> lootingKey = Enchantments.LOOTING;
             RegistryWrapper<Enchantment> enchantmentRegistry = registry.getWrapperOrThrow(RegistryKeys.ENCHANTMENT);
             RegistryEntry<Enchantment> lootingEntry = enchantmentRegistry.getOrThrow(lootingKey);
+
+            if (LootTables.SNIFFER_DIGGING_GAMEPLAY.equals(key)) {
+                LootTable.Builder table = LootTable.builder()
+                        .pool(LootPool.builder()
+                                .rolls(ConstantLootNumberProvider.create(1))
+                                .conditionally(RandomChanceLootCondition.builder(0.2f))
+                                .with(ItemEntry.builder(Items.TORCHFLOWER_SEEDS))
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)).build())
+                                .apply(EnchantedCountIncreaseLootFunction.builder(registry, UniformLootNumberProvider.create(1.0f, 1.0f)).build())
+                        )
+                        .pool(LootPool.builder()
+                                .rolls(ConstantLootNumberProvider.create(1))
+                                .conditionally(RandomChanceLootCondition.builder(0.2f))
+                                .with(ItemEntry.builder(Items.PITCHER_POD))
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)).build())
+                                .apply(EnchantedCountIncreaseLootFunction.builder(registry, UniformLootNumberProvider.create(1.0f, 1.0f)).build())
+                        )
+
+                        .pool(LootPool.builder()
+                                .rolls(ConstantLootNumberProvider.create(1))
+                                .conditionally(RandomChanceLootCondition.builder(0.2f))
+                                .with(ItemEntry.builder(ModBlocks.MYSTIC_ROSE))
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)).build())
+                                .apply(EnchantedCountIncreaseLootFunction.builder(registry, UniformLootNumberProvider.create(1.0f, 1.0f)).build())
+                        )
+
+                        .pool(LootPool.builder()
+                                .rolls(ConstantLootNumberProvider.create(1))
+                                .conditionally(RandomChanceLootCondition.builder(0.2f))
+                                .with(ItemEntry.builder(ModBlocks.COBALT_FLOWER))
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)).build())
+                                .apply(EnchantedCountIncreaseLootFunction.builder(registry, UniformLootNumberProvider.create(1.0f, 1.0f)).build())
+                        )
+
+                        .pool(LootPool.builder()
+                                .rolls(ConstantLootNumberProvider.create(1))
+                                .conditionally(RandomChanceLootCondition.builder(0.2f))
+                                .with(ItemEntry.builder(ModItems.EMPYREAN_POWDER))
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)).build())
+                                .apply(EnchantedCountIncreaseLootFunction.builder(registry, UniformLootNumberProvider.create(1.0f, 1.0f)).build())
+                        );
+
+                return table.build();
+            }
 
             if (WARDEN_ID.equals(key.getValue())) {
                 LootPool.Builder customPool = LootPool.builder()

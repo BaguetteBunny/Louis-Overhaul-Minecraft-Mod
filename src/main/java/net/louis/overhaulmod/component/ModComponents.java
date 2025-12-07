@@ -22,6 +22,11 @@ public class ModComponents {
             Identifier.of(LouisOverhaulMod.MOD_ID, "custom_bundle_contents"),
             ComponentType.<CustomBundleContentsComponent>builder().codec(CustomBundleContentsComponent.CODEC).build()
     );
+    public static final ComponentType<Item> SEASONING = Registry.register(
+            Registries.DATA_COMPONENT_TYPE,
+            Identifier.of(LouisOverhaulMod.MOD_ID, "seasoning"),
+            ComponentType.<Item>builder().codec(Registries.ITEM.getCodec()).build()
+    );
     public static final ComponentType<Item> ARROW_SHAFT = Registry.register(
             Registries.DATA_COMPONENT_TYPE,
             Identifier.of(LouisOverhaulMod.MOD_ID, "arrow_shaft"),

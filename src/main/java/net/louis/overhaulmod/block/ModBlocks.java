@@ -9,7 +9,7 @@ import net.louis.overhaulmod.cauldron.custom.ColoredWaterCauldronBlock;
 import net.louis.overhaulmod.cauldron.custom.DragonBreathCauldronBlock;
 import net.louis.overhaulmod.cauldron.custom.HoneyCauldronBlock;
 import net.minecraft.block.*;
-import net.minecraft.block.enums.NoteBlockInstrument;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroups;
@@ -29,6 +29,15 @@ public class ModBlocks {
                     .sounds(BlockSoundGroup.METAL)
                     .noCollision()
             ));
+
+    public static final Block MYSTIC_ROSE = registerBlock("mystic_rose",
+            new FlowerBlock(StatusEffects.REGENERATION, 140, AbstractBlock.Settings.copy(Blocks.ALLIUM)));
+    public static final Block POTTED_MYSTIC_ROSE = registerBlock("potted_mystic_rose",
+            new FlowerPotBlock(ModBlocks.MYSTIC_ROSE, AbstractBlock.Settings.copy(Blocks.POTTED_ALLIUM)));
+    public static final Block COBALT_FLOWER = registerBlock("cobalt_flower",
+            new FlowerBlock(StatusEffects.POISON, 220, AbstractBlock.Settings.copy(Blocks.ALLIUM)));
+    public static final Block POTTED_COBALT_FLOWER = registerBlock("potted_cobalt_flower",
+            new FlowerPotBlock(ModBlocks.COBALT_FLOWER, AbstractBlock.Settings.copy(Blocks.POTTED_ALLIUM)));
 
     public static final Block SAWMILL = registerBlock("sawmill",
             new SawmillBlock(AbstractBlock.Settings.copy(Blocks.CHERRY_PLANKS)));
@@ -285,6 +294,10 @@ public class ModBlocks {
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL).register(entries -> {
             entries.add(ModBlocks.ADVANCED_FLETCHING_TABLE);
             entries.add(ModBlocks.SAWMILL);
+        });
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> {
+            entries.add(ModBlocks.MYSTIC_ROSE);
+            entries.add(ModBlocks.COBALT_FLOWER);
         });
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.REDSTONE).register(entries -> {
             entries.add(ModBlocks.COPPER_RAIL);

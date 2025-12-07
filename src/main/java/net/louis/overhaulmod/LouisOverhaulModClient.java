@@ -8,13 +8,11 @@ import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandlerRegistry
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.louis.overhaulmod.block.ModBlocks;
-import net.louis.overhaulmod.component.CustomBundleContentsComponent;
 import net.louis.overhaulmod.component.ModComponents;
 import net.louis.overhaulmod.entity.ModEntities;
 import net.louis.overhaulmod.entity.custom.client.BearEntityModel;
 import net.louis.overhaulmod.entity.custom.client.BearEntityRenderer;
 import net.louis.overhaulmod.entity.custom.client.ChairRenderer;
-import net.louis.overhaulmod.entity.custom.misc.ChairEntity;
 import net.louis.overhaulmod.fluid.ModFluids;
 import net.louis.overhaulmod.item.ModItems;
 import net.louis.overhaulmod.item.custom.BigBundleItem;
@@ -49,6 +47,10 @@ public class LouisOverhaulModClient implements ClientModInitializer {
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.COPPER_RAIL, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.GLOW_LANTERN, RenderLayer.getCutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SAWMILL, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.MYSTIC_ROSE, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.POTTED_MYSTIC_ROSE, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.COBALT_FLOWER, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.POTTED_COBALT_FLOWER, RenderLayer.getCutout());
 
         // Add Predicate Texture Transform
         PetRecoveryCompass.registerModelPredicates();

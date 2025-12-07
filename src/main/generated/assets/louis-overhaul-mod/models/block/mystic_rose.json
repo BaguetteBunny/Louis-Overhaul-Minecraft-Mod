@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "louis-overhaul-mod:block/mystic_rose"
+  }
+}

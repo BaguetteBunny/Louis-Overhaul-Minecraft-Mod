@@ -25,6 +25,16 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.HONEY_CAULDRON)
                 .add(ModBlocks.COLORED_WATER_CAULDRON);
 
+        getOrCreateTagBuilder(BlockTags.FLOWERS)
+                .add(ModBlocks.MYSTIC_ROSE)
+                .add(ModBlocks.COBALT_FLOWER);
+        getOrCreateTagBuilder(BlockTags.SMALL_FLOWERS)
+                .add(ModBlocks.MYSTIC_ROSE)
+                .add(ModBlocks.COBALT_FLOWER);
+        getOrCreateTagBuilder(BlockTags.FLOWER_POTS)
+                .add(ModBlocks.POTTED_MYSTIC_ROSE)
+                .add(ModBlocks.POTTED_COBALT_FLOWER);
+
         getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)
                 .add(ModBlocks.BAMBOO_MOSAIC_WALL)
                 .add(ModBlocks.SAWMILL);
