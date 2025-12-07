@@ -398,6 +398,15 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .offerTo(exporter);
 
         // MISC
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, Items.LIGHT_BLUE_DYE, 1)
+                .input(ModBlocks.MYSTIC_ROSE)
+                .criterion(hasItem(ModBlocks.MYSTIC_ROSE), conditionsFromItem(ModBlocks.MYSTIC_ROSE))
+                .offerTo(exporter);
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, Items.BLUE_DYE, 1)
+                .input(ModBlocks.COBALT_FLOWER)
+                .criterion(hasItem(ModBlocks.COBALT_FLOWER), conditionsFromItem(ModBlocks.COBALT_FLOWER))
+                .offerTo(exporter);
+
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.ADVANCED_FLETCHING_TABLE, 1)
                 .pattern("FF ")
                 .pattern("PP ")
