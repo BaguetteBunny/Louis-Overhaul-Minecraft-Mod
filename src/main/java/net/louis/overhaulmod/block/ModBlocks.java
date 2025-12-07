@@ -38,7 +38,7 @@ public class ModBlocks {
 
     // BONE BLOCKS
     public static final Block CHILLED_BONE_BLOCK = registerBlock("chilled_bone_block",
-            new PillarBlock(AbstractBlock.Settings.copy(Blocks.BONE_BLOCK).mapColor(DyeColor.LIGHT_BLUE).slipperiness(0.98f)));
+            new PillarBlock(AbstractBlock.Settings.copy(Blocks.BONE_BLOCK).mapColor(DyeColor.LIGHT_BLUE).slipperiness(0.95f)));
     public static final Block TOXIC_BONE_BLOCK = registerBlock("toxic_bone_block",
             new PillarBlock(AbstractBlock.Settings.copy(Blocks.BONE_BLOCK).mapColor(DyeColor.LIME)));
     public static final Block DECREPIT_BONE_BLOCK = registerBlock("decrepit_bone_block",
