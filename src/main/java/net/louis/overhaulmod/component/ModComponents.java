@@ -43,6 +43,12 @@ public class ModComponents {
             ComponentType.<Item>builder().codec(Registries.ITEM.getCodec()).build()
     );
 
+    public static final ComponentType<Boolean> GLOW_AND_PULSATE = Registry.register(
+            Registries.DATA_COMPONENT_TYPE,
+            Identifier.of(LouisOverhaulMod.MOD_ID, "glow_and_pulsate"),
+            ComponentType.<Boolean>builder().codec(Codec.BOOL).build()
+    );
+
     public static final ComponentType<Double> MOB_SPEED = Registry.register(
             Registries.DATA_COMPONENT_TYPE,
             Identifier.of(LouisOverhaulMod.MOD_ID, "mob_speed"),

@@ -4,6 +4,7 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandlerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
@@ -31,6 +32,9 @@ import static net.fabricmc.fabric.api.client.render.fluid.v1.SimpleFluidRenderHa
 
 @Environment(EnvType.CLIENT)
 public class LouisOverhaulModClient implements ClientModInitializer {
+    private static int PULSE_DEGREES = 0;
+    public static int getPulseDegrees() { return PULSE_DEGREES; }
+
     @Override
     public void onInitializeClient() {
         // Render Screen
@@ -61,6 +65,11 @@ public class LouisOverhaulModClient implements ClientModInitializer {
         addArrowPredicate();
 
         addColoredWater();
+
+        ClientTickEvents.END_CLIENT_TICK.register(client -> {
+            if (client.world == null) return;
+            PULSE_DEGREES = (PULSE_DEGREES + 5) % 360;
+        });
     }
 
     public void addArrowPredicate() {
