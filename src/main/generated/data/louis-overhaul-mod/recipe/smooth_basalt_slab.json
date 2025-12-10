@@ -7,10 +7,12 @@
     }
   },
   "pattern": [
+    "A  ",
+    "AA ",
     "AAA"
   ],
   "result": {
-    "count": 6,
+    "count": 4,
     "id": "louis-overhaul-mod:smooth_basalt_slab"
   }
 }

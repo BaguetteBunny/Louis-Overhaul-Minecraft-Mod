@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_deepslate_bricks": {
+    "has_dark_prismarine_slab": {
       "conditions": {
         "items": [
           {
-            "items": "minecraft:deepslate_bricks"
+            "items": "minecraft:dark_prismarine_slab"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_deepslate_bricks"
+      "has_dark_prismarine_slab"
     ]
   ],
   "rewards": {

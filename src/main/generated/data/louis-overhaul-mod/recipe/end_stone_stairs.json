@@ -3,15 +3,14 @@
   "category": "building",
   "key": {
     "#": {
-      "item": "minecraft:stone"
+      "item": "minecraft:end_stone"
     }
   },
   "pattern": [
-    "###",
     "###"
   ],
   "result": {
     "count": 6,
-    "id": "louis-overhaul-mod:stone_wall"
+    "id": "louis-overhaul-mod:end_stone_stairs"
   }
 }

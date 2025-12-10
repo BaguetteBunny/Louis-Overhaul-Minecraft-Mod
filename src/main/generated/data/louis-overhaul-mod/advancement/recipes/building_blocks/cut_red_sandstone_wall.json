@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_cut_red_sandstone": {
+    "has_bamboo_mosaic": {
       "conditions": {
         "items": [
           {
-            "items": "minecraft:cut_red_sandstone"
+            "items": "minecraft:bamboo_mosaic"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_cut_red_sandstone"
+      "has_bamboo_mosaic"
     ]
   ],
   "rewards": {

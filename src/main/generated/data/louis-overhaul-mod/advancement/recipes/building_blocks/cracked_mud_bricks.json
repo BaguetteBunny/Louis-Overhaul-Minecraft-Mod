@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_dark_prismarine_slab": {
+    "has_mud_bricks": {
       "conditions": {
         "items": [
           {
-            "items": "minecraft:dark_prismarine_slab"
+            "items": "minecraft:mud_bricks"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "louis-overhaul-mod:chiseled_red_nether_bricks"
+        "recipe": "louis-overhaul-mod:cracked_mud_bricks"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_dark_prismarine_slab"
+      "has_mud_bricks"
     ]
   ],
   "rewards": {
     "recipes": [
-      "louis-overhaul-mod:chiseled_red_nether_bricks"
+      "louis-overhaul-mod:cracked_mud_bricks"
     ]
   }
 }

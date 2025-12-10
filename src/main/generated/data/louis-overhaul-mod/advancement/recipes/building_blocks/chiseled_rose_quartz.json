@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_rose_quartz_bricks": {
+    "has_dark_prismarine_slab": {
       "conditions": {
         "items": [
           {
-            "items": "louis-overhaul-mod:rose_quartz_bricks"
+            "items": "minecraft:dark_prismarine_slab"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_rose_quartz_bricks"
+      "has_dark_prismarine_slab"
     ]
   ],
   "rewards": {

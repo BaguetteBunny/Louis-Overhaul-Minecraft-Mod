@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_mossy_stone_bricks": {
+    "has_dark_prismarine_slab": {
       "conditions": {
         "items": [
           {
-            "items": "minecraft:mossy_stone_bricks"
+            "items": "minecraft:dark_prismarine_slab"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_mossy_stone_bricks"
+      "has_dark_prismarine_slab"
     ]
   ],
   "rewards": {

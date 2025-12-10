@@ -3,7 +3,7 @@
   "category": "building",
   "key": {
     "A": {
-      "item": "minecraft:calcite"
+      "item": "minecraft:end_stone"
     }
   },
   "pattern": [
@@ -13,6 +13,6 @@
   ],
   "result": {
     "count": 4,
-    "id": "louis-overhaul-mod:calcite_slab"
+    "id": "louis-overhaul-mod:end_stone_slab"
   }
 }

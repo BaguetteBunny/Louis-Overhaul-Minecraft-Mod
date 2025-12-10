@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_prismarine_bricks": {
+    "has_red_nether_bricks": {
       "conditions": {
         "items": [
           {
-            "items": "minecraft:prismarine_bricks"
+            "items": "minecraft:red_nether_bricks"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "louis-overhaul-mod:cracked_prismarine_bricks_from_smelting_prismarine_bricks"
+        "recipe": "louis-overhaul-mod:cracked_red_nether_bricks"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_prismarine_bricks"
+      "has_red_nether_bricks"
     ]
   ],
   "rewards": {
     "recipes": [
-      "louis-overhaul-mod:cracked_prismarine_bricks_from_smelting_prismarine_bricks"
+      "louis-overhaul-mod:cracked_red_nether_bricks"
     ]
   }
 }

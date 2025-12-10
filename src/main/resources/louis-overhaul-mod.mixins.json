@@ -48,7 +48,8 @@
 		"PolarBearEntityMixin",
 		"PotionContentsComponentMixin",
 		"StatusEffectInstanceMixin",
-		"GrindstoneScreenHandlerMixin"
+		"GrindstoneScreenHandlerMixin",
+		"ArmorFeatureRendererMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
