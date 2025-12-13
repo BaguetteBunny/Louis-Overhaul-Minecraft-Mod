@@ -70,7 +70,6 @@ public class ModUseEvents {
         UseItemCallback.EVENT.register(ModUseEvents::useGlowInk);
         UseItemCallback.EVENT.register(ModUseEvents::useFireBlastEnchant);
         UseItemCallback.EVENT.register(ModUseEvents::useSeasoning);
-        UseItemCallback.EVENT.register(ModUseEvents::makeGlowOrPulsate);
 
         UseEntityCallback.EVENT.register(ModUseEvents::changeArmorStandVariant);
         UseEntityCallback.EVENT.register(ModUseEvents::dyeShulkers);
@@ -585,34 +584,6 @@ public class ModUseEvents {
         world.playSound(null, player.getBlockPos(), SoundEvents.ITEM_HOE_TILL, SoundCategory.PLAYERS, 1f, 2f);
         player.swingHand(hand, true);
         return TypedActionResult.success(powderStack);
-    }
-
-    private static TypedActionResult<ItemStack> makeGlowOrPulsate(PlayerEntity player, World world, Hand hand) {
-        ItemStack ingredientStack = player.getStackInHand(Hand.OFF_HAND);
-        ItemStack armorStack = player.getStackInHand(Hand.MAIN_HAND);
-
-        if (hand != Hand.MAIN_HAND || !(armorStack.getItem() instanceof ArmorItem armorItem) || armorStack.get(DataComponentTypes.TRIM) == null || world.isClient()) return TypedActionResult.pass(ingredientStack);
-
-        boolean success = false;
-        ItemStack newStack = armorStack.copy();
-        if (ingredientStack.getItem() == Items.GLOW_INK_SAC && armorStack.get(ModComponents.GLOW_AND_PULSATE) == null) {
-            success = true;
-            newStack.set(ModComponents.GLOW_AND_PULSATE, false);
-        }
-        if (ingredientStack.getItem() == Items.ECHO_SHARD && armorStack.get(ModComponents.GLOW_AND_PULSATE) == false) {
-            success = true;
-            newStack.set(ModComponents.GLOW_AND_PULSATE, true);
-        }
-
-        if (success) {
-            armorStack.setCount(0);
-            player.giveItemStack(newStack);
-            ingredientStack.decrementUnlessCreative(1, player);
-            world.playSound(null, player.getBlockPos(), SoundEvents.BLOCK_SMITHING_TABLE_USE, SoundCategory.PLAYERS, 1f, 1.5f);
-            player.swingHand(hand, true);
-            return TypedActionResult.success(ingredientStack);
-        } else return TypedActionResult.pass(ingredientStack);
-
     }
 
     private static ActionResult dyeShulkers(PlayerEntity player, World world, Hand hand, Entity entity, @Nullable EntityHitResult entityHitResult) {

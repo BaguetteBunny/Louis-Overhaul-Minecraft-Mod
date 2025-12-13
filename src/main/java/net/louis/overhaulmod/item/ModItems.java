@@ -33,6 +33,12 @@ public class ModItems {
     public static final Item RED_WATER_BUCKET = registerItem("red_water_bucket", new BucketItem(ModFluids.STILL_RED_WATER, new Item.Settings().maxCount(1).recipeRemainder(Items.BUCKET)));
     public static final Item BLACK_WATER_BUCKET = registerItem("black_water_bucket", new BucketItem(ModFluids.STILL_BLACK_WATER, new Item.Settings().maxCount(1).recipeRemainder(Items.BUCKET)));
 
+    public static final Item GLOW_UPGRADE_SMITHING_TEMPLATE = registerItem("glow_upgrade_smithing_template",
+            new Item(new Item.Settings()));
+
+    public static final Item PULSING_UPGRADE_SMITHING_TEMPLATE = registerItem("pulsing_upgrade_smithing_template",
+            new Item(new Item.Settings()));
+
     public static final Item PURIFIED_WATER_BOTTLE = registerItem("purified_water_bottle",
             new Item(new Item.Settings().maxCount(1)));
 
@@ -156,6 +162,8 @@ public class ModItems {
             entries.add(BROWN_BEAR_SPAWN_EGG);
         });
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(entries -> {
+            entries.add(GLOW_UPGRADE_SMITHING_TEMPLATE);
+            entries.add(PULSING_UPGRADE_SMITHING_TEMPLATE);
             entries.add(EMPYREAN_POWDER);
             entries.add(LLAMAS_SPIT);
             entries.add(BAT_FANG);

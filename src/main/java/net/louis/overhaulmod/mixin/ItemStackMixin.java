@@ -27,11 +27,10 @@ import java.util.List;
 
 @Mixin(ItemStack.class)
 public class ItemStackMixin {
+    ItemStack stack = (ItemStack)(Object)this;
 
     @Inject(method = "getTooltip", at = @At("RETURN"))
     private void addEnchantmentDescriptions(Item.TooltipContext context, PlayerEntity player, TooltipType type, CallbackInfoReturnable<List<Text>> cir) {
-        ItemStack stack = (ItemStack)(Object)this;
-
         if (!(stack.getItem() instanceof EnchantedBookItem)) return;
 
         ItemEnchantmentsComponent enchantments = stack.get(DataComponentTypes.STORED_ENCHANTMENTS);
@@ -64,8 +63,6 @@ public class ItemStackMixin {
 
     @Inject(method = "getTooltip", at = @At("RETURN"))
     private void addSeasoningDescription(Item.TooltipContext context, PlayerEntity player, TooltipType type, CallbackInfoReturnable<List<Text>> cir) {
-        ItemStack stack = (ItemStack)(Object)this;
-
         if (!stack.getComponents().contains(ModComponents.SEASONING)) return;
 
         List<Text> tooltip = cir.getReturnValue();
@@ -77,38 +74,39 @@ public class ItemStackMixin {
     }
 
     @Inject(method = "getTooltip", at = @At("RETURN"))
-    private void addEnchantmentCapTooltip(Item.TooltipContext context, PlayerEntity player, TooltipType type, CallbackInfoReturnable<List<Text>> cir) {
-        ItemStack stack = (ItemStack)(Object)this;
+    private void addGlowPulsateTrimTooltip(Item.TooltipContext context, PlayerEntity player, TooltipType type, CallbackInfoReturnable<List<Text>> cir) {
+        if (!stack.getComponents().contains(ModComponents.GLOW_AND_PULSATE)) return;
 
-        if (!EnchantmentCapRegistry.hasCap(stack.getItem())) {
-            return;
-        }
+        List<Text> tooltip = cir.getReturnValue();
+        Text newTooltip;
+
+        if (Boolean.TRUE.equals(stack.getComponents().get(ModComponents.GLOW_AND_PULSATE))) newTooltip = Text.literal(" Pulsate").formatted(Formatting.LIGHT_PURPLE);
+        else newTooltip = Text.literal(" Glow").formatted(Formatting.BLUE);
+
+        tooltip.add(4, newTooltip);
+    }
+
+    @Inject(method = "getTooltip", at = @At("RETURN"))
+    private void addEnchantmentCapTooltip(Item.TooltipContext context, PlayerEntity player, TooltipType type, CallbackInfoReturnable<List<Text>> cir) {
+        if (!EnchantmentCapRegistry.hasCap(stack.getItem())) return;
 
         int cap = EnchantmentCapRegistry.getCap(stack.getItem());
-
         ItemEnchantmentsComponent enchantments = stack.get(DataComponentTypes.ENCHANTMENTS);
         int current = enchantments != null ? enchantments.getSize() : 0;
 
-
         List<Text> tooltip = cir.getReturnValue();
-
         tooltip.add(1, Text.literal("Enchantments: " + current + "/" + cap)
                 .formatted(current >= cap ? Formatting.RED : Formatting.DARK_GRAY));
     }
 
     @Inject(method = "getTooltip", at = @At("RETURN"))
     private void obfuscateCurseNames(Item.TooltipContext context, PlayerEntity player, TooltipType type, CallbackInfoReturnable<List<Text>> cir) {
-        ItemStack stack = (ItemStack) (Object) this;
-
-        // Don't obfuscate on enchanted books
         if (stack.getItem() instanceof EnchantedBookItem) return;
-
 
         List<Text> tooltip = cir.getReturnValue();
         ItemEnchantmentsComponent enchantments = stack.get(DataComponentTypes.ENCHANTMENTS);
 
         if (enchantments == null || enchantments.isEmpty()) return;
-
 
         for (int i = 0; i < tooltip.size(); i++) {
             Text line = tooltip.get(i);

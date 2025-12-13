@@ -29,6 +29,10 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
         getOrCreateTagBuilder(ItemTags.ARROWS)
                 .add(ModItems.ADVANCED_ARROW);
 
+        getOrCreateTagBuilder(ItemTags.TRIM_TEMPLATES)
+                .add(ModItems.GLOW_UPGRADE_SMITHING_TEMPLATE)
+                .add(ModItems.PULSING_UPGRADE_SMITHING_TEMPLATE);
+
         getOrCreateTagBuilder(ItemTags.STONE_TOOL_MATERIALS)
                 .add(Items.END_STONE)
                 .add(Items.STONE)
