@@ -1,6 +1,7 @@
 package net.louis.overhaulmod.mixin;
 
 import net.louis.overhaulmod.component.ModComponents;
+import net.louis.overhaulmod.item.ModItems;
 import net.louis.overhaulmod.utils.EnchantmentCapRegistry;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.ItemEnchantmentsComponent;
@@ -84,6 +85,22 @@ public class ItemStackMixin {
         else newTooltip = Text.literal(" Glow").formatted(Formatting.BLUE);
 
         tooltip.add(4, newTooltip);
+    }
+
+    @Inject(method = "getTooltip", at = @At("RETURN"))
+    private void addAzuriteTooltip(Item.TooltipContext context, PlayerEntity player, TooltipType type, CallbackInfoReturnable<List<Text>> cir) {
+        if (stack.getItem() != ModItems.AZURITE) return;
+
+        List<Text> tooltip = cir.getReturnValue();
+        tooltip.add(1, Text.empty());
+        tooltip.add(2, Text.literal("Reinforced with:").formatted(Formatting.GRAY));
+
+        if (!stack.getComponents().contains(ModComponents.AZURITE_REFINE) || stack.getComponents().get(ModComponents.AZURITE_REFINE) == null)
+            tooltip.add(3, Text.literal(" Nothing").formatted(Formatting.BLUE));
+        else {
+            String str = stack.getComponents().get(ModComponents.AZURITE_REFINE);
+            tooltip.add(3, Text.literal(" " + str.substring(0, 1).toUpperCase() + str.substring(1)).formatted(Formatting.BLUE));
+        }
     }
 
     @Inject(method = "getTooltip", at = @At("RETURN"))

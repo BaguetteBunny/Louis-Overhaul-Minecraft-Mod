@@ -208,5 +208,7 @@ public class ModModelProvider extends FabricModelProvider {
 
         itemModelGenerator.register(ModItems.BROWN_BEAR_SPAWN_EGG, new Model(Optional.of(Identifier.of("item/template_spawn_egg")), Optional.empty()));
         // Pet Recovery Compass Generated Manually
+        // Azurite Generated Manually
+        // Advanced Arrow Generated Manually
     }
 }

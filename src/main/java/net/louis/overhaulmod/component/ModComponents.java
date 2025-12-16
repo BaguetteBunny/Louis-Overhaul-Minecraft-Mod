@@ -22,6 +22,11 @@ public class ModComponents {
             Identifier.of(LouisOverhaulMod.MOD_ID, "custom_bundle_contents"),
             ComponentType.<CustomBundleContentsComponent>builder().codec(CustomBundleContentsComponent.CODEC).build()
     );
+    public static final ComponentType<String> AZURITE_REFINE = Registry.register(
+            Registries.DATA_COMPONENT_TYPE,
+            Identifier.of(LouisOverhaulMod.MOD_ID, "azurite_refine"),
+            ComponentType.<String>builder().codec(Codec.STRING).build()
+    );
     public static final ComponentType<Item> SEASONING = Registry.register(
             Registries.DATA_COMPONENT_TYPE,
             Identifier.of(LouisOverhaulMod.MOD_ID, "seasoning"),

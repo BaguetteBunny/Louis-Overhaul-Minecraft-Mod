@@ -28,6 +28,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.util.Identifier;
 
+import java.util.Objects;
+
 import static net.fabricmc.fabric.api.client.render.fluid.v1.SimpleFluidRenderHandler.coloredWater;
 
 @Environment(EnvType.CLIENT)
@@ -63,6 +65,7 @@ public class LouisOverhaulModClient implements ClientModInitializer {
         BigBundleItem.registerBigBundlePredicate(ModItems.PIONEER_POUCH);
 
         addArrowPredicate();
+        addAzuritePredicate();
 
         addColoredWater();
 
@@ -70,6 +73,21 @@ public class LouisOverhaulModClient implements ClientModInitializer {
             if (client.world == null) return;
             PULSE_DEGREES = (PULSE_DEGREES + 5) % 360;
         });
+    }
+
+    public static void addAzuritePredicate() {
+        ModelPredicateProviderRegistry.register(
+                ModItems.AZURITE,
+                Identifier.of(LouisOverhaulMod.MOD_ID,"azurite_refine_id"),
+                (stack, world, entity, seed) -> {
+                    String materialString = stack.get(ModComponents.AZURITE_REFINE);
+                    if (Objects.equals(materialString, "iron")) return 0.1f;
+                    if (Objects.equals(materialString, "gold")) return 0.2f;
+                    if (Objects.equals(materialString, "diamond")) return 0.3f;
+                    if (Objects.equals(materialString, "netherite")) return 0.4f;
+                    return 0.f;
+                }
+        );
     }
 
     public void addArrowPredicate() {

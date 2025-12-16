@@ -367,6 +367,11 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .offerTo(exporter);
 
         // INGREDIENT
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.AZURITE, 2)
+                .input(Items.LAPIS_LAZULI)
+                .input(Items.COPPER_INGOT)
+                .criterion(hasItem(Items.COPPER_INGOT), conditionsFromItem(Items.COPPER_INGOT))
+                .offerTo(exporter);
         ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.CHILLED_BONE_MEAL, 3)
                 .input(ModItems.CHILLED_BONE)
                 .criterion(hasItem(ModItems.CHILLED_BONE), conditionsFromItem(ModItems.CHILLED_BONE))
