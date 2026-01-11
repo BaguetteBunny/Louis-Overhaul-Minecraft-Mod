@@ -35,7 +35,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static net.louis.overhaulmod.utils.EntityBlockRadiusGetterUtil.*;
+import static net.louis.overhaulmod.utils.RadiusGetterUtil.*;
 
 public class PurifiedWaterEntity extends ThrownItemEntity {
     public PurifiedWaterEntity(EntityType<? extends PurifiedWaterEntity> entityType, World world) {

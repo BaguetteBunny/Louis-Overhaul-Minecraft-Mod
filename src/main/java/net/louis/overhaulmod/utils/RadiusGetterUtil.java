@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class EntityBlockRadiusGetterUtil {
+public class RadiusGetterUtil {
     public static List<LivingEntity> getEntitiesInRadius(World world, Vec3d pos, double radius) {
         Box box = new Box(
                 pos.x - radius, pos.y - radius, pos.z - radius,
