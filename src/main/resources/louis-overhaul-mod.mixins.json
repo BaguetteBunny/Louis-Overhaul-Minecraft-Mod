@@ -51,7 +51,9 @@
 		"GrindstoneScreenHandlerMixin",
 		"ArmorFeatureRendererMixin",
 		"SmithingScreenHandlerMixin",
-		"AnvilScreenHandlerMixin"
+		"AnvilScreenHandlerMixin",
+		"WitherEntityMixin",
+		"WitherSkullEntityMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

@@ -36,6 +36,7 @@ public class ModLootTableModifiers {
     private static final Identifier DROWNED_ID = Identifier.ofVanilla("entities/drowned");
     private static final Identifier BOGGED_ID = Identifier.ofVanilla("entities/bogged");
     private static final Identifier WITHER_SKELETON_ID = Identifier.ofVanilla("entities/wither_skeleton");
+    private static final Identifier WITHER_ID = Identifier.ofVanilla("entities/wither");
 
     public static void replaceLootTables() {
         LootTableEvents.REPLACE.register((key, lootManager, source, registry) -> {
@@ -259,7 +260,7 @@ public class ModLootTableModifiers {
     public static void modifyLootTables() {
         LootTableEvents.MODIFY.register((key, tableBuilder, source, registry) -> {
             // Make bats drop bat fangs
-            if(BAT_ID.equals(key.getValue())) {
+            if (BAT_ID.equals(key.getValue())) {
                 LootPool.Builder poolBuilder = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(KilledByPlayerLootCondition.builder())
@@ -269,8 +270,9 @@ public class ModLootTableModifiers {
                         .apply(EnchantedCountIncreaseLootFunction.builder(registry, UniformLootNumberProvider.create(1.0f, 1.0f)).build());
                 tableBuilder.pool(poolBuilder.build());
             }
+
             // Make endermite drop heart
-            if(ENDERMITE_ID.equals(key.getValue())) {
+            if (ENDERMITE_ID.equals(key.getValue())) {
                 LootPool.Builder poolBuilder = LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
                         .conditionally(KilledByPlayerLootCondition.builder())
@@ -278,6 +280,17 @@ public class ModLootTableModifiers {
                         .with(ItemEntry.builder(ModItems.ENDERMITE_HEART))
                         .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)).build())
                         .apply(EnchantedCountIncreaseLootFunction.builder(registry, UniformLootNumberProvider.create(1.0f, 1.0f)).build());
+                tableBuilder.pool(poolBuilder.build());
+            }
+
+            // Make wither drop more nether stars
+            if (WITHER_ID.equals(key.getValue())) {
+                LootPool.Builder poolBuilder = LootPool.builder()
+                        .rolls(ConstantLootNumberProvider.create(1))
+                        .conditionally(KilledByPlayerLootCondition.builder())
+                        .with(ItemEntry.builder(Items.NETHER_STAR))
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(2.0f, 5.0f)).build())
+                        .apply(EnchantedCountIncreaseLootFunction.builder(registry, UniformLootNumberProvider.create(0.0f, 1.0f)).build());
                 tableBuilder.pool(poolBuilder.build());
             }
 
