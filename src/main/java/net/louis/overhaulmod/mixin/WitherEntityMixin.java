@@ -8,6 +8,8 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.entity.boss.BossBar;
+import net.minecraft.entity.boss.ServerBossBar;
 import net.minecraft.entity.boss.WitherEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.damage.DamageTypes;
@@ -25,7 +27,9 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.joml.Vector4d;
+import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Constant;
@@ -48,6 +52,14 @@ public class WitherEntityMixin implements WitherHealthAccessor {
     @Unique private boolean threeQuarterHealthFlag = false;
     @Unique private boolean halfHealthFlag = false;
     @Unique private boolean quarterHealthFlag = false;
+
+    @Shadow @Final private ServerBossBar bossBar;
+
+    @Inject(method = "<init>", at = @At("RETURN"))
+    private void modifyBossBar(EntityType<? extends WitherEntity> type, World world, CallbackInfo ci) {
+        bossBar.setStyle(ServerBossBar.Style.NOTCHED_12);
+        bossBar.setThickenFog(true);
+    }
 
     @ModifyConstant(method = "mobTick", constant = @Constant(floatValue = 7.0F))
     private float modifyExplosionRadius(float original) {
