@@ -27,12 +27,24 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
         getOrCreateTagBuilder(BlockTags.FLOWERS)
                 .add(ModBlocks.MYSTIC_ROSE)
+                .add(ModBlocks.LAVENDER_DANDELION)
+                .add(ModBlocks.WILTED_POPPY)
+                .add(ModBlocks.HEART_FLOWER)
+                .add(ModBlocks.SHINY_CORNFLOWER)
                 .add(ModBlocks.COBALT_FLOWER);
         getOrCreateTagBuilder(BlockTags.SMALL_FLOWERS)
                 .add(ModBlocks.MYSTIC_ROSE)
+                .add(ModBlocks.LAVENDER_DANDELION)
+                .add(ModBlocks.WILTED_POPPY)
+                .add(ModBlocks.HEART_FLOWER)
+                .add(ModBlocks.SHINY_CORNFLOWER)
                 .add(ModBlocks.COBALT_FLOWER);
         getOrCreateTagBuilder(BlockTags.FLOWER_POTS)
                 .add(ModBlocks.POTTED_MYSTIC_ROSE)
+                .add(ModBlocks.POTTED_LAVENDER_DANDELION)
+                .add(ModBlocks.POTTED_WILTED_POPPY)
+                .add(ModBlocks.POTTED_HEART_FLOWER)
+                .add(ModBlocks.POTTED_SHINY_CORNFLOWER)
                 .add(ModBlocks.POTTED_COBALT_FLOWER);
 
         getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)

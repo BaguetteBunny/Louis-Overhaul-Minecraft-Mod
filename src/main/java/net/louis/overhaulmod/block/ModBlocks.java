@@ -31,13 +31,34 @@ public class ModBlocks {
             ));
 
     public static final Block MYSTIC_ROSE = registerBlock("mystic_rose",
-            new FlowerBlock(StatusEffects.REGENERATION, 140, AbstractBlock.Settings.copy(Blocks.ALLIUM)));
+            new FlowerBlock(StatusEffects.REGENERATION, 8, AbstractBlock.Settings.copy(Blocks.ALLIUM)));
     public static final Block POTTED_MYSTIC_ROSE = registerBlock("potted_mystic_rose",
             new FlowerPotBlock(ModBlocks.MYSTIC_ROSE, AbstractBlock.Settings.copy(Blocks.POTTED_ALLIUM)));
+
     public static final Block COBALT_FLOWER = registerBlock("cobalt_flower",
-            new FlowerBlock(StatusEffects.POISON, 220, AbstractBlock.Settings.copy(Blocks.ALLIUM)));
+            new FlowerBlock(StatusEffects.POISON, 12, AbstractBlock.Settings.copy(Blocks.ALLIUM)));
     public static final Block POTTED_COBALT_FLOWER = registerBlock("potted_cobalt_flower",
             new FlowerPotBlock(ModBlocks.COBALT_FLOWER, AbstractBlock.Settings.copy(Blocks.POTTED_ALLIUM)));
+
+    public static final Block WILTED_POPPY = registerBlock("wilted_poppy",
+            new FlowerBlock(StatusEffects.WITHER, 8, AbstractBlock.Settings.copy(Blocks.ALLIUM)));
+    public static final Block POTTED_WILTED_POPPY = registerBlock("potted_wilted_poppy",
+            new FlowerPotBlock(ModBlocks.WILTED_POPPY, AbstractBlock.Settings.copy(Blocks.POTTED_ALLIUM)));
+
+    public static final Block LAVENDER_DANDELION = registerBlock("lavender_dandelion",
+            new FlowerBlock(StatusEffects.SATURATION, 0.35f, AbstractBlock.Settings.copy(Blocks.ALLIUM)));
+    public static final Block POTTED_LAVENDER_DANDELION = registerBlock("potted_lavender_dandelion",
+            new FlowerPotBlock(ModBlocks.LAVENDER_DANDELION, AbstractBlock.Settings.copy(Blocks.POTTED_ALLIUM)));
+
+    public static final Block HEART_FLOWER = registerBlock("heart_flower",
+            new FlowerBlock(StatusEffects.REGENERATION, 8, AbstractBlock.Settings.copy(Blocks.ALLIUM)));
+    public static final Block POTTED_HEART_FLOWER = registerBlock("potted_heart_flower",
+            new FlowerPotBlock(ModBlocks.HEART_FLOWER, AbstractBlock.Settings.copy(Blocks.POTTED_ALLIUM)));
+
+    public static final Block SHINY_CORNFLOWER = registerBlock("shiny_cornflower",
+            new FlowerBlock(StatusEffects.JUMP_BOOST, 6, AbstractBlock.Settings.copy(Blocks.ALLIUM)));
+    public static final Block POTTED_SHINY_CORNFLOWER = registerBlock("potted_shiny_cornflower",
+            new FlowerPotBlock(ModBlocks.SHINY_CORNFLOWER, AbstractBlock.Settings.copy(Blocks.POTTED_ALLIUM)));
 
     public static final Block SAWMILL = registerBlock("sawmill",
             new SawmillBlock(AbstractBlock.Settings.copy(Blocks.CHERRY_PLANKS)));
@@ -298,6 +319,10 @@ public class ModBlocks {
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.NATURAL).register(entries -> {
             entries.add(ModBlocks.MYSTIC_ROSE);
             entries.add(ModBlocks.COBALT_FLOWER);
+            entries.add(ModBlocks.WILTED_POPPY);
+            entries.add(ModBlocks.SHINY_CORNFLOWER);
+            entries.add(ModBlocks.LAVENDER_DANDELION);
+            entries.add(ModBlocks.HEART_FLOWER);
         });
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.REDSTONE).register(entries -> {
             entries.add(ModBlocks.COPPER_RAIL);

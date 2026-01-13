@@ -389,11 +389,28 @@ public class ModRecipeProvider extends FabricRecipeProvider {
         ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, Items.LIGHT_BLUE_DYE, 1)
                 .input(ModBlocks.MYSTIC_ROSE)
                 .criterion(hasItem(ModBlocks.MYSTIC_ROSE), conditionsFromItem(ModBlocks.MYSTIC_ROSE))
-                .offerTo(exporter);
+                .offerTo(exporter, Identifier.of(LouisOverhaulMod.MOD_ID, "light_blue_dye_from_mystic_rose"));
         ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, Items.BLUE_DYE, 1)
                 .input(ModBlocks.COBALT_FLOWER)
                 .criterion(hasItem(ModBlocks.COBALT_FLOWER), conditionsFromItem(ModBlocks.COBALT_FLOWER))
                 .offerTo(exporter);
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, Items.MAGENTA_DYE, 1)
+                .input(ModBlocks.HEART_FLOWER)
+                .criterion(hasItem(ModBlocks.HEART_FLOWER), conditionsFromItem(ModBlocks.HEART_FLOWER))
+                .offerTo(exporter);
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, Items.BLACK_DYE, 1)
+                .input(ModBlocks.WILTED_POPPY)
+                .criterion(hasItem(ModBlocks.WILTED_POPPY), conditionsFromItem(ModBlocks.WILTED_POPPY))
+                .offerTo(exporter);
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, Items.PURPLE_DYE, 1)
+                .input(ModBlocks.LAVENDER_DANDELION)
+                .criterion(hasItem(ModBlocks.LAVENDER_DANDELION), conditionsFromItem(ModBlocks.LAVENDER_DANDELION))
+                .offerTo(exporter);
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, Items.LIGHT_BLUE_DYE, 1)
+                .input(ModBlocks.SHINY_CORNFLOWER)
+                .criterion(hasItem(ModBlocks.SHINY_CORNFLOWER), conditionsFromItem(ModBlocks.SHINY_CORNFLOWER))
+                .offerTo(exporter, Identifier.of(LouisOverhaulMod.MOD_ID, "light_blue_dye_from_shiny_cornflower"));
+
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.ADVANCED_FLETCHING_TABLE, 1)
                 .pattern("FF ")

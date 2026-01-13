@@ -49,6 +49,10 @@ public class ModModelProvider extends FabricModelProvider {
 
         blockStateModelGenerator.registerFlowerPotPlant(ModBlocks.MYSTIC_ROSE, ModBlocks.POTTED_MYSTIC_ROSE, BlockStateModelGenerator.TintType.NOT_TINTED);
         blockStateModelGenerator.registerFlowerPotPlant(ModBlocks.COBALT_FLOWER, ModBlocks.POTTED_COBALT_FLOWER, BlockStateModelGenerator.TintType.NOT_TINTED);
+        blockStateModelGenerator.registerFlowerPotPlant(ModBlocks.WILTED_POPPY, ModBlocks.POTTED_WILTED_POPPY, BlockStateModelGenerator.TintType.NOT_TINTED);
+        blockStateModelGenerator.registerFlowerPotPlant(ModBlocks.SHINY_CORNFLOWER, ModBlocks.POTTED_SHINY_CORNFLOWER, BlockStateModelGenerator.TintType.NOT_TINTED);
+        blockStateModelGenerator.registerFlowerPotPlant(ModBlocks.LAVENDER_DANDELION, ModBlocks.POTTED_LAVENDER_DANDELION, BlockStateModelGenerator.TintType.NOT_TINTED);
+        blockStateModelGenerator.registerFlowerPotPlant(ModBlocks.HEART_FLOWER, ModBlocks.POTTED_HEART_FLOWER, BlockStateModelGenerator.TintType.NOT_TINTED);
 
         blockStateModelGenerator.registerLog(ModBlocks.CHILLED_BONE_BLOCK);
         blockStateModelGenerator.registerLog(ModBlocks.TOXIC_BONE_BLOCK);

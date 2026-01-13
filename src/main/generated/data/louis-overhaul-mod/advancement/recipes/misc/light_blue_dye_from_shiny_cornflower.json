@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_mystic_rose": {
+    "has_shiny_cornflower": {
       "conditions": {
         "items": [
           {
-            "items": "louis-overhaul-mod:mystic_rose"
+            "items": "louis-overhaul-mod:shiny_cornflower"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "louis-overhaul-mod:light_blue_dye"
+        "recipe": "louis-overhaul-mod:light_blue_dye_from_shiny_cornflower"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_mystic_rose"
+      "has_shiny_cornflower"
     ]
   ],
   "rewards": {
     "recipes": [
-      "louis-overhaul-mod:light_blue_dye"
+      "louis-overhaul-mod:light_blue_dye_from_shiny_cornflower"
     ]
   }
 }
