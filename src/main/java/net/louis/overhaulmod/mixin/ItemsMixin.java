@@ -6,6 +6,7 @@ import net.minecraft.component.type.BannerPatternsComponent;
 import net.minecraft.component.type.ContainerComponent;
 import net.minecraft.component.type.FoodComponent;
 import net.minecraft.component.type.FoodComponents;
+import net.minecraft.entity.vehicle.AbstractMinecartEntity;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
@@ -32,6 +33,30 @@ public abstract class ItemsMixin {
     @Shadow @Final @Mutable public static Item ARMOR_STAND;
     @Shadow @Final @Mutable public static Item SNIFFER_EGG;
     @Shadow @Final @Mutable public static Item DRAGON_EGG;
+
+    @Shadow @Final @Mutable public static Item MINECART;
+    @Shadow @Final @Mutable public static Item CHEST_MINECART;
+    @Shadow @Final @Mutable public static Item FURNACE_MINECART;
+    @Shadow @Final @Mutable public static Item TNT_MINECART;
+    @Shadow @Final @Mutable public static Item HOPPER_MINECART;
+    @Shadow @Final @Mutable public static Item COMMAND_BLOCK_MINECART;
+
+    @Shadow @Final @Mutable public static Item WHITE_BED;
+    @Shadow @Final @Mutable public static Item ORANGE_BED;
+    @Shadow @Final @Mutable public static Item MAGENTA_BED;
+    @Shadow @Final @Mutable public static Item LIGHT_BLUE_BED;
+    @Shadow @Final @Mutable public static Item YELLOW_BED;
+    @Shadow @Final @Mutable public static Item LIME_BED;
+    @Shadow @Final @Mutable public static Item PINK_BED;
+    @Shadow @Final @Mutable public static Item GRAY_BED;
+    @Shadow @Final @Mutable public static Item LIGHT_GRAY_BED;
+    @Shadow @Final @Mutable public static Item CYAN_BED;
+    @Shadow @Final @Mutable public static Item PURPLE_BED;
+    @Shadow @Final @Mutable public static Item BLUE_BED;
+    @Shadow @Final @Mutable public static Item BROWN_BED;
+    @Shadow @Final @Mutable public static Item GREEN_BED;
+    @Shadow @Final @Mutable public static Item RED_BED;
+    @Shadow @Final @Mutable public static Item BLACK_BED;
 
     @Shadow @Final @Mutable public static Item WHITE_BANNER;
     @Shadow @Final @Mutable public static Item ORANGE_BANNER;
@@ -196,6 +221,52 @@ public abstract class ItemsMixin {
                 RED_BANNER = new BannerItem(Blocks.RED_BANNER, Blocks.RED_WALL_BANNER, new Item.Settings().maxCount(64).component(DataComponentTypes.BANNER_PATTERNS, BannerPatternsComponent.DEFAULT)));
         Registry.register(Registries.ITEM, Identifier.ofVanilla("black_banner"),
                 BLACK_BANNER = new BannerItem(Blocks.BLACK_BANNER, Blocks.BLACK_WALL_BANNER, new Item.Settings().maxCount(64).component(DataComponentTypes.BANNER_PATTERNS, BannerPatternsComponent.DEFAULT)));
+
+        Registry.register(Registries.ITEM, Identifier.ofVanilla("white_bed"),
+                WHITE_BED = new BedItem(Blocks.WHITE_BED, new Item.Settings().maxCount(16)));
+        Registry.register(Registries.ITEM, Identifier.ofVanilla("orange_bed"),
+                ORANGE_BED = new BedItem(Blocks.ORANGE_BED, new Item.Settings().maxCount(16)));
+        Registry.register(Registries.ITEM, Identifier.ofVanilla("magenta_bed"),
+                MAGENTA_BED = new BedItem(Blocks.MAGENTA_BED, new Item.Settings().maxCount(16)));
+        Registry.register(Registries.ITEM, Identifier.ofVanilla("light_blue_bed"),
+                LIGHT_BLUE_BED = new BedItem(Blocks.LIGHT_BLUE_BED, new Item.Settings().maxCount(16)));
+        Registry.register(Registries.ITEM, Identifier.ofVanilla("yellow_bed"),
+                YELLOW_BED = new BedItem(Blocks.YELLOW_BED, new Item.Settings().maxCount(16)));
+        Registry.register(Registries.ITEM, Identifier.ofVanilla("lime_bed"),
+                LIME_BED = new BedItem(Blocks.LIME_BED, new Item.Settings().maxCount(16)));
+        Registry.register(Registries.ITEM, Identifier.ofVanilla("pink_bed"),
+                PINK_BED = new BedItem(Blocks.PINK_BED, new Item.Settings().maxCount(16)));
+        Registry.register(Registries.ITEM, Identifier.ofVanilla("gray_bed"),
+                GRAY_BED = new BedItem(Blocks.GRAY_BED, new Item.Settings().maxCount(16)));
+        Registry.register(Registries.ITEM, Identifier.ofVanilla("light_gray_bed"),
+                LIGHT_GRAY_BED = new BedItem(Blocks.LIGHT_GRAY_BED, new Item.Settings().maxCount(16)));
+        Registry.register(Registries.ITEM, Identifier.ofVanilla("cyan_bed"),
+                CYAN_BED = new BedItem(Blocks.CYAN_BED, new Item.Settings().maxCount(16)));
+        Registry.register(Registries.ITEM, Identifier.ofVanilla("purple_bed"),
+                PURPLE_BED = new BedItem(Blocks.PURPLE_BED, new Item.Settings().maxCount(16)));
+        Registry.register(Registries.ITEM, Identifier.ofVanilla("blue_bed"),
+                BLUE_BED = new BedItem(Blocks.BLUE_BED, new Item.Settings().maxCount(16)));
+        Registry.register(Registries.ITEM, Identifier.ofVanilla("brown_bed"),
+                BROWN_BED = new BedItem(Blocks.BROWN_BED, new Item.Settings().maxCount(16)));
+        Registry.register(Registries.ITEM, Identifier.ofVanilla("green_bed"),
+                GREEN_BED = new BedItem(Blocks.GREEN_BED, new Item.Settings().maxCount(16)));
+        Registry.register(Registries.ITEM, Identifier.ofVanilla("red_bed"),
+                RED_BED = new BedItem(Blocks.RED_BED, new Item.Settings().maxCount(16)));
+        Registry.register(Registries.ITEM, Identifier.ofVanilla("black_bed"),
+                BLACK_BED = new BedItem(Blocks.BLACK_BED, new Item.Settings().maxCount(16)));
+
+        Registry.register(Registries.ITEM, Identifier.ofVanilla("minecart"),
+                MINECART = new MinecartItem(AbstractMinecartEntity.Type.RIDEABLE, new Item.Settings().maxCount(16)));
+        Registry.register(Registries.ITEM, Identifier.ofVanilla("chest_minecart"),
+                CHEST_MINECART = new MinecartItem(AbstractMinecartEntity.Type.CHEST, new Item.Settings().maxCount(16)));
+        Registry.register(Registries.ITEM, Identifier.ofVanilla("tnt_minecart"),
+                TNT_MINECART = new MinecartItem(AbstractMinecartEntity.Type.TNT, new Item.Settings().maxCount(16)));
+        Registry.register(Registries.ITEM, Identifier.ofVanilla("furnace_minecart"),
+                FURNACE_MINECART = new MinecartItem(AbstractMinecartEntity.Type.FURNACE, new Item.Settings().maxCount(16)));
+        Registry.register(Registries.ITEM, Identifier.ofVanilla("command_block_minecart"),
+                COMMAND_BLOCK_MINECART = new MinecartItem(AbstractMinecartEntity.Type.COMMAND_BLOCK, new Item.Settings().maxCount(16).rarity(Rarity.EPIC)));
+        Registry.register(Registries.ITEM, Identifier.ofVanilla("hopper_minecart"),
+                HOPPER_MINECART = new MinecartItem(AbstractMinecartEntity.Type.HOPPER, new Item.Settings().maxCount(16)));
 
         Registry.register(Registries.ITEM, Identifier.ofVanilla("oak_sign"),
                 OAK_SIGN = new SignItem(new Item.Settings().maxCount(64), Blocks.OAK_SIGN, Blocks.OAK_WALL_SIGN));
