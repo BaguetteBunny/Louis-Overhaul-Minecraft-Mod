@@ -84,7 +84,7 @@ public class EnchantmentMixin {
     }
 
     @Inject(method = "modifyDamage", at = @At("HEAD"), cancellable = true)
-    private void reduceSharpnessModifier(ServerWorld world, int level, ItemStack stack, Entity user, DamageSource damageSource, MutableFloat damage, CallbackInfo ci) {
+    private void changeEnchantDamageModifier(ServerWorld world, int level, ItemStack stack, Entity user, DamageSource damageSource, MutableFloat damage, CallbackInfo ci) {
         Enchantment thisEnchant = (Enchantment)(Object)this;
         Entity target = user;
 
@@ -94,6 +94,13 @@ public class EnchantmentMixin {
                 .getPath();
 
         if (enchantId.equals("sharpness")) {
+            float currentDamage = damage.getValue();
+            float bonusDamage = 0.4f * level + 0.5f;
+            damage.setValue(currentDamage + bonusDamage);
+            ci.cancel();
+        }
+
+        if (enchantId.equals("power") && damageSource.isOf(DamageTypes.ARROW)) {
             float currentDamage = damage.getValue();
             float bonusDamage = 0.4f * level + 0.5f;
             damage.setValue(currentDamage + bonusDamage);
