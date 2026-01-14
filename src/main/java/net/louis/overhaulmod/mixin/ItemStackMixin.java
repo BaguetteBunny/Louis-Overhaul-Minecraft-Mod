@@ -104,6 +104,23 @@ public class ItemStackMixin {
     }
 
     @Inject(method = "getTooltip", at = @At("RETURN"))
+    private void addUpgradeTooltip(Item.TooltipContext context, PlayerEntity player, TooltipType type, CallbackInfoReturnable<List<Text>> cir) {
+        String name = "";
+        if (stack.getItem() == ModItems.GLOW_UPGRADE_SMITHING_TEMPLATE) name = "Glow";
+        if (stack.getItem() == ModItems.PULSING_UPGRADE_SMITHING_TEMPLATE) name = "Pulsing";
+
+        if (!name.isEmpty()) {
+            List<Text> tooltip = cir.getReturnValue();
+            tooltip.add(1, Text.literal(name + " Upgrade").formatted(Formatting.GRAY));
+            tooltip.add(2, Text.empty());
+            tooltip.add(3, Text.literal("Applies to:").formatted(Formatting.GRAY));
+            tooltip.add(4, Text.literal(" Trimmed Equipment").formatted(Formatting.BLUE));
+            tooltip.add(5, Text.literal("Ingredients").formatted(Formatting.GRAY));
+            tooltip.add(6, Text.literal(" None").formatted(Formatting.BLUE));
+        }
+    }
+
+    @Inject(method = "getTooltip", at = @At("RETURN"))
     private void addEnchantmentCapTooltip(Item.TooltipContext context, PlayerEntity player, TooltipType type, CallbackInfoReturnable<List<Text>> cir) {
         if (!EnchantmentCapRegistry.hasCap(stack.getItem())) return;
 
