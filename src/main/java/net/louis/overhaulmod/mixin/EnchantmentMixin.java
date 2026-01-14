@@ -197,6 +197,13 @@ public class EnchantmentMixin {
             }
         }
 
+        if (enchantName.contains("sharpness")) {
+            if (item instanceof MaceItem || item instanceof TridentItem ||
+                    item instanceof BowItem || item instanceof CrossbowItem) {
+                cir.setReturnValue(true);
+            }
+        }
+
         if (enchantName.contains("impaling")) {
             if (item instanceof MaceItem || item instanceof SwordItem ||
                     item instanceof BowItem || item instanceof CrossbowItem || item instanceof AxeItem) {
