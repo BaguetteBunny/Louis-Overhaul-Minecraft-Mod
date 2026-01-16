@@ -49,6 +49,7 @@ import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -484,24 +485,38 @@ public class ModUseEvents {
         if (stack.isOf(Items.STICK) && !stand.shouldShowArms()) {
             stand.setShowArms(true);
             stack.decrementUnlessCreative(1, player);
-        } else if (stack.isOf(Items.SMOOTH_STONE_SLAB) && stand.shouldHideBasePlate()) {
-            stand.setHideBasePlate(false);
-            stack.decrementUnlessCreative(1, player);
         } else if (stack.getItem() instanceof AxeItem && !stand.isSmall()) {
             ((ArmorStandEntityAccessor) stand).callSetSmall(true);
             stack.damage(1, player, EquipmentSlot.MAINHAND);
-        } else if (stack.isOf(Items.AIR) && !stand.shouldHideBasePlate()) {
-            stand.setHideBasePlate(true);
-            ItemEntity itemEntity = new ItemEntity(world, stand.getX(), stand.getY(), stand.getZ(), new ItemStack(Items.SMOOTH_STONE_SLAB));
-            world.spawnEntity(itemEntity);
         } else if (stack.isOf(Items.PHANTOM_MEMBRANE) && !stand.isInvisible()) {
             stand.setInvisible(true);
             stack.decrementUnlessCreative(1, player);
         } else if (stack.isOf(Items.GLOW_INK_SAC) && !stand.isGlowing()) {
             stand.setGlowing(true);
             stack.decrementUnlessCreative(1, player);
-        } else {
-            return ActionResult.PASS;
+        }
+        else {
+            ArrayList<ItemStack> playerItems = new ArrayList<>();
+            playerItems.add(player.getEquippedStack(EquipmentSlot.HEAD));
+            playerItems.add(player.getEquippedStack(EquipmentSlot.CHEST));
+            playerItems.add(player.getEquippedStack(EquipmentSlot.LEGS));
+            playerItems.add(player.getEquippedStack(EquipmentSlot.FEET));
+            playerItems.add(player.getEquippedStack(EquipmentSlot.MAINHAND));
+
+            player.equipStack(EquipmentSlot.HEAD, stand.getEquippedStack(EquipmentSlot.HEAD));
+            player.equipStack(EquipmentSlot.CHEST, stand.getEquippedStack(EquipmentSlot.CHEST));
+            player.equipStack(EquipmentSlot.LEGS, stand.getEquippedStack(EquipmentSlot.LEGS));
+            player.equipStack(EquipmentSlot.FEET, stand.getEquippedStack(EquipmentSlot.FEET));
+
+            stand.equipStack(EquipmentSlot.HEAD, playerItems.get(0));
+            stand.equipStack(EquipmentSlot.CHEST, playerItems.get(1));
+            stand.equipStack(EquipmentSlot.LEGS, playerItems.get(2));
+            stand.equipStack(EquipmentSlot.FEET, playerItems.get(3));
+
+            if (stand.shouldShowArms()) {
+                player.equipStack(EquipmentSlot.MAINHAND, stand.getEquippedStack(EquipmentSlot.MAINHAND));
+                stand.equipStack(EquipmentSlot.MAINHAND, playerItems.get(4));
+            }
         }
 
         world.playSound(null, stand.getBlockPos(), SoundEvents.UI_BUTTON_CLICK.value(), SoundCategory.BLOCKS, 1.0F, 1.0F);
