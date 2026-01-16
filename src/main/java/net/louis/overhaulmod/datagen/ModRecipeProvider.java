@@ -440,6 +440,26 @@ public class ModRecipeProvider extends FabricRecipeProvider {
                 .criterion(hasItem(Items.CLOCK), conditionsFromItem(Items.CLOCK))
                 .offerTo(exporter);
 
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.GLOW_UPGRADE_SMITHING_TEMPLATE, 1)
+                .pattern("DND")
+                .pattern("DGD")
+                .pattern("DDD")
+                .input('N', Items.ENDER_EYE)
+                .input('G', Items.GLOW_INK_SAC)
+                .input('D', Items.AMETHYST_SHARD)
+                .criterion(hasItem(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE), conditionsFromItem(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE))
+                .offerTo(exporter);
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.PULSING_UPGRADE_SMITHING_TEMPLATE, 1)
+                .pattern("DND")
+                .pattern("DSD")
+                .pattern("DDD")
+                .input('N', Items.SCULK_SHRIEKER)
+                .input('S', Items.NETHER_STAR)
+                .input('D', Items.PRISMARINE_SHARD)
+                .criterion(hasItem(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE), conditionsFromItem(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE))
+                .offerTo(exporter);
+
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.PIONEER_POUCH, 1)
                 .pattern("RBR")
                 .pattern("AKA")
